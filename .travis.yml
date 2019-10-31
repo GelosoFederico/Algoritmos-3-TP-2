@@ -16,4 +16,7 @@ notifications:
   email:
     recipients:
       - gelosofederico@gmail.com
+      - joacoelordi@gmail.com
+      - crist.torales@gmail.com
+      - cristinaa.kuo@gmail.com
     on_failure: always
