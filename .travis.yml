@@ -2,7 +2,7 @@ language: java
 jdk:
   - openjdk8
 
-install: maven
+install: sudo DEBIAN_FRONTEND=noninteractive apt-get -yq install maven
 
 addons:
   apt:
