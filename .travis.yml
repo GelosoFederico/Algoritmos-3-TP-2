@@ -9,7 +9,7 @@ addons:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - mvn
+      - maven
 
 script:
   - mvn package
