@@ -1,0 +1,21 @@
+language: java
+jdk:
+  - openjdk8
+
+install: maven
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - mvn
+
+script:
+  - mvn package
+
+notifications:
+  email:
+    recipients:
+      - gelosofederico@gmail.com
+    on_failure: always
