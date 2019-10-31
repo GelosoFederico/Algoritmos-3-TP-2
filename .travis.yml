@@ -8,8 +8,6 @@ addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
-    packages:
-      - maven
 
 script:
   - mvn package
