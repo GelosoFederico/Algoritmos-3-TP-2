@@ -35,7 +35,7 @@ public class Soldado {
 
     public void atacar(Soldado soldadoEnemigo) {
         int danioCortaDistancia = 10;
-        final int DISTANCIA_MAX_CORTA = 2 ;
+        final int DISTANCIA_MAX_CORTA = 2;
 
         int distancia = casillero.calcularDistanciaA(soldadoEnemigo.getCasillero());
         if(distancia >= DISTANCIA_MAX_CORTA){
