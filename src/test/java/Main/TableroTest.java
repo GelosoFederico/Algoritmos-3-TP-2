@@ -35,5 +35,11 @@ public class TableroTest {
 
         Assert.assertTrue(true);
     }
+    @Test
+    public void testTableroSeMueve() {
+
+        Assert.assertTrue(true);
+    }
+
 }
 
