@@ -6,11 +6,14 @@ public class Casillero {
     int deJugador = 1;
 
 
-    Casillero(int x, int y) {
-        posicion = new Posicion(x,y);
+    Casillero(Posicion posicionAsignada) {
+        posicion = posicionAsignada;
         estado = "libre";
     }
 
+    static Casillero casilleroDeLaPosicion(Posicion posicion) {
+        return Tablero.casilleroDeLaPosicion(posicion);
+    }
     Posicion posicion() {
         return posicion;
     }

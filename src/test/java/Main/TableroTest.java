@@ -2,18 +2,19 @@ package Main;
 
 import org.junit.Test;
 import org.junit.Assert;
-import org.mockito.Mock;
+import org.mockito.*;
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 
 // Al final, agregar Pieza
 
 public class TableroTest {
     @Test
-    public void testColocarPiezaAliadaEnElCasilleroDePosicion11ConExito() {
-        Pieza pieza = new Pieza();
+    public void testObtenerCasilleroAliadoParaJugador1DevuelveCasilleroConExito() {
         Posicion posicion = new Posicion(1,1);
-        pieza.colocarEnElCasilleroDeLaPosicion(posicion);
-        assertEquals(pieza.posicionDeCasillero(),posicion);
+        Jugador jugador = mock(Jugador.class);
+        Casillero casillero = Tablero.obtenerCasilleroLibreParaJugador(posicion,jugador);
+        assertEquals(casillero.posicion(),posicion);
     }
     @Test
     public void testNoSePuedeColocarPiezaAliadaEnUnCasilleroOcupadoDelSectorAliado() {

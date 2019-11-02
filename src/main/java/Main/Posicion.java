@@ -1,12 +1,12 @@
 package Main;
 
 public class Posicion {
-    int x;
-    int y;
+    int _x;
+    int _y;
 
-    Posicion(int xElegido,int yElegido) {
-        x = xElegido;
-        y = yElegido;
+    Posicion(int x,int y) {
+        _x = x;
+        _y = y;
     }
 
     // TODO: maybe string
