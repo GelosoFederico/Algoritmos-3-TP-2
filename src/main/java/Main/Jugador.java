@@ -36,7 +36,9 @@ public class Jugador
     public void colocarUnidadEn(Unidad unidad, String posicion) {
         Casillero casillero = _tablero.obtenerCasilleroLibreParaJugador(posicion, this.nombre());
         unidad.colocarEn(casillero);
+        if (this._puntosRestantes - unidad.coste() < 0) {
+            throw new JugadorInsuficientePuntosRestantesAlColocarUnidad();
+        }
         this._puntosRestantes -= unidad.coste();
-
     }
 }
