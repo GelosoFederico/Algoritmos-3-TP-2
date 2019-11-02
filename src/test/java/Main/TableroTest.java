@@ -4,7 +4,9 @@ import org.junit.Test;
 import org.junit.Assert;
 import org.mockito.Mock;
 import static org.junit.Assert.assertEquals;
+
 // Al final, agregar Pieza
+
 public class TableroTest {
     @Test
     public void testColocarPiezaAliadaEnElCasilleroDePosicion11ConExito() {
@@ -35,11 +37,7 @@ public class TableroTest {
 
         Assert.assertTrue(true);
     }
-    @Test
-    public void testTableroSeMueve() {
 
-        Assert.assertTrue(true);
-    }
 
 }
 
