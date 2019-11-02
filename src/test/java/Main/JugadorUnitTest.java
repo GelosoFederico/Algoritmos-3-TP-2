@@ -5,7 +5,7 @@ import static org.mockito.Mockito.*;
 
 import org.junit.Test;
 
-public class JugadorTest
+public class JugadorUnitTest
 {
     @Test
     public void creoJugadorYLePongoNombre()
@@ -41,7 +41,7 @@ public class JugadorTest
         assertTrue( puntosIniciales - 3 == jugador.puntosRestantes());
     }
 
-    @Test(expected = JugadorInsuficientePuntosRestantesAlColocarUnidad.class)
+    @Test(expected = InsuficientePuntosRestantesAlColocarUnidad.class)
     public void JugadorColocaUnaUnidadSinSuficientesPuntosRestantesYLanzaUnaExcepcion()
     {
         // Arrange

@@ -1,20 +1,20 @@
 package Main;
 
-public class Jugador 
+public class Jugador
 {
     // Atributos
     private String _nombre;
-    private Integer _puntosRestantes;
     private Tablero _tablero;
+    private ContadorDePuntos _contadorPuntos;
 
     // Metodos
     public Jugador(){
-        _puntosRestantes = 20;
+        _contadorPuntos = new ContadorDePuntos();
     }
 
     public Jugador(String nombre){
+        _contadorPuntos = new ContadorDePuntos();
         _nombre = nombre;
-        _puntosRestantes = 20;
     }
 
     public String nombre() {
@@ -26,7 +26,7 @@ public class Jugador
     }
 
     public Integer puntosRestantes() {
-        return this._puntosRestantes;
+        return this.getContadorPuntos().puntosRestantes();
     }
 
     public void set_tablero(Tablero tablero) {
@@ -36,9 +36,10 @@ public class Jugador
     public void colocarUnidadEn(Unidad unidad, String posicion) {
         Casillero casillero = _tablero.obtenerCasilleroLibreParaJugador(posicion, this.nombre());
         unidad.colocarEn(casillero);
-        if (this._puntosRestantes - unidad.coste() < 0) {
-            throw new JugadorInsuficientePuntosRestantesAlColocarUnidad();
-        }
-        this._puntosRestantes -= unidad.coste();
+        this.getContadorPuntos().contarPuntosDe(unidad);
+    }
+
+    private ContadorDePuntos getContadorPuntos() {
+        return this._contadorPuntos;
     }
 }
