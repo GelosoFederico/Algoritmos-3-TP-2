@@ -29,4 +29,8 @@ public class Casillero {
             return true;
         return false;
     }
+
+    public int calcularDistanciaA(Casillero casillero) {
+        return 1;
+    }
 }

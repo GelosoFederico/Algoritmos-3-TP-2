@@ -10,8 +10,8 @@ public class Jinete extends Unidad implements Atacante {
     }
 
     public void atacar(Unidad jineteEnemigo) {
-        int ataqueMediaDistancia = 15;
-        jineteEnemigo.recivirDanio(ataqueMediaDistancia);
+        int danioMediaDistancia = 15;
+        jineteEnemigo.recivirDanio(danioMediaDistancia);
     }
 
     public void recivirDanio(int ataqueMediaDistancia) {
