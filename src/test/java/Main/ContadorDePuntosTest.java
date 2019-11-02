@@ -16,6 +16,7 @@ public class ContadorDePuntosTest {
         assertEquals(contador.puntosRestantes(), 20);
     }
 
+    @Test
     public void creoContadorYCuentaPuntosPorUnaUnidad() {
         // Arrange
         ContadorDePuntos contador = new ContadorDePuntos();
