@@ -20,7 +20,7 @@ public class CasilleroTest {
         public void testSeOcupaUnCasilleroYSeVerificaQueEsteOcupado() {
 
             Pieza unaPieza = new Pieza();
-            Casillero unCasillero = new Casillero(new Posicion(1,1)); // TODO: Mockear
+            Casillero unCasillero = new Casillero(new Posicion(1,1), 1); // TODO: Mockear
 
             unCasillero.ocuparCasillero(unaPieza);
 
@@ -31,7 +31,7 @@ public class CasilleroTest {
         public void testSeLiberaUnCasilleroYSeVerificaQueEsteLiberado() {
 
             Pieza unaPieza = new Pieza();
-            Casillero unCasillero = new Casillero(new Posicion(1,1)); // TODO: Mockear
+            Casillero unCasillero = new Casillero(new Posicion(1,1), 1); // TODO: Mockear
 
             unCasillero.ocuparCasillero(unaPieza);
             unCasillero.liberarCasillero();

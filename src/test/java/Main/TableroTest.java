@@ -35,8 +35,14 @@ public class TableroTest {
     @Test
     public void testCorrecaCreacionEInicializacionDelTablero() {
 
-        Assert.assertTrue(true);
+        Tablero unTablero = new Tablero();
+
+        unTablero.crearCasillerosParaJugador(1);
+
+
     }
+
+
 
 
 }

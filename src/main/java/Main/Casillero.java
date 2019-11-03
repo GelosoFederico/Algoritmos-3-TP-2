@@ -6,9 +6,16 @@ public class Casillero {
     int deJugador = 1;
 
 
-    Casillero(Posicion posicionAsignada) {
+    Casillero(Posicion posicionAsignada, int numeroDeJugador) {
         posicion = posicionAsignada;
         estado = "libre";
+        deJugador = numeroDeJugador;
+    }
+
+    public Casillero(int i, int j, int numeroDeJugador) {
+        posicion = new Posicion(i, j);
+        estado = "libre";
+        deJugador = numeroDeJugador;
     }
 
     static Casillero casilleroDeLaPosicion(Posicion posicion) {
