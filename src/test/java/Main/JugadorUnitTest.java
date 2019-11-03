@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 
 import org.junit.Test;
 
+import java.lang.reflect.Field;
 import java.util.Vector;
 
 public class JugadorUnitTest
@@ -98,5 +99,56 @@ public class JugadorUnitTest
         // Assert
         assertEquals(unidadesInicio,vectorUnidadesInicio);
         assertEquals(jugador.unidades(),vectorUnidadesFin);
+    }
+
+    private void setMock(Juego juegoMock) {
+        // Esto hace que el campo sea accesible y lo cambia por el mock
+        try {
+            Field instance = Juego.class.getDeclaredField("INSTANCE");
+            instance.setAccessible(true);
+            instance.set(instance, juegoMock);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void resetSingleton()  {
+        // Esto hace que el campo sea como era antes, aunque el set(null,null) me deja dudando
+        try {
+        Field instance = Juego.class.getDeclaredField("INSTANCE");
+        instance.setAccessible(true);
+        instance.set(null, null); // TODO consultar esto
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void JugadorPierdeTodasSusUnidadesYAnunciaAJuegoQuePerdio(){
+        // Es necesario mockear la clase Juego que es un singleton para ver si le envia el mensaje correctamente
+        // Sacado de https://stackoverflow.com/a/50199670
+        // Usa reflexion
+        Juego juegoMock = mock(Juego.class);
+        setMock(juegoMock);
+
+        // Arrange
+        Jugador jugador = new Jugador();
+
+        Tablero tableroMock = mock(Tablero.class);
+        jugador.set_tablero(tableroMock);
+
+        Jinete jinete1Mock = mock(Jinete.class);
+        when(jinete1Mock.coste()).thenReturn(3);
+        when(jinete1Mock.jugador()).thenReturn(jugador);
+        String posicion1 = "(1,1)";
+
+        jugador.colocarUnidadEn(jinete1Mock,posicion1);
+
+        // Act
+        jugador.pierdeUnidad(jinete1Mock);
+
+        // Assert
+        verify(juegoMock, times(1)).jugadorPerdio(jugador);
+        resetSingleton();
     }
 }

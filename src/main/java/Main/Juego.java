@@ -24,4 +24,8 @@ public class Juego {
         unidad.jugador().pierdeUnidad(unidad);
     }
     */
+
+    public void jugadorPerdio(Jugador jugador) {
+
+    }
 }
