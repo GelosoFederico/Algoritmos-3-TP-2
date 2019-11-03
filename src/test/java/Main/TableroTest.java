@@ -26,10 +26,11 @@ public class TableroTest {
         // TODO: Va a seguir fallando hasta que este listo el Tablero.obtenerCasilleroDePosicion
     }
 
-    @Test
-    public void testNoSePuedeColocarPiezaAliadaEnUnCasilleroDelSectorEnemigo() {
-
-        Assert.assertTrue(true);
+    @Test(expected = CasilleroEsDeEnemigo.class)
+    public void testNoSePuedeObtenerCasilleroDeEnemigoParaUnJugador() throws CasilleroEstaOcupado {
+        Jugador jugador = mock(Jugador.class);
+        Posicion posicionEnemigo = new Posicion(19,19); // Asumiendo que esto es del sector enemigo
+        Tablero.obtenerCasilleroLibreParaJugador(posicionEnemigo,jugador);
     }
 
     @Test
