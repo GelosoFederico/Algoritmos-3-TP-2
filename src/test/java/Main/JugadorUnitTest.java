@@ -6,7 +6,7 @@ import static org.mockito.Mockito.*;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class JugadorUnitTest
 {
@@ -84,21 +84,21 @@ public class JugadorUnitTest
         when(jinete2Mock.jugador()).thenReturn(jugador);
         String posicion2 = "(2,2)";
 
-        Vector<Unidad> vectorUnidadesInicio = new Vector<Unidad>();
-        vectorUnidadesInicio.add(jinete1Mock);
-        vectorUnidadesInicio.add(jinete2Mock);
-        Vector<Unidad> vectorUnidadesFin = new Vector<Unidad>();
-        vectorUnidadesFin.add(jinete1Mock);
+        ArrayList<Unidad> coleccionUnidadesInicio = new ArrayList<Unidad>();
+        coleccionUnidadesInicio.add(jinete1Mock);
+        coleccionUnidadesInicio.add(jinete2Mock);
+        ArrayList<Unidad> coleccionUnidadesFin = new ArrayList<Unidad>();
+        coleccionUnidadesFin.add(jinete1Mock);
 
         // Act
         jugador.colocarUnidadEn(jinete1Mock,posicion1);
         jugador.colocarUnidadEn(jinete2Mock,posicion2);
-        Vector<Unidad> unidadesInicio = (Vector<Unidad>) jugador.unidades().clone();
+        ArrayList<Unidad> unidadesInicio = (ArrayList<Unidad>) jugador.unidades().clone();
         jugador.pierdeUnidad(jinete2Mock);
 
         // Assert
-        assertEquals(unidadesInicio,vectorUnidadesInicio);
-        assertEquals(jugador.unidades(),vectorUnidadesFin);
+        assertEquals(unidadesInicio,coleccionUnidadesInicio);
+        assertEquals(jugador.unidades(),coleccionUnidadesFin);
     }
 
     private void setMock(Juego juegoMock) {
