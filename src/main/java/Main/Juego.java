@@ -1,25 +1,34 @@
 package Main;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 public class Juego {
     // Singleton pattern
     private static Juego INSTANCE = new Juego();
-    private Vector<Jugador> jugadores;
+
+    private List<Jugador> _jugadores;
 
     private Juego() {
-        jugadores = new Vector<Jugador>();
+        _jugadores = new ArrayList<Jugador>();
     }
 
     public static Juego getInstance() {
         return INSTANCE;
     }
 
-    /*
+    public List<Jugador> jugadores() {
+        return this._jugadores;
+    }
     public void agregarJugador(Jugador jugador) {
-        jugadores.add(jugador);
+        if(this.jugadores().size() == 2) {
+            throw new JuegoNoPuedeTenerMasDe2Jugadores();
+        }
+        this.jugadores().add(jugador);
     }
 
+    /*
     public void murioUnidad(Unidad unidad){
         unidad.jugador().pierdeUnidad(unidad);
     }
