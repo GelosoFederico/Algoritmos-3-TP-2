@@ -151,4 +151,18 @@ public class JugadorUnitTest
         verify(juegoMock, times(1)).jugadorPerdio(jugador);
         resetSingleton();
     }
+
+    @Test
+    public void creoDosJugadoresYTienenNumerosSiguientes () {
+        // Arrange
+        // Act
+        Jugador jugador1 = new Jugador();
+        Jugador jugador2 = new Jugador();
+        Jugador jugador3 = new Jugador();
+
+        // Assert
+        // Casteo uno porque es ambiguo para el compilador
+        assertEquals((int)jugador1.numero(), jugador2.numero()-1);
+        assertEquals((int)jugador1.numero(), jugador3.numero()-2);
+    }
 }

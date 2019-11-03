@@ -4,7 +4,7 @@ import java.util.Vector;
 
 public class Jugador
 {
-    private static Integer _siguienteNumero = 1;
+    private static Integer siguiente_numero = 1;
     // Atributos
     private String _nombre;
     private Tablero _tablero;
@@ -16,16 +16,16 @@ public class Jugador
     public Jugador(){
         _contadorPuntos = new ContadorDePuntos();
         _unidades = new Vector<Unidad>();
-        _numero = _siguienteNumero;
-        _siguienteNumero++;
+        _numero = siguiente_numero;
+        siguiente_numero++;
     }
 
     public Jugador(String nombre){
         _contadorPuntos = new ContadorDePuntos();
         _nombre = nombre;
         _unidades = new Vector<Unidad>();
-        _numero = _siguienteNumero;
-        _siguienteNumero++;
+        _numero = siguiente_numero;
+        siguiente_numero++;
     }
 
     public String nombre() {
