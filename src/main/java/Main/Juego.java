@@ -28,13 +28,15 @@ public class Juego {
         this.jugadores().add(jugador);
     }
 
-    /*
     public void murioUnidad(Unidad unidad){
         unidad.jugador().pierdeUnidad(unidad);
     }
-    */
 
     public void jugadorPerdio(Jugador jugador) {
 
+    }
+
+    public void reiniciar() {
+        INSTANCE = new Juego();
     }
 }

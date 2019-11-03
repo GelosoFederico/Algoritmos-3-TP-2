@@ -24,7 +24,7 @@ public class JugadorUnitTest
     }
 
     @Test
-    public void JugadorColocaUnaUnidadNuevaYRestaSusPuntosParaPoner()
+    public void jugadorColocaUnaUnidadNuevaYRestaSusPuntosParaPoner()
     {
         // Arrange
         Jugador jugador = new Jugador();
@@ -45,7 +45,7 @@ public class JugadorUnitTest
     }
 
     @Test(expected = InsuficientePuntosRestantesAlColocarUnidad.class)
-    public void JugadorColocaUnaUnidadSinSuficientesPuntosRestantesYLanzaUnaExcepcion()
+    public void jugadorColocaUnaUnidadSinSuficientesPuntosRestantesYLanzaUnaExcepcion()
     {
         // Arrange
         Jugador jugador = new Jugador();
@@ -69,7 +69,7 @@ public class JugadorUnitTest
     }
 
     @Test
-    public void JugadorPierdeUnidadYYaNoLaTiene(){
+    public void jugadorPierdeUnidadYYaNoLaTiene(){
         // Arrange
         Jugador jugador = new Jugador();
         // Mocks
@@ -124,7 +124,7 @@ public class JugadorUnitTest
     }
 
     @Test
-    public void JugadorPierdeTodasSusUnidadesYAnunciaAJuegoQuePerdio(){
+    public void jugadorPierdeTodasSusUnidadesYAnunciaAJuegoQuePerdio(){
         // Es necesario mockear la clase Juego que es un singleton para ver si le envia el mensaje correctamente
         // Sacado de https://stackoverflow.com/a/50199670
         // Usa reflexion
