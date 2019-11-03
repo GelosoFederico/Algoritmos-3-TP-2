@@ -18,12 +18,12 @@ public class Casillero {
         return posicion;
     }
 
-    public String estado() {
-        return estado;
+    public String estado() {return estado;}
+
+    public void setEstado(String string) {
+        estado = "ocupado";
     }
-
     public void ocuparCasillero(Pieza unaPieza) {
-
         estado = "ocupado";
     }
 

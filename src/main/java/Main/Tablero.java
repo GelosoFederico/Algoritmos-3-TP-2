@@ -8,9 +8,20 @@ public class Tablero {
         return casilleroEnPosicion;   
     }
 
-    static Casillero obtenerCasilleroLibreParaJugador(Posicion posicion, Jugador jugador) {
-        return new Casillero(posicion); // TODO: hardcodeo
+    static Casillero obtenerCasilleroLibreParaJugador(Posicion posicion, Jugador jugador) throws CasilleroEstaOcupado {
+        Casillero casilleroBuscado = Tablero.obtenerCasilleroDePosicion(posicion);
+
+        if (casilleroBuscado.estado() == "ocupado")
+            throw new CasilleroEstaOcupado();
+        else {
+            casilleroBuscado.setEstado("ocupado");
+            return casilleroBuscado;
+        }
     }
 
+    static Casillero obtenerCasilleroDePosicion(Posicion posicion) {
+        // TODO: A completar. Puse cualquier cosa.
+        return new Casillero(posicion);
+    }
 
 }
