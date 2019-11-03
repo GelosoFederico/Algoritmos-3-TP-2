@@ -11,4 +11,6 @@ public class Jugador
     public void nombre(String nombre) {
         this._nombre = nombre;
     }
+
+    public int numero() { return 1;} // Esto es cualquier cosa
 }

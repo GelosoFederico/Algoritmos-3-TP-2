@@ -7,12 +7,8 @@ public class Tablero {
 
     Casillero[][] casilleros = new Casillero[maximaCantidadDeCasilleros][maximaCantidadDeCasilleros];
 
-
-
     public Tablero(){
-        this.crearCasillerosParaJugador(1);
-        this.crearCasillerosParaJugador(2);
-
+        this.crearCasilleros();
     }
 
     static Casillero casilleroDeLaPosicion(Posicion posicion) {
@@ -24,14 +20,11 @@ public class Tablero {
 
         if (casilleroBuscado.estado().equals("ocupado"))
             throw new CasilleroEstaOcupado();
-        else {
-
-            if(casilleroBuscado.deJugador() != 1)
-                throw new CasilleroEsDeEnemigo();
-
-            casilleroBuscado.setEstado("ocupado", 1);
-            return casilleroBuscado;
-        }
+        else if (casilleroBuscado.deJugador() != jugador.numero())
+            throw new CasilleroEsDeEnemigo();
+        else
+            casilleroBuscado.ocupar();
+        return casilleroBuscado;
     }
 
     static Casillero obtenerCasilleroDePosicion(Posicion posicion) {
@@ -39,16 +32,17 @@ public class Tablero {
         return new Casillero(posicion,1);
     }
 
-    public void crearCasillerosParaJugador(int numeroDeJugador) {
-
+    public void crearCasilleros() {
+        int numeroDeJugador;
         for(int i = 0; i < maximaCantidadDeCasilleros ; i++ ){
+            if (i < maximaCantidadDeCasilleros)
+                numeroDeJugador = 1;
+            else
+                numeroDeJugador = 2;
             for(int j = 0; j < maximaCantidadDeCasilleros ; j++ ) {
-
                     casilleros[i][j] = new Casillero(new Posicion(i,j), numeroDeJugador);
-
             }
         }
-
     }
 
 
@@ -56,7 +50,7 @@ public class Tablero {
 
         int xPosicion = posicion.posicionEnX();
         int yPosicion = posicion.posicionEnY();
-        Casillero unCasillero = new Casillero(0, 0, 0);
+        Casillero unCasillero = new Casillero(posicion, 0);
 
         for(int i = 0; i < maximaCantidadDeCasilleros ; i++ ){
             for(int j = 0; j < maximaCantidadDeCasilleros ; j++ ) {
