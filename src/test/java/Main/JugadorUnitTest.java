@@ -5,6 +5,8 @@ import static org.mockito.Mockito.*;
 
 import org.junit.Test;
 
+import java.util.Vector;
+
 public class JugadorUnitTest
 {
     @Test
@@ -63,5 +65,38 @@ public class JugadorUnitTest
         // Assert
         // Espera una excepcion
         jugador.colocarUnidadEn(jinete2Mock,posicion2);
+    }
+
+    @Test
+    public void JugadorPierdeUnidadYYaNoLaTiene(){
+        // Arrange
+        Jugador jugador = new Jugador();
+        // Mocks
+        Tablero tableroMock = mock(Tablero.class);
+        jugador.set_tablero(tableroMock);
+
+        Jinete jinete1Mock = mock(Jinete.class);
+        when(jinete1Mock.coste()).thenReturn(3);
+        when(jinete1Mock.jugador()).thenReturn(jugador);
+        String posicion1 = "(1,1)";
+        Jinete jinete2Mock = mock(Jinete.class);
+        when(jinete2Mock.jugador()).thenReturn(jugador);
+        String posicion2 = "(2,2)";
+
+        Vector<Unidad> vectorUnidadesInicio = new Vector<Unidad>();
+        vectorUnidadesInicio.add(jinete1Mock);
+        vectorUnidadesInicio.add(jinete2Mock);
+        Vector<Unidad> vectorUnidadesFin = new Vector<Unidad>();
+        vectorUnidadesFin.add(jinete1Mock);
+
+        // Act
+        jugador.colocarUnidadEn(jinete1Mock,posicion1);
+        jugador.colocarUnidadEn(jinete2Mock,posicion2);
+        Vector<Unidad> unidadesInicio = (Vector<Unidad>) jugador.unidades().clone();
+        jugador.pierdeUnidad(jinete2Mock);
+
+        // Assert
+        assertEquals(unidadesInicio,vectorUnidadesInicio);
+        assertEquals(jugador.unidades(),vectorUnidadesFin);
     }
 }

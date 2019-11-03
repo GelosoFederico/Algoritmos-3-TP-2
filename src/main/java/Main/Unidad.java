@@ -7,4 +7,8 @@ public class Unidad {
     public Integer coste() {
         return 0;
     }
+
+    public Jugador jugador() {
+        return new Jugador();
+    }
 }
