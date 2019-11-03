@@ -27,15 +27,24 @@ public class Casillero {
 
     public String estado() {return estado;}
 
-    public void setEstado(String string) {
+    public void setEstado(String string, int numeroDeJugador){
+
+
+        deJugador = numeroDeJugador;
         estado = "ocupado";
+
     }
-    public void ocuparCasillero(Pieza unaPieza) {
-        estado = "ocupado";
+    public void ocuparCasillero(Pieza unaPieza, int numeroDeJujador) {
+        if(deJugador == numeroDeJujador)
+                estado = "ocupado";
     }
 
     public void liberarCasillero() {
         estado = "libre";
+    }
+
+    public int deJugador() {
+        return deJugador;
     }
 
     //Ocupado

@@ -9,5 +9,13 @@ public class Posicion {
         _y = y;
     }
 
+    public int posicionEnX() {
+        return _x;
+    }
+
+    public int posicionEnY() {
+        return _y;
+    }
+
     // TODO: maybe string
 }
