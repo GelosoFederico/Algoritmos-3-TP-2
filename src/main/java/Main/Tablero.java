@@ -3,9 +3,11 @@ import java.util.Collection;
 
 public class Tablero {
 
-    Casillero[][] casilleros;
-
     int maximaCantidadDeCasilleros = 20;
+
+    Casillero[][] casilleros = new Casillero[maximaCantidadDeCasilleros][maximaCantidadDeCasilleros];
+
+
 
 
     static Casillero casilleroDeLaPosicion(Posicion posicion) {
@@ -30,11 +32,10 @@ public class Tablero {
 
     public void crearCasillerosParaJugador(int numeroDeJugador) {
 
-        for(int i = 1; i <= maximaCantidadDeCasilleros ; i++ ){
-            for(int j = 1; j <= maximaCantidadDeCasilleros ; j++ ) {
-                Casillero unCasillero = new Casillero(new Posicion(i,j), numeroDeJugador);
+        for(int i = 0; i < maximaCantidadDeCasilleros ; i++ ){
+            for(int j = 0; j < maximaCantidadDeCasilleros ; j++ ) {
 
-                    casilleros[i][j] = unCasillero;
+                    casilleros[i][j] = new Casillero(new Posicion(i,j), numeroDeJugador);
 
             }
         }
