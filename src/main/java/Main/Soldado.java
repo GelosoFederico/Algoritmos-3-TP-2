@@ -2,57 +2,30 @@ package Main;
 
 public class Soldado extends Unidad{
 
-    private Posicion posicion;
-    private int vida;
-    private Casillero casillero;
-    private String jugador;
-    private int coste = 1;
-
     public Soldado() {
-        posicion = null;
         vida = 100;
-        casillero = new Casillero();
+        coste = 1;
+        casillero = null;
     }
 
     public Soldado(int vidaInicial) {
         vida = vidaInicial;
+        coste = 1;
+        casillero = null;
     }
 
-    public Posicion getPosicion() {
-        return this.posicion;
+   /* public Posicion getPosicion() {
+        return this.casillero.posicion();
     }
-
-    public void setPosicion(Posicion unaPosicion) {
-        this.posicion = unaPosicion;
-    }
-
-    public void setJugador(String jugador1) {
-        jugador = jugador1;
-    }
-
-    public String getJugador() { return jugador; }
-
-    public Casillero getCasillero() {
-        return casillero;
-    }
+    */
 
     public void colocarEn(Casillero unCasillero) {
         this.casillero = unCasillero;
     }
 
-    public int vida() {
-        return this.vida;
-    }
-
-    public int coste() {
-        return coste;
-    }
-
     @Override
     public void avanzar(String direccion) {
-        Casillero nuevoCasillero = this.casillero.obtenerSiguienteEnDireccion(direccion);
-        this.casillero = nuevoCasillero;
-        //this.posicion = direccion; /* REFACTOR pedir posicion a casillero */
+        this.casillero = this.casillero.obtenerSiguienteEnDireccion(direccion);
     }
 
     @Override
@@ -67,14 +40,6 @@ public class Soldado extends Unidad{
             throw new UnidadFueraDeRangoException();
         }
         unidadEnemiga.recibirDanio(danioCortaDistancia);
-    }
-
-    @Override
-    public void recibirDanio(int danio) {
-        if(vida <= 0) {
-            throw new UnidadEstaMuertaException();
-        }
-        vida = vida - danio;
     }
 
 }

@@ -2,22 +2,16 @@ package Main;
 
 public class Curandero extends Unidad {
 
-    private int vida;
-    private int costo;
-    private Casillero casillero;
-    private String jugador;
-    private Posicion posicion;
-
     public Curandero(){
         vida = 75;
-        costo = 5;
-        casillero = new Casillero();
+        coste = 5;
+        casillero = null;
     }
 
     public Curandero(int vidaInicial) {
         vida = vidaInicial;
-        costo = 5;
-        casillero = new Casillero();
+        coste = 5;
+        casillero = null;
     }
 
     @Override
@@ -35,51 +29,8 @@ public class Curandero extends Unidad {
     }
 
     @Override
-    public void setPosicion(Posicion posicion) {
-        this.posicion = posicion;
-    }
-
-    @Override
     public void avanzar(String direccion) {
-        Casillero nuevoCasillero = this.casillero.obtenerSiguienteEnDireccion(direccion);
-        this.casillero = nuevoCasillero;
-        //this.posicion = direccion; /* REFACTOR pedir posicion a casillero */
-
+        this.casillero = this.casillero.obtenerSiguienteEnDireccion(direccion);
     }
 
-    @Override
-    public int coste() {
-        return costo;
-    }
-
-    @Override
-    public void colocarEn(Casillero unCasillero) {
-        casillero = unCasillero;
-    }
-
-    @Override
-    public void recibirDanio(int danio) {
-        if(vida <= 0) {
-            throw new UnidadEstaMuertaException();
-        }
-        vida = vida - danio;
-    }
-
-    @Override
-    public Casillero getCasillero() {
-        return casillero;
-    }
-
-    @Override
-    public String getJugador() {
-        return jugador;
-    }
-
-    public void setJugador(String unJugador) {
-        jugador = unJugador;
-    }
-
-    public int vida() {
-        return vida;
-    }
 }

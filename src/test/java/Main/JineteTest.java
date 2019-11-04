@@ -37,20 +37,18 @@ public class JineteTest {
     public Casillero mockedCasillero = mock(Casillero.class);
 
     @Test
-    public void test03JineteAliadoAtacaAJineteEnemigoCon100PuntosDeVidaUbicadoEnRangoMedioYLeQuita15PuntosDeVida() {
+    public void test03JineteAliadoAtacaAJineteEnemigoCon100PuntosDeVidaUbicadoADistanciaMediaYLeQuita15PuntosDeVida() {
         //Arrange
         String jugador1 = "ingleses";
         String jugador2 = "irlandeses";
-        Posicion posicionAliada = new Posicion(1,5);
-        Posicion posicionEnemiga = new Posicion(1,1);
+        //Posicion posicionAliada = new Posicion(1,5);
+        //Posicion posicionEnemiga = new Posicion(1,1);
         Jinete jineteAliado = new Jinete();
         Jinete jineteEnemigo = new Jinete();
-        jineteAliado.setPosicion(posicionAliada);
-        jineteAliado.setPosicion(posicionEnemiga);
-        jineteAliado.colocarEn(mockedCasillero);
-        jineteEnemigo.colocarEn(mockedCasillero);
         jineteAliado.setJugador(jugador1);
         jineteEnemigo.setJugador(jugador2);
+        jineteAliado.colocarEn(mockedCasillero);
+        jineteEnemigo.colocarEn(mockedCasillero);
         when(mockedCasillero.calcularDistanciaA(mockedCasillero))
                 .thenReturn(4);
 
@@ -70,16 +68,14 @@ public class JineteTest {
         //Arrange
         String jugador1 = "ingleses";
         String jugador2 = "irlandeses";
-        Posicion unaPosicion = new Posicion(2,2);
-        Posicion otraPosicion = new Posicion(2,6);
+        //Posicion unaPosicion = new Posicion(2,2);
+        //Posicion otraPosicion = new Posicion(2,6);
         Jinete jineteAliado = new Jinete();
         Jinete jineteEnemigo = new Jinete(10);
-        jineteAliado.setPosicion(unaPosicion);
-        jineteEnemigo.setPosicion(otraPosicion);
+        jineteAliado.setJugador(jugador1);
+        jineteEnemigo.setJugador(jugador2);
         jineteAliado.colocarEn(mockedCasillero);
         jineteEnemigo.colocarEn(mockedCasillero);
-        jineteAliado.setJugador(jugador1);         //Refactor: unidad no deberia conocer su posicion, casillero si
-        jineteEnemigo.setJugador(jugador2);
         when(mockedCasillero.calcularDistanciaA(mockedCasillero))
                 .thenReturn(3);
         jineteAliado.atacar(jineteEnemigo);
@@ -95,12 +91,12 @@ public class JineteTest {
         //Arrange
         String jugador1 = "ingleses";
         String jugador2 = "ingleses";
+        //Posicion unaPosicion = new Posicion(2,2);
+        //Posicion otraPosicion = new Posicion(2,7);
         Jinete jineteAliado = new Jinete();
         Jinete jineteEnemigo = new Jinete();
         jineteAliado.setJugador(jugador1);
         jineteEnemigo.setJugador(jugador2);
-        Posicion unaPosicion = new Posicion(2,2);
-        Posicion otraPosicion = new Posicion(2,6);
         jineteAliado.colocarEn(mockedCasillero);
         jineteEnemigo.colocarEn(mockedCasillero);
         when(mockedCasillero.calcularDistanciaA(mockedCasillero)).thenReturn(5);
@@ -116,12 +112,10 @@ public class JineteTest {
         //Arrange
         String jugador1 = "ingleses";
         String jugador2 = "irlandeses";
-        Posicion unaPosicion = new Posicion(2,1);
-        Posicion unaPosicionLejana = new Posicion(2,8);
+        //Posicion unaPosicion = new Posicion(2,1);
+        //Posicion unaPosicionLejana = new Posicion(2,8);
         Jinete jineteAliado = new Jinete();
         Jinete jineteEnemigo = new Jinete();
-        jineteAliado.setPosicion(unaPosicion);
-        jineteEnemigo.setPosicion(unaPosicionLejana);
         jineteAliado.setJugador(jugador1);
         jineteEnemigo.setJugador(jugador2);
         jineteAliado.colocarEn(mockedCasillero);
@@ -136,11 +130,10 @@ public class JineteTest {
     @Test
     public void test07JineteUbicadoEn00SeMueveParaElNorteYAhoraEstaEnLaPosicion01() {
         //Arrange
-        Posicion unaPosicion = new Posicion(0,0);
+        //Posicion unaPosicion = new Posicion(0,0);
         Posicion otraPosicion = new Posicion(0,1);
         String unaDireccion = "N";
         Jinete unJinete = new Jinete();
-        unJinete.setPosicion(unaPosicion);
         unJinete.colocarEn(mockedCasillero);
         when(mockedCasillero.obtenerSiguienteEnDireccion(unaDireccion))
                 .thenReturn(mockedCasillero);
@@ -153,18 +146,17 @@ public class JineteTest {
         assertEquals(mockedCasillero.posicion().posicionEnX() ,0);
         assertEquals(mockedCasillero.posicion().posicionEnY() ,1);
         verify(mockedCasillero, times(1)).obtenerSiguienteEnDireccion(unaDireccion);
-//        verify(mockedCasillero, times(1)).posicion();
+        verify(mockedCasillero, times(2)).posicion();
     }
 
     @Mock
     public Casillero mockedCasilleroOcupado = mock(Casillero.class);
     @Test
-    public void test08SoldadoEn22IntentaMoverseAlEsteYElCasilleroEstaOcupado() {
+    public void test08SoldadoEn22IntentaMoverseAlNorteYElCasilleroEstaOcupado() {
         //Arrange
-        Posicion unaPosicion = new Posicion(2,2);
-        String unaDireccion = "E";
+        //Posicion unaPosicion = new Posicion(2,2);
+        String unaDireccion = "N";
         Jinete jinete = new Jinete();
-        jinete.setPosicion(unaPosicion);
         jinete.colocarEn(mockedCasilleroOcupado);
         when(mockedCasilleroOcupado.obtenerSiguienteEnDireccion(unaDireccion))
                 .thenThrow(new CasilleroOcupadoException());
