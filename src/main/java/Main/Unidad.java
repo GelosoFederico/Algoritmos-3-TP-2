@@ -8,7 +8,12 @@ public abstract class Unidad implements Atacante, Movible{
     public abstract void avanzar(String direccion);
     public abstract int coste();
     public abstract void colocarEn(Casillero casillero);
-    public abstract void recibirDanio(int danio);
+    public void recibirDanio(int danio) {
+        if(vida <= 0) {
+            throw new UnidadEstaMuertaException();
+        }
+        vida = vida - danio;
+    }
     public abstract Casillero getCasillero();
     public abstract String getJugador();
 }

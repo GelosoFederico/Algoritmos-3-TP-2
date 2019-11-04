@@ -2,7 +2,6 @@ package Main;
 
 public class Curandero extends Unidad {
 
-    private int vida;
     private int costo;
     private Casillero casillero;
     private String jugador;
@@ -57,13 +56,6 @@ public class Curandero extends Unidad {
         casillero = unCasillero;
     }
 
-    @Override
-    public void recibirDanio(int danio) {
-        if(vida <= 0) {
-            throw new UnidadEstaMuertaException();
-        }
-        vida = vida - danio;
-    }
 
     @Override
     public Casillero getCasillero() {

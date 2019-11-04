@@ -3,7 +3,6 @@ package Main;
 public class Jinete extends Unidad {
 
     private Posicion posicion;
-    private int vida;
     private Casillero casillero;
     private String jugador;
     private int costo;
@@ -48,13 +47,6 @@ public class Jinete extends Unidad {
             throw new UnidadFueraDeRangoException();
         }
         unidadEnemiga.recibirDanio(danioMediaDistancia);
-    }
-
-    public void recibirDanio(int ataqueMediaDistancia) {
-        if(vida <= 0) {
-            throw new UnidadEstaMuertaException();
-        }
-        this.vida = this.vida - ataqueMediaDistancia;
     }
 
     @Override

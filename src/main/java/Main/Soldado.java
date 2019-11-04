@@ -3,7 +3,6 @@ package Main;
 public class Soldado extends Unidad{
 
     private Posicion posicion;
-    private int vida;
     private Casillero casillero;
     private String jugador;
     private int coste = 1;
@@ -67,14 +66,6 @@ public class Soldado extends Unidad{
             throw new UnidadFueraDeRangoException();
         }
         unidadEnemiga.recibirDanio(danioCortaDistancia);
-    }
-
-    @Override
-    public void recibirDanio(int danio) {
-        if(vida <= 0) {
-            throw new UnidadEstaMuertaException();
-        }
-        vida = vida - danio;
     }
 
 }
