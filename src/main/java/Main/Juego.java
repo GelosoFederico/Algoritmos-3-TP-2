@@ -29,7 +29,17 @@ public class Juego {
     }
 
     public void murioUnidad(Unidad unidad){
-        unidad.jugador().pierdeUnidad(unidad);
+        this.encontrarJugadorPorNombre(unidad.getJugador()).pierdeUnidad(unidad);
+    }
+
+    private Jugador encontrarJugadorPorNombre(String jugadorNombre) {
+        //TODO usar foreach
+        for (int i = 0; i < this.jugadores().size() ; i++){
+            if( this.jugadores().get(i).nombre().equals(jugadorNombre)) {
+                return this.jugadores().get(i);
+            }
+        }
+        throw new IndexOutOfBoundsException();
     }
 
     public void jugadorPerdio(Jugador jugador) {

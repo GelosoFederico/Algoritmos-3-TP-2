@@ -72,9 +72,10 @@ public class JuegoUnitTest {
         // Arrange
         Juego.getInstance().reiniciar();
         Jugador jugadorMock1 = mock(Jugador.class);
+        when(jugadorMock1.nombre()).thenReturn("Arkantos");
         Juego.getInstance().agregarJugador(jugadorMock1);
         Jinete jinete1Mock = mock(Jinete.class);
-        when(jinete1Mock.jugador()).thenReturn(jugadorMock1);
+        when(jinete1Mock.getJugador()).thenReturn("Arkantos");
 
         Jugador jugadorMock2 = mock(Jugador.class);
         Juego.getInstance().agregarJugador(jugadorMock2);

@@ -32,9 +32,12 @@ public class Casillero {
         return deJugador;
     }
 
-    public Casillero obtenerSiguienteEnDireccion(String otraPosicion) {
-        Casillero unCasillero = new Casillero();
-        return unCasillero;
+    public Casillero obtenerSiguienteEnDireccion(String direccion) {
+        if(direccion.equals("N")) {
+            Posicion nuevaPos = new Posicion(this.posicion().posicionEnX() , this.posicion().posicionEnY()+1);
+            return new Casillero(nuevaPos,this.deJugador());
+        }
+        return new Casillero();
     }
 
     public int calcularDistanciaA(Casillero casillero) {
