@@ -1,14 +1,14 @@
 package Main;
 
-public class Unidad {
-    public void colocarEn(Casillero casillero) {
-    }
+public abstract class Unidad implements Atacante, Movible{
+    protected int vida;
 
-    public Integer coste() {
-        return 0;
-    }
-
-    public Jugador jugador() {
-        return new Jugador();
-    }
+    public abstract void atacar(Unidad unidad);
+    public abstract void setPosicion(Posicion posicion);
+    public abstract void avanzar(String direccion);
+    public abstract int coste();
+    public abstract void colocarEn(Casillero casillero);
+    public abstract void recibirDanio(int danio);
+    public abstract Casillero getCasillero();
+    public abstract String getJugador();
 }
