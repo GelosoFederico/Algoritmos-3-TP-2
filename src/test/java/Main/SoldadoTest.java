@@ -116,7 +116,7 @@ public class SoldadoTest {
         unSoldado.avanzar(unaDireccion);
 
         //Assert
-        assertEquals(mockedCasillero.getPosicion(), "1,2"); //REFACTOR: unidad no deveria conoces su pos, pedir a casillero
+        assertEquals(mockedCasillero.getPosicion(), "1,2"); //REFACTOR: unidad no deberia conocer su pos, pedir a casillero
         verify(mockedCasillero, times(1)).obtenerSiguienteEnDireccion(unaDireccion);
         verify(mockedCasillero, times(1)).getPosicion();
     }

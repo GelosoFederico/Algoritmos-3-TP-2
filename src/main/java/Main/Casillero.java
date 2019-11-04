@@ -3,6 +3,7 @@ package Main;
 public class Casillero {
 
     private boolean estado = true;
+    private String posicion;
 
     public void setEstado(boolean estado){
         this.estado = estado;
@@ -32,5 +33,9 @@ public class Casillero {
 
     public int calcularDistanciaA(Casillero casillero) {
         return 1;
+    }
+
+    public String getPosicion() {
+        return posicion;
     }
 }

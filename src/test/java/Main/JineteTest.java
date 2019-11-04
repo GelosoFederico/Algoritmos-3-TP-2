@@ -157,7 +157,6 @@ public class JineteTest {
 
     @Mock
     public Casillero mockedCasilleroOcupado = mock(Casillero.class);
-
     @Test
     public void test08SoldadoEn22IntentaMoverseAlEsteYElCasilleroEstaOcupado() {
         //Arrange
