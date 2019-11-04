@@ -1,18 +1,20 @@
 package Main;
 
 public class Casillero {
-<<<<<<< HEAD
     Posicion posicion;
     String estado;
     int deJugador;
 
+    Casillero() {
+        estado = "libre";
+    }
     Casillero(Posicion posicionAsignada, int numeroDeJugador) {
         posicion = posicionAsignada;
         estado = "libre";
         deJugador = numeroDeJugador;
     }
 
-    Posicion posicion() {
+    public Posicion posicion() {
         return posicion;
     }
 

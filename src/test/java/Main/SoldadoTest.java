@@ -1,5 +1,4 @@
 package Main;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -42,7 +41,7 @@ public class SoldadoTest {
         //Arrange
         String jugador1 = "ingleses";
         String jugador2 = "irlandeses";
-        String unaPosicion = "2,2";
+        Posicion unaPosicion = new Posicion(2,2);
         Soldado soldadoAliado = new Soldado();
         Soldado soldadoEnemigo = new Soldado(10);
         soldadoAliado.setPosicion(unaPosicion);
@@ -81,8 +80,8 @@ public class SoldadoTest {
         //Arrange
         String jugador1 = "ingleses";
         String jugador2 = "irlandeses";
-        String unaPosicion = "2,6";
-        String unaPosicionMedia = "2,1";
+        Posicion unaPosicion = new Posicion(2,6);
+        Posicion unaPosicionMedia = new Posicion(2,1);
         Soldado soldadoAliado = new Soldado();
         Soldado soldadoEnemigo = new Soldado();
         soldadoAliado.setPosicion(unaPosicion);
@@ -102,23 +101,25 @@ public class SoldadoTest {
     @Test
     public void test06SoldadoUbicadoEn11SeMueveParaElNorteYAhoraEstaEnLaPosicion12(){
         //Arrange
-        String unaPosicion = "1,1";
-        String otraPosicion = "1,2";
+        Posicion unaPosicion = new Posicion(1,1);
+        Posicion otraPosicion = new Posicion(1,2);
         String unaDireccion = "N";
         Soldado unSoldado = new Soldado();
         unSoldado.setPosicion(unaPosicion);
         unSoldado.colocarEn(mockedCasillero);
         when(mockedCasillero.obtenerSiguienteEnDireccion(unaDireccion))
                 .thenReturn(mockedCasillero);
-        when(mockedCasillero.getPosicion()).thenReturn(otraPosicion);
+        when(mockedCasillero.posicion()).thenReturn(otraPosicion);
 
         //Act
         unSoldado.avanzar(unaDireccion);
 
         //Assert
-        assertEquals(mockedCasillero.getPosicion(), "1,2"); //REFACTOR: unidad no deberia conocer su pos, pedir a casillero
+        assertEquals(mockedCasillero.posicion().posicionEnX() ,1);
+        assertEquals(mockedCasillero.posicion().posicionEnY() ,2);
+        //REFACTOR: unidad no deberia conocer su pos, pedir a casillero
         verify(mockedCasillero, times(1)).obtenerSiguienteEnDireccion(unaDireccion);
-        verify(mockedCasillero, times(1)).getPosicion();
+//        verify(mockedCasillero, times(1)).getPosicion();
     }
 
     @Mock
@@ -126,7 +127,7 @@ public class SoldadoTest {
     @Test
     public void test07SoldadoEn22IntentaMoverseAlSurYElCasilleroEstaOcupado() {
         //Arrange
-        String unaPosicion = "2,2";
+        Posicion unaPosicion = new Posicion(2,2);
         String unaDireccion = "S" ;
         Soldado soldado = new Soldado();
         soldado.setPosicion(unaPosicion);

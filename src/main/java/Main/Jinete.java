@@ -2,7 +2,7 @@ package Main;
 
 public class Jinete extends Unidad {
 
-    private String posicion;
+    private Posicion posicion;
     private int vida;
     private Casillero casillero;
     private String jugador;
@@ -17,7 +17,7 @@ public class Jinete extends Unidad {
         casillero = new Casillero();
     }
 
-    public void setPosicion(String unaPosicion) {
+    public void setPosicion(Posicion unaPosicion) {
         this.posicion = unaPosicion;
     }
 
@@ -25,8 +25,7 @@ public class Jinete extends Unidad {
     public void avanzar(String direccion) {
         Casillero nuevoCasillero = this.casillero.obtenerSiguienteEnDireccion(direccion);
         this.casillero = nuevoCasillero;
-        this.posicion = direccion; /* REFACTOR pedir posicion a casillero */
-
+        //this.posicion = direccion; /* REFACTOR pedir posicion a casillero */
     }
 
     @Override
