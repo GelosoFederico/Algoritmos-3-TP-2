@@ -1,41 +1,47 @@
 package Main;
 
 public class Casillero {
+    Posicion posicion;
+    String estado;
+    int deJugador;
 
-    private boolean estado = true;
-    private String posicion;
-
-    public void setEstado(boolean estado){
-        this.estado = estado;
+    Casillero() {
+        estado = "libre";
+    }
+    Casillero(Posicion posicionAsignada, int numeroDeJugador) {
+        posicion = posicionAsignada;
+        estado = "libre";
+        deJugador = numeroDeJugador;
     }
 
-    public boolean getEstado(){
-        return this.estado;
+    public Posicion posicion() {
+        return posicion;
+    }
+
+    public String estado() {return estado;}
+
+    public void ocupar() {
+        estado = "ocupado";
+    }
+
+    public void liberar() {
+        estado = "libre";
+    }
+
+    public int deJugador() {
+        return deJugador;
     }
 
     public Casillero obtenerSiguienteEnDireccion(String otraPosicion) {
         Casillero unCasillero = new Casillero();
         return unCasillero;
-
-    }
-
-    public boolean estaOcupado() {
-        if(this.estado)
-            return false;
-        return true;
-    }
-
-    public boolean estaLibre(){
-        if(this.estado)
-            return true;
-        return false;
     }
 
     public int calcularDistanciaA(Casillero casillero) {
         return 1;
     }
 
-    public String getPosicion() {
+    public Posicion getPosicion() {
         return posicion;
     }
 }

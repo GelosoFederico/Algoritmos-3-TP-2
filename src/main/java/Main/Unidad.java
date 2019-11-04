@@ -4,7 +4,7 @@ public abstract class Unidad implements Atacante, Movible{
     protected int vida;
 
     public abstract void atacar(Unidad unidad);
-    public abstract void setPosicion(String posicion);
+    public abstract void setPosicion(Posicion posicion);
     public abstract void avanzar(String direccion);
     public abstract int coste();
     public abstract void colocarEn(Casillero casillero);

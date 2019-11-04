@@ -6,7 +6,7 @@ public class Curandero extends Unidad {
     private int costo;
     private Casillero casillero;
     private String jugador;
-    private String posicion;
+    private Posicion posicion;
 
     public Curandero(){
         vida = 75;
@@ -35,7 +35,7 @@ public class Curandero extends Unidad {
     }
 
     @Override
-    public void setPosicion(String posicion) {
+    public void setPosicion(Posicion posicion) {
         this.posicion = posicion;
     }
 
@@ -43,7 +43,7 @@ public class Curandero extends Unidad {
     public void avanzar(String direccion) {
         Casillero nuevoCasillero = this.casillero.obtenerSiguienteEnDireccion(direccion);
         this.casillero = nuevoCasillero;
-        this.posicion = direccion; /* REFACTOR pedir posicion a casillero */
+        //this.posicion = direccion; /* REFACTOR pedir posicion a casillero */
 
     }
 

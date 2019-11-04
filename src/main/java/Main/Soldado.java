@@ -2,7 +2,7 @@ package Main;
 
 public class Soldado extends Unidad{
 
-    private String posicion;
+    private Posicion posicion;
     private int vida;
     private Casillero casillero;
     private String jugador;
@@ -18,11 +18,11 @@ public class Soldado extends Unidad{
         vida = vidaInicial;
     }
 
-    public String getPosicion() {
+    public Posicion getPosicion() {
         return this.posicion;
     }
 
-    public void setPosicion(String unaPosicion) {
+    public void setPosicion(Posicion unaPosicion) {
         this.posicion = unaPosicion;
     }
 
@@ -52,7 +52,7 @@ public class Soldado extends Unidad{
     public void avanzar(String direccion) {
         Casillero nuevoCasillero = this.casillero.obtenerSiguienteEnDireccion(direccion);
         this.casillero = nuevoCasillero;
-        this.posicion = direccion; /* REFACTOR pedir posicion a casillero */
+        //this.posicion = direccion; /* REFACTOR pedir posicion a casillero */
     }
 
     @Override

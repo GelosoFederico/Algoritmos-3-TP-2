@@ -41,7 +41,7 @@ public class CuranderoTest {
         //Arrange
         String jugador1 = "ingleses";
         String jugador2 = "irlandeses";
-        String unaPosicion = "2,2";
+        Posicion unaPosicion = new Posicion(2,2);
         Soldado soldadoAliado = new Soldado();
         Curandero curanderoEnemigo = new Curandero(10);
         soldadoAliado.setPosicion(unaPosicion);
@@ -80,8 +80,8 @@ public class CuranderoTest {
         //Arrange
         String jugador1 = "ingleses";
         String jugador2 = "ingleses";
-        String unaPosicion = "1,2";
-        String otraPosicion = "1,1";
+        Posicion unaPosicion = new Posicion(1,2);
+        Posicion otraPosicion = new Posicion(1,1);
         Curandero curanderoAliado = new Curandero();
         Jinete jineteAliado = new Jinete(50);
         curanderoAliado.setPosicion(unaPosicion);
@@ -108,8 +108,8 @@ public class CuranderoTest {
         //Arrange
         String jugador1 = "ingleses";
         String jugador2 = "ingleses";
-        String unaPosicion = "2,6";
-        String unaPosicionMedia = "2,1";
+        Posicion unaPosicion = new Posicion(2,6);
+        Posicion unaPosicionMedia = new Posicion(2,1);
         Curandero curanderoAliado = new Curandero();
         Soldado soldadoAliado = new Soldado();
         curanderoAliado.setPosicion(unaPosicion);
@@ -128,23 +128,25 @@ public class CuranderoTest {
     @Test
     public void test07CuranderoUbicadoEn11SeMueveParaElNorteYAhoraEstaEnLaPosicion12(){
         //Arrange
-        String unaPosicion = "1,1";
-        String otraPosicion = "1,2";
+        Posicion unaPosicion = new Posicion(1,1);
+        Posicion otraPosicion = new Posicion(1,2);
         String unaDireccion = "N";
         Curandero unCurandero  = new Curandero();
         unCurandero.setPosicion(unaPosicion);
         unCurandero.colocarEn(mockedCasillero);
         when(mockedCasillero.obtenerSiguienteEnDireccion(unaDireccion))
                 .thenReturn(mockedCasillero);
-        when(mockedCasillero.getPosicion()).thenReturn(otraPosicion);
+        when(mockedCasillero.posicion()).thenReturn(otraPosicion);
 
         //Act
         unCurandero.avanzar(unaDireccion);
 
         //Assert
-        assertEquals(mockedCasillero.getPosicion(), "1,2"); //REFACTOR: unidad no deberia conocer su pos, pedir a casillero
+        //assertEquals(mockedCasillero.getPosicion(), "1,2"); //REFACTOR: unidad no deberia conocer su pos, pedir a casillero
+        assertEquals(mockedCasillero.posicion().posicionEnX() ,1);
+        assertEquals(mockedCasillero.posicion().posicionEnY() ,2);
         verify(mockedCasillero, times(1)).obtenerSiguienteEnDireccion(unaDireccion);
-        verify(mockedCasillero, times(1)).getPosicion();
+        verify(mockedCasillero, times(3)).getPosicion();
     }
 
     @Mock
@@ -152,7 +154,7 @@ public class CuranderoTest {
     @Test
     public void test08CuranderoEn22IntentaMoverseAlEsteYElCasilleroEstaOcupado() {
         //Arrange
-        String unaPosicion = "2,2";
+        Posicion unaPosicion = new Posicion(2,2);
         String unaDireccion = "E";
         Curandero curandero = new Curandero();
         curandero.setPosicion(unaPosicion);

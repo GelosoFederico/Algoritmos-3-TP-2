@@ -13,32 +13,34 @@ public class UnidadTest {
     @Test
     public void SoldadoSemueveDesde11Hasta12() {
         //Arrange
-        String unaPosicion = "1,1";
-        String otraPosicion = "1,2";
+        Posicion unaPosicion = new Posicion(1,1);
+        String unaDireccion = "N";
         Soldado soldado = new Soldado();
         soldado.setPosicion(unaPosicion);
 
         //Act
-        soldado.avanzar(otraPosicion);
+        soldado.avanzar(unaDireccion);
 
         //Assert
-        assertEquals(soldado.getPosicion() , "1,2" );
+        assertEquals(soldado.getPosicion().posicionEnX() ,1);
+        assertEquals(soldado.getPosicion().posicionEnY() ,2);
 
     }
 
     @Test
     public void soldadoSeMueveDesde22Hasta12() {
         //Arrange
-        String unaPosicion = "2,2";
-        String otraPosicion = "1,2";
+        Posicion unaPosicion = new Posicion(2,2);
+        String unaDireccion = "N";
         Soldado soldado = new Soldado();
         soldado.setPosicion(unaPosicion);
 
         //Act
-        soldado.avanzar(otraPosicion);
+        soldado.avanzar(unaDireccion);
 
         //Assert
-        assertEquals(soldado.getPosicion(), "1,2");
+        assertEquals(soldado.getPosicion().posicionEnX() ,1);
+        assertEquals(soldado.getPosicion().posicionEnY() ,2);
     }
 
     @Test
@@ -46,8 +48,8 @@ public class UnidadTest {
         //Arrange
         String jugador1 = "teutones";
         String jugador2 = "godos";
-        String unaPosicion = "2,2";
-        String unaPosicionCercana = "2,1";
+        Posicion unaPosicion = new Posicion(2,2);
+        Posicion unaPosicionCercana = new Posicion(2,1);
         Soldado soldadoAliado = new Soldado();
         Soldado soldadoEnemigo = new Soldado();
         soldadoAliado.setPosicion(unaPosicion);
