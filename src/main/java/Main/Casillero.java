@@ -1,6 +1,7 @@
 package Main;
 
 public class Casillero {
+<<<<<<< HEAD
     Posicion posicion;
     String estado;
     int deJugador;
@@ -29,5 +30,16 @@ public class Casillero {
         return deJugador;
     }
 
-    //Ocupado
+    public Casillero obtenerSiguienteEnDireccion(String otraPosicion) {
+        Casillero unCasillero = new Casillero();
+        return unCasillero;
+    }
+
+    public int calcularDistanciaA(Casillero casillero) {
+        return 1;
+    }
+
+    public Posicion getPosicion() {
+        return posicion;
+    }
 }
