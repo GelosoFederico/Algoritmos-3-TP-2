@@ -15,7 +15,7 @@ public class Tablero {
         return new Casillero(posicion, 1);
     }
 
-    Casillero obtenerCasilleroLibreParaJugador(Posicion posicion, Jugador jugador) throws CasilleroEstaOcupado, CasilleroEsDeEnemigo {
+    Casillero obtenerCasilleroLibreParaJugador(Posicion posicion, Jugador jugador) {
         Casillero casilleroBuscado = this.obtenerCasilleroLibreDePosicion(posicion);
 
         if (casilleroBuscado.estado().equals("ocupado"))

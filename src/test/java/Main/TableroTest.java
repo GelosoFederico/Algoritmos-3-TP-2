@@ -14,7 +14,7 @@ import static org.mockito.Mockito.when;
 public class TableroTest {
 
     @Test
-    public void testObtenerCasilleroAliadoParaJugador1DevuelveCasilleroConExito() throws CasilleroEstaOcupado, CasilleroEsDeEnemigo  {
+    public void testObtenerCasilleroAliadoParaJugador1DevuelveCasilleroConExito() {
         Posicion posicion = new Posicion(1,1);
         Jugador jugador = mock(Jugador.class);
         when(jugador.numero()).thenReturn(1);
@@ -25,7 +25,7 @@ public class TableroTest {
     }
 
     @Test(expected = CasilleroEstaOcupado.class)
-    public void testNoSePuedeObtenerCasilleroAliadoSiEstaOcupado() throws CasilleroEstaOcupado, CasilleroEsDeEnemigo {
+    public void testNoSePuedeObtenerCasilleroAliadoSiEstaOcupado() {
         Jugador jugador = mock(Jugador.class);
         when(jugador.numero()).thenReturn(1);
         Posicion posicion = new Posicion(1,1);
@@ -37,7 +37,7 @@ public class TableroTest {
 
 
     @Test(expected = CasilleroEsDeEnemigo.class)
-    public void testNoSePuedeObtenerCasilleroDeEnemigoParaUnJugador() throws CasilleroEstaOcupado, CasilleroEsDeEnemigo {
+    public void testNoSePuedeObtenerCasilleroDeEnemigoParaUnJugador() {
         Tablero unTablero = new Tablero();
         Jugador jugador = mock(Jugador.class);
         when(jugador.numero()).thenReturn(2);
