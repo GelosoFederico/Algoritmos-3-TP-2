@@ -2,22 +2,17 @@ package Main;
 
 public class Jinete extends Unidad {
 
-    private Posicion posicion;
-    private Casillero casillero;
-    private String jugador;
-    private int costo;
-
-    public Jinete(int vidaInicial) {
-        vida = vidaInicial;
-    }
-
     public Jinete() {
         vida = 100;
-        casillero = new Casillero();
+        coste = 3;
+        casillero = null;
     }
 
-    public void setPosicion(Posicion unaPosicion) {
-        this.posicion = unaPosicion;
+    public Jinete(int vidaInicial) {
+
+        vida = vidaInicial;
+        coste = 3;
+        casillero = null;
     }
 
     @Override
@@ -25,11 +20,6 @@ public class Jinete extends Unidad {
         Casillero nuevoCasillero = this.casillero.obtenerSiguienteEnDireccion(direccion);
         this.casillero = nuevoCasillero;
         //this.posicion = direccion; /* REFACTOR pedir posicion a casillero */
-    }
-
-    @Override
-    public int coste() {
-        return costo;
     }
 
     @Override
@@ -49,25 +39,4 @@ public class Jinete extends Unidad {
         unidadEnemiga.recibirDanio(danioMediaDistancia);
     }
 
-    @Override
-    public Casillero getCasillero() {
-        return casillero;
-    }
-
-    @Override
-    public String getJugador() {
-        return jugador;
-    }
-
-    public int vida() {
-        return vida;
-    }
-
-    public void colocarEn(Casillero unCasillero) {
-        casillero = unCasillero;
-    }
-
-    public void setJugador(String unJugador) {
-        jugador = unJugador;
-    }
 }

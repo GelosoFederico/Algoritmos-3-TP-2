@@ -44,7 +44,4 @@ public class Casillero {
         return 1;
     }
 
-    public Posicion getPosicion() {
-        return posicion;
-    }
 }
