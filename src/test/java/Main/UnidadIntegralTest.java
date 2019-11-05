@@ -13,6 +13,7 @@ public class UnidadIntegralTest {
     }
 
     /*
+    // TODO hacer cuando este el movimiento
     @Test
     public void unidadMovibleSoldadoSePuedeMoverEnTodasLasDirecciones() {
         // Assert
@@ -84,6 +85,7 @@ public class UnidadIntegralTest {
     }
 
     /*
+    // TODO hacer cuando este catapulta
     @Test
     public void CatapultaAtacaASoldadoDeDistintosEquipoYPierdeVida () {
         // Arrange
