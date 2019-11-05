@@ -1,5 +1,8 @@
 package Main;
 
+import static java.lang.Math.abs;
+import static java.lang.Math.max;
+
 public class Casillero {
     Posicion posicion;
     String estado;
@@ -41,7 +44,13 @@ public class Casillero {
     }
 
     public int calcularDistanciaA(Casillero casillero) {
-        return 1;
+        Posicion unaPosicion = this.posicion;
+        Posicion otraPosicion = casillero.posicion();
+
+        int distancia_x = abs(unaPosicion.posicionEnX()-otraPosicion.posicionEnX());
+        int distancia_y = abs(unaPosicion.posicionEnY()-otraPosicion.posicionEnY());
+
+        return max(distancia_x,distancia_y);
     }
 
 }
