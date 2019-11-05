@@ -14,16 +14,7 @@ public class Soldado extends Unidad{
         casillero = null;
     }
 
-   /* public Posicion getPosicion() {
-        return this.casillero.posicion();
-    }
-    */
-
-    public void colocarEn(Casillero unCasillero) {
-        this.casillero = unCasillero;
-    }
-
-    @Override
+ @Override
     public void avanzar(String direccion) {
         this.casillero = this.casillero.obtenerSiguienteEnDireccion(direccion);
     }
