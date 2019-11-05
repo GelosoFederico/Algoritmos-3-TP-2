@@ -43,10 +43,12 @@ public class Juego {
     }
 
     public void jugadorPerdio(Jugador jugador) {
-
+        // TODO tirar excepcion con el jugador que gano
+        throw new RuntimeException();
     }
 
     public void reiniciar() {
         INSTANCE = new Juego();
+        Jugador.reiniciar();
     }
 }

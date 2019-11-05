@@ -20,7 +20,7 @@ public class Tablero {
 
         if (casilleroBuscado.estado().equals("ocupado"))
             throw new CasilleroEstaOcupado();
-        else if (casilleroBuscado.deJugador() != jugador.numero())
+        else if (casilleroBuscado.deJugador() != jugador.numero().intValue())
             throw new CasilleroEsDeEnemigo();
         else
             casilleroBuscado.ocupar();
@@ -35,7 +35,7 @@ public class Tablero {
     public void crearCasilleros() {
         int numeroDeJugador;
         for(int i = 0; i < maximaCantidadDeCasilleros ; i++ ){
-            if (i < maximaCantidadDeCasilleros)
+            if (i < maximaCantidadDeCasilleros/2)
                 numeroDeJugador = 1;
             else
                 numeroDeJugador = 2;

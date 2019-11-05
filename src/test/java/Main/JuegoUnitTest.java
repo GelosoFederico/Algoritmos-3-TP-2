@@ -1,5 +1,7 @@
 package Main;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -9,12 +11,17 @@ import java.util.List;
 
 // TODO que el juego se reinicie al principio y al final de cada test
 public class JuegoUnitTest {
+    @Before
+    @After
+    public void reiniciarJuego()
+    {
+        Juego.getInstance().reiniciar();
+    }
 
     @Test
     public void creoJuegoAgregoJugadoresYLosTiene()
     {
         // Arrange
-        Juego.getInstance().reiniciar();
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
         List<Jugador> jugadores = new ArrayList<Jugador>();
@@ -27,14 +34,12 @@ public class JuegoUnitTest {
 
         // Assert
         assertEquals(jugadores, Juego.getInstance().jugadores());
-        Juego.getInstance().reiniciar();
     }
 
     @Test
     public void reinicioJuegoYNoTieneLosJugadores()
     {
         // Arrange
-        Juego.getInstance().reiniciar();
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
         Juego.getInstance().agregarJugador(jugador1);
@@ -52,7 +57,6 @@ public class JuegoUnitTest {
     public void creoJuegoAgrego3JugadoresYTiraExcepcionPorSerMasDe2()
     {
         // Arrange
-        Juego.getInstance().reiniciar();
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
         Jugador jugador3 = new Jugador();
@@ -63,14 +67,12 @@ public class JuegoUnitTest {
 
         // Assert
         Juego.getInstance().agregarJugador(jugador3);
-        Juego.getInstance().reiniciar();
     }
 
     @Test
     public void unidadMuereYJuegoAvisaAJugadorCorrecto()
     {
         // Arrange
-        Juego.getInstance().reiniciar();
         Jugador jugadorMock1 = mock(Jugador.class);
         when(jugadorMock1.nombre()).thenReturn("Arkantos");
         Juego.getInstance().agregarJugador(jugadorMock1);
@@ -85,8 +87,5 @@ public class JuegoUnitTest {
 
         // Assert
         verify(jugadorMock1,times(1)).pierdeUnidad(jinete1Mock);
-
-        Juego.getInstance().reiniciar();
     }
-
 }

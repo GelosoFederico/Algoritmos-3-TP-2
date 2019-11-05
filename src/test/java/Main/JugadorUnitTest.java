@@ -3,6 +3,7 @@ package Main;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import org.junit.After;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
@@ -10,6 +11,12 @@ import java.util.ArrayList;
 
 public class JugadorUnitTest
 {
+    @After
+    public void reiniciarJuego()
+    {
+        Juego.getInstance().reiniciar();
+    }
+
     @Test
     public void creoJugadorYLePongoNombre()
     {
@@ -101,6 +108,13 @@ public class JugadorUnitTest
         assertEquals(jugador.unidades(),coleccionUnidadesFin);
     }
 
+    /*
+    TODO Originalmente se hacia un mock del juego, pero esto rompia el objeto con el reset ya que lo hace nulo
+    TODO Es mas sencillo no mockearlo y listo, si bien no hace el test completamente unitario. Dejo los comentarios
+        // Es necesario mockear la clase Juego que es un singleton para ver si le envia el mensaje correctamente
+        // Sacado de https://stackoverflow.com/a/50199670
+        // Usa reflexion
+
     private void setMock(Juego juegoMock) {
         // Esto hace que el campo sea accesible y lo cambia por el mock
         try {
@@ -122,16 +136,12 @@ public class JugadorUnitTest
             throw new RuntimeException(e);
         }
     }
+     */
 
-    @Test
-    public void jugadorPierdeTodasSusUnidadesYAnunciaAJuegoQuePerdio(){
-        // Es necesario mockear la clase Juego que es un singleton para ver si le envia el mensaje correctamente
-        // Sacado de https://stackoverflow.com/a/50199670
-        // Usa reflexion
-        Juego juegoMock = mock(Juego.class);
-        setMock(juegoMock);
-
+    @Test (expected = RuntimeException.class)
+    public void jugadorPierdeTodasSusUnidadesYAnunciaAJuegoQuePerdioQueLeTiraUnaExcepcion(){
         // Arrange
+        Juego.getInstance().reiniciar();
         Jugador jugador = new Jugador();
 
         Tablero tableroMock = mock(Tablero.class);
@@ -148,8 +158,7 @@ public class JugadorUnitTest
         jugador.pierdeUnidad(jinete1Mock);
 
         // Assert
-        verify(juegoMock, times(1)).jugadorPerdio(jugador);
-        resetSingleton();
+        Juego.getInstance().reiniciar();
     }
 
     @Test

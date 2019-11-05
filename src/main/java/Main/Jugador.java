@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Jugador
 {
+
+    public static void reiniciar (){siguiente_numero = 1;} // Este metodo es para reiniciar los tests
     private static Integer siguiente_numero = 1;
     // Atributos
     private String _nombre;
@@ -49,6 +51,7 @@ public class Jugador
     }
 
     public void colocarUnidadEn(Unidad unidad, Posicion posicion) {
+        unidad.setJugador(this.nombre());
         Casillero casillero = _tablero.obtenerCasilleroLibreParaJugador(posicion, this);
         unidad.colocarEn(casillero);
         this.getContadorPuntos().contarPuntosDe(unidad);
