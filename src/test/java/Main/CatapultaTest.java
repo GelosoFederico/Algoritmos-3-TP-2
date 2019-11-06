@@ -104,7 +104,7 @@ public class CatapultaTest {
         when(mockedCasillero.calcularDistanciaA(mockedCasillero)).thenReturn(5);
 
         //Act & Assert
-        thrown.expect(ProhibidoAtacarUnidadAliadaExeption.class);
+        thrown.expect(ProhibidoAtacarUnidadAliadaException.class);
         jineteAliado.atacar(jineteEnemigo);
         verify(mockedCasillero, times(1)).calcularDistanciaA(mockedCasillero);
     }

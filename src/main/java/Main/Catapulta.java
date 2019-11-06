@@ -21,7 +21,7 @@ public class Catapulta extends Unidad{
         final int MIN_DISTANCIA_LARGA = 6;
 
         if (this.jugador.equals(unidad.getJugador())) {
-            throw new ProhibidoAtacarUnidadAliadaExeption();
+            throw new ProhibidoAtacarUnidadAliadaException();
         }
         int distancia = casillero.calcularDistanciaA(unidad.getCasillero());
 
