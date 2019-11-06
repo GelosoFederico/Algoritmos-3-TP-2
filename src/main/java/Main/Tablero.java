@@ -1,5 +1,4 @@
 package Main;
-import java.util.Collection;
 
 public class Tablero {
 
@@ -19,9 +18,9 @@ public class Tablero {
         Casillero casilleroBuscado = this.obtenerCasilleroLibreDePosicion(posicion);
 
         if (casilleroBuscado.estado().equals("ocupado"))
-            throw new CasilleroEstaOcupado();
+            throw new CasilleroOcupadoException();
         else if (casilleroBuscado.deJugador() != jugador.numero())
-            throw new CasilleroEsDeEnemigo();
+            throw new CasilleroEsDeEnemigoException();
         else
             casilleroBuscado.ocupar();
         return casilleroBuscado;

@@ -2,7 +2,6 @@ package Main;
 
 import org.junit.Test;
 import org.junit.Assert;
-import org.mockito.*;
 import org.mockito.internal.matchers.apachecommons.ReflectionEquals;
 
 import static org.junit.Assert.assertEquals;
@@ -24,7 +23,7 @@ public class TableroTest {
         Assert.assertTrue(new ReflectionEquals(posicion).matches(casillero.posicion()));
     }
 
-    @Test(expected = CasilleroEstaOcupado.class)
+    @Test(expected = CasilleroOcupadoException.class)
     public void testNoSePuedeObtenerCasilleroAliadoSiEstaOcupado() {
         Jugador jugador = mock(Jugador.class);
         when(jugador.numero()).thenReturn(1);
@@ -36,7 +35,7 @@ public class TableroTest {
     }
 
 
-    @Test(expected = CasilleroEsDeEnemigo.class)
+    @Test(expected = CasilleroEsDeEnemigoException.class)
     public void testNoSePuedeObtenerCasilleroDeEnemigoParaUnJugador() {
         Tablero unTablero = new Tablero();
         Jugador jugador = mock(Jugador.class);

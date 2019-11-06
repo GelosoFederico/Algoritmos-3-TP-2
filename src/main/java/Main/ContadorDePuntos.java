@@ -4,11 +4,11 @@ package Main;
 //TODO: Consultar esto
 public class ContadorDePuntos
 {
-    private static int _puntosIniciales = 20;
+    private static final int PUNTOS_INICIALES = 20;
     private int _puntosRestantes;
 
     public ContadorDePuntos() {
-        _puntosRestantes = _puntosIniciales;
+        _puntosRestantes = PUNTOS_INICIALES;
     }
 
     public int puntosRestantes() {
@@ -17,7 +17,7 @@ public class ContadorDePuntos
 
     public void contarPuntosDe(Unidad unidad) {
         if (this.puntosRestantes() - unidad.coste() < 0) {
-            throw new InsuficientePuntosRestantesAlColocarUnidad();
+            throw new InsuficientePuntosRestantesAlColocarUnidadException();
         }
         this._puntosRestantes -= unidad.coste();
     }
