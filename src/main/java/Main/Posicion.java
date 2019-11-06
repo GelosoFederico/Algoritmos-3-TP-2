@@ -17,5 +17,13 @@ public class Posicion {
         return _y;
     }
 
+    public void incrementarPosicionEnX() { _x = _x + 1; }
+
+    public void decrementarPosicionEnX() { _x = _x - 1; }
+
+    public void decrementarPosicionEnY() { _y = _y - 1; }
+
+    public void incrementarPosicionEnY() { _y = _y + 1; }
+
     // TODO: maybe string
 }
