@@ -27,7 +27,6 @@ public class UnidadIntegralTest {
     @Test
     public void soldadoAtacaAOtroSoldadoDeDistintosEquipoYPierdeVida () {
         // Arrange
-        Juego.getInstance().reiniciar();
         Tablero tablero = new Tablero();
         Jugador jugador1 = new Jugador();
         jugador1.nombre("Arkantos");
@@ -57,7 +56,6 @@ public class UnidadIntegralTest {
     @Test
     public void jineteAtacaASoldadoDeDistintosEquipoYPierdeVida () {
         // Arrange
-        Juego.getInstance().reiniciar();
         Tablero tablero = new Tablero();
         Jugador jugador1 = new Jugador();
         jugador1.nombre("Arkantos");
@@ -120,7 +118,6 @@ public class UnidadIntegralTest {
     @Test
     public void curanderoCuraASoldadoDelMismoEquipoYGanaVida () {
         // Arrange
-        Juego.getInstance().reiniciar();
         Tablero tablero = new Tablero();
         Jugador jugador1 = new Jugador();
         jugador1.nombre("Arkantos");
