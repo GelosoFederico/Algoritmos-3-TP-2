@@ -53,7 +53,7 @@ public class JuegoUnitTest {
         assertEquals(Juego.getInstance().jugadores().size(), 0);
     }
 
-    @Test(expected = JuegoNoPuedeTenerMasDe2Jugadores.class)
+    @Test(expected = JuegoNoPuedeTenerMasDe2JugadoresException.class)
     public void creoJuegoAgrego3JugadoresYTiraExcepcionPorSerMasDe2()
     {
         // Arrange

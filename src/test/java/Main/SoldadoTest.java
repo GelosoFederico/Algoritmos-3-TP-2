@@ -2,7 +2,6 @@ package Main;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
 
 import static org.junit.Assert.assertEquals;
@@ -98,7 +97,7 @@ public class SoldadoTest {
         when(mockedCasillero.calcularDistanciaA(mockedCasillero)).thenReturn(1);
 
         //Act & Assert
-        thrown.expect(ProhibidoAtacarUnidadAliadaExeption.class);
+        thrown.expect(ProhibidoAtacarUnidadAliadaException.class);
         soldadoAliado.atacar(soldadoEnemigo);
 
     }

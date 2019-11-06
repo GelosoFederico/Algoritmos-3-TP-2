@@ -74,7 +74,7 @@ public class CuranderoTest {
         when(mockedCasillero.calcularDistanciaA(mockedCasillero)).thenReturn(1);
 
         //Act & Assert
-        thrown.expect(ProhibidoCurarUnidadEnemigaExeption.class);
+        thrown.expect(ProhibidoCurarUnidadEnemigaException.class);
         curandero.atacar(soldadoEnemigo);
 
     }

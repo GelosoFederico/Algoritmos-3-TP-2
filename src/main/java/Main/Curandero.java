@@ -19,7 +19,7 @@ public class Curandero extends Unidad {
         int danioCortaDistancia = -15;
         final int MAX_DISTANCIA_CORTA = 2;
         if (!this.jugador.equals(unidad.getJugador())) {
-            throw new ProhibidoCurarUnidadEnemigaExeption();
+            throw new ProhibidoCurarUnidadEnemigaException();
         }
         int distancia = casillero.calcularDistanciaA(unidad.getCasillero());
         if (distancia >= MAX_DISTANCIA_CORTA) {

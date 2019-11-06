@@ -29,7 +29,7 @@ public class Jinete extends Unidad {
         final int MAX_DISTANCIA_MEDIA = 5;
 
         if (this.jugador.equals(unidadEnemiga.getJugador())) {
-            throw new ProhibidoAtacarUnidadAliadaExeption();
+            throw new ProhibidoAtacarUnidadAliadaException();
         }
         int distancia = casillero.calcularDistanciaA(unidadEnemiga.getCasillero());
 

@@ -39,7 +39,7 @@ public class IntegralTest {
         assertEquals(unidad.getJugador(),jugador1.nombre());
     }
 
-    @Test (expected = CasilleroEsDeEnemigo.class)
+    @Test (expected = CasilleroEsDeEnemigoException.class)
     public void seColocaPiezaDeUnJugadorEnCampoContrarioYDaUnaExcepcion()
     {
         // Arrange
@@ -62,7 +62,7 @@ public class IntegralTest {
         // Assert
     }
 
-    @Test (expected = CasilleroEstaOcupado.class)
+    @Test (expected = CasilleroOcupadoException.class)
     public void seColocaPiezaDeUnJugadorEnLaMismaPosicionQueOtraYDaUnaExcepcion()
     {
         // Arrange
@@ -87,7 +87,7 @@ public class IntegralTest {
         // Assert
     }
 
-    @Test (expected = InsuficientePuntosRestantesAlColocarUnidad.class)
+    @Test (expected = InsuficientePuntosRestantesAlColocarUnidadException.class)
     public void jugadorNoPuedeTomarMasUnidadesQueLoQueSusPuntosLePermiten ()
     {
         // Arrange

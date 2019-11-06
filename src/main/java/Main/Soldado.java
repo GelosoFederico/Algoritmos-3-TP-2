@@ -33,7 +33,7 @@ public class Soldado extends Unidad{
         int danioCortaDistancia = 10;
         final int MAX_DISTANCIA_CORTA = 2;
         if (this.jugador.equals(unidadEnemiga.getJugador())) {
-            throw new ProhibidoAtacarUnidadAliadaExeption();
+            throw new ProhibidoAtacarUnidadAliadaException();
         }
         int distancia = casillero.calcularDistanciaA(unidadEnemiga.getCasillero());
         if (distancia >= MAX_DISTANCIA_CORTA) {
