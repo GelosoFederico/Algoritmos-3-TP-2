@@ -2,7 +2,6 @@ package Main;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 public class Juego {
     // Singleton pattern
@@ -23,7 +22,7 @@ public class Juego {
     }
     public void agregarJugador(Jugador jugador) {
         if(this.jugadores().size() == 2) {
-            throw new JuegoNoPuedeTenerMasDe2Jugadores();
+            throw new JuegoNoPuedeTenerMasDe2JugadoresException();
         }
         this.jugadores().add(jugador);
     }
@@ -39,7 +38,7 @@ public class Juego {
                 return this.jugadores().get(i);
             }
         }
-        throw new IndexOutOfBoundsException();
+        throw new JuegoNoTieneJugadorConEseNombreException();
     }
 
     public void jugadorPerdio(Jugador jugador) {

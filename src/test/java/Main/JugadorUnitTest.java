@@ -44,7 +44,7 @@ public class JugadorUnitTest
         assertTrue( puntosIniciales - 3 == jugador.puntosRestantes());
     }
 
-    @Test(expected = InsuficientePuntosRestantesAlColocarUnidad.class)
+    @Test(expected = InsuficientePuntosRestantesAlColocarUnidadException.class)
     public void jugadorColocaUnaUnidadSinSuficientesPuntosRestantesYLanzaUnaExcepcion()
     {
         // Arrange
