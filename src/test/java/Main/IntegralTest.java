@@ -108,4 +108,34 @@ public class IntegralTest {
         }
     }
 
+    @Test
+    public void jugadorPierdeTodasSusUnidadesYElOtroJugadorGana()
+    {
+        // Arrange
+        Tablero tablero = new Tablero();
+        Jugador jugador1 = new Jugador();
+        jugador1.nombre("Arkantos");
+        Juego.getInstance().agregarJugador(jugador1);
+        jugador1.set_tablero(tablero);
+
+        Jugador jugador2 = new Jugador();
+        jugador2.nombre("Gargarensis");
+        Juego.getInstance().agregarJugador(jugador2);
+        jugador2.set_tablero(tablero);
+
+        Unidad unidadJ1 = new Soldado();
+        Unidad unidadJ2 = new Jinete();
+        jugador1.colocarUnidadEn(unidadJ1,new Posicion(7,7));
+        jugador2.colocarUnidadEn(unidadJ2,new Posicion(11,11));
+
+        // Act
+        try {
+            for (int i = 0; i < 20; i++) {
+                jugador2.atacarConUnidadAUnidad(unidadJ2, unidadJ1);
+            }
+        }catch (JugadorGanoLaPartida e) {
+            assertEquals(e.jugadorGanador(),jugador2);
+        }
+    }
+
 }

@@ -43,8 +43,9 @@ public class Juego {
     }
 
     public void jugadorPerdio(Jugador jugador) {
-        // TODO tirar excepcion con el jugador que gano
-        throw new RuntimeException();
+        // Esto asume que hay exactamente dos jugadores
+        this.jugadores().remove(jugador);
+        throw new JugadorGanoLaPartida(this.jugadores().get(0));
     }
 
     public void reiniciar() {

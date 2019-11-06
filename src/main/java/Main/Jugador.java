@@ -70,6 +70,15 @@ public class Jugador
         }
     }
 
+    public void atacarConUnidadAUnidad(Unidad unidadAtacante, Unidad unidadDefensora){
+        try {
+            unidadAtacante.atacar(unidadDefensora);
+        }catch (UnidadEstaMuertaException e) {
+            Juego.getInstance().murioUnidad(unidadDefensora);
+        }
+
+    }
+
     public ArrayList<Unidad> unidades() {
         return _unidades;
     }
