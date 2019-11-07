@@ -15,11 +15,6 @@ public class Soldado extends Unidad{
     }
 
     @Override
-    public void avanzar(String direccion) {
-        this.casillero = this.casillero.obtenerSiguienteEnDireccion(direccion);
-    }
-
-    @Override
     public void atacar(Unidad unidadEnemiga) {
         int danioCortaDistancia = 10;
         final int MAX_DISTANCIA_CORTA = 2;

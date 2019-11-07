@@ -14,6 +14,13 @@ public class Tablero {
         return new Casillero(posicion, 1);
     }
 
+    Casillero obtenerCasilleroLibre(Posicion posicion) {
+        Casillero casilleroBuscado = this.obtenerCasilleroEnPosicion(posicion);
+        if (casilleroBuscado.estado().equals("ocupado"))
+            throw new CasilleroOcupadoException();
+        return casilleroBuscado;
+    }
+
     Casillero obtenerCasilleroLibreParaJugador(Posicion posicion, Jugador jugador) {
         Casillero casilleroBuscado = this.obtenerCasilleroEnPosicion(posicion);
 

@@ -6,11 +6,13 @@ import java.util.List;
 public class Juego {
     // Singleton pattern
     private static Juego INSTANCE = new Juego();
+    private Tablero _tablero;
 
     private List<Jugador> _jugadores;
 
     private Juego() {
         _jugadores = new ArrayList<Jugador>();
+        _tablero = new Tablero();
     }
 
     public static Juego getInstance() {
@@ -50,5 +52,9 @@ public class Juego {
     public void reiniciar() {
         INSTANCE = new Juego();
         Jugador.reiniciar();
+    }
+
+    public Tablero tablero(){
+        return this._tablero;
     }
 }

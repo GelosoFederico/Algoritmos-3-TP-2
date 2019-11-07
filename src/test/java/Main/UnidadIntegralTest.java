@@ -12,8 +12,6 @@ public class UnidadIntegralTest {
         Juego.getInstance().reiniciar();
     }
 
-    /*
-    // TODO hacer cuando este el movimiento
     @Test
     public void unidadMovibleSoldadoSePuedeMoverEnTodasLasDirecciones() {
         // Arrange
@@ -44,7 +42,6 @@ public class UnidadIntegralTest {
         assertEquals(posicionFinal.posicionEnX(),3);
         assertEquals(posicionFinal.posicionEnY(),3);
     }
-    */
 
     @Test (expected = UnidadNoPuedeMoverseException.class)
     public void unidadCatapultaSeIntentaMoverYTiraUnaExcepcion() {

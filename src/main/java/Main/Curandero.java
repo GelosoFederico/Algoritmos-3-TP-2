@@ -28,9 +28,4 @@ public class Curandero extends Unidad {
         unidad.recibirDanio(danioCortaDistancia);
     }
 
-    @Override
-    public void avanzar(String direccion) {
-        this.casillero = this.casillero.obtenerSiguienteEnDireccion(direccion);
-    }
-
 }
