@@ -14,7 +14,7 @@ public class Soldado extends Unidad{
         casillero = null;
     }
 
- @Override
+    @Override
     public void avanzar(String direccion) {
         this.casillero = this.casillero.obtenerSiguienteEnDireccion(direccion);
     }

@@ -25,5 +25,15 @@ public class Posicion {
 
     public void incrementarPosicionEnY() { _y = _y + 1; }
 
+    public void sumarle(Posicion otraPosicion) {
+        this._x = this.posicionEnX() + otraPosicion.posicionEnX();
+        this._y = this.posicionEnY() + otraPosicion.posicionEnY();
+    }
+
+    public Posicion sumar(Posicion otraPosicion) {
+        return new Posicion(this.posicionEnX() + otraPosicion.posicionEnX(),
+                this.posicionEnY() + otraPosicion.posicionEnY() );
+    }
+
     // TODO: maybe string
 }
