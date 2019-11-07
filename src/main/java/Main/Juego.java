@@ -6,11 +6,13 @@ import java.util.List;
 public class Juego {
     // Singleton pattern
     private static Juego INSTANCE = new Juego();
+    private Tablero _tablero;
 
     private List<Jugador> _jugadores;
 
     private Juego() {
         _jugadores = new ArrayList<Jugador>();
+        _tablero = new Tablero();
     }
 
     public static Juego getInstance() {
@@ -42,10 +44,17 @@ public class Juego {
     }
 
     public void jugadorPerdio(Jugador jugador) {
-
+        // Esto asume que hay exactamente dos jugadores
+        this.jugadores().remove(jugador);
+        throw new JugadorGanoLaPartida(this.jugadores().get(0));
     }
 
     public void reiniciar() {
         INSTANCE = new Juego();
+        Jugador.reiniciar();
+    }
+
+    public Tablero tablero(){
+        return this._tablero;
     }
 }

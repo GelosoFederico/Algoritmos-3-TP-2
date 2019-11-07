@@ -16,13 +16,6 @@ public class Jinete extends Unidad {
     }
 
     @Override
-    public void avanzar(String direccion) {
-        Casillero nuevoCasillero = this.casillero.obtenerSiguienteEnDireccion(direccion);
-        this.casillero = nuevoCasillero;
-        //this.posicion = direccion; /* REFACTOR pedir posicion a casillero */
-    }
-
-    @Override
     public void atacar(Unidad unidadEnemiga) {
         int danioMediaDistancia = 15;
         final int MIN_DISTANCIA_MEDIA = 3;

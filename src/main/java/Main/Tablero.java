@@ -14,15 +14,20 @@ public class Tablero {
         return new Casillero(posicion, 1);
     }
 
+    Casillero obtenerCasilleroLibre(Posicion posicion) {
+        Casillero casilleroBuscado = this.obtenerCasilleroEnPosicion(posicion);
+        if (casilleroBuscado.estado().equals("ocupado"))
+            throw new CasilleroOcupadoException();
+        return casilleroBuscado;
+    }
+
     Casillero obtenerCasilleroLibreParaJugador(Posicion posicion, Jugador jugador) {
-        Casillero casilleroBuscado = this.obtenerCasilleroLibreDePosicion(posicion);
+        Casillero casilleroBuscado = this.obtenerCasilleroEnPosicion(posicion);
 
         if (casilleroBuscado.estado().equals("ocupado"))
             throw new CasilleroOcupadoException();
         else if (casilleroBuscado.deJugador() != jugador.numero())
             throw new CasilleroEsDeEnemigoException();
-        else
-            casilleroBuscado.ocupar();
         return casilleroBuscado;
     }
 
@@ -44,23 +49,20 @@ public class Tablero {
         }
     }
 
-
-    public Casillero obtenerCasilleroLibreDePosicion(Posicion posicion) {
+    public Casillero obtenerCasilleroEnPosicion(Posicion posicion) {
 
         int xPosicion = posicion.posicionEnX();
         int yPosicion = posicion.posicionEnY();
-        Casillero unCasillero = new Casillero(posicion, 0);
 
         for(int i = 0; i < maximaCantidadDeCasilleros ; i++ ){
             for(int j = 0; j < maximaCantidadDeCasilleros ; j++ ) {
                 if(xPosicion == i && yPosicion == j) {
-                    unCasillero = casilleros[i][j];
-                    break;
+                    return casilleros[i][j];
                 }
             }
         }
-        return unCasillero;
+
+        throw new NoSeEncontroElCasilleroException();
 
     }
-
 }

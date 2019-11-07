@@ -2,54 +2,53 @@ package Main;
 
 public class Direccion {
 
+    private String direccionString;
 
     private String norte = "N";
-    String sur = "S";
-    String este = "E";
-    String oeste = "O";
-    String nordeste = "NE";
-    String sudeste = "SE";
-    String noroeste = "NO";
-    String sudoeste = "SO";
+    private String sur = "S";
+    private String este = "E";
+    private String oeste = "O";
+    private String nordeste = "NE";
+    private String sudeste = "SE";
+    private String noroeste = "NO";
+    private String sudoeste = "SO";
 
+    public Direccion(String direccion) {
+        this.direccionString = direccion;
+    }
 
-    public Posicion posicionSiguienteEnElSentido(Posicion unaPosicion, String unaDireccion) {
+    public Posicion posicionRelativa() {
+        // TODO hacer esto bien
 
-        if(unaDireccion.equals(norte)) {
-            unaPosicion.decrementarPosicionEnX();
+        if(this.direccionString.equals(norte)) {
+            return new Posicion(-1,0);
         }
-        if(unaDireccion.equals(sur)) {
-            unaPosicion.incrementarPosicionEnX();
+        if(this.direccionString.equals(sur)) {
+            return new Posicion(1,0);
         }
-        if(unaDireccion.equals(este)) {
-            unaPosicion.decrementarPosicionEnY();
+        if(this.direccionString.equals(este)) {
+            return new Posicion(0,-1);
         }
-        if(unaDireccion.equals(oeste)) {
-            unaPosicion.incrementarPosicionEnY();
-        }
-
-//***********
-
-
-        if(unaDireccion.equals(nordeste)) {
-            unaPosicion.decrementarPosicionEnX();
-            unaPosicion.decrementarPosicionEnY();
-        }
-        if(unaDireccion.equals(sudeste)) {
-            unaPosicion.incrementarPosicionEnX();
-            unaPosicion.decrementarPosicionEnY();
-        }
-        if(unaDireccion.equals(sudoeste)) {
-            unaPosicion.incrementarPosicionEnX();
-            unaPosicion.incrementarPosicionEnY();
-        }
-        if(unaDireccion.equals(noroeste)) {
-            unaPosicion.decrementarPosicionEnX();
-            unaPosicion.incrementarPosicionEnY();
+        if(this.direccionString.equals(oeste)) {
+            return new Posicion(0,1);
         }
 
-        return unaPosicion;
+        if(this.direccionString.equals(nordeste)) {
+            return new Posicion(-1,-1);
+        }
+        if(this.direccionString.equals(sudeste)) {
+            return new Posicion(1,-1);
+        }
+        if(this.direccionString.equals(sudoeste)) {
+            return new Posicion(1,1);
+        }
+        if(this.direccionString.equals(noroeste)) {
+            return new Posicion(-1,1);
+        }
 
+        // Esto no deberia llamarase
+        // TODO tirar excepcion
+        return new Posicion(0,0);
     }
 
 }

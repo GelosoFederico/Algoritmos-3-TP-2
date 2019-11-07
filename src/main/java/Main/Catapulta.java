@@ -17,7 +17,7 @@ public class Catapulta extends Unidad{
 
     @Override
     public void atacar(Unidad unidad) {
-        int danioLargaDistancia = 15;
+        int danioLargaDistancia = 20;
         final int MIN_DISTANCIA_LARGA = 6;
 
         if (this.jugador.equals(unidad.getJugador())) {
