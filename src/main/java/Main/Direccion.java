@@ -4,13 +4,13 @@ public class Direccion {
 
 
     private String norte = "N";
-    String sur = "S";
-    String este = "E";
-    String oeste = "O";
-    String nordeste = "NE";
-    String sudeste = "SE";
-    String noroeste = "NO";
-    String sudoeste = "SO";
+    private String sur = "S";
+    private String este = "E";
+    private String oeste = "O";
+    private String nordeste = "NE";
+    private String sudeste = "SE";
+    private String noroeste = "NO";
+    private String sudoeste = "SO";
 
 
     public Posicion posicionSiguienteEnElSentido(Posicion unaPosicion, String unaDireccion) {

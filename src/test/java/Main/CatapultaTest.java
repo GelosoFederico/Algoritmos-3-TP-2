@@ -57,7 +57,7 @@ public class CatapultaTest {
         CatapultaAliada.atacar(CatapultaEnemiga);
 
         //Assert
-        assertEquals(CatapultaEnemiga.vida(), 35); //danio de catapulta a larga dist = 20
+        assertEquals(CatapultaEnemiga.vida(), 30); //danio de catapulta a larga dist = 20
         verify(mockedCasillero, times(1)).calcularDistanciaA(mockedCasillero);
     }
 

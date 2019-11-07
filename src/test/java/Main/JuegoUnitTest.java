@@ -9,7 +9,6 @@ import static org.mockito.Mockito.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO que el juego se reinicie al principio y al final de cada test
 public class JuegoUnitTest {
     @Before
     @After

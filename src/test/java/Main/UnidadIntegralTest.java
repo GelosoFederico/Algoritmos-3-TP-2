@@ -16,13 +16,57 @@ public class UnidadIntegralTest {
     // TODO hacer cuando este el movimiento
     @Test
     public void unidadMovibleSoldadoSePuedeMoverEnTodasLasDirecciones() {
-        // Assert
-        Unidad unidad = new Soldado();
+        // Arrange
+        Tablero tablero = new Tablero();
+        Jugador jugador1 = new Jugador();
+        jugador1.nombre("Arkantos");
+        Juego.getInstance().agregarJugador(jugador1);
+        jugador1.set_tablero(tablero);
+
+        Jugador jugador2 = new Jugador();
+        jugador2.nombre("Gargarensis");
+        Juego.getInstance().agregarJugador(jugador2);
+        jugador2.set_tablero(tablero);
+
+        Unidad unidad1 = new Soldado();
+
+        jugador1.colocarUnidadEn(unidad1,new Posicion(5,5));
 
         // Act
-        unidad.avanzar();
+        unidad1.avanzar("N");
+        unidad1.avanzar("N");
+        unidad1.avanzar("E");
+        unidad1.avanzar("S");
+        unidad1.avanzar("NE");
+        Posicion posicionFinal = unidad1.getCasillero().posicion();
+
+        // Assert
+        assertEquals(posicionFinal.posicionEnX(),3);
+        assertEquals(posicionFinal.posicionEnY(),3);
     }
     */
+
+    @Test (expected = UnidadNoPuedeMoverseException.class)
+    public void unidadCatapultaSeIntentaMoverYTiraUnaExcepcion() {
+        // Arrange
+        Tablero tablero = new Tablero();
+        Jugador jugador1 = new Jugador();
+        jugador1.nombre("Arkantos");
+        Juego.getInstance().agregarJugador(jugador1);
+        jugador1.set_tablero(tablero);
+
+        Jugador jugador2 = new Jugador();
+        jugador2.nombre("Gargarensis");
+        Juego.getInstance().agregarJugador(jugador2);
+        jugador2.set_tablero(tablero);
+
+        Unidad unidad1 = new Catapulta();
+
+        jugador1.colocarUnidadEn(unidad1,new Posicion(9,9));
+
+        // Act & Assert
+        unidad1.avanzar("N");
+    }
 
     @Test
     public void soldadoAtacaAOtroSoldadoDeDistintosEquipoYPierdeVida () {
@@ -44,7 +88,7 @@ public class UnidadIntegralTest {
         jugador1.colocarUnidadEn(unidad1,new Posicion(9,9));
         jugador2.colocarUnidadEn(unidad2,new Posicion(10,10));
 
-        int vidaInicial = unidad1.vida();
+        int vidaInicial = unidad2.vida();
 
         // Act
         unidad1.atacar(unidad2);
@@ -54,7 +98,7 @@ public class UnidadIntegralTest {
     }
 
     @Test
-    public void jineteAtacaASoldadoDeDistintosEquipoYPierdeVida () {
+    public void jineteAtacaASoldadoDeDistintoEquipoYPierdeVida () {
         // Arrange
         Tablero tablero = new Tablero();
         Jugador jugador1 = new Jugador();
@@ -82,10 +126,8 @@ public class UnidadIntegralTest {
         assertEquals(unidad2.vida(),vidaInicial-15);
     }
 
-    /*
-    // TODO hacer cuando este catapulta
     @Test
-    public void CatapultaAtacaASoldadoDeDistintosEquipoYPierdeVida () {
+    public void CatapultaAtacaASoldadoDeDistintoEquipoYPierdeVida () {
         // Arrange
         Juego.getInstance().reiniciar();
         Tablero tablero = new Tablero();
@@ -105,7 +147,7 @@ public class UnidadIntegralTest {
         jugador1.colocarUnidadEn(unidad1,new Posicion(1,1));
         jugador2.colocarUnidadEn(unidad2,new Posicion(10,10));
 
-        int vidaInicial = unidad1.vida();
+        int vidaInicial = unidad2.vida();
 
         // Act
         unidad1.atacar(unidad2);
@@ -113,7 +155,6 @@ public class UnidadIntegralTest {
         // Assert
         assertEquals(unidad2.vida(),vidaInicial-20);
     }
-    */
 
     @Test
     public void curanderoCuraASoldadoDelMismoEquipoYGanaVida () {
