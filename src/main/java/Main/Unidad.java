@@ -12,6 +12,7 @@ public abstract class Unidad implements Atacante, Movible{
 
     public void colocarEn(Casillero unCasillero) {
         this.casillero = unCasillero;
+        unCasillero.ocupar();
     }
 
     public void recibirDanio(int danio) {

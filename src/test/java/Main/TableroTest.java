@@ -30,7 +30,8 @@ public class TableroTest {
         Posicion posicion = new Posicion(1,1);
         Tablero unTablero = new Tablero();
 
-        unTablero.obtenerCasilleroLibreParaJugador(posicion,jugador);
+        unTablero.obtenerCasilleroEnPosicion(posicion).ocupar();
+
         unTablero.obtenerCasilleroLibreParaJugador(posicion,jugador);
     }
 
@@ -59,7 +60,7 @@ public class TableroTest {
 
         unTablero.crearCasilleros();
 
-        unCasillero = unTablero.obtenerCasilleroLibreDePosicion(posicion);
+        unCasillero = unTablero.obtenerCasilleroEnPosicion(posicion);
 
 
         assertEquals(unCasillero.posicion().posicionEnX() ,2);
