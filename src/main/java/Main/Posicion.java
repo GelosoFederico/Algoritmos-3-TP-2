@@ -20,14 +20,6 @@ public class Posicion {
         return _y;
     }
 
-    public void incrementarPosicionEnX() { _x = _x + 1; }
-
-    public void decrementarPosicionEnX() { _x = _x - 1; }
-
-    public void decrementarPosicionEnY() { _y = _y - 1; }
-
-    public void incrementarPosicionEnY() { _y = _y + 1; }
-
     public void sumarle(Posicion otraPosicion) {
         this._x = this.posicionEnX() + otraPosicion.posicionEnX();
         this._y = this.posicionEnY() + otraPosicion.posicionEnY();
@@ -39,12 +31,14 @@ public class Posicion {
     }
 
     public int distanciaA(Posicion otraPosicion) {
-        int distancia_x = abs(this.posicionEnX()-otraPosicion.posicionEnX());
-        int distancia_y = abs(this.posicionEnY()-otraPosicion.posicionEnY());
+        return otraPosicion.distanciaAPuntoEnXEY(this.posicionEnX(),this.posicionEnY());
+    }
+
+    public int distanciaAPuntoEnXEY(int x,int y){
+        int distancia_x = abs(this.posicionEnX()-x);
+        int distancia_y = abs(this.posicionEnY()-y);
 
         return max(distancia_x,distancia_y);
     }
-
-
     // TODO: maybe string
 }
