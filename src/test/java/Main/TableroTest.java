@@ -18,7 +18,7 @@ public class TableroTest {
         Jugador jugador = mock(Jugador.class);
         when(jugador.numero()).thenReturn(1);
         Tablero unTablero = new Tablero();
-        Casillero casillero = unTablero.obtenerCasilleroLibreParaJugador(posicion,jugador);
+        Casillero casillero = unTablero.obtenerCasilleroParaJugador(posicion,jugador);
 
         Assert.assertTrue(new ReflectionEquals(posicion).matches(casillero.posicion()));
     }
@@ -45,7 +45,7 @@ public class TableroTest {
         Jugador jugador = mock(Jugador.class);
         when(jugador.numero()).thenReturn(2);
         Posicion posicionEnemigo = new Posicion(1,1); // Asumiendo que esto es del sector enemigo
-        unTablero.obtenerCasilleroLibreParaJugador(posicionEnemigo,jugador);
+        unTablero.obtenerCasilleroParaJugador(posicionEnemigo,jugador);
     }
 
     @Test
@@ -60,7 +60,7 @@ public class TableroTest {
         Casillero unCasillero;
         Posicion posicion = new Posicion(2,3);
 
-        unCasillero = unTablero.obtenerCasilleroLibre(posicion);
+        unCasillero = unTablero.obtenerCasilleroEnPosicion(posicion);
 
 
         assertEquals(unCasillero.posicion().posicionEnX() ,2);

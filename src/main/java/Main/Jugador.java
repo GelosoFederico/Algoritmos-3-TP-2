@@ -52,7 +52,7 @@ public class Jugador
 
     public void colocarUnidadEn(Unidad unidad, Posicion posicion) {
         unidad.setJugador(this.nombre());
-        Casillero casillero = _tablero.obtenerCasilleroLibreParaJugador(posicion, this);
+        Casillero casillero = _tablero.obtenerCasilleroParaJugador(posicion, this);
         unidad.colocarEn(casillero);
         this.getContadorPuntos().contarPuntosDe(unidad);
         this.unidades().add(unidad);

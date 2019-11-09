@@ -10,12 +10,7 @@ public class Tablero {
         this.crearCasilleros();
     }
 
-    public Casillero obtenerCasilleroLibre(Posicion posicion) {
-        Casillero casilleroBuscado = this.obtenerCasilleroEnPosicion(posicion);
-        return casilleroBuscado;
-    }
-
-    public Casillero obtenerCasilleroLibreParaJugador(Posicion posicion, Jugador jugador) {
+    public Casillero obtenerCasilleroParaJugador(Posicion posicion, Jugador jugador) {
         Casillero casilleroBuscado = this.obtenerCasilleroEnPosicion(posicion);
 
         if (casilleroBuscado.deJugador() != jugador.numero())
@@ -36,7 +31,7 @@ public class Tablero {
         }
     }
 
-    private Casillero obtenerCasilleroEnPosicion(Posicion posicion) {
+    public Casillero obtenerCasilleroEnPosicion(Posicion posicion) {
 
         int xPosicion = posicion.posicionEnX();
         int yPosicion = posicion.posicionEnY();
