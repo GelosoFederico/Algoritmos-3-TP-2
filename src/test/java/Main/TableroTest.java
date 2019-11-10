@@ -18,11 +18,13 @@ public class TableroTest {
         Jugador jugador = mock(Jugador.class);
         when(jugador.numero()).thenReturn(1);
         Tablero unTablero = new Tablero();
-        Casillero casillero = unTablero.obtenerCasilleroLibreParaJugador(posicion,jugador);
+        Casillero casillero = unTablero.obtenerCasilleroParaJugador(posicion,jugador);
 
         Assert.assertTrue(new ReflectionEquals(posicion).matches(casillero.posicion()));
     }
 
+    /*
+    // TODO este test ya no sirve pero lo dejo por ahora
     @Test(expected = CasilleroOcupadoException.class)
     public void testNoSePuedeObtenerCasilleroAliadoSiEstaOcupado() {
         Jugador jugador = mock(Jugador.class);
@@ -34,6 +36,7 @@ public class TableroTest {
 
         unTablero.obtenerCasilleroLibreParaJugador(posicion,jugador);
     }
+    */
 
 
     @Test(expected = CasilleroEsDeEnemigoException.class)
@@ -42,23 +45,20 @@ public class TableroTest {
         Jugador jugador = mock(Jugador.class);
         when(jugador.numero()).thenReturn(2);
         Posicion posicionEnemigo = new Posicion(1,1); // Asumiendo que esto es del sector enemigo
-        unTablero.obtenerCasilleroLibreParaJugador(posicionEnemigo,jugador);
+        unTablero.obtenerCasilleroParaJugador(posicionEnemigo,jugador);
     }
 
     @Test
-    public void testCorrecaCreacionEInicializacionDelTablero() {
+    public void testCorrectaCreacionEInicializacionDelTablero() {
         Tablero unTablero = new Tablero();
-        unTablero.crearCasilleros();
     }
 
     @Test
-    public void testSeGeneranLosCasillerosParaUnJugadorYSeBuscaUnCasilleroLibreEnPosicion11YDevuelveAlCasillero() {
+    public void testSeGeneranLosCasillerosParaUnJugadorYSeBuscaUnCasilleroLibreEnPosicion23YDevuelveAlCasillero() {
 
         Tablero unTablero = new Tablero();
         Casillero unCasillero;
         Posicion posicion = new Posicion(2,3);
-
-        unTablero.crearCasilleros();
 
         unCasillero = unTablero.obtenerCasilleroEnPosicion(posicion);
 
