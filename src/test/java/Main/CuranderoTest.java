@@ -130,7 +130,7 @@ public class CuranderoTest {
         //Arrange
         //Posicion unaPosicion = new Posicion(1,1);
         Posicion nuevaPosicion = new Posicion(1,2);
-        String unaDireccion = "N";
+        Direccion unaDireccion = new Norte();
         Curandero unCurandero  = new Curandero();
         unCurandero.colocarEn(mockedCasillero);
         when(mockedCasillero.obtenerSiguienteEnDireccion(unaDireccion))
@@ -153,7 +153,7 @@ public class CuranderoTest {
     public void test08CuranderoEn22IntentaMoverseAlNorteYElCasilleroEstaOcupado() {
         //Arrange
         //Posicion unaPosicion = new Posicion(2,2);
-        String unaDireccion = "N";
+        Direccion unaDireccion = new Norte();
         Curandero curandero = new Curandero();
         curandero.colocarEn(mockedCasilleroOcupado);
         when(mockedCasilleroOcupado.obtenerSiguienteEnDireccion(unaDireccion))

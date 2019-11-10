@@ -29,9 +29,8 @@ public class Casillero {
         return deJugador;
     }
 
-    public Casillero obtenerSiguienteEnDireccion(String direccion) {
-        Direccion direccionA = new Direccion(direccion);
-        Posicion posicionNueva = this.posicion().sumar(direccionA.posicionRelativa());
+    public Casillero obtenerSiguienteEnDireccion(Direccion direccion) {
+        Posicion posicionNueva = this.posicion().sumar(direccion.posicionRelativa());
         Casillero nuevoCasillero = Juego.getInstance().tablero().obtenerCasilleroEnPosicion(posicionNueva);
         //TODO si el liberar lo hace aca el metodo tendria que ser con otro nombre
         this.liberar();

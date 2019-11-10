@@ -32,7 +32,7 @@ public class Catapulta extends Unidad{
     }
 
     @Override
-    public void avanzar(String direccion) {
+    public void avanzar(Direccion direccion) {
         throw new UnidadNoPuedeMoverseException();
     }
 
