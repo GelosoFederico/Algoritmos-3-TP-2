@@ -34,9 +34,10 @@ public class IntegralTest {
         jugador1.colocarUnidadEn(unidad,new Posicion(1,2));
 
         // Assert
-        assertEquals(unidad.getCasillero().posicion().posicionEnX(),1);
-        assertEquals(unidad.getCasillero().posicion().posicionEnY(),2);
-        assertEquals(unidad.getJugador(),jugador1.nombre());
+        //assertEquals(unidad.getCasillero().posicion().posicionEnX(),1);
+        //assertEquals(unidad.getCasillero().posicion().posicionEnY(),2);
+        //assertEquals(unidad.getJugador(),jugador1.nombre());
+        assertEquals(1,0);
     }
 
     @Test (expected = CasilleroEsDeEnemigoException.class)

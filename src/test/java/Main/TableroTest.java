@@ -2,7 +2,10 @@ package Main;
 
 import org.junit.Test;
 import org.junit.Assert;
+import org.junit.After;
+import org.junit.Before;
 import org.mockito.internal.matchers.apachecommons.ReflectionEquals;
+import org.mockito.Mock;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -11,41 +14,39 @@ import static org.mockito.Mockito.when;
 // Al final, agregar Pieza
 
 public class TableroTest {
+    @Before
+    @After
+    public void reiniciarTablero()
+    {
+        Tablero.getInstance().reiniciar();
+    }
 
     @Test
-    public void testObtenerCasilleroAliadoParaJugador1DevuelveCasilleroConExito() {
-        Posicion posicion = new Posicion(1,1);
-        Jugador jugador = mock(Jugador.class);
-        when(jugador.numero()).thenReturn(1);
-        Tablero unTablero = new Tablero();
-        Casillero casillero = unTablero.obtenerCasilleroParaJugador(posicion,jugador);
-
-        Assert.assertTrue(new ReflectionEquals(posicion).matches(casillero.posicion()));
+    public void testSePuedeColocarUnidadDeJugador1EnCasilleroAliado() {
+        Posicion posicion = new Posicion(1,1); // Area del jugador 1
+        Jugador mJugador = mock(Jugador.class);
+        Soldado mSoldado = mock(Soldado.class);
+        when(mJugador.numero()).thenReturn(1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mSoldado,posicion,mJugador);
     }
 
-    /*
-    // TODO este test ya no sirve pero lo dejo por ahora
     @Test(expected = CasilleroOcupadoException.class)
-    public void testNoSePuedeObtenerCasilleroAliadoSiEstaOcupado() {
-        Jugador jugador = mock(Jugador.class);
-        when(jugador.numero()).thenReturn(1);
-        Posicion posicion = new Posicion(1,1);
-        Tablero unTablero = new Tablero();
-
-        unTablero.obtenerCasilleroEnPosicion(posicion).ocupar();
-
-        unTablero.obtenerCasilleroLibreParaJugador(posicion,jugador);
+    public void testColocarUnidadEnCasilleroOcupadoTiraExcepcion() {
+        Posicion posicion = new Posicion(1,2); // Area del jugador 1
+        Jugador mJugador = mock(Jugador.class);
+        Soldado mSoldado = mock(Soldado.class);
+        when(mJugador.numero()).thenReturn(1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mSoldado,posicion,mJugador);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mSoldado,posicion,mJugador);
     }
-    */
-
 
     @Test(expected = CasilleroEsDeEnemigoException.class)
-    public void testNoSePuedeObtenerCasilleroDeEnemigoParaUnJugador() {
-        Tablero unTablero = new Tablero();
-        Jugador jugador = mock(Jugador.class);
-        when(jugador.numero()).thenReturn(2);
-        Posicion posicionEnemigo = new Posicion(1,1); // Asumiendo que esto es del sector enemigo
-        unTablero.obtenerCasilleroParaJugador(posicionEnemigo,jugador);
+    public void testColocarUnidadDeJugador2EnCasilleroEnemigoTiraExcepcion() {
+        Posicion posicion = new Posicion(1,3); // Area del jugador 1
+        Jugador mJugador = mock(Jugador.class);
+        Soldado mSoldado = mock(Soldado.class);
+        when(mJugador.numero()).thenReturn(2);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mSoldado,posicion,mJugador);
     }
 
     @Test
@@ -53,6 +54,7 @@ public class TableroTest {
         Tablero unTablero = new Tablero();
     }
 
+    /*
     @Test
     public void testSeGeneranLosCasillerosParaUnJugadorYSeBuscaUnCasilleroLibreEnPosicion23YDevuelveAlCasillero() {
 
@@ -65,7 +67,7 @@ public class TableroTest {
 
         assertEquals(unCasillero.posicion().posicionEnX() ,2);
         assertEquals(unCasillero.posicion().posicionEnY() ,3);
-    }
+    }*/
 
 
 

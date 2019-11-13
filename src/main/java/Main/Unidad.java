@@ -7,15 +7,17 @@ public abstract class Unidad implements Atacante, Movible{
 
     public abstract void atacar(Unidad unidad);
     public void avanzar(String direccion) {
-        Casillero nuevoCasillero = this.casillero.obtenerSiguienteEnDireccion(direccion);
-        this.casillero = nuevoCasillero;
-        this.casillero.ocupar();
+        //Casillero nuevoCasillero = this.casillero.obtenerSiguienteEnDireccion(direccion);
+
+        //this.casillero = nuevoCasillero;
+        //this.casillero.ocupar();
     }
     public int coste() { return this.coste; }
 
     public void colocarEn(Casillero unCasillero) {
-        this.casillero = unCasillero;
+        //this.casillero = unCasillero;
         unCasillero.ocupar(); //TODO consultar
+        // TODO: hacer que lo coloque en el tablero
     }
 
     public void recibirDanio(int danio) {
@@ -24,9 +26,9 @@ public abstract class Unidad implements Atacante, Movible{
         }
         vida = vida - danio;
     }
-    public Casillero getCasillero() {
-        return this.casillero;
-    }
+    //public Casillero getCasillero() {
+    //    return this.casillero;
+    //}
 
     public String getJugador() { return this.jugador; }
     public void setJugador(String unJugador) { this.jugador = unJugador; }

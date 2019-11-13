@@ -5,14 +5,14 @@ public class Jinete extends Unidad {
     public Jinete() {
         vida = 100;
         coste = 3;
-        casillero = null;
+        //casillero = null;
     }
 
     public Jinete(int vidaInicial) {
 
         vida = vidaInicial;
         coste = 3;
-        casillero = null;
+        //casillero = null;
     }
 
     @Override
@@ -24,11 +24,11 @@ public class Jinete extends Unidad {
         if (this.jugador.equals(unidadEnemiga.getJugador())) {
             throw new ProhibidoAtacarUnidadAliadaException();
         }
-        int distancia = casillero.calcularDistanciaA(unidadEnemiga.getCasillero());
+        //int distancia = casillero.calcularDistanciaA(unidadEnemiga.getCasillero());
 
-        if(distancia < MIN_DISTANCIA_MEDIA || distancia > MAX_DISTANCIA_MEDIA ){
-            throw new UnidadFueraDeRangoException();
-        }
+        //if(distancia < MIN_DISTANCIA_MEDIA || distancia > MAX_DISTANCIA_MEDIA ){
+        //    throw new UnidadFueraDeRangoException();
+        //}
         unidadEnemiga.recibirDanio(danioMediaDistancia);
     }
 
