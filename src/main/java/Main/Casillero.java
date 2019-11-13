@@ -12,6 +12,7 @@ public class Casillero {
         posicion = posicionAsignada;
         deJugador = numeroDeJugador;
         ocupacion = new Libre();
+        unidad = null;
     }
 
     public Posicion posicion() {
@@ -33,10 +34,21 @@ public class Casillero {
     public Casillero obtenerSiguienteEnDireccion(String direccion) {
         Direccion direccionA = new Direccion(direccion);
         Posicion posicionNueva = this.posicion().sumar(direccionA.posicionRelativa());
-        Casillero nuevoCasillero = Juego.getInstance().tablero().obtenerCasilleroEnPosicion(posicionNueva);
+        Casillero nuevoCasillero = Tablero.getInstance().obtenerCasilleroEnPosicion(posicionNueva);
         //TODO si el liberar lo hace aca el metodo tendria que ser con otro nombre
         this.liberar();
         return nuevoCasillero;
+    }
+
+    public void colocarUnidadDeJugador(Unidad unidad, Jugador jugador) {
+        if (this.unidad != null)
+            throw new CasilleroOcupadoException();
+
+        if (jugador.numero() != this.deJugador()) {
+            throw new CasilleroEsDeEnemigoException();
+        }
+
+        this.unidad = unidad;
     }
 
     public int calcularDistanciaA(Casillero casillero) {

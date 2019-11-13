@@ -18,12 +18,13 @@ public class UnidadIntegralTest {
         Jugador jugador1 = new Jugador();
         jugador1.nombre("Arkantos");
         Juego.getInstance().agregarJugador(jugador1);
-        jugador1.set_tablero(Juego.getInstance().tablero());
+        //jugador1.set_tablero(Juego.getInstance().tablero());
+        // Ahora todos pueden acceder al tablero globalmente
 
         Jugador jugador2 = new Jugador();
         jugador2.nombre("Gargarensis");
         Juego.getInstance().agregarJugador(jugador2);
-        jugador2.set_tablero(Juego.getInstance().tablero());
+        //jugador2.set_tablero(Juego.getInstance().tablero());
 
         Unidad unidad1 = new Soldado();
 
@@ -35,11 +36,12 @@ public class UnidadIntegralTest {
         unidad1.avanzar("E");
         unidad1.avanzar("S");
         unidad1.avanzar("NE");
-        Posicion posicionFinal = unidad1.getCasillero().posicion();
+        //Posicion posicionFinal = unidad1.getCasillero().posicion();
 
         // Assert
-        assertEquals(posicionFinal.posicionEnX(),3);
-        assertEquals(posicionFinal.posicionEnY(),3);
+        //assertEquals(posicionFinal.posicionEnX(),3);
+        //assertEquals(posicionFinal.posicionEnY(),3);
+        assertEquals(1,0);
     }
 
     @Test (expected = CasilleroOcupadoException.class)
@@ -48,12 +50,12 @@ public class UnidadIntegralTest {
         Jugador jugador1 = new Jugador();
         jugador1.nombre("Arkantos");
         Juego.getInstance().agregarJugador(jugador1);
-        jugador1.set_tablero(Juego.getInstance().tablero());
+        //jugador1.set_tablero(Juego.getInstance().tablero());
 
         Jugador jugador2 = new Jugador();
         jugador2.nombre("Gargarensis");
         Juego.getInstance().agregarJugador(jugador2);
-        jugador2.set_tablero(Juego.getInstance().tablero());
+        //jugador2.set_tablero(Juego.getInstance().tablero());
 
         Unidad unidad1 = new Soldado();
         Unidad unidad2 = new Soldado();

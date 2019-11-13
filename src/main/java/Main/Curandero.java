@@ -5,13 +5,13 @@ public class Curandero extends Unidad {
     public Curandero(){
         vida = 75;
         coste = 5;
-        casillero = null;
+        //casillero = null;
     }
 
     public Curandero(int vidaInicial) {
         vida = vidaInicial;
         coste = 5;
-        casillero = null;
+        //casillero = null;
     }
 
     @Override
@@ -21,10 +21,10 @@ public class Curandero extends Unidad {
         if (!this.jugador.equals(unidad.getJugador())) {
             throw new ProhibidoCurarUnidadEnemigaException();
         }
-        int distancia = casillero.calcularDistanciaA(unidad.getCasillero());
-        if (distancia >= MAX_DISTANCIA_CORTA) {
-            throw new UnidadFueraDeRangoException();
-        }
+        //int distancia = casillero.calcularDistanciaA(unidad.getCasillero());
+        //if (distancia >= MAX_DISTANCIA_CORTA) {
+        //    throw new UnidadFueraDeRangoException();
+        //}
         unidad.recibirDanio(danioCortaDistancia);
     }
 

@@ -1,6 +1,8 @@
 package Main;
 
 public class Tablero {
+    // Singleton pattern
+    private static Tablero INSTANCE = new Tablero();
 
     int maximaCantidadDeCasilleros = 20;
 
@@ -9,13 +11,23 @@ public class Tablero {
     public Tablero(){
         this.crearCasilleros();
     }
-
+    public static Tablero getInstance() {
+        return INSTANCE;
+    }
+    public void reiniciar() {
+        this.INSTANCE = new Tablero();
+    }
+    // TODO: sacar esto
     public Casillero obtenerCasilleroParaJugador(Posicion posicion, Jugador jugador) {
         Casillero casilleroBuscado = this.obtenerCasilleroEnPosicion(posicion);
 
         if (casilleroBuscado.deJugador() != jugador.numero())
             throw new CasilleroEsDeEnemigoException();
         return casilleroBuscado;
+    }
+    public void colocarUnidadEnPosicionDeJugador(Unidad unidad, Posicion posicion, Jugador jugador) {
+        this.obtenerCasilleroEnPosicion(posicion).colocarUnidadDeJugador(unidad,jugador);
+
     }
 
     private void crearCasilleros() {
