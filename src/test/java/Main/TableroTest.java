@@ -23,10 +23,10 @@ public class TableroTest {
     }*/
 
     @Before
-    public void reiniciarTablero() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
-        Field instance = Tablero.class.getDeclaredField("INSTANCE");
-        instance.setAccessible(true);
-        instance.set(null, null);
+    @After
+    public void reiniciarTablero()
+    {
+        Tablero.getInstance().reiniciar();
     }
 
     @Test

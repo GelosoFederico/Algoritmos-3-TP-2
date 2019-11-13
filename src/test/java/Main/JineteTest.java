@@ -2,6 +2,8 @@ package Main;
 
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.rules.ExpectedException;
 import org.mockito.Mock;
 
@@ -9,6 +11,12 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class JineteTest {
+    @Before // TODO: esto en algun momento se corrije
+    @After
+    public void reiniciarTablero()
+    {
+        Tablero.getInstance().reiniciar();
+    }
 
     @Test
     public void test01CreounJinetePorDefectoYTiene100PuntosDeVida() {
@@ -128,42 +136,45 @@ public class JineteTest {
     }
 
     @Test
-    public void test07JineteUbicadoEn00SeMueveParaElNorteYAhoraEstaEnLaPosicion01() {
+    public void test07JineteUbicadoEn22SeMueveParaElNorteYAhoraEstaEnLaPosicion12() {
         //Arrange
-        //Posicion unaPosicion = new Posicion(0,0);
-        Posicion otraPosicion = new Posicion(0,1);
+        Posicion unaPosicion = new Posicion(2,2);
         Direccion unaDireccion = new Norte();
         Jinete unJinete = new Jinete();
-        unJinete.colocarEn(mockedCasillero);
-        when(mockedCasillero.obtenerSiguienteEnDireccion(unaDireccion))
-                .thenReturn(mockedCasillero);
-        when(mockedCasillero.posicion()).thenReturn(otraPosicion);
+        Jugador mockedJugador = mock(Jugador.class);
+        when(mockedJugador.numero()).thenReturn(1);
+        Tablero.getInstance().reiniciar(); // TODO: esto esta maaal
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(unJinete,unaPosicion,mockedJugador);
 
         //Act
         unJinete.avanzar(unaDireccion);
 
         //Assert
-        assertEquals(mockedCasillero.posicion().posicionEnX() ,0);
-        assertEquals(mockedCasillero.posicion().posicionEnY() ,1);
-        verify(mockedCasillero, times(1)).obtenerSiguienteEnDireccion(unaDireccion);
-        verify(mockedCasillero, times(2)).posicion();
+        assertEquals(unJinete.posicion().posicionEnX() ,1);
+        assertEquals(unJinete.posicion().posicionEnY() ,2);
+        //verify(mockedCasillero, times(1)).obtenerSiguienteEnDireccion(unaDireccion);
+        //verify(mockedCasillero, times(2)).posicion();
     }
 
-    @Mock
-    public Casillero mockedCasilleroOcupado = mock(Casillero.class);
     @Test
-    public void test08SoldadoEn22IntentaMoverseAlNorteYElCasilleroEstaOcupado() {
+    public void test08JineteEn22IntentaMoverseAlNorteYElCasilleroEstaOcupado() {
         //Arrange
-        //Posicion unaPosicion = new Posicion(2,2);
+        Posicion unaPosicion = new Posicion(2,2);
+        Posicion posicionAlNorte = new Posicion(1,2);
         Direccion unaDireccion = new Norte();
-        Jinete jinete = new Jinete();
-        jinete.colocarEn(mockedCasilleroOcupado);
-        when(mockedCasilleroOcupado.obtenerSiguienteEnDireccion(unaDireccion))
-                .thenThrow(new CasilleroOcupadoException());
+        Jinete unJinete = new Jinete();
+        Catapulta mockedCatapulta = mock(Catapulta.class);
+
+        Jugador mockedJugador = mock(Jugador.class);
+        when(mockedJugador.numero()).thenReturn(1);
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(unJinete,unaPosicion,mockedJugador);
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(mockedCatapulta,posicionAlNorte,mockedJugador);
 
         //Act & Assert
         thrown.expect(CasilleroOcupadoException.class);
-        jinete.avanzar(unaDireccion);
-        verify(mockedCasillero, times(1)).obtenerSiguienteEnDireccion(unaDireccion);
+        unJinete.avanzar(unaDireccion);
     }
 }

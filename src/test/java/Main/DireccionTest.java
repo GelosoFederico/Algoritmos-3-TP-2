@@ -18,7 +18,6 @@ public class DireccionTest {
         // Assert
         assertEquals(unaPosicion.posicionEnX(), 4);
         assertEquals(unaPosicion.posicionEnY(), 5);
-
     }
 
 /*

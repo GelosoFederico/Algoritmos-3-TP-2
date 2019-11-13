@@ -25,12 +25,27 @@ public class Tablero {
             throw new CasilleroEsDeEnemigoException();
         return casilleroBuscado;
     }
+    public Posicion obtenerPosicionDeUnidad(Unidad unidad) {
+        // TODO: Refactorizar maybe
+        for(int i = 0; i < maximaCantidadDeCasilleros ; i++ ){
+            for(int j = 0; j < maximaCantidadDeCasilleros ; j++ ) {
+                if( unidad == casilleros[i][j].unidad()) {
+                    return casilleros[i][j].posicion();
+                }
+            }
+        }
+        throw new UnidadNoSeEncuentraEnTablero();
+    }
+    public void moverUnidadEnDireccion(Unidad unidad, Direccion direccion) {
 
-    public void moverUnidadEnDireccion(Unidad unidad, String direccion) {
-        Direccion direccionA = new Direccion(direccion);
-        //Posicion posicionNueva = posicion().sumar(direccionA.posicionRelativa());
-        //Casillero nuevoCasillero = Tablero.getInstance().obtenerCasilleroEnPosicion(posicionNueva);
-        //nuevoCasillero.guardarUnidad(unidad);
+        Posicion posicionActual = this.obtenerPosicionDeUnidad(unidad);
+        Casillero casilleroActual = this.obtenerCasilleroEnPosicion(posicionActual);
+
+        Posicion posicionNueva = posicionActual.sumar(direccion.posicionRelativa());
+        Casillero casilleroNuevo = this.obtenerCasilleroEnPosicion(posicionNueva);
+
+        casilleroNuevo.guardarUnidad(unidad);
+        casilleroActual.liberar();
     }
 
     public void colocarUnidadEnPosicionDeJugador(Unidad unidad, Posicion posicion, Jugador jugador) {
