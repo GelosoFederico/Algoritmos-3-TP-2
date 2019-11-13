@@ -8,9 +8,9 @@ public abstract class Unidad implements Atacante, Movible{
     public abstract void atacar(Unidad unidad);
     public void avanzar(String direccion) {
         //Casillero nuevoCasillero = this.casillero.obtenerSiguienteEnDireccion(direccion);
-
         //this.casillero = nuevoCasillero;
         //this.casillero.ocupar();
+        //Tablero.getInstance().moverUnidadEnDireccion(unidad, direccion);
     }
     public int coste() { return this.coste; }
 

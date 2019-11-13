@@ -50,6 +50,11 @@ public class Casillero {
 
         this.unidad = unidad;
     }
+    public void guardarUnidad(Unidad unidad) {
+        if (this.unidad != null)
+            throw new CasilleroOcupadoException();
+        this.unidad = unidad;
+    }
 
     public int calcularDistanciaA(Casillero casillero) {
         return this.posicion().distanciaA(casillero.posicion());

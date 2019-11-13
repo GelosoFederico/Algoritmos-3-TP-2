@@ -25,9 +25,16 @@ public class Tablero {
             throw new CasilleroEsDeEnemigoException();
         return casilleroBuscado;
     }
+
+    public void moverUnidadEnDireccion(Unidad unidad, String direccion) {
+        Direccion direccionA = new Direccion(direccion);
+        //Posicion posicionNueva = posicion().sumar(direccionA.posicionRelativa());
+        //Casillero nuevoCasillero = Tablero.getInstance().obtenerCasilleroEnPosicion(posicionNueva);
+        //nuevoCasillero.guardarUnidad(unidad);
+    }
+
     public void colocarUnidadEnPosicionDeJugador(Unidad unidad, Posicion posicion, Jugador jugador) {
         this.obtenerCasilleroEnPosicion(posicion).colocarUnidadDeJugador(unidad,jugador);
-
     }
 
     private void crearCasilleros() {
@@ -59,4 +66,5 @@ public class Tablero {
         throw new NoSeEncontroElCasilleroException();
 
     }
+
 }

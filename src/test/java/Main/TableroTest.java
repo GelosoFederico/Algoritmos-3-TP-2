@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.mockito.internal.matchers.apachecommons.ReflectionEquals;
 import org.mockito.Mock;
+import java.lang.reflect.Field;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -14,11 +15,18 @@ import static org.mockito.Mockito.when;
 // Al final, agregar Pieza
 
 public class TableroTest {
-    @Before
+    /*@Before
     @After
     public void reiniciarTablero()
     {
         Tablero.getInstance().reiniciar();
+    }*/
+
+    @Before
+    public void reiniciarTablero() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+        Field instance = Tablero.class.getDeclaredField("INSTANCE");
+        instance.setAccessible(true);
+        instance.set(null, null);
     }
 
     @Test
