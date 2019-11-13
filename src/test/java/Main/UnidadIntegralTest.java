@@ -31,12 +31,12 @@ public class UnidadIntegralTest {
         jugador1.colocarUnidadEn(unidad1,new Posicion(5,5));
 
         // Act
-        unidad1.avanzar("N");
-        unidad1.avanzar("N");
-        unidad1.avanzar("E");
-        unidad1.avanzar("S");
-        unidad1.avanzar("NE");
-        //Posicion posicionFinal = unidad1.getCasillero().posicion();
+        unidad1.avanzar(new Norte());
+        unidad1.avanzar(new Norte());
+        unidad1.avanzar(new Este());
+        unidad1.avanzar(new Sur());
+        unidad1.avanzar(new Noreste());
+      //  Posicion posicionFinal = unidad1.getCasillero().posicion();
 
         // Assert
         //assertEquals(posicionFinal.posicionEnX(),3);
@@ -64,7 +64,7 @@ public class UnidadIntegralTest {
         jugador1.colocarUnidadEn(unidad2,new Posicion(6,5));
 
         // Act
-        unidad2.avanzar("N");
+        unidad2.avanzar(new Norte());
 
     }
 
@@ -87,7 +87,7 @@ public class UnidadIntegralTest {
         jugador1.colocarUnidadEn(unidad1,new Posicion(9,9));
 
         // Act & Assert
-        unidad1.avanzar("N");
+        unidad1.avanzar(new Norte());
     }
 
     @Test

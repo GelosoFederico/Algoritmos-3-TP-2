@@ -31,13 +31,13 @@ public class Casillero {
         return deJugador;
     }
 
-    public Casillero obtenerSiguienteEnDireccion(String direccion) {
-        Direccion direccionA = new Direccion(direccion);
-        Posicion posicionNueva = this.posicion().sumar(direccionA.posicionRelativa());
-        Casillero nuevoCasillero = Tablero.getInstance().obtenerCasilleroEnPosicion(posicionNueva);
+    public Casillero obtenerSiguienteEnDireccion(Direccion direccion) {
+        // TODO: metodo para obtener posicion del casillero
+        //Posicion posicionNueva = this.posicion().sumar(direccion.posicionRelativa());
+        //Casillero nuevoCasillero = Tablero().obtenerCasilleroEnPosicion(posicionNueva);
         //TODO si el liberar lo hace aca el metodo tendria que ser con otro nombre
-        this.liberar();
-        return nuevoCasillero;
+        //this.liberar();
+        return new Casillero();
     }
 
     public void colocarUnidadDeJugador(Unidad unidad, Jugador jugador) {

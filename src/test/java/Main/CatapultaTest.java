@@ -132,7 +132,7 @@ public class CatapultaTest {
     @Test
     public void test07CatapultaSeIntentaMoverParaElNorteNoPuedeMoverse() {
         //Arrange
-        String unaDireccion = "N";
+        Direccion unaDireccion = new Norte();
         Catapulta catapulta = new Catapulta();
         catapulta.colocarEn(mockedCasillero);
 

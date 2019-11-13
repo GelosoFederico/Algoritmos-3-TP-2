@@ -128,7 +128,7 @@ public class SoldadoTest {
         //Arrange
         Posicion unaPosicion = new Posicion(1,1);
         Posicion otraPosicion = new Posicion(1,2);
-        String unaDireccion = "N";
+        Direccion unaDireccion = new Norte();
         Soldado unSoldado = new Soldado();
         unSoldado.colocarEn(mockedCasillero);
         when(mockedCasillero.obtenerSiguienteEnDireccion(unaDireccion))
@@ -151,7 +151,7 @@ public class SoldadoTest {
     public void test08SoldadoEn22IntentaMoverseAlNorteYElCasilleroEstaOcupado() {
         //Arrange
         Posicion unaPosicion = new Posicion(2,2);
-        String unaDireccion = "N" ;
+        Direccion unaDireccion = new Norte();
         Soldado soldado = new Soldado();
         soldado.colocarEn(mockedCasilleroOcupado);
         when(mockedCasilleroOcupado.obtenerSiguienteEnDireccion(unaDireccion))

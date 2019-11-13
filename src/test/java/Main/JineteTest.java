@@ -132,7 +132,7 @@ public class JineteTest {
         //Arrange
         //Posicion unaPosicion = new Posicion(0,0);
         Posicion otraPosicion = new Posicion(0,1);
-        String unaDireccion = "N";
+        Direccion unaDireccion = new Norte();
         Jinete unJinete = new Jinete();
         unJinete.colocarEn(mockedCasillero);
         when(mockedCasillero.obtenerSiguienteEnDireccion(unaDireccion))
@@ -155,7 +155,7 @@ public class JineteTest {
     public void test08SoldadoEn22IntentaMoverseAlNorteYElCasilleroEstaOcupado() {
         //Arrange
         //Posicion unaPosicion = new Posicion(2,2);
-        String unaDireccion = "N";
+        Direccion unaDireccion = new Norte();
         Jinete jinete = new Jinete();
         jinete.colocarEn(mockedCasilleroOcupado);
         when(mockedCasilleroOcupado.obtenerSiguienteEnDireccion(unaDireccion))
