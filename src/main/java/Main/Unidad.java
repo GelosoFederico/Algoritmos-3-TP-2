@@ -2,7 +2,6 @@ package Main;
 
 public abstract class Unidad implements Atacante, Movible{
     protected int vida;
-    protected Casillero casillero;
     protected String jugador;
     protected int coste;
 

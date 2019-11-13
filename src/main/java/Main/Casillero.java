@@ -1,9 +1,10 @@
 package Main;
 
 public class Casillero {
-    Posicion posicion;
-    OcupacionState ocupacion;
-    int deJugador;
+    private Posicion posicion;
+    private OcupacionState ocupacion;
+    private int deJugador;
+    private Unidad unidad;
 
     Casillero() {
     }
