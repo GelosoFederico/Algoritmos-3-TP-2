@@ -23,11 +23,11 @@ public class Catapulta extends Unidad{
         if (this.jugador.equals(unidad.getJugador())) {
             throw new ProhibidoAtacarUnidadAliadaException();
         }
-        //int distancia = casillero.calcularDistanciaA(unidad.getCasillero());
+        int distancia = Tablero.getInstance().calcularDistanciaEntre(this, unidad);
 
-        //if(distancia < MIN_DISTANCIA_LARGA){
-        //    throw new UnidadFueraDeRangoException();
-        //}
+        if(distancia < MIN_DISTANCIA_LARGA){
+            throw new UnidadFueraDeRangoException();
+        }
         unidad.recibirDanio(danioLargaDistancia);
     }
 

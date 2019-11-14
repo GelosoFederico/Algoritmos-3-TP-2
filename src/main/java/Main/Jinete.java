@@ -24,11 +24,11 @@ public class Jinete extends Unidad {
         if (this.jugador.equals(unidadEnemiga.getJugador())) {
             throw new ProhibidoAtacarUnidadAliadaException();
         }
-        //int distancia = casillero.calcularDistanciaA(unidadEnemiga.getCasillero());
+        int distancia = Tablero.getInstance().calcularDistanciaEntre(this, unidadEnemiga);
 
-        //if(distancia < MIN_DISTANCIA_MEDIA || distancia > MAX_DISTANCIA_MEDIA ){
-        //    throw new UnidadFueraDeRangoException();
-        //}
+        if(distancia < MIN_DISTANCIA_MEDIA || distancia > MAX_DISTANCIA_MEDIA ){
+            throw new UnidadFueraDeRangoException();
+        }
         unidadEnemiga.recibirDanio(danioMediaDistancia);
     }
 

@@ -1,5 +1,6 @@
 package Main;
 
+import org.junit.*;
 import org.junit.Test;
 import org.junit.Assert;
 import org.junit.After;
@@ -15,13 +16,6 @@ import static org.mockito.Mockito.when;
 // Al final, agregar Pieza
 
 public class TableroTest {
-    /*@Before
-    @After
-    public void reiniciarTablero()
-    {
-        Tablero.getInstance().reiniciar();
-    }*/
-
     @Before
     @After
     public void reiniciarTablero()
@@ -57,25 +51,26 @@ public class TableroTest {
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mSoldado,posicion,mJugador);
     }
 
-    @Test
-    public void testCorrectaCreacionEInicializacionDelTablero() {
-        Tablero unTablero = new Tablero();
-    }
-
     /*
     @Test
-    public void testSeGeneranLosCasillerosParaUnJugadorYSeBuscaUnCasilleroLibreEnPosicion23YDevuelveAlCasillero() {
+    public void testMueveUnidadEnUnaDireccion() {
+        // Assert
+        Posicion posicion = new Posicion(1,3); // Area del jugador 1
+        Jugador mJugador = mock(Jugador.class);
+        Unidad mSoldado = mock(Soldado.class);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mSoldado,posicion,mJugador);
+        when(mSoldado.posicion()).thenReturn(Tablero.getInstance().obtenerPosicionDeUnidad(mSoldado));
 
-        Tablero unTablero = new Tablero();
-        Casillero unCasillero;
-        Posicion posicion = new Posicion(2,3);
+        // Act
+        Tablero.getInstance().moverUnidadEnDireccion(mSoldado,new Norte());
 
-        unCasillero = unTablero.obtenerCasilleroEnPosicion(posicion);
+        // Assert
+        assertEquals(mSoldado.posicion().posicionEnX(),0);
+        assertEquals(mSoldado.posicion().posicionEnY(),3);
+    }
+    */
 
 
-        assertEquals(unCasillero.posicion().posicionEnX() ,2);
-        assertEquals(unCasillero.posicion().posicionEnY() ,3);
-    }*/
 
 
 

@@ -15,7 +15,7 @@ public class Tablero {
         return INSTANCE;
     }
     public void reiniciar() {
-        this.INSTANCE = new Tablero();
+        INSTANCE = new Tablero();
     }
     // TODO: sacar esto
     public Casillero obtenerCasilleroParaJugador(Posicion posicion, Jugador jugador) {
@@ -67,19 +67,13 @@ public class Tablero {
 
     public Casillero obtenerCasilleroEnPosicion(Posicion posicion) {
 
-        int xPosicion = posicion.posicionEnX();
-        int yPosicion = posicion.posicionEnY();
+        return casilleros[posicion.posicionEnX()][posicion.posicionEnY()];
+    }
 
-        for(int i = 0; i < maximaCantidadDeCasilleros ; i++ ){
-            for(int j = 0; j < maximaCantidadDeCasilleros ; j++ ) {
-                if(xPosicion == i && yPosicion == j) {
-                    return casilleros[i][j];
-                }
-            }
-        }
-
-        throw new NoSeEncontroElCasilleroException();
-
+    public int calcularDistanciaEntre(Unidad unidad1, Unidad unidad2) {
+        Posicion pos1 = this.obtenerPosicionDeUnidad(unidad1);
+        Posicion pos2 = this.obtenerPosicionDeUnidad(unidad2);
+        return pos1.distanciaA(pos2);
     }
 
 }
