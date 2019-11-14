@@ -83,33 +83,33 @@ public class CuranderoTest {
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(curanderoAliado,unaPosicion,mJugador1);
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoAliado,otraPosicion,mJugador1);
 
-        //Act & assert
+        //Act
         curanderoAliado.atacar(soldadoAliado);
 
         //Assert
         assertEquals(soldadoAliado.vida(), 115);
     }
-    /*
 
 
 
-    @Test
+    @Test (expected = UnidadFueraDeRangoException.class)
     public void test06unCuranderoAliadoAtacaASoldadoAliadoADistanciaMediaYSeLanzaUnidadFueraDeRangoException(){
         //Arrange
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.numero()).thenReturn(1);
+        Jugador mJugador2 = mock(Jugador.class);
+        when(mJugador2.numero()).thenReturn(2);
         String jugador1 = "ingleses";
-        String jugador2 = "ingleses";
-        //Posicion unaPosicion = new Posicion(2,6);
-        //Posicion unaPosicionMedia = new Posicion(2,1);
-        Curandero curanderoAliado = new Curandero();
-        Soldado soldadoAliado = new Soldado();
+        Unidad curanderoAliado = new Curandero();
+        Unidad soldadoAliado = new Soldado();
         curanderoAliado.setJugador(jugador1);
-        soldadoAliado.setJugador(jugador2);
-        curanderoAliado.colocarEn(mockedCasillero);
-        soldadoAliado.colocarEn(mockedCasillero);
-        when(mockedCasillero.calcularDistanciaA(mockedCasillero)).thenReturn(5);
+        soldadoAliado.setJugador(jugador1);
+        Posicion unaPosicion = new Posicion(9,9);
+        Posicion otraPosicion = new Posicion(5,8);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(curanderoAliado,unaPosicion,mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoAliado,otraPosicion,mJugador1);
 
-        //Act & Assert
-        thrown.expect(UnidadFueraDeRangoException.class);
+        //Act & assert
         curanderoAliado.atacar(soldadoAliado);
     }
 
@@ -130,11 +130,9 @@ public class CuranderoTest {
         //Assert
         assertEquals(unCurandero.posicion().posicionEnX() ,0);
         assertEquals(unCurandero.posicion().posicionEnY() ,1);
-        //verify(mockedCasillero, times(1)).obtenerSiguienteEnDireccion(unaDireccion);
-        //verify(mockedCasillero, times(2)).posicion();
     }
 
-    @Test
+    @Test (expected = CasilleroOcupadoException.class)
     public void test08CuranderoEn22IntentaMoverseAlNorteYElCasilleroEstaOcupado() {
         //Arrange
         Posicion unaPosicion = new Posicion(2,2);
@@ -151,10 +149,7 @@ public class CuranderoTest {
                 .colocarUnidadEnPosicionDeJugador(mockedCatapulta,posicionAlNorte,mockedJugador);
 
         //Act & Assert
-        thrown.expect(CasilleroOcupadoException.class);
         unCurandero.avanzar(unaDireccion);
     }
-
-     */
 
 }
