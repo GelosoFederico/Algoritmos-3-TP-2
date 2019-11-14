@@ -67,68 +67,70 @@ public class SoldadoTest {
         //Assert
         assertEquals(soldadoEnemigo.vida(), 90);
     }
-/*
-    //@RunWith(PowerMockRunner.class)
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-    @Test
-    public void test04SoldadoAtacaADistanciaCercanaASoldadoEnemigoCon10PuntosDeVidaDosVecesYEsteNoPuedeRecibirDanio(){
+    @Test (expected = UnidadEstaMuertaException.class)
+    public void test04SoldadoAtacaADistanciaCercanaASoldadoEnemigoAunDespuesDeMuertoYEsteNoPuedeRecibirDanio(){
         //Arrange
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.numero()).thenReturn(1);
+        Jugador mJugador2 = mock(Jugador.class);
+        when(mJugador2.numero()).thenReturn(2);
         String jugador1 = "ingleses";
         String jugador2 = "irlandeses";
-        //Posicion unaPosicion = new Posicion(2,2);
-        //Posicion otraPosicion = new Posicion(1,2);
         Soldado soldadoAliado = new Soldado();
-        Soldado soldadoEnemigo = new Soldado(10);
+        Soldado soldadoEnemigo = new Soldado();
         soldadoAliado.setJugador(jugador1);
         soldadoEnemigo.setJugador(jugador2);
-        soldadoAliado.colocarEn(mockedCasillero);   //DUDA HACE FALTA INICIALIZAR CON Casillero(unaPosicion,1)
-        soldadoEnemigo.colocarEn(mockedCasillero);  //Y MOCKEAR ESE NEW ¿?
-        when(mockedCasillero.calcularDistanciaA(mockedCasillero))
-                .thenReturn(1);
-        soldadoAliado.atacar(soldadoEnemigo);
+        Posicion unaPosicion = new Posicion(9,9);
+        Posicion otraPosicion = new Posicion(11,11);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoAliado,unaPosicion,mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoEnemigo,otraPosicion,mJugador2);
 
-        //Act & Assert
-        thrown.expect(UnidadEstaMuertaException.class);
-        soldadoAliado.atacar(soldadoEnemigo);
+        //Act
+        while(1==1){
+            soldadoAliado.atacar(soldadoEnemigo);
+        }
+        //Assert
+        // Dejalo ya esta muerto
     }
 
-    @Test
+    @Test (expected = ProhibidoAtacarUnidadAliadaException.class)
     public void test05SoldoAtacaASoldadoAliadoYEsteNoPuedeRecibirDanio() {
         //Arrange
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.numero()).thenReturn(1);
         String jugador1 = "ingleses";
-        String jugador2 = "ingleses";
         Soldado soldadoAliado = new Soldado();
-        Soldado soldadoEnemigo = new Soldado();
+        Soldado soldadoAliado2 = new Soldado();
         soldadoAliado.setJugador(jugador1);
-        soldadoEnemigo.setJugador(jugador2);
-        soldadoAliado.colocarEn(mockedCasillero);
-        soldadoEnemigo.colocarEn(mockedCasillero);
-        when(mockedCasillero.calcularDistanciaA(mockedCasillero)).thenReturn(1);
+        soldadoAliado2.setJugador(jugador1);
+        Posicion unaPosicion = new Posicion(9,9);
+        Posicion otraPosicion = new Posicion(9, 8);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoAliado,unaPosicion,mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoAliado2,otraPosicion,mJugador1);
 
         //Act & Assert
-        thrown.expect(ProhibidoAtacarUnidadAliadaException.class);
-        soldadoAliado.atacar(soldadoEnemigo);
+        soldadoAliado.atacar(soldadoAliado2);
 
     }
-
-    @Test
+    @Test (expected = UnidadFueraDeRangoException.class)
     public void test06unSoldadoAliadoAtacaASoldadoEnemigoADistanciaMediaYSeLanzaUnidadFueraDeRangoException(){
         //Arrange
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.numero()).thenReturn(1);
+        Jugador mJugador2 = mock(Jugador.class);
+        when(mJugador2.numero()).thenReturn(2);
         String jugador1 = "ingleses";
         String jugador2 = "irlandeses";
-        //Posicion unaPosicion = new Posicion(2,6);
-        //Posicion unaPosicionMedia = new Posicion(2,1);
         Soldado soldadoAliado = new Soldado();
         Soldado soldadoEnemigo = new Soldado();
         soldadoAliado.setJugador(jugador1);
         soldadoEnemigo.setJugador(jugador2);
-        soldadoAliado.colocarEn(mockedCasillero);
-        soldadoEnemigo.colocarEn(mockedCasillero);
-        when(mockedCasillero.calcularDistanciaA(mockedCasillero)).thenReturn(5);
+        Posicion unaPosicion = new Posicion(9,9);
+        Posicion otraPosicion = new Posicion(13,13);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoAliado,unaPosicion,mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoEnemigo,otraPosicion,mJugador2);
 
         //Act & Assert
-        thrown.expect(UnidadFueraDeRangoException.class);
         soldadoAliado.atacar(soldadoEnemigo);
     }
 
@@ -150,11 +152,9 @@ public class SoldadoTest {
         //Assert
         assertEquals(unSoldado.posicion().posicionEnX() ,0);
         assertEquals(unSoldado.posicion().posicionEnY() ,1);
-        //verify(mockedCasillero, times(1)).obtenerSiguienteEnDireccion(unaDireccion);
-        //verify(mockedCasillero, times(2)).posicion();
     }
 
-    @Test
+    @Test (expected = CasilleroOcupadoException.class)
     public void test08SoldadoEn22IntentaMoverseAlNorteYElCasilleroEstaOcupado() {
         //Arrange
         Posicion unaPosicion = new Posicion(2,2);
@@ -171,9 +171,7 @@ public class SoldadoTest {
                 .colocarUnidadEnPosicionDeJugador(mockedCatapulta,posicionAlNorte,mockedJugador);
 
         //Act & Assert
-        thrown.expect(CasilleroOcupadoException.class);
         unSoldado.avanzar(unaDireccion);
     }
-    
- */
+
 }
