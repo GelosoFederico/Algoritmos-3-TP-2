@@ -43,7 +43,7 @@ public class JineteTest {
 
     @Mock
     public Casillero mockedCasillero = mock(Casillero.class);
-
+/*
     @Test
     public void test03JineteAliadoAtacaAJineteEnemigoCon100PuntosDeVidaUbicadoADistanciaMediaYLeQuita15PuntosDeVida() {
         //Arrange
@@ -177,4 +177,5 @@ public class JineteTest {
         thrown.expect(CasilleroOcupadoException.class);
         unJinete.avanzar(unaDireccion);
     }
+ */
 }

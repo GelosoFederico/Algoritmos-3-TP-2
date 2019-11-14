@@ -40,6 +40,7 @@ public class CuranderoTest {
         assertEquals(unCurandero.vida(), 65);
 
     }
+    /*
     @Mock
     public Casillero mockedCasillero = mock(Casillero.class);
     @Rule
@@ -174,5 +175,7 @@ public class CuranderoTest {
         thrown.expect(CasilleroOcupadoException.class);
         unCurandero.avanzar(unaDireccion);
     }
+
+     */
 
 }

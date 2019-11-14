@@ -44,7 +44,7 @@ public class CatapultaTest {
 
     @Mock
     public Casillero mockedCasillero = mock(Casillero.class);
-
+/*
     @Test
     public void test03CatapultaAliadaAtacaACatapultaEnemigaCon50PuntosDeVidaUbicadoADistanciaLejanaYLeQuita20PuntosDeVida() {
         //Arrange
@@ -152,7 +152,7 @@ public class CatapultaTest {
         thrown.expect(UnidadNoPuedeMoverseException.class);
         catapulta.avanzar(unaDireccion);
     }
-
+*/
 
 
 }

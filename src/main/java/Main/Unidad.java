@@ -11,11 +11,6 @@ public abstract class Unidad implements Atacante, Movible{
     }
     public int coste() { return this.coste; }
 
-    // TODO: sacar porque queda obsoleto
-    public void colocarEn(Casillero unCasillero) {
-        //this.casillero = unCasillero;
-        unCasillero.ocupar(); //TODO consultar
-    }
 
     public void recibirDanio(int danio) {
         if(vida <= 0) {
