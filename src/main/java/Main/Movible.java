@@ -1,5 +1,5 @@
 package Main;
 
 public interface Movible {
-    void avanzar(String direccion);
+    void avanzar(Direccion direccion);
 }

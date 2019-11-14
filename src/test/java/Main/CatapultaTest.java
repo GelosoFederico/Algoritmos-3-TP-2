@@ -2,6 +2,8 @@ package Main;
 
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.rules.ExpectedException;
 import org.mockito.Mock;
 
@@ -10,6 +12,12 @@ import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
 public class CatapultaTest {
+    @Before // TODO: esto en algun momento se corrije
+    @After
+    public void reiniciarTablero()
+    {
+        Tablero.getInstance().reiniciar();
+    }
 
     @Test
     public void test01CreoUnaCatapultaPorDefectoYTiene50PuntosDeVida(){
@@ -132,9 +140,13 @@ public class CatapultaTest {
     @Test
     public void test07CatapultaSeIntentaMoverParaElNorteNoPuedeMoverse() {
         //Arrange
-        String unaDireccion = "N";
+        Direccion unaDireccion = new Norte();
         Catapulta catapulta = new Catapulta();
-        catapulta.colocarEn(mockedCasillero);
+        Posicion unaPosicion = new Posicion(1,1);
+        Jugador mockedJugador = mock(Jugador.class);
+        when(mockedJugador.numero()).thenReturn(1);
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(catapulta,unaPosicion,mockedJugador);
 
         //Act & Assert
         thrown.expect(UnidadNoPuedeMoverseException.class);

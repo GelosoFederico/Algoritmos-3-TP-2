@@ -24,21 +24,14 @@ public class Casillero {
     }
 
     public void liberar() {
-        ocupacion = this.ocupacion.liberar();
+        ocupacion = this.ocupacion.liberar(); // TODO: esto creo que vuela
+        unidad = null;
     }
 
     public int deJugador() {
         return deJugador;
     }
 
-    public Casillero obtenerSiguienteEnDireccion(String direccion) {
-        Direccion direccionA = new Direccion(direccion);
-        Posicion posicionNueva = this.posicion().sumar(direccionA.posicionRelativa());
-        Casillero nuevoCasillero = Tablero.getInstance().obtenerCasilleroEnPosicion(posicionNueva);
-        //TODO si el liberar lo hace aca el metodo tendria que ser con otro nombre
-        this.liberar();
-        return nuevoCasillero;
-    }
 
     public void colocarUnidadDeJugador(Unidad unidad, Jugador jugador) {
         if (this.unidad != null)
@@ -49,6 +42,19 @@ public class Casillero {
         }
 
         this.unidad = unidad;
+    }
+
+    // TODO: pensar en un nombre mejor. Este se diferencia del metodo colocarUnidadDeJugador
+    // porque no necesita validar si es del aliado o enemigo. Es para usar en
+    // TODO: meter este dentro del colocar
+    public void guardarUnidad(Unidad unidad) {
+        if (this.unidad != null)
+            throw new CasilleroOcupadoException();
+        this.unidad = unidad;
+    }
+
+    public Unidad unidad() {
+        return unidad;
     }
 
     public int calcularDistanciaA(Casillero casillero) {

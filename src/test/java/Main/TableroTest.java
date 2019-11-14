@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.mockito.internal.matchers.apachecommons.ReflectionEquals;
 import org.mockito.Mock;
+import java.lang.reflect.Field;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -14,6 +15,13 @@ import static org.mockito.Mockito.when;
 // Al final, agregar Pieza
 
 public class TableroTest {
+    /*@Before
+    @After
+    public void reiniciarTablero()
+    {
+        Tablero.getInstance().reiniciar();
+    }*/
+
     @Before
     @After
     public void reiniciarTablero()

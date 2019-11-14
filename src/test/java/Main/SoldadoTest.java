@@ -1,6 +1,8 @@
 package Main;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.rules.ExpectedException;
 import org.mockito.Mock;
 
@@ -8,6 +10,13 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class SoldadoTest {
+
+    @Before // TODO: esto en algun momento se corrije
+    @After
+    public void reiniciarTablero()
+    {
+        Tablero.getInstance().reiniciar();
+    }
 
     @Test
     public void test01CreoUnSoldadoPorDefectoYTiene100PuntosDeVida(){
@@ -122,43 +131,46 @@ public class SoldadoTest {
         soldadoAliado.atacar(soldadoEnemigo);
     }
 
-
     @Test
-    public void test07SoldadoUbicadoEn11SeMueveParaElNorteYAhoraEstaEnLaPosicion12(){
+    public void test07SoldadoUbicadoEn11SeMueveParaElNorteYAhoraEstaEnLaPosicion01(){
         //Arrange
         Posicion unaPosicion = new Posicion(1,1);
-        Posicion otraPosicion = new Posicion(1,2);
-        String unaDireccion = "N";
+//        Posicion otraPosicion = new Posicion(1,2);
+        Direccion unaDireccion = new Norte();
         Soldado unSoldado = new Soldado();
-        unSoldado.colocarEn(mockedCasillero);
-        when(mockedCasillero.obtenerSiguienteEnDireccion(unaDireccion))
-                .thenReturn(mockedCasillero);
-        when(mockedCasillero.posicion()).thenReturn(otraPosicion);
+        Jugador mockedJugador = mock(Jugador.class);
+        when(mockedJugador.numero()).thenReturn(1);
+        Tablero.getInstance()
+            .colocarUnidadEnPosicionDeJugador(unSoldado,unaPosicion,mockedJugador);
 
         //Act
         unSoldado.avanzar(unaDireccion);
 
         //Assert
-        assertEquals(mockedCasillero.posicion().posicionEnX() ,1);
-        assertEquals(mockedCasillero.posicion().posicionEnY() ,2);
-        verify(mockedCasillero, times(1)).obtenerSiguienteEnDireccion(unaDireccion);
-        verify(mockedCasillero, times(2)).posicion();
+        assertEquals(unSoldado.posicion().posicionEnX() ,0);
+        assertEquals(unSoldado.posicion().posicionEnY() ,1);
+        //verify(mockedCasillero, times(1)).obtenerSiguienteEnDireccion(unaDireccion);
+        //verify(mockedCasillero, times(2)).posicion();
     }
 
-    @Mock
-    public Casillero mockedCasilleroOcupado = mock(Casillero.class);
     @Test
     public void test08SoldadoEn22IntentaMoverseAlNorteYElCasilleroEstaOcupado() {
         //Arrange
         Posicion unaPosicion = new Posicion(2,2);
-        String unaDireccion = "N" ;
-        Soldado soldado = new Soldado();
-        soldado.colocarEn(mockedCasilleroOcupado);
-        when(mockedCasilleroOcupado.obtenerSiguienteEnDireccion(unaDireccion))
-                .thenThrow(new CasilleroOcupadoException());
+        Posicion posicionAlNorte = new Posicion(1,2);
+        Direccion unaDireccion = new Norte();
+        Soldado unSoldado = new Soldado();
+        Catapulta mockedCatapulta = mock(Catapulta.class);
+
+        Jugador mockedJugador = mock(Jugador.class);
+        when(mockedJugador.numero()).thenReturn(1);
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(unSoldado,unaPosicion,mockedJugador);
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(mockedCatapulta,posicionAlNorte,mockedJugador);
 
         //Act & Assert
         thrown.expect(CasilleroOcupadoException.class);
-        soldado.avanzar(unaDireccion);
+        unSoldado.avanzar(unaDireccion);
     }
 }
