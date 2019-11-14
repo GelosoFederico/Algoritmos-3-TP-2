@@ -41,8 +41,6 @@ public class SoldadoTest {
 
     }
 
-    @Mock
-    public Casillero mockedCasillero = mock(Casillero.class);
     @Test
     public void test03SoldadoAliadoAtacaASoldadoEnemigoCon100PuntosDeVidaUbicadoADistanciaCercanaYLeQuita10PuntosDeVida() {
         //Arrange
