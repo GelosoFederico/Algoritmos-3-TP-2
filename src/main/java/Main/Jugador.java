@@ -9,7 +9,6 @@ public class Jugador
     private static Integer siguiente_numero = 1;
     // Atributos
     private String _nombre;
-    private Tablero _tablero;
     private ContadorDePuntos _contadorPuntos;
     private ArrayList<Unidad> _unidades;
     private Integer _numero;
@@ -46,16 +45,12 @@ public class Jugador
         return this.getContadorPuntos().puntosRestantes();
     }
 
-    public void set_tablero(Tablero tablero) {
-        this._tablero = tablero;
-    }
-
     public void colocarUnidadEn(Unidad unidad, Posicion posicion) {
         unidad.setJugador(this.nombre());
-        Casillero casillero = _tablero.obtenerCasilleroParaJugador(posicion, this);
-        // unidad.colocarEn(casillero);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(unidad, posicion, this);
         this.getContadorPuntos().contarPuntosDe(unidad);
         this.unidades().add(unidad);
+
     }
 
     private ContadorDePuntos getContadorPuntos() {

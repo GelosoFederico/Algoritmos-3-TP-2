@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
@@ -30,6 +31,11 @@ public class JugadorUnitTest
         assertEquals( jugador.nombre() , "Arkantos");
     }
 
+    @After
+    public void reiniciarTablero()
+    {
+        Tablero.getInstance().reiniciar();
+    }
     @Test
     public void jugadorColocaUnaUnidadNuevaYRestaSusPuntosParaPoner()
     {
@@ -41,8 +47,6 @@ public class JugadorUnitTest
         // Arrange mocks
         Jinete jineteMock = mock(Jinete.class);
         when(jineteMock.coste()).thenReturn(3);
-        Tablero tableroMock = mock(Tablero.class);
-        jugador.set_tablero(tableroMock);
 
         // Act
         jugador.colocarUnidadEn(jineteMock,posicion);
@@ -62,8 +66,6 @@ public class JugadorUnitTest
         // Mocks
         Jinete jinete1Mock = mock(Jinete.class);
         when(jinete1Mock.coste()).thenReturn(11);
-        Tablero tableroMock = mock(Tablero.class);
-        jugador.set_tablero(tableroMock);
         // Act
         // Lleno el tablero
         jugador.colocarUnidadEn(jinete1Mock,posicion1);
@@ -80,8 +82,8 @@ public class JugadorUnitTest
         // Arrange
         Jugador jugador = new Jugador();
         // Mocks
-        Tablero tableroMock = mock(Tablero.class);
-        jugador.set_tablero(tableroMock);
+        //Tablero tableroMock = mock(Tablero.class);
+        //jugador.set_tablero(tableroMock);
 
         Jinete jinete1Mock = mock(Jinete.class);
         when(jinete1Mock.coste()).thenReturn(3);
@@ -143,10 +145,6 @@ public class JugadorUnitTest
         // Arrange
         Juego.getInstance().reiniciar();
         Jugador jugador = new Jugador();
-
-        Tablero tableroMock = mock(Tablero.class);
-        jugador.set_tablero(tableroMock);
-
         Jinete jinete1Mock = mock(Jinete.class);
         when(jinete1Mock.coste()).thenReturn(3);
         when(jinete1Mock.getJugador()).thenReturn(jugador.nombre());

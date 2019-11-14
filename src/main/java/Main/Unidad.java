@@ -11,16 +11,12 @@ public abstract class Unidad implements Atacante, Movible{
     }
     public int coste() { return this.coste; }
 
-
     public void recibirDanio(int danio) {
         if(vida <= 0) {
             throw new UnidadEstaMuertaException();
         }
         vida = vida - danio;
     }
-    //public Casillero getCasillero() {
-    //    return this.casillero;
-    //}
 
     public String getJugador() { return this.jugador; }
     public void setJugador(String unJugador) { this.jugador = unJugador; }
