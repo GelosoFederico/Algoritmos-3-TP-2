@@ -5,7 +5,7 @@ public class Jinete extends Unidad {
     public Jinete() {
         vida = 100;
         coste = 3;
-        ataqueEstrategia = new AtaqueJinete();
+        ataqueEstrategia = new AtaqueJineteArco();
     }
 
     public Jinete(int vidaInicial) {
