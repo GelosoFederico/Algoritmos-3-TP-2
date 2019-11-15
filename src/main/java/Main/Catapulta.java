@@ -5,14 +5,13 @@ public class Catapulta extends Unidad{
     public Catapulta() {
         vida = 50;
         coste = 5;
-        //casillero = null;
+        movimientoStrategy = new MovimientoEstatico();
     }
 
     public Catapulta(int vidaInicial) {
 
         vida = vidaInicial;
         coste = 5;
-        //casillero = null;
     }
 
     @Override
@@ -30,10 +29,4 @@ public class Catapulta extends Unidad{
         }
         unidad.recibirDanio(danioLargaDistancia);
     }
-
-    @Override
-    public void avanzar(Direccion direccion) {
-        throw new UnidadNoPuedeMoverseException();
-    }
-
 }

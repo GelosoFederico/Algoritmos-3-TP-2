@@ -5,14 +5,12 @@ public class Jinete extends Unidad {
     public Jinete() {
         vida = 100;
         coste = 3;
-        //casillero = null;
     }
 
     public Jinete(int vidaInicial) {
 
         vida = vidaInicial;
         coste = 3;
-        //casillero = null;
     }
 
     @Override

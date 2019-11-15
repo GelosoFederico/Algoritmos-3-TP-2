@@ -1,14 +1,13 @@
 package Main;
 
-public abstract class Unidad implements Atacante, Movible{
+public abstract class Unidad implements Atacante{
     protected int vida;
     protected String jugador;
     protected int coste;
+    protected Movible movimientoStrategy = new MovimientoRegular();
 
     public abstract void atacar(Unidad unidad);
-    public void avanzar(Direccion direccion) {
-        Tablero.getInstance().moverUnidadEnDireccion(this,direccion);
-    }
+    public void avanzar(Direccion direccion) { movimientoStrategy.avanzar(this ,direccion); }
     public int coste() { return this.coste; }
 
     public void recibirDanio(int danio) {
