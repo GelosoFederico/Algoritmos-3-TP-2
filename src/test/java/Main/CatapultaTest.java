@@ -2,6 +2,8 @@ package Main;
 
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.rules.ExpectedException;
 import org.mockito.Mock;
 
@@ -10,6 +12,12 @@ import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
 public class CatapultaTest {
+    @Before // TODO: esto en algun momento se corrije
+    @After
+    public void reiniciarTablero()
+    {
+        Tablero.getInstance().reiniciar();
+    }
 
     @Test
     public void test01CreoUnaCatapultaPorDefectoYTiene50PuntosDeVida(){
@@ -34,113 +42,66 @@ public class CatapultaTest {
 
     }
 
-    @Mock
-    public Casillero mockedCasillero = mock(Casillero.class);
-
     @Test
     public void test03CatapultaAliadaAtacaACatapultaEnemigaCon50PuntosDeVidaUbicadoADistanciaLejanaYLeQuita20PuntosDeVida() {
         //Arrange
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.numero()).thenReturn(1);
+        Jugador mJugador2 = mock(Jugador.class);
+        when(mJugador2.numero()).thenReturn(2);
         String jugador1 = "ingleses";
         String jugador2 = "irlandeses";
-        //Posicion posicionAliada = new Posicion(1,9);
-        //Posicion posicionEnemiga = new Posicion(1,1);
-        Catapulta CatapultaAliada = new Catapulta();
-        Catapulta CatapultaEnemiga = new Catapulta();
-        CatapultaAliada.setJugador(jugador1);
-        CatapultaEnemiga.setJugador(jugador2);
-        CatapultaAliada.colocarEn(mockedCasillero);
-        CatapultaEnemiga.colocarEn(mockedCasillero);
-        when(mockedCasillero.calcularDistanciaA(mockedCasillero))
-                .thenReturn(8);
+        Unidad catapultaAliada = new Catapulta();
+        Unidad catapultaEnemiga = new Catapulta();
+        catapultaAliada.setJugador(jugador1);
+        catapultaEnemiga.setJugador(jugador2);
+        Posicion unaPosicion = new Posicion(2,2);
+        Posicion otraPosicion = new Posicion(11,11);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(catapultaAliada,unaPosicion,mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(catapultaEnemiga,otraPosicion,mJugador2);
 
         //Act
-        CatapultaAliada.atacar(CatapultaEnemiga);
+        catapultaAliada.atacar(catapultaEnemiga);
 
         //Assert
-        assertEquals(CatapultaEnemiga.vida(), 30); //danio de catapulta a larga dist = 20
-        verify(mockedCasillero, times(1)).calcularDistanciaA(mockedCasillero);
+        assertEquals(catapultaEnemiga.vida(), 30);
     }
 
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
-    @Test
-    public void test04CatapultaAtacaACatapultaEnemigaCon15PuntosDeVidaDosVecesYEsteNoPuedeRecibirMasDanio() {
-        //Arrange
-        String jugador1 = "ingleses";
-        String jugador2 = "irlandeses";
-        //Posicion unaPosicion = new Posicion(2,2);
-        //Posicion otraPosicion = new Posicion(2,9);
-        Catapulta catapultaAliada = new Catapulta();
-        Catapulta catapultaEnemiga = new Catapulta(15);
-        catapultaAliada.setJugador(jugador1);
-        catapultaEnemiga.setJugador(jugador2);
-        catapultaAliada.colocarEn(mockedCasillero);
-        catapultaEnemiga.colocarEn(mockedCasillero);
-        when(mockedCasillero.calcularDistanciaA(mockedCasillero))
-                .thenReturn(7);
-        catapultaAliada.atacar(catapultaEnemiga);
-
-        //Act & Assert
-        thrown.expect(UnidadEstaMuertaException.class);
-        catapultaAliada.atacar(catapultaEnemiga);
-        verify(mockedCasillero, times(2)).calcularDistanciaA(mockedCasillero);
-    }
-
-    @Test
-    public void test05JineteAtacaAJineteAliadoYEsteNoPuedeRecibirDanio() {
-        //Arrange
-        String jugador1 = "ingleses";
-        String jugador2 = "ingleses";
-        //Posicion unaPosicion = new Posicion(2,2);
-        //Posicion otraPosicion = new Posicion(2,7);
-        Jinete jineteAliado = new Jinete();
-        Jinete jineteEnemigo = new Jinete();
-        jineteAliado.setJugador(jugador1);
-        jineteEnemigo.setJugador(jugador2);
-        jineteAliado.colocarEn(mockedCasillero);
-        jineteEnemigo.colocarEn(mockedCasillero);
-        when(mockedCasillero.calcularDistanciaA(mockedCasillero)).thenReturn(5);
-
-        //Act & Assert
-        thrown.expect(ProhibidoAtacarUnidadAliadaException.class);
-        jineteAliado.atacar(jineteEnemigo);
-        verify(mockedCasillero, times(1)).calcularDistanciaA(mockedCasillero);
-    }
-
-    @Test
+    @Test (expected = UnidadFueraDeRangoException.class)
     public void test06unCatapultaAliadaAtacaACatapultaEnemigaADistanciaCercanaYSeLanzaUnidadFueraDeRangoException() {
         //Arrange
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.numero()).thenReturn(1);
+        Jugador mJugador2 = mock(Jugador.class);
+        when(mJugador2.numero()).thenReturn(2);
         String jugador1 = "ingleses";
         String jugador2 = "irlandeses";
-        //Posicion unaPosicion = new Posicion(2,1);
-        //Posicion unaPosicionLejana = new Posicion(2,2);
-        Catapulta catapultaAliada = new Catapulta();
-        Catapulta catapultaEnemiga = new Catapulta();
+        Unidad catapultaAliada = new Catapulta();
+        Unidad catapultaEnemiga = new Jinete();
         catapultaAliada.setJugador(jugador1);
         catapultaEnemiga.setJugador(jugador2);
-        catapultaAliada.colocarEn(mockedCasillero);
-        catapultaEnemiga.colocarEn(mockedCasillero);
-        when(mockedCasillero.calcularDistanciaA(mockedCasillero)).thenReturn(2);
+        Posicion unaPosicion = new Posicion(9,9);
+        Posicion otraPosicion = new Posicion(11,11);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(catapultaAliada,unaPosicion,mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(catapultaEnemiga,otraPosicion,mJugador2);
 
         //Act & Assert
-        thrown.expect(UnidadFueraDeRangoException.class);
         catapultaAliada.atacar(catapultaEnemiga);
     }
 
-    @Test
+    @Test(expected = UnidadNoPuedeMoverseException.class)
     public void test07CatapultaSeIntentaMoverParaElNorteNoPuedeMoverse() {
         //Arrange
-        String unaDireccion = "N";
+        Direccion unaDireccion = new Norte();
         Catapulta catapulta = new Catapulta();
-        catapulta.colocarEn(mockedCasillero);
+        Posicion unaPosicion = new Posicion(1,1);
+        Jugador mockedJugador = mock(Jugador.class);
+        when(mockedJugador.numero()).thenReturn(1);
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(catapulta,unaPosicion,mockedJugador);
 
         //Act & Assert
-        thrown.expect(UnidadNoPuedeMoverseException.class);
         catapulta.avanzar(unaDireccion);
     }
-
-
 
 }

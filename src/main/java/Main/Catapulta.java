@@ -5,14 +5,14 @@ public class Catapulta extends Unidad{
     public Catapulta() {
         vida = 50;
         coste = 5;
-        casillero = null;
+        //casillero = null;
     }
 
     public Catapulta(int vidaInicial) {
 
         vida = vidaInicial;
         coste = 5;
-        casillero = null;
+        //casillero = null;
     }
 
     @Override
@@ -23,7 +23,7 @@ public class Catapulta extends Unidad{
         if (this.jugador.equals(unidad.getJugador())) {
             throw new ProhibidoAtacarUnidadAliadaException();
         }
-        int distancia = casillero.calcularDistanciaA(unidad.getCasillero());
+        int distancia = Tablero.getInstance().calcularDistanciaEntre(this, unidad);
 
         if(distancia < MIN_DISTANCIA_LARGA){
             throw new UnidadFueraDeRangoException();
@@ -32,7 +32,7 @@ public class Catapulta extends Unidad{
     }
 
     @Override
-    public void avanzar(String direccion) {
+    public void avanzar(Direccion direccion) {
         throw new UnidadNoPuedeMoverseException();
     }
 

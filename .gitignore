@@ -36,3 +36,4 @@ libs
 *.log
 *.swp
 *.bak
+!.idea

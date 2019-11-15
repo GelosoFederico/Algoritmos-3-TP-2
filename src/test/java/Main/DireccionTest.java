@@ -9,7 +9,7 @@ public class DireccionTest {
     @Test
     public void test01EstaEnPosicion55YSeMueveHaciaElNorteYDevuelvePosicion45(){
         // Arrange
-        Direccion unaDireccion = new Direccion("N");
+        Direccion unaDireccion = new Norte();
         Posicion unaPosicion = new Posicion(5,5);
 
         // Act
@@ -18,7 +18,6 @@ public class DireccionTest {
         // Assert
         assertEquals(unaPosicion.posicionEnX(), 4);
         assertEquals(unaPosicion.posicionEnY(), 5);
-
     }
 
 /*

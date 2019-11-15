@@ -12,21 +12,22 @@ public class IntegralTest {
     public void reiniciarJuego() {
         Juego.getInstance().reiniciar();
     }
-
+    @After
+    public void reiniciarTablero()
+    {
+        Tablero.getInstance().reiniciar();
+    }
     @Test
-    public void seColocaPiezaDeUnJugadorEnSuCampoYEstaAhi()
+    public void seColocaUnidadDeUnJugadorEnSuCampoYEstaAhi()
     {
         // Arrange
-        Tablero tablero = new Tablero();
         Jugador jugador1 = new Jugador();
         jugador1.nombre("Arkantos");
         Juego.getInstance().agregarJugador(jugador1);
-        jugador1.set_tablero(tablero);
 
         Jugador jugador2 = new Jugador();
         jugador2.nombre("Gargarensis");
         Juego.getInstance().agregarJugador(jugador2);
-        jugador2.set_tablero(tablero);
 
         Unidad unidad = new Soldado();
 
@@ -34,25 +35,23 @@ public class IntegralTest {
         jugador1.colocarUnidadEn(unidad,new Posicion(1,2));
 
         // Assert
-        assertEquals(unidad.getCasillero().posicion().posicionEnX(),1);
-        assertEquals(unidad.getCasillero().posicion().posicionEnY(),2);
+        Posicion posicionFinal = Tablero.getInstance().obtenerPosicionDeUnidad(unidad);
+        assertEquals(posicionFinal.posicionEnX(),1);
+        assertEquals(posicionFinal.posicionEnY(),2);
         assertEquals(unidad.getJugador(),jugador1.nombre());
     }
 
     @Test (expected = CasilleroEsDeEnemigoException.class)
-    public void seColocaPiezaDeUnJugadorEnCampoContrarioYDaUnaExcepcion()
+    public void seColocaUnidadDeUnJugadorEnCampoContrarioYDaUnaExcepcion()
     {
         // Arrange
-        Tablero tablero = new Tablero();
         Jugador jugador1 = new Jugador();
         jugador1.nombre("Arkantos");
         Juego.getInstance().agregarJugador(jugador1);
-        jugador1.set_tablero(tablero);
 
         Jugador jugador2 = new Jugador();
         jugador2.nombre("Gargarensis");
         Juego.getInstance().agregarJugador(jugador2);
-        jugador2.set_tablero(tablero);
 
         Unidad unidad = new Soldado();
 
@@ -63,44 +62,37 @@ public class IntegralTest {
     }
 
     @Test (expected = CasilleroOcupadoException.class)
-    public void seColocaPiezaDeUnJugadorEnLaMismaPosicionQueOtraYDaUnaExcepcion()
+    public void seColocaUnidadDeUnJugadorEnLaMismaPosicionQueOtraYDaUnaExcepcion()
     {
         // Arrange
-        Tablero tablero = new Tablero();
         Jugador jugador1 = new Jugador();
         jugador1.nombre("Arkantos");
         Juego.getInstance().agregarJugador(jugador1);
-        jugador1.set_tablero(tablero);
 
         Jugador jugador2 = new Jugador();
         jugador2.nombre("Gargarensis");
         Juego.getInstance().agregarJugador(jugador2);
-        jugador2.set_tablero(tablero);
 
         Unidad unidad1 = new Soldado();
         Unidad unidad2 = new Jinete();
 
-        // Act
+        // Act & Assert
         jugador1.colocarUnidadEn(unidad1,new Posicion(1,2));
         jugador1.colocarUnidadEn(unidad2,new Posicion(1,2));
 
-        // Assert
     }
 
     @Test (expected = InsuficientePuntosRestantesAlColocarUnidadException.class)
     public void jugadorNoPuedeTomarMasUnidadesQueLoQueSusPuntosLePermiten ()
     {
         // Arrange
-        Tablero tablero = new Tablero();
         Jugador jugador1 = new Jugador();
         jugador1.nombre("Arkantos");
         Juego.getInstance().agregarJugador(jugador1);
-        jugador1.set_tablero(tablero);
 
         Jugador jugador2 = new Jugador();
         jugador2.nombre("Gargarensis");
         Juego.getInstance().agregarJugador(jugador2);
-        jugador2.set_tablero(tablero);
 
         // Act
         for(int i=0; i<7; i++){
@@ -112,16 +104,13 @@ public class IntegralTest {
     public void jugadorPierdeTodasSusUnidadesYElOtroJugadorGana()
     {
         // Arrange
-        Tablero tablero = new Tablero();
         Jugador jugador1 = new Jugador();
         jugador1.nombre("Arkantos");
         Juego.getInstance().agregarJugador(jugador1);
-        jugador1.set_tablero(tablero);
 
         Jugador jugador2 = new Jugador();
         jugador2.nombre("Gargarensis");
         Juego.getInstance().agregarJugador(jugador2);
-        jugador2.set_tablero(tablero);
 
         Unidad unidadJ1 = new Soldado();
         Unidad unidadJ2 = new Jinete();
