@@ -20,112 +20,101 @@ public class DireccionTest {
         assertEquals(unaPosicion.posicionEnY(), 5);
     }
 
-/*
+
     @Test
     public void test02EstaEnPosicion1510YSeMueveHaciaElNorteYDevuelvePosicion1410(){
-        Direccion unaDireccion = new Direccion("N");
-
+        //Arrange
+        Direccion unaDireccion = new Norte();
         Posicion unaPosicion = new Posicion(15,10);
 
-
-
-        Posicion otraPosicion = unaDireccion.posicionSiguienteEnElSentido(unaPosicion, "N");
-
-        assertEquals(otraPosicion.posicionEnX(),14);
-        assertEquals(otraPosicion.posicionEnY() ,10);
-
+        //Act
+        unaPosicion.sumarle(unaDireccion.posicionRelativa());
+        //Assert
+        assertEquals(unaPosicion.posicionEnX(),14);
+        assertEquals(unaPosicion.posicionEnY() ,10);
     }
 
     @Test
-    public void test01EstaEnPosicion55YSeMueveHaciaElSurYDevuelvePosicion65(){
-        Direccion unaDireccion = new Direccion();
-
+    public void test03EstaEnPosicion55YSeMueveHaciaElSurYDevuelvePosicion65(){
+        //Arrange
+        Direccion unaDireccion = new Sur();
         Posicion unaPosicion = new Posicion(5,5);
-
-        Posicion otraPosicion = unaDireccion.posicionSiguienteEnElSentido(unaPosicion, "S");
-
-        assertEquals(otraPosicion.posicionEnX(),6);
-        assertEquals(otraPosicion.posicionEnY() ,5);
-
+        //Act
+        unaPosicion.sumarle(unaDireccion.posicionRelativa());
+        //Assert
+        assertEquals(unaPosicion.posicionEnX(),6);
+        assertEquals(unaPosicion.posicionEnY() ,5);
     }
 
     @Test
-    public void test01EstaEnPosicion55YSeMueveHaciaElOesteYDevuelvePosicion56(){
-        Direccion unaDireccion = new Direccion();
-
+    public void test04EstaEnPosicion55YSeMueveHaciaElOesteYDevuelvePosicion56(){
+        //Arrange
+        Direccion unaDireccion = new Oeste();
         Posicion unaPosicion = new Posicion(5,5);
-
-        Posicion otraPosicion = unaDireccion.posicionSiguienteEnElSentido(unaPosicion, "O");
-
-        assertEquals(otraPosicion.posicionEnX(),5);
-        assertEquals(otraPosicion.posicionEnY() ,6);
-
+        //Act
+        unaPosicion.sumarle(unaDireccion.posicionRelativa());
+        //Assert
+        assertEquals(unaPosicion.posicionEnX(),5);
+        assertEquals(unaPosicion.posicionEnY() ,6);
     }
 
     @Test
-    public void test01EstaEnPosicion55YSeMueveHaciaElEsteYDevuelvePosicion54(){
-        Direccion unaDireccion = new Direccion();
-
+    public void test05EstaEnPosicion55YSeMueveHaciaElEsteYDevuelvePosicion54(){
+        //Arrange
+        Direccion unaDireccion = new Este();
         Posicion unaPosicion = new Posicion(5,5);
-
-        Posicion otraPosicion = unaDireccion.posicionSiguienteEnElSentido(unaPosicion, "E");
-
-        assertEquals(otraPosicion.posicionEnX(),5);
-        assertEquals(otraPosicion.posicionEnY() ,4);
-
+        //Act
+        unaPosicion.sumarle(unaDireccion.posicionRelativa());
+        //Assert
+        assertEquals(unaPosicion.posicionEnX(),5);
+        assertEquals(unaPosicion.posicionEnY() ,4);
     }
 
     @Test
-    public void test01EstaEnPosicion55YSeMueveHaciaElNordesteYDevuelvePosicion44(){
-        Direccion unaDireccion = new Direccion();
-
+    public void test06EstaEnPosicion55YSeMueveHaciaElNoresteYDevuelvePosicion44(){
+        //Arrange
+        Direccion unaDireccion = new Noreste();
         Posicion unaPosicion = new Posicion(5,5);
-
-        Posicion otraPosicion = unaDireccion.posicionSiguienteEnElSentido(unaPosicion, "NE");
-
-        assertEquals(otraPosicion.posicionEnX(),4);
-        assertEquals(otraPosicion.posicionEnY() ,4);
-
+        //Act
+        unaPosicion.sumarle(unaDireccion.posicionRelativa());
+        //Assert
+        assertEquals(unaPosicion.posicionEnX(),4);
+        assertEquals(unaPosicion.posicionEnY() ,4);
     }
 
     @Test
-    public void test01EstaEnPosicion55YSeMueveHaciaElSudesteYDevuelvePosicion64(){
-        Direccion unaDireccion = new Direccion();
-
+    public void test07EstaEnPosicion55YSeMueveHaciaElSuresteYDevuelvePosicion64(){
+        //Arrange
+        Direccion unaDireccion = new Sureste();
         Posicion unaPosicion = new Posicion(5,5);
-
-        Posicion otraPosicion = unaDireccion.posicionSiguienteEnElSentido(unaPosicion, "SE");
-
-        assertEquals(otraPosicion.posicionEnX(),6);
-        assertEquals(otraPosicion.posicionEnY() ,4);
-
+        //Act
+        unaPosicion.sumarle(unaDireccion.posicionRelativa());
+        //Assert
+        assertEquals(unaPosicion.posicionEnX(),6);
+        assertEquals(unaPosicion.posicionEnY() ,4);
     }
 
     @Test
-    public void test01EstaEnPosicion55YSeMueveHaciaElSudoesteYDevuelvePosicion66(){
-        Direccion unaDireccion = new Direccion();
-
+    public void test08EstaEnPosicion55YSeMueveHaciaElSuroesteYDevuelvePosicion66(){
+        //Arrange
+        Direccion unaDireccion = new Suroeste();
         Posicion unaPosicion = new Posicion(5,5);
-
-        Posicion otraPosicion = unaDireccion.posicionSiguienteEnElSentido(unaPosicion, "SO");
-
-        assertEquals(otraPosicion.posicionEnX(),6);
-        assertEquals(otraPosicion.posicionEnY() ,6);
-
+        //Act
+        unaPosicion.sumarle(unaDireccion.posicionRelativa());
+        //Assert
+        assertEquals(unaPosicion.posicionEnX(),6);
+        assertEquals(unaPosicion.posicionEnY() ,6);
     }
-
 
     @Test
-    public void test01EstaEnPosicion55YSeMueveHaciaElNoroesteYDevuelvePosicion46(){
-        Direccion unaDireccion = new Direccion();
-
+    public void test09EstaEnPosicion55YSeMueveHaciaElNoroesteYDevuelvePosicion46(){
+        //Arrange
+        Direccion unaDireccion = new Noroeste();
         Posicion unaPosicion = new Posicion(5,5);
-
-        Posicion otraPosicion = unaDireccion.posicionSiguienteEnElSentido(unaPosicion, "NO");
-
-        assertEquals(otraPosicion.posicionEnX(),4);
-        assertEquals(otraPosicion.posicionEnY() ,6);
-
+        //Act
+        unaPosicion.sumarle(unaDireccion.posicionRelativa());
+        //Assert
+        assertEquals(unaPosicion.posicionEnX(),4);
+        assertEquals(unaPosicion.posicionEnY() ,6);
     }
-*/
 }

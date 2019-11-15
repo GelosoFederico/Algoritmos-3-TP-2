@@ -8,20 +8,18 @@ public class UnidadTest {
 
 /*
     @Test
-    public void SoldadoSemueveDesde11Hasta12() {
+    public void SoldadoSemueveDesde11Hasta01() {
         //Arrange
-        Posicion unaPosicion = new Posicion(1,1);
-        String unaDireccion = "N";
+        Posicion unaPosicion = new Posicion(1, 1);
         Soldado soldado = new Soldado();
-        soldado.setPosicion(unaPosicion);
 
         //Act
-        soldado.avanzar(unaDireccion);
+        soldado.avanzar(new Norte());
 
         //Assert
-        assertEquals(soldado.getPosicion().posicionEnX() ,1);
-        assertEquals(soldado.getPosicion().posicionEnY() ,2);
-
+        Posicion posicionFinal = Tablero.getInstance().obtenerPosicionDeUnidad(soldado);
+        assertEquals(posicionFinal.posicionEnX(), 0);
+        assertEquals(posicionFinal.posicionEnX(), 1);
     }
 
     @Test

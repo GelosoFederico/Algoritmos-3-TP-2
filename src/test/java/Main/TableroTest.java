@@ -13,16 +13,14 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-// Al final, agregar Pieza
-
 public class TableroTest {
+
     @Before
     @After
     public void reiniciarTablero()
     {
         Tablero.getInstance().reiniciar();
     }
-
     @Test
     public void testSePuedeColocarUnidadDeJugador1EnCasilleroAliado() {
         Posicion posicion = new Posicion(1,1); // Area del jugador 1
@@ -31,7 +29,6 @@ public class TableroTest {
         when(mJugador.numero()).thenReturn(1);
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mSoldado,posicion,mJugador);
     }
-
     @Test(expected = CasilleroOcupadoException.class)
     public void testColocarUnidadEnCasilleroOcupadoTiraExcepcion() {
         Posicion posicion = new Posicion(1,2); // Area del jugador 1
@@ -51,30 +48,31 @@ public class TableroTest {
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mSoldado,posicion,mJugador);
     }
 
-    /*
+    @After
+    public void reiniciarJuego()
+    {
+        Juego.getInstance().reiniciar();
+    }
     @Test
-    public void testMueveUnidadEnUnaDireccion() {
+    public void testUnidadEn13SeMueveEnUnaDireccionNorte() {
         // Assert
         Posicion posicion = new Posicion(1,3); // Area del jugador 1
         Jugador mJugador = mock(Jugador.class);
+        Juego.getInstance().agregarJugador(mJugador);
         Unidad mSoldado = mock(Soldado.class);
-        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mSoldado,posicion,mJugador);
-        when(mSoldado.posicion()).thenReturn(Tablero.getInstance().obtenerPosicionDeUnidad(mSoldado));
+        when(mJugador.numero()).thenReturn(1);
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(mSoldado, posicion, mJugador);
 
         // Act
         Tablero.getInstance().moverUnidadEnDireccion(mSoldado,new Norte());
+        when(mSoldado.posicion()).thenReturn(Tablero.getInstance().obtenerPosicionDeUnidad(mSoldado));
+        when(mSoldado.posicion()).thenReturn(Tablero.getInstance().obtenerPosicionDeUnidad(mSoldado));
+
 
         // Assert
         assertEquals(mSoldado.posicion().posicionEnX(),0);
         assertEquals(mSoldado.posicion().posicionEnY(),3);
     }
-    */
-
-
-
-
-
-
 
 }
-
