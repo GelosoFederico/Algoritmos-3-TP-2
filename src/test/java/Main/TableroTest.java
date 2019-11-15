@@ -48,6 +48,11 @@ public class TableroTest {
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mSoldado,posicion,mJugador);
     }
 
+    @After
+    public void reiniciarJuego()
+    {
+        Juego.getInstance().reiniciar();
+    }
     @Test
     public void testUnidadEn13SeMueveEnUnaDireccionNorte() {
         // Assert
