@@ -47,7 +47,7 @@ public class Casillero {
     // TODO: meter este dentro del colocar
     public void guardarUnidad(Unidad unidad) { this.ocupar(unidad); }
 
-    public Unidad obtenerUnidad() {
+    public Unidad unidad() {
         return this.ocupacion.unidad();
     }
 
