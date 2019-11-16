@@ -5,13 +5,11 @@ public class Curandero extends Unidad {
     public Curandero(){
         vida = 75;
         coste = 5;
-        //casillero = null;
     }
 
     public Curandero(int vidaInicial) {
         vida = vidaInicial;
         coste = 5;
-        //casillero = null;
     }
 
     @Override

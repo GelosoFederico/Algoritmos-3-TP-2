@@ -1,5 +1,5 @@
 package Main;
 
 public interface Movible {
-    void avanzar(Direccion direccion);
+    void avanzar(Unidad unidad, Direccion direccion);
 }
