@@ -127,4 +127,37 @@ public class IntegralTest {
         }
     }
 
+    @Test
+    public void testEncuentraUnidadesAlrededorDeUnaUnidadYLasAgregaSoloSoldadosAlConjuntoDeSoldados () {
+        // Arrange
+        Jugador jugador1 = new Jugador();
+        jugador1.nombre("Arkantos");
+        Juego.getInstance().agregarJugador(jugador1);
+
+        Jugador jugador2 = new Jugador();
+        jugador2.nombre("Gargarensis");
+        Juego.getInstance().agregarJugador(jugador2);
+
+        Unidad unidad1 = new Soldado();
+        Unidad unidad2 = new Jinete();
+        Unidad unidad3 = new Soldado();
+        Unidad unidad4 = new Curandero();
+        jugador1.colocarUnidadEn(unidad1,new Posicion(7,7));
+        jugador1.colocarUnidadEn(unidad2,new Posicion(6,7));
+        jugador1.colocarUnidadEn(unidad3,new Posicion(8,7));
+        jugador1.colocarUnidadEn(unidad4,new Posicion(7,8));
+
+        ConjuntoDeUnidades unidadesQueDebeTirar = new ConjuntoDeUnidades();
+        unidadesQueDebeTirar.agregar(unidad1);
+        unidadesQueDebeTirar.agregar(unidad3);
+
+        // Act
+        ConjuntoDeUnidades soldados = new ConjuntoDeSoldados();
+        soldados = Tablero.getInstance().obtenerUnidadesAlrededorDe(unidad4,5, soldados);
+
+        // Assert
+        assertEquals(true,soldados.equals( unidadesQueDebeTirar));
+    }
+
+
 }

@@ -2,7 +2,7 @@ package Main;
 
 import org.junit.*;
 import org.junit.Test;
-import org.junit.Assert;
+import org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.mockito.internal.matchers.apachecommons.ReflectionEquals;
@@ -73,6 +73,61 @@ public class TableroTest {
         // Assert
         assertEquals(mSoldado.posicion().posicionEnX(),0);
         assertEquals(mSoldado.posicion().posicionEnY(),3);
+    }
+
+    @Test
+    public void testEncuentraUnidadesAlrededorDeUnaUnidadAUnaDistancia () {
+        // Assert
+        Jugador mJugador = mock(Jugador.class);
+        when(mJugador.numero()).thenReturn(1);
+        Juego.getInstance().agregarJugador(mJugador);
+
+        Unidad mUnidad1 = mock(Soldado.class);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mUnidad1, new Posicion(3,3), mJugador);
+
+        Unidad mUnidad2 = mock(Soldado.class);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mUnidad2, new Posicion(3,4), mJugador);
+
+        Unidad mUnidad3 = mock(Soldado.class);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mUnidad3, new Posicion(3,2), mJugador);
+
+        ConjuntoDeUnidades unidadesQueDebeTirar = new ConjuntoDeUnidades();
+        unidadesQueDebeTirar.agregar(mUnidad2);
+        unidadesQueDebeTirar.agregar(mUnidad3);
+
+        // Act
+        ConjuntoDeUnidades unidades = new ConjuntoDeUnidades();
+        unidades = Tablero.getInstance().obtenerUnidadesAlrededorDe(mUnidad1,2, unidades);
+
+        // Assert
+        assertEquals(true,unidades.equals( unidadesQueDebeTirar));
+    }
+
+    @Test
+    public void testEncuentraUnidadesAlrededorDeUnaUnidadAUnaDistanciaYExcluyeLasQueNoVan () {
+        // Assert
+        Jugador mJugador = mock(Jugador.class);
+        when(mJugador.numero()).thenReturn(1);
+        Juego.getInstance().agregarJugador(mJugador);
+
+        Unidad mUnidad1 = mock(Soldado.class);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mUnidad1, new Posicion(3,3), mJugador);
+
+        Unidad mUnidad2 = mock(Soldado.class);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mUnidad2, new Posicion(3,4), mJugador);
+
+        Unidad mUnidad3 = mock(Soldado.class);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mUnidad3, new Posicion(8,8), mJugador);
+
+        ConjuntoDeUnidades unidadesQueDebeTirar = new ConjuntoDeUnidades();
+        unidadesQueDebeTirar.agregar(mUnidad2);
+
+        // Act
+        ConjuntoDeUnidades unidades = new ConjuntoDeUnidades();
+        unidades = Tablero.getInstance().obtenerUnidadesAlrededorDe(mUnidad1,2, unidades);
+
+        // Assert
+        assertEquals(true,unidades.equals( unidadesQueDebeTirar));
     }
 
 }
