@@ -14,14 +14,23 @@ public class Jinete extends Unidad {
 
     @Override
     public void atacar(Unidad unidadEnemiga) {
-        try {
+        // Si hay un soldado de infanteria aliado cerca o ningun enemigo,
+        // ataca con arco y flecha
+        // Obtengo los conjuntos necesarios
+        ConjuntoDeUnidades unidadesCercanas = new ConjuntoDeUnidades();
+        unidadesCercanas = Tablero.getInstance().obtenerUnidadesAlrededorDe(this, 2, unidadesCercanas);
+
+        ConjuntoDeUnidades unidadesCercanasEnemigas = unidadesCercanas.obtenerUnidadesDeJugador(unidadEnemiga.getJugador());
+        ConjuntoDeSoldados soldadosCercanosAmigos = new ConjuntoDeSoldados();
+        soldadosCercanosAmigos.obtenerSoldadosDelConjunto(unidadesCercanas.obtenerUnidadesDeJugador(this.getJugador()));
+
+        if( (soldadosCercanosAmigos.cantidad() > 0) || (unidadesCercanasEnemigas.cantidad() == 0)) {
             ataqueEstrategia = new AtaqueJineteArco();
-            ataqueEstrategia.atacar(this, unidadEnemiga);
-        }
-        catch (RuntimeException exception){
+        }else {
             ataqueEstrategia = new AtaqueJineteEspada();
-            ataqueEstrategia.atacar(this,unidadEnemiga);
         }
+        // TODO tirar mejores excepciones
+        ataqueEstrategia.atacar(this, unidadEnemiga);
     }
 
 }

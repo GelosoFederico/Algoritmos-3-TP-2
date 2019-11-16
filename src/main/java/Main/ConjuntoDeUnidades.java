@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConjuntoDeUnidades {
+    // TODO agregar iterador para tocar desde fuera
     protected List<Unidad> unidades;
 
     public ConjuntoDeUnidades(){
@@ -36,5 +37,16 @@ public class ConjuntoDeUnidades {
             }
         }
         return true;
+    }
+    
+    public ConjuntoDeUnidades obtenerUnidadesDeJugador(String jugadorNombre){
+        // TODO el conjunto nuevo deberia clonarse del viejo para que sean de la misma clase (sacarle todas las unidades)
+        ConjuntoDeUnidades conjuntoNuevo = new ConjuntoDeUnidades();
+        for (Unidad unidad:this.unidades()) {
+            if(unidad.getJugador().equals(jugadorNombre)){
+                conjuntoNuevo.agregar(unidad);
+            }
+        }
+        return conjuntoNuevo;
     }
 }

@@ -157,7 +157,7 @@ public class JineteTest {
         Unidad soldadoAliado = new Soldado();
         Unidad jineteEnemigo = new Jinete();
         jineteAliado.setJugador(jugador1);
-        soldadoAliado.setJugador(jugador2);
+        soldadoAliado.setJugador(jugador1);
         jineteEnemigo.setJugador(jugador2);
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(jineteAliado,new Posicion(7,7),mJugador1);
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoAliado,new Posicion(7,8),mJugador1);
@@ -170,7 +170,7 @@ public class JineteTest {
         assertEquals(jineteEnemigo.vida(), 85); //danio de jinete a media dist = 15
     }
 
-    @Test(expected = JineteDebeAtacarConArchoYFlecha.class)
+    @Test(expected = UnidadFueraDeRangoException.class)
     public void test10JineteConUnSoldadoCercaAtacaAEnemigoCercanoYLanzaExcepcionJineteDebeAtacarConArcoYFlecha() {
         //Arrange
         Jugador mJugador1 = mock(Jugador.class);
@@ -183,11 +183,11 @@ public class JineteTest {
         Unidad soldadoAliado = new Soldado();
         Unidad jineteEnemigo = new Jinete();
         jineteAliado.setJugador(jugador1);
-        soldadoAliado.setJugador(jugador2);
+        soldadoAliado.setJugador(jugador1);
         jineteEnemigo.setJugador(jugador2);
-        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(jineteAliado,new Posicion(7,7),mJugador1);
-        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoAliado,new Posicion(7,8),mJugador1);
-        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(jineteEnemigo,new Posicion(7,6),mJugador2);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(jineteAliado,new Posicion(9,9),mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoAliado,new Posicion(8,9),mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(jineteEnemigo,new Posicion(10,10),mJugador2);
 
         //Act
         jineteAliado.atacar(jineteEnemigo);
@@ -216,7 +216,7 @@ public class JineteTest {
         assertEquals(jineteEnemigo.vida(), 85);
     }
 
-    @Test(expected = JineteDebeAtacarConEspada.class)
+    @Test(expected = UnidadFueraDeRangoException.class)
     public void test12JineteSinAliadosCercaPeroConEnemigoCercaNoPuedeAtacarAOtroEnemigoDeDistanciaMedia() {
         //Arrange
         Jugador mJugador1 = mock(Jugador.class);
@@ -231,9 +231,9 @@ public class JineteTest {
         jineteAliado.setJugador(jugador1);
         soldadoEnemigo.setJugador(jugador2);
         jineteEnemigo.setJugador(jugador2);
-        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(jineteAliado,new Posicion(7,7),mJugador1);
-        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoEnemigo,new Posicion(7,8),mJugador2);
-        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoEnemigo,new Posicion(7,8),mJugador2);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(jineteAliado,new Posicion(9,9),mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoEnemigo,new Posicion(10,10),mJugador2);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(jineteEnemigo,new Posicion(12,12),mJugador2);
 
         //Act
         jineteAliado.atacar(jineteEnemigo);
