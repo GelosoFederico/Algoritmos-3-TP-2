@@ -12,7 +12,7 @@ public class Libre extends OcupacionState {
         return this;
     }
     @Override
-    public Unidad ocupante(){
+    public Unidad unidad(){
         return  null;
     }
 }

@@ -20,7 +20,7 @@ public class Ocupado extends OcupacionState {
     }
 
     @Override
-    public Unidad ocupante(){
+    public Unidad unidad(){
         return  this.unidad;
     }
 }

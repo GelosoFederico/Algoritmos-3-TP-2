@@ -48,7 +48,7 @@ public class Casillero {
     public void guardarUnidad(Unidad unidad) { this.ocupar(unidad); }
 
     public Unidad obtenerUnidad() {
-        return this.ocupacion.ocupante();
+        return this.ocupacion.unidad();
     }
 
     public int calcularDistanciaA(Casillero casillero) {
