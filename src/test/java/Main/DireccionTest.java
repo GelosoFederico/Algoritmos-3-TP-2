@@ -55,7 +55,7 @@ public class DireccionTest {
         unaPosicion.sumarle(unaDireccion.posicionRelativa());
         //Assert
         assertEquals(unaPosicion.posicionEnX(),5);
-        assertEquals(unaPosicion.posicionEnY() ,6);
+        assertEquals(unaPosicion.posicionEnY() ,4);
     }
 
     @Test
@@ -67,7 +67,7 @@ public class DireccionTest {
         unaPosicion.sumarle(unaDireccion.posicionRelativa());
         //Assert
         assertEquals(unaPosicion.posicionEnX(),5);
-        assertEquals(unaPosicion.posicionEnY() ,4);
+        assertEquals(unaPosicion.posicionEnY() ,6);
     }
 
     @Test
@@ -79,7 +79,7 @@ public class DireccionTest {
         unaPosicion.sumarle(unaDireccion.posicionRelativa());
         //Assert
         assertEquals(unaPosicion.posicionEnX(),4);
-        assertEquals(unaPosicion.posicionEnY() ,4);
+        assertEquals(unaPosicion.posicionEnY() ,6);
     }
 
     @Test
@@ -91,7 +91,7 @@ public class DireccionTest {
         unaPosicion.sumarle(unaDireccion.posicionRelativa());
         //Assert
         assertEquals(unaPosicion.posicionEnX(),6);
-        assertEquals(unaPosicion.posicionEnY() ,4);
+        assertEquals(unaPosicion.posicionEnY() ,6);
     }
 
     @Test
@@ -103,7 +103,7 @@ public class DireccionTest {
         unaPosicion.sumarle(unaDireccion.posicionRelativa());
         //Assert
         assertEquals(unaPosicion.posicionEnX(),6);
-        assertEquals(unaPosicion.posicionEnY() ,6);
+        assertEquals(unaPosicion.posicionEnY() ,4);
     }
 
     @Test
@@ -115,6 +115,6 @@ public class DireccionTest {
         unaPosicion.sumarle(unaDireccion.posicionRelativa());
         //Assert
         assertEquals(unaPosicion.posicionEnX(),4);
-        assertEquals(unaPosicion.posicionEnY() ,6);
+        assertEquals(unaPosicion.posicionEnY() ,4);
     }
 }
