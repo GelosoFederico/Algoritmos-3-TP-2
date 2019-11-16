@@ -25,4 +25,6 @@ public abstract class Unidad implements Movible{
     public void setJugador(String unJugador) { this.jugador = unJugador; }
     public int vida(){ return this.vida; }
     public Posicion posicion() { return Tablero.getInstance().obtenerPosicionDeUnidad(this);}
+
+    public void agregarseA(ConjuntoDeSoldados conjuntoDeSoldados){}
 }

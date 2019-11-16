@@ -13,4 +13,9 @@ public class Soldado extends Unidad{
         coste = 1;
         ataqueEstrategia = new AtaqueSoldado();
     }
+
+    @Override
+    public void agregarseA(ConjuntoDeSoldados conjuntoDeSoldados){
+        conjuntoDeSoldados.agregarSoldado(this);
+    }
 }
