@@ -29,7 +29,7 @@ public class Tablero {
         // TODO: Refactorizar maybe
         for(int i = 0; i < maximaCantidadDeCasilleros ; i++ ){
             for(int j = 0; j < maximaCantidadDeCasilleros ; j++ ) {
-                if( unidad == casilleros[i][j].unidad()) {
+                if( unidad == casilleros[i][j].obtenerUnidad()) {
                     return casilleros[i][j].posicion();
                 }
             }
