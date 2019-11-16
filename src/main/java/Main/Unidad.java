@@ -1,12 +1,15 @@
 package Main;
 
-public abstract class Unidad implements Atacante{
+public abstract class Unidad {
     protected int vida;
     protected String jugador;
     protected int coste;
+    protected AtaqueEstrategia ataqueEstrategia;
     protected Movible movimientoStrategy = new MovimientoRegular();
 
-    public abstract void atacar(Unidad unidad);
+    public void atacar(Unidad unidadVictima) {
+        ataqueEstrategia.atacar(this,unidadVictima);
+    };
     public void avanzar(Direccion direccion) { movimientoStrategy.avanzar(this ,direccion); }
     public int coste() { return this.coste; }
 
@@ -21,4 +24,6 @@ public abstract class Unidad implements Atacante{
     public void setJugador(String unJugador) { this.jugador = unJugador; }
     public int vida(){ return this.vida; }
     public Posicion posicion() { return Tablero.getInstance().obtenerPosicionDeUnidad(this);}
+
+    public void agregarseA(ConjuntoDeSoldados conjuntoDeSoldados){}
 }

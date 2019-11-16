@@ -8,26 +8,29 @@ public class Jinete extends Unidad {
     }
 
     public Jinete(int vidaInicial) {
-
         vida = vidaInicial;
         coste = 3;
     }
 
     @Override
     public void atacar(Unidad unidadEnemiga) {
-        int danioMediaDistancia = 15;
-        final int MIN_DISTANCIA_MEDIA = 3;
-        final int MAX_DISTANCIA_MEDIA = 5;
+        // Si hay un soldado de infanteria aliado cerca o ningun enemigo,
+        // ataca con arco y flecha
+        // Obtengo los conjuntos necesarios
+        ConjuntoDeUnidades unidadesCercanas = new ConjuntoDeUnidades();
+        unidadesCercanas = Tablero.getInstance().obtenerUnidadesAlrededorDe(this, 2, unidadesCercanas);
 
-        if (this.jugador.equals(unidadEnemiga.getJugador())) {
-            throw new ProhibidoAtacarUnidadAliadaException();
-        }
-        int distancia = Tablero.getInstance().calcularDistanciaEntre(this, unidadEnemiga);
+        ConjuntoDeUnidades unidadesCercanasEnemigas = unidadesCercanas.obtenerUnidadesDeJugador(unidadEnemiga.getJugador());
+        ConjuntoDeSoldados soldadosCercanosAmigos = new ConjuntoDeSoldados();
+        soldadosCercanosAmigos.obtenerSoldadosDelConjunto(unidadesCercanas.obtenerUnidadesDeJugador(this.getJugador()));
 
-        if(distancia < MIN_DISTANCIA_MEDIA || distancia > MAX_DISTANCIA_MEDIA ){
-            throw new UnidadFueraDeRangoException();
+        if( (soldadosCercanosAmigos.cantidad() > 0) || (unidadesCercanasEnemigas.cantidad() == 0)) {
+            ataqueEstrategia = new AtaqueJineteArco();
+        }else {
+            ataqueEstrategia = new AtaqueJineteEspada();
         }
-        unidadEnemiga.recibirDanio(danioMediaDistancia);
+        // TODO tirar mejores excepciones
+        ataqueEstrategia.atacar(this, unidadEnemiga);
     }
 
 }

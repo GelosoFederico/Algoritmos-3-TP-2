@@ -1,11 +1,8 @@
 package Main;
 
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.rules.ExpectedException;
-import org.mockito.Mock;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
@@ -28,7 +25,7 @@ public class JineteTest {
     }
 
     @Test
-    public void test02CreoUnJineteCon100PuntosDeVidaReciveUnDanioDe15PuntosYSuVidaCambiaA85Puntos() {
+    public void test02CreoUnJineteCon100PuntosDeVidaRecibeUnDanioDe15PuntosYSuVidaCambiaA85Puntos() {
         //Arrange
         int vidaInicial = 100;
         Jinete unJinete = new Jinete(vidaInicial);
@@ -146,4 +143,101 @@ public class JineteTest {
         //Act & Assert
         unJinete.avanzar(unaDireccion);
     }
+
+    @Test
+    public void test09JineteConUnSoldadoCercaAtacaAEnemigoDeDistanciaMediaExitosamente() {
+        //Arrange
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.numero()).thenReturn(1);
+        Jugador mJugador2 = mock(Jugador.class);
+        when(mJugador2.numero()).thenReturn(2);
+        String jugador1 = "ingleses";
+        String jugador2 = "irlandeses";
+        Unidad jineteAliado = new Jinete();
+        Unidad soldadoAliado = new Soldado();
+        Unidad jineteEnemigo = new Jinete();
+        jineteAliado.setJugador(jugador1);
+        soldadoAliado.setJugador(jugador1);
+        jineteEnemigo.setJugador(jugador2);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(jineteAliado,new Posicion(7,7),mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoAliado,new Posicion(7,8),mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(jineteEnemigo,new Posicion(11,11),mJugador2);
+
+        //Act
+        jineteAliado.atacar(jineteEnemigo);
+
+        //Assert
+        assertEquals(jineteEnemigo.vida(), 85); //danio de jinete a media dist = 15
+    }
+
+    @Test(expected = UnidadFueraDeRangoException.class)
+    public void test10JineteConUnSoldadoCercaAtacaAEnemigoCercanoYLanzaExcepcionJineteDebeAtacarConArcoYFlecha() {
+        //Arrange
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.numero()).thenReturn(1);
+        Jugador mJugador2 = mock(Jugador.class);
+        when(mJugador2.numero()).thenReturn(2);
+        String jugador1 = "ingleses";
+        String jugador2 = "irlandeses";
+        Unidad jineteAliado = new Jinete();
+        Unidad soldadoAliado = new Soldado();
+        Unidad jineteEnemigo = new Jinete();
+        jineteAliado.setJugador(jugador1);
+        soldadoAliado.setJugador(jugador1);
+        jineteEnemigo.setJugador(jugador2);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(jineteAliado,new Posicion(9,9),mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoAliado,new Posicion(8,9),mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(jineteEnemigo,new Posicion(10,10),mJugador2);
+
+        //Act
+        jineteAliado.atacar(jineteEnemigo);
+    }
+
+    @Test
+    public void test11JineteSinAliadosCercaPeroConEnemigoCercaAtacaAlEnemigoCercanoConEspadaExitosamente() {
+        //Arrange
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.numero()).thenReturn(1);
+        Jugador mJugador2 = mock(Jugador.class);
+        when(mJugador2.numero()).thenReturn(2);
+        String jugador1 = "ingleses";
+        String jugador2 = "irlandeses";
+        Unidad jineteAliado = new Jinete();
+        Unidad jineteEnemigo = new Jinete();
+        jineteAliado.setJugador(jugador1);
+        jineteEnemigo.setJugador(jugador2);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(jineteAliado,new Posicion(7,7),mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(jineteEnemigo,new Posicion(11,11),mJugador2);
+
+        //Act
+        jineteAliado.atacar(jineteEnemigo);
+
+        //Assert
+        assertEquals(jineteEnemigo.vida(), 85);
+    }
+
+    @Test(expected = UnidadFueraDeRangoException.class)
+    public void test12JineteSinAliadosCercaPeroConEnemigoCercaNoPuedeAtacarAOtroEnemigoDeDistanciaMedia() {
+        //Arrange
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.numero()).thenReturn(1);
+        Jugador mJugador2 = mock(Jugador.class);
+        when(mJugador2.numero()).thenReturn(2);
+        String jugador1 = "ingleses";
+        String jugador2 = "irlandeses";
+        Unidad jineteAliado = new Jinete();
+        Unidad soldadoEnemigo = new Soldado();
+        Unidad jineteEnemigo = new Jinete();
+        jineteAliado.setJugador(jugador1);
+        soldadoEnemigo.setJugador(jugador2);
+        jineteEnemigo.setJugador(jugador2);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(jineteAliado,new Posicion(9,9),mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoEnemigo,new Posicion(10,10),mJugador2);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(jineteEnemigo,new Posicion(12,12),mJugador2);
+
+        //Act
+        jineteAliado.atacar(jineteEnemigo);
+    }
+
+
 }

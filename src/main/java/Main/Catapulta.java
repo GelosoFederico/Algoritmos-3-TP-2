@@ -5,6 +5,7 @@ public class Catapulta extends Unidad{
     public Catapulta() {
         vida = 50;
         coste = 5;
+        ataqueEstrategia = new AtaqueCatapulta();
         movimientoStrategy = new MovimientoEstatico();
     }
 
@@ -12,6 +13,7 @@ public class Catapulta extends Unidad{
 
         vida = vidaInicial;
         coste = 5;
+        ataqueEstrategia = new AtaqueCatapulta();
     }
 
     @Override

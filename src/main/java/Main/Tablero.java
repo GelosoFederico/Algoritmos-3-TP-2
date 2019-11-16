@@ -29,7 +29,7 @@ public class Tablero {
         // TODO: Refactorizar maybe
         for(int i = 0; i < maximaCantidadDeCasilleros ; i++ ){
             for(int j = 0; j < maximaCantidadDeCasilleros ; j++ ) {
-                if( unidad == casilleros[i][j].obtenerUnidad()) {
+                if( unidad == casilleros[i][j].unidad()) {
                     return casilleros[i][j].posicion();
                 }
             }
@@ -76,4 +76,19 @@ public class Tablero {
         return pos1.distanciaA(pos2);
     }
 
+    public ConjuntoDeUnidades obtenerUnidadesAlrededorDe(Unidad unidadCentro, int distanciaMaxima, ConjuntoDeUnidades conjunto) {
+        // TODO agregar iterador para que este codigo no se repita
+        for(int i = 0; i < maximaCantidadDeCasilleros ; i++ ){
+            for(int j = 0; j < maximaCantidadDeCasilleros ; j++ ) {
+                // TODO esto se debe resolver con la unidad nula
+                if (this.casilleros[i][j].unidad() != null) {
+                    int distancia = this.calcularDistanciaEntre(unidadCentro,this.casilleros[i][j].unidad());
+                    if( (distancia <= distanciaMaxima) && (distancia > 0) ) {
+                        conjunto.agregar(this.casilleros[i][j].unidad());
+                    }
+                }
+            }
+        }
+        return conjunto;
+    }
 }
