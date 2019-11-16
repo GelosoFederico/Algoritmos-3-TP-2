@@ -21,4 +21,20 @@ public class ConjuntoDeUnidades {
     protected List<Unidad> unidades() {
         return this.unidades;
     }
+
+    public int cantidad() {
+        return this.unidades().size();
+    }
+
+    public boolean equals(ConjuntoDeUnidades otroConjunto) {
+        if(this.cantidad() != otroConjunto.cantidad()) {
+            return false;
+        }
+        for (Unidad unidad: this.unidades() ) {
+            if(!otroConjunto.seEncuentra(unidad)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
