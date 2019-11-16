@@ -16,12 +16,6 @@ public class Catapulta extends Unidad{
         ataqueEstrategia = new AtaqueCatapulta();
     }
 
-
-    @Override
-    public void avanzar(Direccion direccion) {
-        throw new UnidadNoPuedeMoverseException();
-    }
-
     @Override
     public void atacar(Unidad unidad) {
         int danioLargaDistancia = 20;

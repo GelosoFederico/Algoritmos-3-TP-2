@@ -10,9 +10,6 @@ public abstract class Unidad {
     public void atacar(Unidad unidadVictima) {
         ataqueEstrategia.atacar(this,unidadVictima);
     };
-    public void avanzar(Direccion direccion) {
-        Tablero.getInstance().moverUnidadEnDireccion(this,direccion);
-    }
     public void avanzar(Direccion direccion) { movimientoStrategy.avanzar(this ,direccion); }
     public int coste() { return this.coste; }
 
