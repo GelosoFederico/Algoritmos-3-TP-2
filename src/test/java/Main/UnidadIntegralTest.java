@@ -29,14 +29,14 @@ public class UnidadIntegralTest {
         // Act
         unidad1.avanzar(new Norte());   // (4,5)
         unidad1.avanzar(new Norte());   // (3,5)
-        unidad1.avanzar(new Este());    // (3,4)
-        unidad1.avanzar(new Sur());     // (4,4)
-        unidad1.avanzar(new Noreste()); // (3,3)
+        unidad1.avanzar(new Este());    // (3,6)
+        unidad1.avanzar(new Sur());     // (4,6)
+        unidad1.avanzar(new Noreste()); // (3,7)
 
         // Assert
         Posicion posicionFinal = Tablero.getInstance().obtenerPosicionDeUnidad(unidad1);
         assertEquals(posicionFinal.posicionEnX(),3);
-        assertEquals(posicionFinal.posicionEnY(),3);
+        assertEquals(posicionFinal.posicionEnY(),7);
     }
     @After
     public void reiniciarTablero()
