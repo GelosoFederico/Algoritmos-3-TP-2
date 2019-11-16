@@ -136,7 +136,6 @@ public class SoldadoTest {
     public void test07SoldadoUbicadoEn11SeMueveParaElNorteYAhoraEstaEnLaPosicion01(){
         //Arrange
         Posicion unaPosicion = new Posicion(1,1);
-//        Posicion otraPosicion = new Posicion(1,2);
         Direccion unaDireccion = new Norte();
         Soldado unSoldado = new Soldado();
         Jugador mockedJugador = mock(Jugador.class);
@@ -171,5 +170,100 @@ public class SoldadoTest {
         //Act & Assert
         unSoldado.avanzar(unaDireccion);
     }
+/*
+    @Test
+    public void test09Creo3SoldadosContiguosEnLineaYAlAvanzarSoldado01AlNorteLos3SoldadosSeMueven(){
+        //Arrange
+        Posicion posicion01 = new Posicion(1,1);
+        Posicion posicion02 = new Posicion(1,2);
+        Posicion posicion03 = new Posicion(1,3);
+        Direccion unaDireccion = new Norte();
+        Soldado soldado01 = new Soldado();
+        Soldado soldado02 = new Soldado();
+        Soldado soldado03 = new Soldado();
+        Jugador mockedJugador = mock(Jugador.class);
+        when(mockedJugador.numero()).thenReturn(1);
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(soldado01,posicion01,mockedJugador);
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(soldado02,posicion01,mockedJugador);
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(soldado03,posicion01,mockedJugador);
 
+        //Act
+        soldado01.avanzar(unaDireccion);
+
+        //Assert
+        assertEquals(soldado01.posicion().posicionEnX() ,0);
+        assertEquals(soldado01.posicion().posicionEnY() ,1);
+        assertEquals(soldado02.posicion().posicionEnX() ,0);
+        assertEquals(soldado02.posicion().posicionEnY() ,2);
+        assertEquals(soldado03.posicion().posicionEnX() ,0);
+        assertEquals(soldado03.posicion().posicionEnY() ,3);
+    }
+
+    @Test
+    public void test10Creo3SoldadosContiguosEnDiagonalAscendenteYAlAvanzarSoldado01AlNorteLos3SoldadosSeMueven(){
+        //Arrange
+        Posicion posicion01 = new Posicion(1,3);        //          x
+        Posicion posicion02 = new Posicion(2,2);        //      x
+        Posicion posicion03 = new Posicion(3,1);        //  x
+        Direccion unaDireccion = new Norte();
+        Soldado soldado01 = new Soldado();
+        Soldado soldado02 = new Soldado();
+        Soldado soldado03 = new Soldado();
+        Jugador mockedJugador = mock(Jugador.class);
+        when(mockedJugador.numero()).thenReturn(1);
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(soldado01,posicion01,mockedJugador);
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(soldado02,posicion01,mockedJugador);
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(soldado03,posicion01,mockedJugador);
+
+        //Act
+        soldado01.avanzar(unaDireccion);
+
+        //Assert
+        assertEquals(soldado01.posicion().posicionEnX() ,0);
+        assertEquals(soldado01.posicion().posicionEnY() ,3);
+        assertEquals(soldado02.posicion().posicionEnX() ,1);
+        assertEquals(soldado02.posicion().posicionEnY() ,2);
+        assertEquals(soldado03.posicion().posicionEnX() ,2);
+        assertEquals(soldado03.posicion().posicionEnY() ,1);
+
+    }
+
+    @Test
+    public void test10Creo3SoldadosContiguosEnDiagonalDescendenteYAlAvanzarSoldado01AlNorteLos3SoldadosSeMueven(){
+        //Arrange
+        Posicion posicion01 = new Posicion(1,0);        //  x
+        Posicion posicion02 = new Posicion(2,1);        //      x
+        Posicion posicion03 = new Posicion(3,2);        //          x
+        Direccion unaDireccion = new Norte();
+        Soldado soldado01 = new Soldado();
+        Soldado soldado02 = new Soldado();
+        Soldado soldado03 = new Soldado();
+        Jugador mockedJugador = mock(Jugador.class);
+        when(mockedJugador.numero()).thenReturn(1);
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(soldado01,posicion01,mockedJugador);
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(soldado02,posicion01,mockedJugador);
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(soldado03,posicion01,mockedJugador);
+
+        //Act
+        soldado01.avanzar(unaDireccion);
+
+        //Assert
+        assertEquals(soldado01.posicion().posicionEnX() ,0);
+        assertEquals(soldado01.posicion().posicionEnY() ,0);
+        assertEquals(soldado02.posicion().posicionEnX() ,1);
+        assertEquals(soldado02.posicion().posicionEnY() ,1);
+        assertEquals(soldado03.posicion().posicionEnX() ,2);
+        assertEquals(soldado03.posicion().posicionEnY() ,2);
+
+    }
+*/
 }
