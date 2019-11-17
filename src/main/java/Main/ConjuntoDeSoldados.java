@@ -1,6 +1,9 @@
 package Main;
 
+import java.util.List;
+
 public class ConjuntoDeSoldados extends ConjuntoDeUnidades {
+
     public void agregar(Unidad unidad) {
         unidad.agregarseA(this);
     }
@@ -11,7 +14,7 @@ public class ConjuntoDeSoldados extends ConjuntoDeUnidades {
 
     public void obtenerSoldadosDelConjunto(ConjuntoDeUnidades otroConjunto) {
         // TODO hacer con iterador
-        for (Unidad unidad: otroConjunto.unidades()) {
+        for (Unidad unidad : otroConjunto.unidades()) {
             this.agregar(unidad);
         }
     }

@@ -7,9 +7,7 @@ public class ConjuntoDeUnidades {
     // TODO agregar iterador para tocar desde fuera
     protected List<Unidad> unidades;
 
-    public ConjuntoDeUnidades(){
-        this.unidades = new ArrayList<Unidad>();
-    }
+    public ConjuntoDeUnidades(){ this.unidades = new ArrayList<Unidad>(); }
 
     public void agregar(Unidad unidad) {
         this.unidades().add(unidad);
