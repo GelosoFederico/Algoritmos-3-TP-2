@@ -9,11 +9,24 @@ public class  MovimientoEnBatallon implements Movible {
 
     @Override
     public void avanzar(Unidad noSirve, Direccion direccion) {
-        for (Unidad unidad : batallon.unidades()) {
-            try {
-                Tablero.getInstance().moverUnidadEnDireccion(unidad, direccion);
+        ConjuntoDeSoldados soldadosPorMoverse = new ConjuntoDeSoldados();
+        soldadosPorMoverse.obtenerSoldadosDelConjunto(batallon);
+        ConjuntoDeSoldados siguientesSoldadosPorMoverse = new ConjuntoDeSoldados();
+        for(int i=0; i<3; i++){
+            for (Unidad unidad : soldadosPorMoverse.unidades()) {
+                try {
+                    Tablero.getInstance().moverUnidadEnDireccion(unidad, direccion);
+                    // No los removemos aca porque tira excepcion de concurrencia
+                }
+                catch(CasilleroOcupadoException e){
+                    siguientesSoldadosPorMoverse.agregar(unidad);
+                }
             }
-            catch(CasilleroOcupadoException e){}
+            soldadosPorMoverse = siguientesSoldadosPorMoverse;
+            siguientesSoldadosPorMoverse = new ConjuntoDeSoldados();
+        }
+        if(soldadosPorMoverse.cantidad() == 3) {
+            throw new CasilleroOcupadoException();
         }
     }
 }

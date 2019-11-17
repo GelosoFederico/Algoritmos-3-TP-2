@@ -186,4 +186,19 @@ public class UnidadIntegralTest {
         // Assert
         assertEquals(unidad2.vida(),vidaInicial+15);
     }
+
+    @Test (expected = CasilleroFueraDeTableroException.class)
+    public void unidadSeMueveFueraDeTableroYTiraUnaExcepcion() {
+        // Arrange
+        Jugador jugador1 = new Jugador();
+        jugador1.nombre("Arkantos");
+        Juego.getInstance().agregarJugador(jugador1);
+
+        Unidad unidad1 = new Soldado();
+
+        jugador1.colocarUnidadEn(unidad1,new Posicion(0,0));
+
+        // Act & Assert
+        unidad1.avanzar(new Norte());   // (4,5)
+    }
 }

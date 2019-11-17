@@ -322,6 +322,40 @@ public class SoldadoTest {
         assertEquals(soldado02.posicion().posicionEnY() ,1);
         assertEquals(soldado03.posicion().posicionEnX() ,2);
         assertEquals(soldado03.posicion().posicionEnY() ,2);
+    }
 
+    @Test
+    public void test12Creo3SoldadosContiguosEnPaloDescendenteYAlAvanzarSoldado01AlNorteLos3SoldadosSeMueven(){
+        //Arrange
+        Posicion posicion01 = new Posicion(1,0);        // x
+        Posicion posicion02 = new Posicion(2,0);        // x     |
+        Posicion posicion03 = new Posicion(3,0);        // x    \/
+        Direccion unaDireccion = new Norte();
+        String jugador1 = "mongoles";
+        Soldado soldado01 = new Soldado();
+        Soldado soldado02 = new Soldado();
+        Soldado soldado03 = new Soldado();
+        soldado01.setJugador(jugador1);
+        soldado02.setJugador(jugador1);
+        soldado03.setJugador(jugador1);
+        Jugador mockedJugador = mock(Jugador.class);
+        when(mockedJugador.numero()).thenReturn(1);
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(soldado01,posicion01,mockedJugador);
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(soldado02,posicion02,mockedJugador);
+        Tablero.getInstance()
+                .colocarUnidadEnPosicionDeJugador(soldado03,posicion03,mockedJugador);
+
+        //Act
+        soldado01.avanzar(unaDireccion);
+
+        //Assert
+        assertEquals(soldado01.posicion().posicionEnX() ,0);
+        assertEquals(soldado01.posicion().posicionEnY() ,0);
+        assertEquals(soldado02.posicion().posicionEnX() ,1);
+        assertEquals(soldado02.posicion().posicionEnY() ,0);
+        assertEquals(soldado03.posicion().posicionEnX() ,2);
+        assertEquals(soldado03.posicion().posicionEnY() ,0);
     }
 }

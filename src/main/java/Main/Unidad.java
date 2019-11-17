@@ -46,15 +46,4 @@ public abstract class Unidad {
 
     public void agregarseA(ConjuntoDeSoldados conjuntoDeSoldados) {
     }
-
-    public ConjuntoDeSoldados buscarSoldadosAliadosCercanos(Soldado soldado) {
-        ConjuntoDeUnidades unidadesContiguas = new ConjuntoDeUnidades();
-        unidadesContiguas = Tablero.getInstance()
-                .obtenerUnidadesAlrededorDe(soldado, 1, unidadesContiguas);
-        ConjuntoDeUnidades unidadesAliadas = new ConjuntoDeUnidades();
-        unidadesAliadas = unidadesContiguas.obtenerUnidadesDeJugador(soldado.getJugador());
-        ConjuntoDeSoldados soldadosCercanosAliados = new ConjuntoDeSoldados();
-        soldadosCercanosAliados.obtenerSoldadosDelConjunto(unidadesAliadas);
-        return soldadosCercanosAliados;
-    }
 }

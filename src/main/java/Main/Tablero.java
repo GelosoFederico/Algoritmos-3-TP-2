@@ -59,8 +59,13 @@ public class Tablero {
     }
 
     public Casillero obtenerCasilleroEnPosicion(Posicion posicion) {
-
-        return casilleros[posicion.posicionEnX()][posicion.posicionEnY()];
+        Casillero casillero;
+        try{
+            casillero = casilleros[posicion.posicionEnX()][posicion.posicionEnY()];
+        } catch(IndexOutOfBoundsException e) {
+            throw new CasilleroFueraDeTableroException();
+        }
+        return casillero;
     }
 
     public int calcularDistanciaEntre(Unidad unidad1, Unidad unidad2) {

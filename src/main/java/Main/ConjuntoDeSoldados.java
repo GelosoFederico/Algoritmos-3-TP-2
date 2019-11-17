@@ -18,4 +18,13 @@ public class ConjuntoDeSoldados extends ConjuntoDeUnidades {
             this.agregar(unidad);
         }
     }
+
+    public ConjuntoDeSoldados buscarSoldadosAliadosContiguos(Unidad unidad) {
+        ConjuntoDeUnidades unidadesContiguas = new ConjuntoDeSoldados();
+        unidadesContiguas = Tablero.getInstance().obtenerUnidadesAlrededorDe(unidad, 1, unidadesContiguas);
+        ConjuntoDeUnidades soldadosAliados = unidadesContiguas.obtenerUnidadesDeJugador(unidad.getJugador());
+        ConjuntoDeSoldados soldadosAliadosContiguos = new ConjuntoDeSoldados();
+        soldadosAliadosContiguos.obtenerSoldadosDelConjunto(soldadosAliados);
+        return soldadosAliadosContiguos;
+    }
 }
