@@ -24,6 +24,9 @@ public abstract class Unidad {
     public void setJugador(String unJugador) { this.jugador = unJugador; }
     public int vida(){ return this.vida; }
     public Posicion posicion() { return Tablero.getInstance().obtenerPosicionDeUnidad(this);}
+    public void setearEstrategiaDeAtaque(AtaqueEstrategia ataqueEstrategia) {
+        this.ataqueEstrategia = ataqueEstrategia;
+    }
 
     public void agregarseA(ConjuntoDeSoldados conjuntoDeSoldados){}
 }
