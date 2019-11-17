@@ -52,8 +52,4 @@ public class Juego {
         INSTANCE = new Juego();
         Jugador.reiniciar();
     }
-
-    //public Tablero tablero(){
-    //    return this._tablero;
-    //}
 }

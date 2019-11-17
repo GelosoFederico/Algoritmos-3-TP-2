@@ -17,14 +17,7 @@ public class Tablero {
     public void reiniciar() {
         INSTANCE = new Tablero();
     }
-    // TODO: sacar esto
-    public Casillero obtenerCasilleroParaJugador(Posicion posicion, Jugador jugador) {
-        Casillero casilleroBuscado = this.obtenerCasilleroEnPosicion(posicion);
 
-        if (casilleroBuscado.deJugador() != jugador.numero())
-            throw new CasilleroEsDeEnemigoException();
-        return casilleroBuscado;
-    }
     public Posicion obtenerPosicionDeUnidad(Unidad unidad) {
         // TODO: Refactorizar maybe
         for(int i = 0; i < maximaCantidadDeCasilleros ; i++ ){

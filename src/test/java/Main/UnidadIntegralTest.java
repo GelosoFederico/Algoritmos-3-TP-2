@@ -18,10 +18,6 @@ public class UnidadIntegralTest {
         jugador1.nombre("Arkantos");
         Juego.getInstance().agregarJugador(jugador1);
 
-        Jugador jugador2 = new Jugador();
-        jugador2.nombre("Gargarensis");
-        Juego.getInstance().agregarJugador(jugador2);
-
         Unidad unidad1 = new Soldado();
 
         jugador1.colocarUnidadEn(unidad1,new Posicion(5,5));
@@ -57,11 +53,14 @@ public class UnidadIntegralTest {
         Unidad unidad1 = new Soldado();
         Unidad unidad2 = new Soldado();
 
-        jugador1.colocarUnidadEn(unidad1,new Posicion(5,5));
-        jugador1.colocarUnidadEn(unidad2,new Posicion(6,5));
+        unidad1.setJugador("Arkantos");
+        unidad2.setJugador("Gargarensis");
+
+        jugador1.colocarUnidadEn(unidad1,new Posicion(6,5));
+        jugador1.colocarUnidadEn(unidad2,new Posicion(5,5));
 
         // Act & Assert
-        unidad2.avanzar(new Norte());
+        unidad1.avanzar(new Norte());
     }
 
     @Test (expected = UnidadNoPuedeMoverseException.class)

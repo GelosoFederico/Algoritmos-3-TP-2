@@ -1,12 +1,23 @@
 package Main;
 
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import static org.junit.Assert.*;
+
 public class ConjuntoDeUnidadesTest {
+
+    @Test
+    public void testCreoUnCOnjuntoDeUnidadesySuTamanioEs0(){
+        //Arrange
+        ConjuntoDeUnidades conjuntoVacio = new ConjuntoDeUnidades();
+
+        //Act &Assert
+        assertEquals(conjuntoVacio.cantidad(), 0);
+    }
+
+
     @Test
     public void testAgregoUnaUnidadYEsta(){
         // Arrange
@@ -40,5 +51,25 @@ public class ConjuntoDeUnidadesTest {
         assertTrue(conjunto.seEncuentra(jinete));
         assertTrue(conjunto.seEncuentra(catapulta));
         assertTrue(conjunto.seEncuentra(curandero));
+    }
+
+    @Test
+    public void testagregoUnaUnidadDeCadaJugadorYCuandoBuscoLaUNidadDelJugadorLaOtraNoAparece(){
+        //Arrange
+        ConjuntoDeUnidades conjunto = new ConjuntoDeUnidades();
+        String jugador1 = "mario";
+        String jugador2 = "elVerde";
+        Unidad soldado1 = new Soldado();
+        Unidad soldado2 = new Soldado();
+        soldado1.setJugador(jugador1);
+        soldado2.setJugador(jugador2);
+        conjunto.agregar(soldado2);
+
+        //Act
+        ConjuntoDeUnidades conjuntoNuevo = conjunto.obtenerUnidadesDeJugador(jugador1);
+
+        //Assert
+        assertFalse(conjuntoNuevo.seEncuentra(soldado2));
+        assertEquals(conjuntoNuevo.cantidad(), 0);
     }
 }
