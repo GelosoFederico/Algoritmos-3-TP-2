@@ -10,6 +10,7 @@ public class UnidadIntegralTest {
     public void reiniciarJuego()
     {
         Juego.getInstance().reiniciar();
+        Tablero.getInstance().reiniciar();
     }
     @Test
     public void unidadMovibleSoldadoSePuedeMoverEnTodasLasDirecciones() {
@@ -186,5 +187,87 @@ public class UnidadIntegralTest {
 
         // Assert
         assertEquals(unidad2.vida(),vidaInicial+15);
+    }
+
+    @Test (expected = UnidadFueraDeRangoException.class)
+    public void jineteAtacaASoldadoADistanciaMediaTeniendoUnoCercanoYTiraExcepcion() {
+        // Arrange
+        Jugador jugador1 = new Jugador();
+        jugador1.nombre("Arkantos");
+        Juego.getInstance().agregarJugador(jugador1);
+
+        Jugador jugador2 = new Jugador();
+        jugador2.nombre("Gargarensis");
+        Juego.getInstance().agregarJugador(jugador2);
+
+        Unidad unidad1 = new Jinete();
+        Unidad unidad2 = new Soldado();
+        Unidad unidad3 = new Soldado();
+
+        jugador1.colocarUnidadEn(unidad1,new Posicion(9,9));
+        jugador2.colocarUnidadEn(unidad2,new Posicion(10,10));
+        jugador2.colocarUnidadEn(unidad3,new Posicion(12,12));
+
+        // Act & Assert
+        unidad1.atacar(unidad3);
+    }
+
+    @Test
+    public void jineteAtacaASoldadoADistanciaMediaTeniendoEnemigoUnoCercanoYUnoAliadoYAtaca() {
+        // Arrange
+        Jugador jugador1 = new Jugador();
+        jugador1.nombre("Arkantos");
+        Juego.getInstance().agregarJugador(jugador1);
+
+        Jugador jugador2 = new Jugador();
+        jugador2.nombre("Gargarensis");
+        Juego.getInstance().agregarJugador(jugador2);
+
+        Unidad unidad1 = new Jinete();
+        Unidad unidad2 = new Soldado();
+        Unidad unidad3 = new Soldado();
+        Unidad unidad4 = new Soldado();
+
+        jugador1.colocarUnidadEn(unidad1,new Posicion(9,9));
+        jugador2.colocarUnidadEn(unidad2,new Posicion(10,10));
+        jugador2.colocarUnidadEn(unidad3,new Posicion(12,12));
+        jugador1.colocarUnidadEn(unidad4,new Posicion(8,9));
+
+        int vidaInicial = unidad2.vida();
+
+        // Act
+        unidad1.atacar(unidad3);
+
+        // Assert
+        assertEquals(unidad3.vida(),vidaInicial-15);
+
+    }
+
+    @Test (expected = UnidadFueraDeRangoException.class)
+    public void jineteAtacaASoldadoADistanciaCercanaTeniendoEnemigoUnoCercanoYUnoAliadoYTiraExcepcion() {
+        // Arrange
+        Jugador jugador1 = new Jugador();
+        jugador1.nombre("Arkantos");
+        Juego.getInstance().agregarJugador(jugador1);
+
+        Jugador jugador2 = new Jugador();
+        jugador2.nombre("Gargarensis");
+        Juego.getInstance().agregarJugador(jugador2);
+
+        Unidad unidad1 = new Jinete();
+        Unidad unidad2 = new Soldado();
+        Unidad unidad3 = new Soldado();
+        Unidad unidad4 = new Soldado();
+
+        jugador1.colocarUnidadEn(unidad1,new Posicion(9,9));
+        jugador2.colocarUnidadEn(unidad2,new Posicion(10,10));
+        jugador2.colocarUnidadEn(unidad3,new Posicion(12,12));
+        jugador1.colocarUnidadEn(unidad4,new Posicion(8,9));
+
+        int vidaInicial = unidad2.vida();
+
+        // Act
+        unidad1.atacar(unidad2);
+
     }
 }
