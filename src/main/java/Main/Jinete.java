@@ -26,12 +26,12 @@ public class Jinete extends Unidad {
         soldadosCercanosAmigos.obtenerSoldadosDelConjunto(unidadesCercanas.obtenerUnidadesDeJugador(this.getJugador()));
 
         if( (soldadosCercanosAmigos.cantidad() > 0) || (unidadesCercanasEnemigas.cantidad() == 0)) {
-            ataqueEstrategia = new AtaqueJineteArco();
+            this.setearEstrategiaDeAtaque(new AtaqueJineteArco());
         }else {
-            ataqueEstrategia = new AtaqueJineteEspada();
+            this.setearEstrategiaDeAtaque(new AtaqueJineteEspada());
         }
         // TODO tirar mejores excepciones
-        ataqueEstrategia.atacar(this, unidadEnemiga);
+        this.ataqueEstrategia.atacar(this, unidadEnemiga);
     }
 
 }
