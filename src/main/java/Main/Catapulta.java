@@ -6,7 +6,7 @@ public class Catapulta extends Unidad{
         vida = 50;
         coste = 5;
         ataqueEstrategia = new AtaqueCatapulta();
-        movimientoStrategy = new MovimientoEstatico();
+        movimientoEstrategia = new MovimientoEstatico();
     }
 
     public Catapulta(int vidaInicial) {

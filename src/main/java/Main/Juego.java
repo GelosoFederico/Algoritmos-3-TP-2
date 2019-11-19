@@ -20,21 +20,22 @@ public class Juego {
     public List<Jugador> jugadores() {
         return this._jugadores;
     }
+
     public void agregarJugador(Jugador jugador) {
-        if(this.jugadores().size() == 2) {
+        if (this.jugadores().size() == 2) {
             throw new JuegoNoPuedeTenerMasDe2JugadoresException();
         }
         this.jugadores().add(jugador);
     }
 
-    public void murioUnidad(Unidad unidad){
+    public void murioUnidad(Unidad unidad) {
         this.encontrarJugadorPorNombre(unidad.getJugador()).pierdeUnidad(unidad);
     }
 
     private Jugador encontrarJugadorPorNombre(String jugadorNombre) {
         //TODO usar foreach
-        for (int i = 0; i < this.jugadores().size() ; i++){
-            if( this.jugadores().get(i).nombre().equals(jugadorNombre)) {
+        for (int i = 0; i < this.jugadores().size(); i++) {
+            if (this.jugadores().get(i).nombre().equals(jugadorNombre)) {
                 return this.jugadores().get(i);
             }
         }
@@ -51,8 +52,4 @@ public class Juego {
         INSTANCE = new Juego();
         Jugador.reiniciar();
     }
-
-    //public Tablero tablero(){
-    //    return this._tablero;
-    //}
 }

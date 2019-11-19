@@ -5,16 +5,24 @@ public abstract class Unidad {
     protected String jugador;
     protected int coste;
     protected AtaqueEstrategia ataqueEstrategia;
-    protected Movible movimientoStrategy = new MovimientoRegular();
+    protected Movible movimientoEstrategia = new MovimientoRegular();
 
     public void atacar(Unidad unidadVictima) {
-        ataqueEstrategia.atacar(this,unidadVictima);
-    };
-    public void avanzar(Direccion direccion) { movimientoStrategy.avanzar(this ,direccion); }
-    public int coste() { return this.coste; }
+        ataqueEstrategia.atacar(this, unidadVictima);
+    }
+
+    ;
+
+    public void avanzar(Direccion direccion) {
+        movimientoEstrategia.avanzar(this, direccion);
+    }
+
+    public int coste() {
+        return this.coste;
+    }
 
     public void recibirDanio(int danio) {
-        if(vida <= 0) {
+        if (vida <= 0) {
             throw new UnidadEstaMuertaException();
         }
         vida = vida - danio;

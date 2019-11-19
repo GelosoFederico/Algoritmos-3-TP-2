@@ -18,7 +18,8 @@ public class Jinete extends Unidad {
         // ataca con arco y flecha
         // Obtengo los conjuntos necesarios
         ConjuntoDeUnidades unidadesCercanas = new ConjuntoDeUnidades();
-        unidadesCercanas = Tablero.getInstance().obtenerUnidadesAlrededorDe(this, 2, unidadesCercanas);
+        unidadesCercanas = Tablero.getInstance()
+                .obtenerUnidadesAlrededorDe(this, 2, unidadesCercanas);
 
         ConjuntoDeUnidades unidadesCercanasEnemigas = unidadesCercanas.obtenerUnidadesDeJugador(unidadEnemiga.getJugador());
         ConjuntoDeSoldados soldadosCercanosAmigos = new ConjuntoDeSoldados();
