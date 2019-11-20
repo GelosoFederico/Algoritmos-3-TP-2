@@ -10,9 +10,9 @@ public class ConjuntoDeUnidades {
     public ConjuntoDeUnidades(){ this.unidades = new ArrayList<Unidad>(); }
 
     public void agregar(Unidad unidad) {
-        this.unidades().add(unidad);
+        unidad.agregarseA(this);
     }
-
+    public void agregarUnidad(Unidad unidad) { this.unidades().add(unidad); }
     public boolean seEncuentra(Unidad unidad) {
         return this.unidades().contains(unidad);
     }

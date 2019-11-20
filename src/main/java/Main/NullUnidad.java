@@ -13,6 +13,7 @@ public class NullUnidad implements Unidad {
     public Posicion posicion(){return new Posicion(0,0);};
     public void setearEstrategiaDeAtaque(AtaqueEstrategia ataqueEstrategia){};
     public void agregarseA(ConjuntoDeSoldados conjuntoDeSoldados) {};
+    public void agregarseA(ConjuntoDeUnidades conjuntoDeUnidades) {};
     public Unidad ocuparCasillero(Unidad unidad){
         return unidad;
     };

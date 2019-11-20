@@ -35,6 +35,9 @@ public class RealUnidad implements Unidad {
     }
 
     public void agregarseA(ConjuntoDeSoldados conjuntoDeSoldados){};
+    public void agregarseA(ConjuntoDeUnidades conjuntoDeUnidades) {
+        conjuntoDeUnidades.agregarUnidad(this);
+    }
     public Unidad ocuparCasillero(Unidad unidad){
         throw new CasilleroOcupadoException();
     };

@@ -12,5 +12,6 @@ public interface Unidad {
     Posicion posicion();
     void setearEstrategiaDeAtaque(AtaqueEstrategia ataqueEstrategia);
     void agregarseA(ConjuntoDeSoldados conjuntoDeSoldados);
+    void agregarseA(ConjuntoDeUnidades conjuntoDeUnidades);
     Unidad ocuparCasillero(Unidad unidad);
 }
