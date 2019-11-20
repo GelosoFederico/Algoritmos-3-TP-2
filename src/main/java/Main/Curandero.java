@@ -1,6 +1,6 @@
 package Main;
 
-public class Curandero extends Unidad {
+public class Curandero extends RealUnidad {
 
     public Curandero(){
         vida = 75;

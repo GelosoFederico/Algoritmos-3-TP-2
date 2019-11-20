@@ -1,6 +1,6 @@
 package Main;
 
-public class Jinete extends Unidad {
+public class Jinete extends RealUnidad {
 
     public Jinete() {
         vida = 100;
