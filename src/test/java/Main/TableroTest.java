@@ -33,10 +33,10 @@ public class TableroTest {
     public void testColocarUnidadEnCasilleroOcupadoTiraExcepcion() {
         Posicion posicion = new Posicion(1,2); // Area del jugador 1
         Jugador mJugador = mock(Jugador.class);
-        Soldado mSoldado = mock(Soldado.class);
+        Soldado soldado = new Soldado();
         when(mJugador.numero()).thenReturn(1);
-        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mSoldado,posicion,mJugador);
-        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mSoldado,posicion,mJugador);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldado,posicion,mJugador);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldado,posicion,mJugador);
     }
 
     @Test(expected = CasilleroEsDeEnemigoException.class)

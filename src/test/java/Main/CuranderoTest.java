@@ -139,14 +139,14 @@ public class CuranderoTest {
         Posicion posicionAlNorte = new Posicion(1,2);
         Direccion unaDireccion = new Norte();
         Curandero unCurandero = new Curandero();
-        Catapulta mockedCatapulta = mock(Catapulta.class);
+        Catapulta catapulta = new Catapulta();
 
         Jugador mockedJugador = mock(Jugador.class);
         when(mockedJugador.numero()).thenReturn(1);
         Tablero.getInstance()
                 .colocarUnidadEnPosicionDeJugador(unCurandero,unaPosicion,mockedJugador);
         Tablero.getInstance()
-                .colocarUnidadEnPosicionDeJugador(mockedCatapulta,posicionAlNorte,mockedJugador);
+                .colocarUnidadEnPosicionDeJugador(catapulta,posicionAlNorte,mockedJugador);
 
         //Act & Assert
         unCurandero.avanzar(unaDireccion);
