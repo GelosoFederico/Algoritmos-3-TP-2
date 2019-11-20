@@ -78,12 +78,9 @@ public class Tablero {
         // TODO agregar iterador para que este codigo no se repita
         for(int i = 0; i < maximaCantidadDeCasilleros ; i++ ){
             for(int j = 0; j < maximaCantidadDeCasilleros ; j++ ) {
-                // TODO esto se debe resolver con la unidad nula
-                if (this.casilleros[i][j].unidad() != null) {
-                    int distancia = this.calcularDistanciaEntre(unidadCentro,this.casilleros[i][j].unidad());
-                    if( (distancia <= distanciaMaxima) && (distancia > 0) ) {
-                        conjunto.agregar(this.casilleros[i][j].unidad());
-                    }
+                int distancia = this.calcularDistanciaEntre(unidadCentro,this.casilleros[i][j].unidad());
+                if( (distancia <= distanciaMaxima) && (distancia > 0) ) {
+                    conjunto.agregar(this.casilleros[i][j].unidad());
                 }
             }
         }
