@@ -6,16 +6,22 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 public class JuegoUnitTest {
     @Before
     @After
-    public void reiniciarJuego()
-    {
-        Juego.getInstance().reiniciar();
+    public void reiniciarJuegoYTablero() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+        Field instance = Juego.class.getDeclaredField("INSTANCE");
+        instance.setAccessible(true);
+        instance.set(null, null);
+        Field instance2 = Tablero.class.getDeclaredField("INSTANCE");
+        instance2.setAccessible(true);
+        instance2.set(null, null);
     }
+
 
     @Test
     public void creoJuegoAgregoJugadoresYLosTiene()
@@ -35,6 +41,7 @@ public class JuegoUnitTest {
         assertEquals(jugadores, Juego.getInstance().jugadores());
     }
 
+    /*
     @Test
     public void reinicioJuegoYNoTieneLosJugadores()
     {
@@ -51,6 +58,7 @@ public class JuegoUnitTest {
         // Assert
         assertEquals(Juego.getInstance().jugadores().size(), 0);
     }
+    */
 
     @Test(expected = JuegoNoPuedeTenerMasDe2JugadoresException.class)
     public void creoJuegoAgrego3JugadoresYTiraExcepcionPorSerMasDe2()

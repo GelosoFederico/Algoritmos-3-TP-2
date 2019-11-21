@@ -3,15 +3,22 @@ package Main;
 import org.junit.After;
 import org.junit.Test;
 
+import java.lang.reflect.Field;
+
 import static org.junit.Assert.assertEquals;
 
 public class UnidadIntegralTest {
     @After
-    public void reiniciarJuego()
-    {
-        Juego.getInstance().reiniciar();
-        Tablero.getInstance().reiniciar();
+    public void reiniciarTableroYJuego() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+        Field instance = Tablero.class.getDeclaredField("INSTANCE");
+        instance.setAccessible(true);
+        instance.set(null, null);
+        Field instance2 = Juego.class.getDeclaredField("INSTANCE");
+        instance2.setAccessible(true);
+        instance2.set(null, null);
+        Jugador.reiniciar();
     }
+
     @Test
     public void unidadMovibleSoldadoSePuedeMoverEnTodasLasDirecciones() {
         // Arrange
@@ -133,7 +140,6 @@ public class UnidadIntegralTest {
     @Test
     public void CatapultaAtacaASoldadoDeDistintoEquipoYPierdeVida () {
         // Arrange
-        Juego.getInstance().reiniciar();
         Jugador jugador1 = new Jugador();
         jugador1.nombre("Arkantos");
         Juego.getInstance().agregarJugador(jugador1);
