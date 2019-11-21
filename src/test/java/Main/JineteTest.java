@@ -131,14 +131,14 @@ public class JineteTest {
         Posicion posicionAlNorte = new Posicion(1,2);
         Direccion unaDireccion = new Norte();
         Jinete unJinete = new Jinete();
-        Catapulta mockedCatapulta = mock(Catapulta.class);
+        Catapulta catapulta = new Catapulta();
 
         Jugador mockedJugador = mock(Jugador.class);
         when(mockedJugador.numero()).thenReturn(1);
         Tablero.getInstance()
                 .colocarUnidadEnPosicionDeJugador(unJinete,unaPosicion,mockedJugador);
         Tablero.getInstance()
-                .colocarUnidadEnPosicionDeJugador(mockedCatapulta,posicionAlNorte,mockedJugador);
+                .colocarUnidadEnPosicionDeJugador(catapulta,posicionAlNorte,mockedJugador);
 
         //Act & Assert
         unJinete.avanzar(unaDireccion);

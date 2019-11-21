@@ -2,7 +2,7 @@ package Main;
 
 import java.util.Iterator;
 
-public class Soldado extends Unidad {
+public class Soldado extends RealUnidad {
 
     public Soldado() {
         vida = 100;

@@ -1,40 +1,17 @@
 package Main;
 
-public abstract class Unidad {
-    protected int vida;
-    protected String jugador;
-    protected int coste;
-    protected AtaqueEstrategia ataqueEstrategia;
-    protected Movible movimientoEstrategia = new MovimientoRegular();
+public interface Unidad {
+    void atacar(Unidad unidadVictima);
+    void avanzar(Direccion direccion);
+    int coste();
+    void recibirDanio(int danio);
 
-    public void atacar(Unidad unidadVictima) {
-        ataqueEstrategia.atacar(this, unidadVictima);
-    }
-
-    ;
-
-    public void avanzar(Direccion direccion) {
-        movimientoEstrategia.avanzar(this, direccion);
-    }
-
-    public int coste() {
-        return this.coste;
-    }
-
-    public void recibirDanio(int danio) {
-        if (vida <= 0) {
-            throw new UnidadEstaMuertaException();
-        }
-        vida = vida - danio;
-    }
-
-    public String getJugador() { return this.jugador; }
-    public void setJugador(String unJugador) { this.jugador = unJugador; }
-    public int vida(){ return this.vida; }
-    public Posicion posicion() { return Tablero.getInstance().obtenerPosicionDeUnidad(this);}
-    public void setearEstrategiaDeAtaque(AtaqueEstrategia ataqueEstrategia) {
-        this.ataqueEstrategia = ataqueEstrategia;
-    }
-
-    public void agregarseA(ConjuntoDeSoldados conjuntoDeSoldados){}
+    String getJugador();
+    void setJugador(String unJugador);
+    int vida();
+    Posicion posicion();
+    void setearEstrategiaDeAtaque(AtaqueEstrategia ataqueEstrategia);
+    void agregarseA(ConjuntoDeSoldados conjuntoDeSoldados);
+    void agregarseA(ConjuntoDeUnidades conjuntoDeUnidades);
+    Unidad ocuparCasillero(Unidad unidad);
 }

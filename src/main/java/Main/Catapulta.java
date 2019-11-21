@@ -1,6 +1,6 @@
 package Main;
 
-public class Catapulta extends Unidad{
+public class Catapulta extends RealUnidad{
 
     public Catapulta() {
         vida = 50;

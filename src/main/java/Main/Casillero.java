@@ -2,17 +2,13 @@ package Main;
 
 public class Casillero {
     private Posicion posicion;
-    private OcupacionState ocupacion;
     private int deJugador;
+    private Unidad unidad;
 
-
-    Casillero() {
-    }
     Casillero(Posicion posicionAsignada, int numeroDeJugador) {
         posicion = posicionAsignada;
         deJugador = numeroDeJugador;
-        ocupacion = new Libre();
-
+        unidad = new NullUnidad();
     }
 
     public Posicion posicion() {
@@ -20,12 +16,11 @@ public class Casillero {
     }
 
     public void ocupar(Unidad unaUnidad) {
-        ocupacion = this.ocupacion.ocupar(unaUnidad);
+        this.unidad = this.unidad.ocuparCasillero(unaUnidad);
     }
 
     public void liberar() {
-        ocupacion = this.ocupacion.liberar(); // TODO: esto creo que vuela
-
+        this.unidad = new NullUnidad();
     }
 
     public int deJugador() {
@@ -48,7 +43,7 @@ public class Casillero {
     public void guardarUnidad(Unidad unidad) { this.ocupar(unidad); }
 
     public Unidad unidad() {
-        return this.ocupacion.unidad();
+        return this.unidad;
     }
 
     public int calcularDistanciaA(Casillero casillero) {
