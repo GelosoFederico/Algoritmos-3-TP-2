@@ -1,15 +1,23 @@
 package Main;
 
-import org.junit.Rule;
+import Main.Direccion.Direccion;
+import Main.Direccion.Norte;
+import Main.Direccion.Posicion;
+import Main.Excepciones.CasilleroOcupadoException;
+import Main.Excepciones.ProhibidoCurarUnidadEnemigaException;
+import Main.Excepciones.UnidadFueraDeRangoException;
+import Main.Juego.Jugador;
+import Main.Tablero.Tablero;
+import Main.Unidad.Catapulta;
+import Main.Unidad.Curandero;
+import Main.Unidad.Soldado;
+import Main.Unidad.Unidad;
 import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.rules.ExpectedException;
-import org.mockito.Mock;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 
 public class CuranderoTest {
     @Before // TODO: esto en algun momento se corrije
