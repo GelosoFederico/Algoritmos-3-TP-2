@@ -85,4 +85,36 @@ public class JuegoUnitTest {
         // Assert
         verify(jugadorMock1,times(1)).pierdeUnidad(jinete1Mock);
     }
+
+    @Test
+    public void alComienzoElTurnoEsDelJugadorQueSeCreoPrimero() {
+        // Arrange
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.nombre()).thenReturn("Mabel");
+        Jugador mJugador2 = mock(Jugador.class);
+        when(mJugador2.nombre()).thenReturn("Horacio");
+
+        Juego.getInstance().agregarJugador(mJugador1);
+        Juego.getInstance().agregarJugador(mJugador2);
+
+        // Act and assert
+        assertEquals("Mabel",Juego.getInstance().getJugadorDeTurno().nombre());
+    }
+
+    @Test
+    public void despuesDelTurnoDeUnJugadorLeTocaAlOtroJugador() {
+        // Arrange
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.nombre()).thenReturn("Mabel");
+        Jugador mJugador2 = mock(Jugador.class);
+        when(mJugador2.nombre()).thenReturn("Horacio");
+
+        Juego.getInstance().agregarJugador(mJugador1);
+        Juego.getInstance().agregarJugador(mJugador2);
+
+        Juego.getInstance().ejecutarUnTurno();
+
+        // Act and assert
+        assertEquals("Horacio",Juego.getInstance().getJugadorDeTurno().nombre());
+    }
 }
