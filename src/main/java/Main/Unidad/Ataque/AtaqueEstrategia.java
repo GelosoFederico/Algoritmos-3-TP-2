@@ -5,8 +5,6 @@ import Main.Unidad.Unidad;
 public abstract class AtaqueEstrategia {
     protected int danio;
 
-    public AtaqueEstrategia(){}
-
     public AtaqueEstrategia(int danio) {
         this.danio = danio;
     }
