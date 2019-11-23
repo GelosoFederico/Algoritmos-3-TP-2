@@ -18,7 +18,7 @@ public class  MovimientoEnBatallon implements Movible {
         soldadosPorMoverse.obtenerSoldadosDelConjunto(batallon);
         ConjuntoDeSoldados siguientesSoldadosPorMoverse = new ConjuntoDeSoldados();
         for(int i=0; i<3; i++){
-            for (Unidad unidad : soldadosPorMoverse.unidades()) {
+            for (Unidad unidad : soldadosPorMoverse) {
                 try {
                     Tablero.getInstance().moverUnidadEnDireccion(unidad, direccion);
                     // No los removemos aca porque tira excepcion de concurrencia

@@ -39,7 +39,7 @@ public class Soldado extends RealUnidad {
         //si hay un soldado contiguo, busco los contiguos a este otro
         // y veo si puedo formar un batallon
         if (soldadosContiguosAliados.cantidad() == 1) {
-            Iterator<Unidad> iterador = soldadosContiguosAliados.unidades().iterator();
+            Iterator<Unidad> iterador = soldadosContiguosAliados.iterator();
             soldadoCentro = (Soldado) iterador.next();
             soldadosContiguosAliados = new ConjuntoDeSoldados();
             soldadosContiguosAliados = soldadosContiguosAliados.buscarSoldadosAliadosContiguos(soldadoCentro);
@@ -48,10 +48,15 @@ public class Soldado extends RealUnidad {
         // tengo 2 o mas soldados contiguos para formar un batallon
         if (soldadosContiguosAliados.cantidad() >= 2) {
             int i=0;
+            Iterator<Unidad> iterador = soldadosContiguosAliados.iterator();
             while( (soldadosContiguosAliados.cantidad()) > 2){
                 // El que lo llamo tiene que estar en el batallon
-                if(soldadosContiguosAliados.unidades().get(i) != this ) {
-                    soldadosContiguosAliados.unidades().remove(i);
+                if(!iterador.hasNext()) {
+                    iterador = soldadosContiguosAliados.iterator();
+                }
+                i++;
+                if(iterador.next() != this ) {
+                    iterador.remove();
                 }
             }
             soldadosContiguosAliados.agregar(soldadoCentro);
