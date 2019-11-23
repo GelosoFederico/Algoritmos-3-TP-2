@@ -1,6 +1,7 @@
 package Main.Unidad;
 
 import Main.Direccion.Direccion;
+import Main.Unidad.Ataque.AtaqueSoldado;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeSoldados;
 
 import java.util.Iterator;

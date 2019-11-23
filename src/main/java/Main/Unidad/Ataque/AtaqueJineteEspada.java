@@ -1,8 +1,9 @@
-package Main.Unidad;
+package Main.Unidad.Ataque;
 
 import Main.Excepciones.ProhibidoAtacarUnidadAliadaException;
 import Main.Excepciones.UnidadFueraDeRangoException;
 import Main.Tablero.Tablero;
+import Main.Unidad.Unidad;
 
 public class AtaqueJineteEspada implements AtaqueJinete {
     public void atacar(Unidad atacante, Unidad victima) {

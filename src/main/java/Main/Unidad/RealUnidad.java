@@ -5,6 +5,7 @@ import Main.Direccion.Posicion;
 import Main.Excepciones.CasilleroOcupadoException;
 import Main.Excepciones.UnidadEstaMuertaException;
 import Main.Tablero.Tablero;
+import Main.Unidad.Ataque.AtaqueEstrategia;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeSoldados;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeUnidades;
 

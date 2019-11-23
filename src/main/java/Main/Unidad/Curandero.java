@@ -3,6 +3,7 @@ package Main.Unidad;
 import Main.Excepciones.ProhibidoCurarUnidadEnemigaException;
 import Main.Excepciones.UnidadFueraDeRangoException;
 import Main.Tablero.Tablero;
+import Main.Unidad.Ataque.AtaqueCurandero;
 
 public class Curandero extends RealUnidad {
 

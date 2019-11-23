@@ -1,6 +1,8 @@
 package Main.Unidad;
 
 import Main.Tablero.Tablero;
+import Main.Unidad.Ataque.AtaqueJineteArco;
+import Main.Unidad.Ataque.AtaqueJineteEspada;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeSoldados;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeUnidades;
 
