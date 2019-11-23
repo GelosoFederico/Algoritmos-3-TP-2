@@ -2,8 +2,7 @@ package Main.Unidad;
 
 import Main.Direccion.Direccion;
 import Main.Direccion.Posicion;
-import Main.Excepciones.CasilleroOcupadoException;
-import Main.Excepciones.UnidadEstaMuertaException;
+import Main.Excepciones.*;
 import Main.Tablero.Tablero;
 import Main.Unidad.Ataque.AtaqueEstrategia;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeSoldados;
@@ -17,6 +16,9 @@ public class RealUnidad implements Unidad {
     protected Movible movimientoEstrategia = new MovimientoRegular();
 
     public void atacar(Unidad unidadVictima) {
+        if (this.getJugador().equals(unidadVictima.getJugador())) {
+            throw new ProhibidoAtacarUnidadAliadaException();
+        }
         ataqueEstrategia.atacar(this, unidadVictima);
     }
 

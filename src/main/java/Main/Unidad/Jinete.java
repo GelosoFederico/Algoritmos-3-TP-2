@@ -1,12 +1,15 @@
 package Main.Unidad;
 
+import Main.Excepciones.*;
 import Main.Tablero.Tablero;
-import Main.Unidad.Ataque.AtaqueJineteArco;
-import Main.Unidad.Ataque.AtaqueJineteEspada;
+import Main.Unidad.Ataque.*;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeSoldados;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeUnidades;
 
 public class Jinete extends RealUnidad {
+
+    private static final int DANIO_ATAQUE_ARCO = 15;
+    private static final int DANIO_ATAQUE_ESPADA = 5;
 
     public Jinete() {
         vida = 100;
@@ -32,11 +35,14 @@ public class Jinete extends RealUnidad {
         soldadosCercanosAmigos.obtenerSoldadosDelConjunto(unidadesCercanas.obtenerUnidadesDeJugador(this.getJugador()));
 
         if( (soldadosCercanosAmigos.cantidad() > 0) || (unidadesCercanasEnemigas.cantidad() == 0)) {
-            this.setearEstrategiaDeAtaque(new AtaqueJineteArco());
+            this.setearEstrategiaDeAtaque(new AtaqueMedio(DANIO_ATAQUE_ARCO));
         }else {
-            this.setearEstrategiaDeAtaque(new AtaqueJineteEspada());
+            this.setearEstrategiaDeAtaque(new AtaqueCorto(DANIO_ATAQUE_ESPADA));
         }
         // TODO tirar mejores excepciones
+        if (this.getJugador().equals(unidadEnemiga.getJugador())) {
+            throw new ProhibidoAtacarUnidadAliadaException();
+        }
         this.ataqueEstrategia.atacar(this, unidadEnemiga);
     }
 

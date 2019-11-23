@@ -1,23 +1,19 @@
 package Main.Unidad;
 
 import Main.Direccion.Direccion;
-import Main.Unidad.Ataque.AtaqueSoldado;
+import Main.Unidad.Ataque.AtaqueCorto;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeSoldados;
 
 import java.util.Iterator;
 
 public class Soldado extends RealUnidad {
 
+    private static final int DANIO = 10;
+
     public Soldado() {
         vida = 100;
         coste = 1;
-        ataqueEstrategia = new AtaqueSoldado();
-    }
-
-    public Soldado(int vidaInicial) {
-        vida = vidaInicial;
-        coste = 1;
-        ataqueEstrategia = new AtaqueSoldado();
+        ataqueEstrategia = new AtaqueCorto(DANIO);
     }
 
     @Override

@@ -2,6 +2,14 @@ package Main.Unidad.Ataque;
 
 import Main.Unidad.Unidad;
 
-public interface AtaqueEstrategia {
-    void atacar(Unidad atacante, Unidad victima);
+public abstract class AtaqueEstrategia {
+    protected int danio;
+
+    public AtaqueEstrategia(){}
+
+    public AtaqueEstrategia(int danio) {
+        this.danio = danio;
+    }
+
+    public abstract void atacar(Unidad atacante, Unidad victima);
 }

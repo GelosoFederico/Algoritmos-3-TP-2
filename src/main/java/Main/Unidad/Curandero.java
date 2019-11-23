@@ -1,36 +1,23 @@
 package Main.Unidad;
 
 import Main.Excepciones.ProhibidoCurarUnidadEnemigaException;
-import Main.Excepciones.UnidadFueraDeRangoException;
-import Main.Tablero.Tablero;
-import Main.Unidad.Ataque.AtaqueCurandero;
+import Main.Unidad.Ataque.AtaqueCorto;
 
 public class Curandero extends RealUnidad {
+    static final int DANIO_CURANDERO = -15;
 
     public Curandero(){
         vida = 75;
         coste = 5;
-        ataqueEstrategia = new AtaqueCurandero();
-    }
-
-    public Curandero(int vidaInicial) {
-        vida = vidaInicial;
-        coste = 5;
-        ataqueEstrategia = new AtaqueCurandero();
+        ataqueEstrategia = new AtaqueCorto(DANIO_CURANDERO);
     }
 
     @Override
     public void atacar(Unidad unidad) {
-        int danioCortaDistancia = -15;
-        final int MAX_DISTANCIA_CORTA = 2;
-        if (!this.jugador.equals(unidad.getJugador())) {
+        if (!this.getJugador().equals(unidad.getJugador())) {
             throw new ProhibidoCurarUnidadEnemigaException();
         }
-        int distancia = Tablero.getInstance().calcularDistanciaEntre(this, unidad);
-        if (distancia > MAX_DISTANCIA_CORTA) {
-            throw new UnidadFueraDeRangoException();
-        }
-        unidad.recibirDanio(danioCortaDistancia);
+        this.ataqueEstrategia.atacar(this, unidad);
     }
 
 }

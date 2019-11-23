@@ -2,13 +2,17 @@ package Main.Tablero;
 
 import Main.Direccion.Direccion;
 import Main.Direccion.Posicion;
-import Main.Excepciones.CasilleroFueraDeTableroException;
-import Main.Excepciones.UnidadNoSeEncuentraEnTablero;
+import Main.Excepciones.*;
 import Main.Juego.Jugador;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeUnidades;
 import Main.Unidad.Unidad;
 
 public class Tablero {
+    private static final int MIN_DISTANCIA_CORTA = 1;
+    private static final int MAX_DISTANCIA_CORTA = 2;
+    private static final int MIN_DISTANCIA_MEDIA = 3;
+    private static final int MAX_DISTANCIA_MEDIA = 5;
+    private static final int MIN_DISTANCIA_LEJANA = 6;
     // Singleton pattern
     private static Tablero INSTANCE = null;
 
@@ -93,5 +97,29 @@ public class Tablero {
             }
         }
         return conjunto;
+    }
+
+    public void daniarEnDistanciaCorta(Unidad atacante, Unidad victima, int danio) {
+        int distancia = this.calcularDistanciaEntre(victima, atacante);
+        if (distancia < MIN_DISTANCIA_CORTA || distancia > MAX_DISTANCIA_CORTA) {
+            throw new UnidadFueraDeRangoException();
+        }
+        victima.recibirDanio(danio);
+    }
+
+    public void daniarEnDistanciaMedia(Unidad atacante, Unidad victima, int danio) {
+        int distancia = this.calcularDistanciaEntre(victima, atacante);
+        if (distancia < MIN_DISTANCIA_MEDIA || distancia > MAX_DISTANCIA_MEDIA) {
+            throw new UnidadFueraDeRangoException();
+        }
+        victima.recibirDanio(danio);
+    }
+
+    public void daniarEnDistanciaLejana(Unidad atacante, Unidad victima, int danio) {
+        int distancia = this.calcularDistanciaEntre(victima, atacante);
+        if ( distancia < MIN_DISTANCIA_LEJANA ) {
+            throw new UnidadFueraDeRangoException();
+        }
+        victima.recibirDanio(danio);
     }
 }
