@@ -53,8 +53,8 @@ public class Soldado extends RealUnidad {
         return soldadosContiguosAliados;
     }
 
-    public Movible obtenerEstrategiaDeMovimiento() {
-        Movible estrategia = new MovimientoRegular(); // Estrategia por default
+    public MovimientoEstrategia obtenerEstrategiaDeMovimiento() {
+        MovimientoEstrategia estrategia = new MovimientoRegular(); // Estrategia por default
         ConjuntoDeSoldados batallon = obtenerBatallon();
         if (batallon.cantidad() == 3)
             estrategia = new MovimientoEnBatallon(batallon);
