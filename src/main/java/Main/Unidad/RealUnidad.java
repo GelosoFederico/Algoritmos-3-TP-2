@@ -13,7 +13,7 @@ public class RealUnidad implements Unidad {
     protected String jugador;
     protected int coste;
     protected AtaqueEstrategia ataqueEstrategia;
-    protected Movible movimientoEstrategia = new MovimientoRegular();
+    protected MovimientoEstrategia movimientoEstrategia = new MovimientoRegular();
 
     public void atacar(Unidad unidadVictima) {
         if (this.getJugador().equals(unidadVictima.getJugador())) {

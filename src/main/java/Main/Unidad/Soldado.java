@@ -21,15 +21,8 @@ public class Soldado extends RealUnidad {
         conjuntoDeSoldados.agregarSoldado(this);
     }
 
-    @Override
-    // TODO: ¡PRECAUCION! el siguiente método contiene codigo replicado y estructuras de control
-    //  que podrían herir su sensibilidad hacia las buenas practicas de la POO
-    public void avanzar(Direccion direccion) {
-        //intento formar un batallon desde un pivote
-        Soldado soldadoCentro = this;
-        //si se pudo cambio la estrategia de movimiento a batallon
-        //y vuelvo a setear la estrategia regular
-
+    public ConjuntoDeSoldados obtenerBatallon() {
+        Soldado soldadoCentro = this; // TODO: delegar armado del batallon
         ConjuntoDeSoldados soldadosContiguosAliados = new ConjuntoDeSoldados();
         soldadosContiguosAliados = soldadosContiguosAliados.buscarSoldadosAliadosContiguos(soldadoCentro);
 
@@ -52,10 +45,22 @@ public class Soldado extends RealUnidad {
                 }
             }
             soldadosContiguosAliados.agregar(soldadoCentro);
-            this.movimientoEstrategia = new MovimientoEnBatallon(soldadosContiguosAliados);
-        }
 
+        }
+        return soldadosContiguosAliados;
+    }
+
+    public MovimientoEstrategia obtenerEstrategiaDeMovimiento() {
+        MovimientoEstrategia estrategia = new MovimientoRegular(); // Estrategia por default
+        ConjuntoDeSoldados batallon = obtenerBatallon();
+        if (batallon.cantidad() == 3)
+            estrategia = new MovimientoEnBatallon(batallon);
+        return estrategia;
+    }
+
+    @Override
+    public void avanzar(Direccion direccion) {
+        this.movimientoEstrategia = this.obtenerEstrategiaDeMovimiento();
         this.movimientoEstrategia.avanzar(this, direccion);
-        this.movimientoEstrategia = new MovimientoRegular();
     }
 }
