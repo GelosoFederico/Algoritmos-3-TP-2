@@ -1,8 +1,10 @@
 package Main;
 
-import org.junit.Rule;
+import Main.Direccion.Posicion;
+import Main.Excepciones.CasilleroOcupadoException;
+import Main.Unidad.Soldado;
+import Main.Tablero.Casillero;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 

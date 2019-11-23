@@ -1,5 +1,17 @@
 package Main;
 
+import Main.Direccion.Direccion;
+import Main.Direccion.Norte;
+import Main.Direccion.Posicion;
+import Main.Excepciones.CasilleroOcupadoException;
+import Main.Excepciones.ProhibidoAtacarUnidadAliadaException;
+import Main.Excepciones.UnidadFueraDeRangoException;
+import Main.Juego.Jugador;
+import Main.Tablero.Tablero;
+import Main.Unidad.Catapulta;
+import Main.Unidad.Jinete;
+import Main.Unidad.Soldado;
+import Main.Unidad.Unidad;
 import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;

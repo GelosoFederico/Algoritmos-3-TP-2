@@ -1,5 +1,9 @@
 package Main;
 
+import Main.Excepciones.JuegoNoPuedeTenerMasDe2JugadoresException;
+import Main.Juego.Juego;
+import Main.Juego.Jugador;
+import Main.Unidad.Jinete;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

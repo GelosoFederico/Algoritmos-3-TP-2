@@ -1,5 +1,8 @@
 package Main;
 
+import Main.Unidad.*;
+import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeSoldados;
+import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeUnidades;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
