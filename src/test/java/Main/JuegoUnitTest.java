@@ -41,24 +41,14 @@ public class JuegoUnitTest {
         assertEquals(jugadores, Juego.getInstance().jugadores());
     }
 
-    /*
+
     @Test
-    public void reinicioJuegoYNoTieneLosJugadores()
+    public void JuegoAlPrincipioNoTieneJugadores()
     {
-        // Arrange
-        Jugador jugador1 = new Jugador();
-        Jugador jugador2 = new Jugador();
-        Juego.getInstance().agregarJugador(jugador1);
-        Juego.getInstance().agregarJugador(jugador2);
-
-
-        // Act
-        Juego.getInstance().reiniciar();
-
-        // Assert
+        // Act and Assert
         assertEquals(Juego.getInstance().jugadores().size(), 0);
     }
-    */
+
 
     @Test(expected = JuegoNoPuedeTenerMasDe2JugadoresException.class)
     public void creoJuegoAgrego3JugadoresYTiraExcepcionPorSerMasDe2()
