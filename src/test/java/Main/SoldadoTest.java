@@ -4,6 +4,7 @@ import Main.Excepciones.CasilleroOcupadoException;
 import Main.Excepciones.ProhibidoAtacarUnidadAliadaException;
 import Main.Excepciones.UnidadEstaMuertaException;
 import Main.Excepciones.UnidadFueraDeRangoException;
+import Main.Juego.Juego;
 import Main.Juego.Jugador;
 import Main.Tablero.Tablero;
 import Main.Unidad.*;

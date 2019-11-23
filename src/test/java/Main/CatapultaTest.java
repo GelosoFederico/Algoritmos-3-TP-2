@@ -5,6 +5,7 @@ import Main.Direccion.Norte;
 import Main.Direccion.Posicion;
 import Main.Excepciones.UnidadFueraDeRangoException;
 import Main.Excepciones.UnidadNoPuedeMoverseException;
+import Main.Juego.Juego;
 import Main.Juego.Jugador;
 import Main.Tablero.Tablero;
 import Main.Unidad.Catapulta;

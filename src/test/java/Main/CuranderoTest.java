@@ -6,6 +6,7 @@ import Main.Direccion.Posicion;
 import Main.Excepciones.CasilleroOcupadoException;
 import Main.Excepciones.ProhibidoCurarUnidadEnemigaException;
 import Main.Excepciones.UnidadFueraDeRangoException;
+import Main.Juego.Juego;
 import Main.Juego.Jugador;
 import Main.Tablero.Tablero;
 import Main.Unidad.Catapulta;
