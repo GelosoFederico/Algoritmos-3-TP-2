@@ -24,9 +24,7 @@ public class Soldado extends RealUnidad {
         conjuntoDeSoldados.agregarSoldado(this);
     }
 
-    public Movible obtenerEstrategiaDeMovimiento() {
-        Movible estrategia = new MovimientoRegular(); // Estrategia por default
-
+    public ConjuntoDeSoldados obtenerBatallon() {
         Soldado soldadoCentro = this; // TODO: delegar armado del batallon
         ConjuntoDeSoldados soldadosContiguosAliados = new ConjuntoDeSoldados();
         soldadosContiguosAliados = soldadosContiguosAliados.buscarSoldadosAliadosContiguos(soldadoCentro);
@@ -50,14 +48,20 @@ public class Soldado extends RealUnidad {
                 }
             }
             soldadosContiguosAliados.agregar(soldadoCentro);
-            estrategia = new MovimientoEnBatallon(soldadosContiguosAliados);
-        }
 
+        }
+        return soldadosContiguosAliados;
+    }
+
+    public Movible obtenerEstrategiaDeMovimiento() {
+        Movible estrategia = new MovimientoRegular(); // Estrategia por default
+        ConjuntoDeSoldados batallon = obtenerBatallon();
+        if (batallon.cantidad() == 3)
+            estrategia = new MovimientoEnBatallon(batallon);
         return estrategia;
     }
+
     @Override
-    // TODO: ¡PRECAUCION! el siguiente método contiene codigo replicado y estructuras de control
-    //  que podrían herir su sensibilidad hacia las buenas practicas de la POO
     public void avanzar(Direccion direccion) {
         this.movimientoEstrategia = this.obtenerEstrategiaDeMovimiento();
         this.movimientoEstrategia.avanzar(this, direccion);
