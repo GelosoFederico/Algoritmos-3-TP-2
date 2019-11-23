@@ -13,9 +13,14 @@ import java.util.ArrayList;
 public class JugadorUnitTest
 {
     @After
-    public void reiniciarJuego()
-    {
-        Juego.getInstance().reiniciar();
+    public void reiniciarJuegoYTablero() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+        Field instance = Juego.class.getDeclaredField("INSTANCE");
+        instance.setAccessible(true);
+        instance.set(null, null);
+        Field instance2 = Tablero.class.getDeclaredField("INSTANCE");
+        instance2.setAccessible(true);
+        instance2.set(null, null);
+        Jugador.reiniciar();
     }
 
     @Test
@@ -32,9 +37,10 @@ public class JugadorUnitTest
     }
 
     @After
-    public void reiniciarTablero()
-    {
-        Tablero.getInstance().reiniciar();
+    public void reiniciarTablero() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+        Field instance = Tablero.class.getDeclaredField("INSTANCE");
+        instance.setAccessible(true);
+        instance.set(null, null);
     }
     @Test
     public void jugadorColocaUnaUnidadNuevaYRestaSusPuntosParaPoner()
@@ -110,40 +116,9 @@ public class JugadorUnitTest
         assertEquals(jugador.unidades(),coleccionUnidadesFin);
     }
 
-    /*
-    TODO Originalmente se hacia un mock del juego, pero esto rompia el objeto con el reset ya que lo hace nulo
-    TODO Es mas sencillo no mockearlo y listo, si bien no hace el test completamente unitario. Dejo los comentarios
-        // Es necesario mockear la clase Juego que es un singleton para ver si le envia el mensaje correctamente
-        // Sacado de https://stackoverflow.com/a/50199670
-        // Usa reflexion
-
-    private void setMock(Juego juegoMock) {
-        // Esto hace que el campo sea accesible y lo cambia por el mock
-        try {
-            Field instance = Juego.class.getDeclaredField("INSTANCE");
-            instance.setAccessible(true);
-            instance.set(instance, juegoMock);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private void resetSingleton()  {
-        // Esto hace que el campo sea como era antes, aunque el set(null,null) me deja dudando
-        try {
-        Field instance = Juego.class.getDeclaredField("INSTANCE");
-        instance.setAccessible(true);
-        instance.set(null, null); // TODO consultar esto
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-     */
-
     @Test (expected = RuntimeException.class)
     public void jugadorPierdeTodasSusUnidadesYAnunciaAJuegoQuePerdioQueLeTiraUnaExcepcion(){
         // Arrange
-        Juego.getInstance().reiniciar();
         Jugador jugador = new Jugador();
         Jinete jinete1Mock = mock(Jinete.class);
         when(jinete1Mock.coste()).thenReturn(3);
@@ -156,7 +131,6 @@ public class JugadorUnitTest
         jugador.pierdeUnidad(jinete1Mock);
 
         // Assert
-        Juego.getInstance().reiniciar();
     }
 
     @Test

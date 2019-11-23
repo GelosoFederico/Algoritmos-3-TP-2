@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Juego {
     // Singleton pattern
-    private static Juego INSTANCE = new Juego();
+    private static Juego INSTANCE = null;
 
     private List<Jugador> _jugadores;
 
@@ -14,6 +14,9 @@ public class Juego {
     }
 
     public static Juego getInstance() {
+        if( INSTANCE == null) {
+            INSTANCE = new Juego();
+        }
         return INSTANCE;
     }
 
@@ -46,10 +49,5 @@ public class Juego {
         // Esto asume que hay exactamente dos jugadores
         this.jugadores().remove(jugador);
         throw new JugadorGanoLaPartida(this.jugadores().get(0));
-    }
-
-    public void reiniciar() {
-        INSTANCE = new Juego();
-        Jugador.reiniciar();
     }
 }
