@@ -1,10 +1,16 @@
 package Main;
-import org.junit.Rule;
+import Main.Direccion.*;
+import Main.Excepciones.CasilleroOcupadoException;
+import Main.Excepciones.ProhibidoAtacarUnidadAliadaException;
+import Main.Excepciones.UnidadEstaMuertaException;
+import Main.Excepciones.UnidadFueraDeRangoException;
+import Main.Juego.Juego;
+import Main.Juego.Jugador;
+import Main.Tablero.Tablero;
+import Main.Unidad.*;
 import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.rules.ExpectedException;
-import org.mockito.Mock;
 
 import java.lang.reflect.Field;
 

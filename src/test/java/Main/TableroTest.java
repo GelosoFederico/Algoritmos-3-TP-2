@@ -1,12 +1,19 @@
 package Main;
 
-import org.junit.*;
+import Main.Direccion.Norte;
+import Main.Direccion.Posicion;
+import Main.Excepciones.CasilleroEsDeEnemigoException;
+import Main.Excepciones.CasilleroOcupadoException;
+import Main.Juego.Juego;
+import Main.Juego.Jugador;
+import Main.Tablero.Tablero;
+import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeUnidades;
+import Main.Unidad.Soldado;
+import Main.Unidad.Unidad;
 import org.junit.Test;
-import org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
-import org.mockito.internal.matchers.apachecommons.ReflectionEquals;
-import org.mockito.Mock;
+
 import java.lang.reflect.Field;
 
 import static org.junit.Assert.assertEquals;

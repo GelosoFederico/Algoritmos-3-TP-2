@@ -1,5 +1,6 @@
 package Main;
 
+import Main.Direccion.Posicion;
 import org.junit.Test;
 import org.junit.Assert;
 

@@ -3,6 +3,8 @@ package Main;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import Main.Juego.ContadorDePuntos;
+import Main.Unidad.Jinete;
 import org.junit.Test;
 
 public class ContadorDePuntosTest {
