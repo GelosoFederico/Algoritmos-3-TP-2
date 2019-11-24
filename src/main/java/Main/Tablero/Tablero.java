@@ -80,7 +80,7 @@ public class Tablero {
         return casillero;
     }
 
-    public int calcularDistanciaEntre(Unidad unidad1, Unidad unidad2) {
+    public Distancia calcularDistanciaEntre(Unidad unidad1, Unidad unidad2) {
         Posicion pos1 = this.obtenerPosicionDeUnidad(unidad1);
         Posicion pos2 = this.obtenerPosicionDeUnidad(unidad2);
         return pos1.distanciaA(pos2);
@@ -90,8 +90,8 @@ public class Tablero {
         // TODO agregar iterador para que este codigo no se repita
         for(int i = 0; i < maximaCantidadDeCasilleros ; i++ ){
             for(int j = 0; j < maximaCantidadDeCasilleros ; j++ ) {
-                int distancia = this.calcularDistanciaEntre(unidadCentro,this.casilleros[i][j].unidad());
-                if( (distancia <= distanciaMaxima) && (distancia > 0) ) {
+                Distancia distancia = this.calcularDistanciaEntre(unidadCentro,this.casilleros[i][j].unidad());
+                if( (distancia.distanciaExacta() <= distanciaMaxima) && (distancia.distanciaExacta() > 0) ) {
                     conjunto.agregar(this.casilleros[i][j].unidad());
                 }
             }
@@ -100,26 +100,33 @@ public class Tablero {
     }
 
     public void daniarEnDistanciaCorta(Unidad atacante, Unidad victima, int danio) {
-        int distancia = this.calcularDistanciaEntre(victima, atacante);
-        if (distancia < MIN_DISTANCIA_CORTA || distancia > MAX_DISTANCIA_CORTA) {
+        Distancia distancia = this.calcularDistanciaEntre(victima, atacante);
+        if (distancia.distanciaExacta() < MIN_DISTANCIA_CORTA || distancia.distanciaExacta() > MAX_DISTANCIA_CORTA) {
             throw new UnidadFueraDeRangoException();
         }
         victima.recibirDanio(danio);
     }
 
     public void daniarEnDistanciaMedia(Unidad atacante, Unidad victima, int danio) {
-        int distancia = this.calcularDistanciaEntre(victima, atacante);
-        if (distancia < MIN_DISTANCIA_MEDIA || distancia > MAX_DISTANCIA_MEDIA) {
+        Distancia distancia = this.calcularDistanciaEntre(victima, atacante);
+        if (distancia.distanciaExacta() < MIN_DISTANCIA_MEDIA || distancia.distanciaExacta() > MAX_DISTANCIA_MEDIA) {
             throw new UnidadFueraDeRangoException();
         }
         victima.recibirDanio(danio);
     }
 
     public void daniarEnDistanciaLejana(Unidad atacante, Unidad victima, int danio) {
-        int distancia = this.calcularDistanciaEntre(victima, atacante);
-        if ( distancia < MIN_DISTANCIA_LEJANA ) {
+        Distancia distancia = this.calcularDistanciaEntre(victima, atacante);
+        if ( distancia.distanciaExacta() < MIN_DISTANCIA_LEJANA ) {
             throw new UnidadFueraDeRangoException();
         }
         victima.recibirDanio(danio);
     }
+
+    /*
+    public void daniarUnidadEnRango(Unidad atacante, Unidad victima, Distancia distanciaPrototipo) {
+        Distancia distancia = this.calcularDistanciaEntre(victima, atacante);
+        distancia.daniarUnidadEnRango(atacante, victima, distanciaPrototipo);
+    }
+    */
 }

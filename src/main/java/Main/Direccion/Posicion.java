@@ -1,5 +1,7 @@
 package Main.Direccion;
 
+import Main.Tablero.Distancia;
+
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
 
@@ -30,15 +32,14 @@ public class Posicion {
                 this.posicionEnY() + otraPosicion.posicionEnY() );
     }
 
-    public int distanciaA(Posicion otraPosicion) {
+    public Distancia distanciaA(Posicion otraPosicion) {
         return otraPosicion.distanciaAPuntoEnXEY(this.posicionEnX(),this.posicionEnY());
     }
 
-    public int distanciaAPuntoEnXEY(int x,int y){
+    public Distancia distanciaAPuntoEnXEY(int x,int y){
         int distancia_x = abs(this.posicionEnX()-x);
         int distancia_y = abs(this.posicionEnY()-y);
 
-        return max(distancia_x,distancia_y);
+        return new Distancia(max(distancia_x,distancia_y));
     }
-    // TODO: maybe string
 }
