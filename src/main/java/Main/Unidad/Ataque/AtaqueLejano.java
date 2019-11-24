@@ -1,5 +1,6 @@
 package Main.Unidad.Ataque;
 
+import Main.Tablero.Lejana;
 import Main.Tablero.Tablero;
 import Main.Unidad.Unidad;
 
@@ -11,6 +12,6 @@ public class AtaqueLejano extends AtaqueEstrategia {
 
     @Override
     public void atacar(Unidad atacante, Unidad victima) {
-        Tablero.getInstance().daniarEnDistanciaLejana(atacante, victima, danio);
+        Tablero.getInstance().daniarUnidadEnRango(atacante, victima, new Lejana(), danio);
     }
 }

@@ -1,5 +1,6 @@
 package Main.Unidad.Ataque;
 
+import Main.Tablero.Media;
 import Main.Tablero.Tablero;
 import Main.Unidad.Unidad;
 
@@ -11,6 +12,6 @@ public class AtaqueMedio extends AtaqueEstrategia {
 
     @Override
     public void atacar(Unidad atacante, Unidad victima) {
-        Tablero.getInstance().daniarEnDistanciaMedia(atacante, victima, danio);
+        Tablero.getInstance().daniarUnidadEnRango(atacante, victima, new Media(), danio);
     }
 }

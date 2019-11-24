@@ -126,7 +126,7 @@ public class Tablero {
     /*
     public void daniarUnidadEnRango(Unidad atacante, Unidad victima, Distancia distanciaPrototipo) {
         Distancia distancia = this.calcularDistanciaEntre(victima, atacante);
-        distancia.daniarUnidadEnRango(atacante, victima, distanciaPrototipo);
+        distancia.daniarUnidadEnRango(victima, distanciaPrototipo, danio);
     }
     */
 }

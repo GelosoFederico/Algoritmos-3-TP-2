@@ -40,6 +40,6 @@ public class Posicion {
         int distancia_x = abs(this.posicionEnX()-x);
         int distancia_y = abs(this.posicionEnY()-y);
 
-        return new Distancia(max(distancia_x,distancia_y));
+        return Distancia.crearDistancia(max(distancia_x,distancia_y));
     }
 }
