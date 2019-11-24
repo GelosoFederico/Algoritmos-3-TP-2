@@ -13,7 +13,7 @@ public class PosicionTest {
         Posicion posicion2 = new Posicion(1,5);
 
         // Act
-        int distancia = posicion1.distanciaA(posicion2);
+        int distancia = posicion1.distanciaA(posicion2).distanciaExacta();
 
         // Assert
         Assert.assertEquals(distancia,4);
@@ -26,7 +26,7 @@ public class PosicionTest {
         Posicion posicion2 = new Posicion(5,1);
 
         // Act
-        int distancia = posicion1.distanciaA(posicion2);
+        int distancia = posicion1.distanciaA(posicion2).distanciaExacta();
 
         // Assert
         Assert.assertEquals(distancia,4);
@@ -39,7 +39,7 @@ public class PosicionTest {
         Posicion posicion2 = new Posicion(13,8);
 
         // Act
-        int distancia = posicion1.distanciaA(posicion2);
+        int distancia = posicion1.distanciaA(posicion2).distanciaExacta();
 
         // Assert
         Assert.assertEquals(distancia,10);

@@ -3,6 +3,7 @@ package Main.Tablero;
 import Main.Excepciones.CasilleroEsDeEnemigoException;
 import Main.Juego.Jugador;
 import Main.Direccion.Posicion;
+import Main.Tablero.Distancia.Distancia;
 import Main.Unidad.NullUnidad;
 import Main.Unidad.Unidad;
 
@@ -52,7 +53,7 @@ public class Casillero {
         return this.unidad;
     }
 
-    public int calcularDistanciaA(Casillero casillero) {
+    public Distancia calcularDistanciaA(Casillero casillero) {
         return this.posicion().distanciaA(casillero.posicion());
     }
 
