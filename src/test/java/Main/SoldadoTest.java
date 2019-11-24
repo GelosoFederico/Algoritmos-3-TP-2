@@ -4,12 +4,15 @@ import Main.Excepciones.CasilleroOcupadoException;
 import Main.Excepciones.ProhibidoAtacarUnidadAliadaException;
 import Main.Excepciones.UnidadEstaMuertaException;
 import Main.Excepciones.UnidadFueraDeRangoException;
+import Main.Juego.Juego;
 import Main.Juego.Jugador;
 import Main.Tablero.Tablero;
 import Main.Unidad.*;
 import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
+
+import java.lang.reflect.Field;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
@@ -18,9 +21,13 @@ public class SoldadoTest {
 
     @Before // TODO: esto en algun momento se corrije
     @After
-    public void reiniciarTablero()
-    {
-        Tablero.getInstance().reiniciar();
+    public void reiniciarTableroYJuego() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+        Field instance = Tablero.class.getDeclaredField("INSTANCE");
+        instance.setAccessible(true);
+        instance.set(null, null);
+        Field instance2 = Juego.class.getDeclaredField("INSTANCE");
+        instance2.setAccessible(true);
+        instance2.set(null, null);
     }
 
     @Test

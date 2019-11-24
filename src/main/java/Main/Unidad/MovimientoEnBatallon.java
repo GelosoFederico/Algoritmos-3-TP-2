@@ -5,7 +5,7 @@ import Main.Excepciones.CasilleroOcupadoException;
 import Main.Tablero.Tablero;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeSoldados;
 
-public class  MovimientoEnBatallon implements Movible {
+public class  MovimientoEnBatallon implements MovimientoEstrategia {
     private ConjuntoDeSoldados batallon;
 
     public MovimientoEnBatallon(ConjuntoDeSoldados batallon){

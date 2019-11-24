@@ -10,15 +10,20 @@ import java.util.List;
 
 public class Juego {
     // Singleton pattern
-    private static Juego INSTANCE = new Juego();
+    private static Juego INSTANCE = null;
 
-    private List<Jugador> _jugadores;
+    private List<Jugador> _jugadores = null;
 
     private Juego() {
         _jugadores = new ArrayList<Jugador>();
     }
 
+    Jugador jugadorDeTurno;
+
     public static Juego getInstance() {
+        if( INSTANCE == null) {
+            INSTANCE = new Juego();
+        }
         return INSTANCE;
     }
 
@@ -26,11 +31,24 @@ public class Juego {
         return this._jugadores;
     }
 
+    public Jugador getJugadorDeTurno() {
+        return jugadorDeTurno;
+    }
+
+    public void setJugadorDeTurno(Jugador jugador) {
+        jugadorDeTurno = jugador;
+    }
+
     public void agregarJugador(Jugador jugador) {
         if (this.jugadores().size() == 2) {
             throw new JuegoNoPuedeTenerMasDe2JugadoresException();
         }
         this.jugadores().add(jugador);
+
+        // TODO: refactorizar tal vez
+        if(jugadorDeTurno == null) {
+            jugadorDeTurno = jugador;
+        }
     }
 
     public void murioUnidad(Unidad unidad) {
@@ -53,8 +71,16 @@ public class Juego {
         throw new JugadorGanoLaPartida(this.jugadores().get(0));
     }
 
-    public void reiniciar() {
-        INSTANCE = new Juego();
-        Jugador.reiniciar();
+    private void cambiarJugadorDeTurno() {
+        if (jugadorDeTurno == jugadores().get(0))
+            jugadorDeTurno = jugadores().get(1);
+        else
+            jugadorDeTurno = jugadores().get(0);
+    }
+
+    public void ejecutarUnTurno() {
+        // TODO: aca es donde se le permite al jugador de turno elegir una pieza
+        //  y hacer algo: avanzar y ataque
+        cambiarJugadorDeTurno();
     }
 }

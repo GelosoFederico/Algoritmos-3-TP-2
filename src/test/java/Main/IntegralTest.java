@@ -11,20 +11,27 @@ import Main.Tablero.Tablero;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeSoldados;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeUnidades;
 import Main.Unidad.*;
+
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
 public class IntegralTest {
+    @Before
     @After
-    public void reiniciarJuego() {
-        Juego.getInstance().reiniciar();
-    }
-    @After
-    public void reiniciarTablero()
-    {
-        Tablero.getInstance().reiniciar();
+    public void reiniciarJuegoYTablero() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+        Field instance = Juego.class.getDeclaredField("INSTANCE");
+        instance.setAccessible(true);
+        instance.set(null, null);
+        Field instance2 = Tablero.class.getDeclaredField("INSTANCE");
+        instance2.setAccessible(true);
+        instance2.set(null, null);
+        Jugador.reiniciar();
     }
     @Test
     public void seColocaUnidadDeUnJugadorEnSuCampoYEstaAhi()

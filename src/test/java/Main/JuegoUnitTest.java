@@ -3,6 +3,7 @@ package Main;
 import Main.Excepciones.JuegoNoPuedeTenerMasDe2JugadoresException;
 import Main.Juego.Juego;
 import Main.Juego.Jugador;
+import Main.Tablero.Tablero;
 import Main.Unidad.Jinete;
 import org.junit.After;
 import org.junit.Before;
@@ -10,16 +11,22 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 public class JuegoUnitTest {
     @Before
     @After
-    public void reiniciarJuego()
-    {
-        Juego.getInstance().reiniciar();
+    public void reiniciarJuegoYTablero() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+        Field instance = Juego.class.getDeclaredField("INSTANCE");
+        instance.setAccessible(true);
+        instance.set(null, null);
+        Field instance2 = Tablero.class.getDeclaredField("INSTANCE");
+        instance2.setAccessible(true);
+        instance2.set(null, null);
     }
+
 
     @Test
     public void creoJuegoAgregoJugadoresYLosTiene()
@@ -39,22 +46,14 @@ public class JuegoUnitTest {
         assertEquals(jugadores, Juego.getInstance().jugadores());
     }
 
+
     @Test
-    public void reinicioJuegoYNoTieneLosJugadores()
+    public void JuegoAlPrincipioNoTieneJugadores()
     {
-        // Arrange
-        Jugador jugador1 = new Jugador();
-        Jugador jugador2 = new Jugador();
-        Juego.getInstance().agregarJugador(jugador1);
-        Juego.getInstance().agregarJugador(jugador2);
-
-
-        // Act
-        Juego.getInstance().reiniciar();
-
-        // Assert
+        // Act and Assert
         assertEquals(Juego.getInstance().jugadores().size(), 0);
     }
+
 
     @Test(expected = JuegoNoPuedeTenerMasDe2JugadoresException.class)
     public void creoJuegoAgrego3JugadoresYTiraExcepcionPorSerMasDe2()
@@ -90,5 +89,37 @@ public class JuegoUnitTest {
 
         // Assert
         verify(jugadorMock1,times(1)).pierdeUnidad(jinete1Mock);
+    }
+
+    @Test
+    public void alComienzoElTurnoEsDelJugadorQueSeCreoPrimero() {
+        // Arrange
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.nombre()).thenReturn("Mabel");
+        Jugador mJugador2 = mock(Jugador.class);
+        when(mJugador2.nombre()).thenReturn("Horacio");
+
+        Juego.getInstance().agregarJugador(mJugador1);
+        Juego.getInstance().agregarJugador(mJugador2);
+
+        // Act and assert
+        assertEquals("Mabel",Juego.getInstance().getJugadorDeTurno().nombre());
+    }
+
+    @Test
+    public void despuesDelTurnoDeUnJugadorLeTocaAlOtroJugador() {
+        // Arrange
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.nombre()).thenReturn("Mabel");
+        Jugador mJugador2 = mock(Jugador.class);
+        when(mJugador2.nombre()).thenReturn("Horacio");
+
+        Juego.getInstance().agregarJugador(mJugador1);
+        Juego.getInstance().agregarJugador(mJugador2);
+
+        Juego.getInstance().ejecutarUnTurno();
+
+        // Act and assert
+        assertEquals("Horacio",Juego.getInstance().getJugadorDeTurno().nombre());
     }
 }

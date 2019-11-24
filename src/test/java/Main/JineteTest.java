@@ -16,15 +16,18 @@ import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
 
+import java.lang.reflect.Field;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class JineteTest {
-    @Before // TODO: esto en algun momento se corrije
+    @Before
     @After
-    public void reiniciarTablero()
-    {
-        Tablero.getInstance().reiniciar();
+    public void reiniciarTablero() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+        Field instance = Tablero.class.getDeclaredField("INSTANCE");
+        instance.setAccessible(true);
+        instance.set(null, null);
     }
 
     @Test

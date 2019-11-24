@@ -6,6 +6,7 @@ import Main.Direccion.Posicion;
 import Main.Excepciones.CasilleroOcupadoException;
 import Main.Excepciones.ProhibidoCurarUnidadEnemigaException;
 import Main.Excepciones.UnidadFueraDeRangoException;
+import Main.Juego.Juego;
 import Main.Juego.Jugador;
 import Main.Tablero.Tablero;
 import Main.Unidad.Catapulta;
@@ -16,16 +17,23 @@ import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
 
+import java.lang.reflect.Field;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class CuranderoTest {
-    @Before // TODO: esto en algun momento se corrije
+    @Before
     @After
-    public void reiniciarTablero()
-    {
-        Tablero.getInstance().reiniciar();
+    public void reiniciarTableroYJuego() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+        Field instance = Tablero.class.getDeclaredField("INSTANCE");
+        instance.setAccessible(true);
+        instance.set(null, null);
+        Field instance2 = Juego.class.getDeclaredField("INSTANCE");
+        instance2.setAccessible(true);
+        instance2.set(null, null);
     }
+
 
     @Test
     public void test01CreoUnuranderoPorDefectoYTiene75PuntosDeVida(){

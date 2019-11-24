@@ -10,20 +10,20 @@ import Main.Unidad.Unidad;
 
 public class Tablero {
     // Singleton pattern
-    private static Tablero INSTANCE = new Tablero();
+    private static Tablero INSTANCE = null;
 
     int maximaCantidadDeCasilleros = 20;
 
     Casillero[][] casilleros = new Casillero[maximaCantidadDeCasilleros][maximaCantidadDeCasilleros];
 
-    public Tablero(){
+    private Tablero(){
         this.crearCasilleros();
     }
     public static Tablero getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new Tablero();
+        }
         return INSTANCE;
-    }
-    public void reiniciar() {
-        INSTANCE = new Tablero();
     }
 
     public Posicion obtenerPosicionDeUnidad(Unidad unidad) {

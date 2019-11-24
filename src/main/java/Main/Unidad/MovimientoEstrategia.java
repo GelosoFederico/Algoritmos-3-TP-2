@@ -2,6 +2,6 @@ package Main.Unidad;
 
 import Main.Direccion.Direccion;
 
-public interface Movible {
+public interface MovimientoEstrategia {
     void avanzar(Unidad unidad, Direccion direccion);
 }

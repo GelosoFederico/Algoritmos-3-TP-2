@@ -14,6 +14,8 @@ import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
 
+import java.lang.reflect.Field;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -22,10 +24,15 @@ public class TableroTest {
 
     @Before
     @After
-    public void reiniciarTablero()
-    {
-        Tablero.getInstance().reiniciar();
+    public void reiniciarTableroYJuego() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+        Field instance = Tablero.class.getDeclaredField("INSTANCE");
+        instance.setAccessible(true);
+        instance.set(null, null);
+        Field instance2 = Juego.class.getDeclaredField("INSTANCE");
+        instance2.setAccessible(true);
+        instance2.set(null, null);
     }
+
     @Test
     public void testSePuedeColocarUnidadDeJugador1EnCasilleroAliado() {
         Posicion posicion = new Posicion(1,1); // Area del jugador 1
@@ -53,11 +60,6 @@ public class TableroTest {
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mSoldado,posicion,mJugador);
     }
 
-    @After
-    public void reiniciarJuego()
-    {
-        Juego.getInstance().reiniciar();
-    }
     @Test
     public void testUnidadEn13SeMueveEnUnaDireccionNorte() {
         // Assert
