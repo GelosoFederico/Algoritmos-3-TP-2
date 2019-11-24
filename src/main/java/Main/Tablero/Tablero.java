@@ -100,34 +100,8 @@ public class Tablero {
         return conjunto;
     }
 
-    public void daniarEnDistanciaCorta(Unidad atacante, Unidad victima, int danio) {
-        Distancia distancia = this.calcularDistanciaEntre(victima, atacante);
-        if (distancia.distanciaExacta() < MIN_DISTANCIA_CORTA || distancia.distanciaExacta() > MAX_DISTANCIA_CORTA) {
-            throw new UnidadFueraDeRangoException();
-        }
-        victima.recibirDanio(danio);
-    }
-
-    public void daniarEnDistanciaMedia(Unidad atacante, Unidad victima, int danio) {
-        Distancia distancia = this.calcularDistanciaEntre(victima, atacante);
-        if (distancia.distanciaExacta() < MIN_DISTANCIA_MEDIA || distancia.distanciaExacta() > MAX_DISTANCIA_MEDIA) {
-            throw new UnidadFueraDeRangoException();
-        }
-        victima.recibirDanio(danio);
-    }
-
-    public void daniarEnDistanciaLejana(Unidad atacante, Unidad victima, int danio) {
-        Distancia distancia = this.calcularDistanciaEntre(victima, atacante);
-        if ( distancia.distanciaExacta() < MIN_DISTANCIA_LEJANA ) {
-            throw new UnidadFueraDeRangoException();
-        }
-        victima.recibirDanio(danio);
-    }
-
-    /*
-    public void daniarUnidadEnRango(Unidad atacante, Unidad victima, Distancia distanciaPrototipo) {
+    public void daniarUnidadEnRango(Unidad atacante, Unidad victima, Distancia distanciaPrototipo, int danio) {
         Distancia distancia = this.calcularDistanciaEntre(victima, atacante);
         distancia.daniarUnidadEnRango(victima, distanciaPrototipo, danio);
     }
-    */
 }
