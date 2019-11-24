@@ -1,6 +1,6 @@
 package Main.Unidad.Ataque;
 
-import Main.Tablero.Media;
+import Main.Tablero.Distancia.Media;
 import Main.Tablero.Tablero;
 import Main.Unidad.Unidad;
 

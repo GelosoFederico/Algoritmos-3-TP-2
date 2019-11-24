@@ -1,6 +1,6 @@
 package Main.Unidad.Ataque;
 
-import Main.Tablero.Cercana;
+import Main.Tablero.Distancia.Cercana;
 import Main.Tablero.Tablero;
 import Main.Unidad.Unidad;
 

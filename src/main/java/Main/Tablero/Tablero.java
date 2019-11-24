@@ -4,6 +4,7 @@ import Main.Direccion.Direccion;
 import Main.Direccion.Posicion;
 import Main.Excepciones.*;
 import Main.Juego.Jugador;
+import Main.Tablero.Distancia.Distancia;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeUnidades;
 import Main.Unidad.Unidad;
 

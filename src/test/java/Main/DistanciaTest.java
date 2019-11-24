@@ -2,7 +2,7 @@ package Main;
 
 import Main.Direccion.Posicion;
 import Main.Juego.*;
-import Main.Tablero.Distancia;
+import Main.Tablero.Distancia.Distancia;
 import Main.Tablero.Tablero;
 import Main.Unidad.*;
 import org.junit.*;

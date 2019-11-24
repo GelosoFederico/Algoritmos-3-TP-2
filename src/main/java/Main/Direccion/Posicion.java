@@ -1,6 +1,6 @@
 package Main.Direccion;
 
-import Main.Tablero.Distancia;
+import Main.Tablero.Distancia.Distancia;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.max;

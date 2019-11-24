@@ -1,4 +1,4 @@
-package Main.Tablero;
+package Main.Tablero.Distancia;
 
 import Main.Unidad.Unidad;
 
