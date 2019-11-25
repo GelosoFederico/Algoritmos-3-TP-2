@@ -8,10 +8,16 @@ import Main.Juego.Equipo;
 import Main.Juego.EquipoBlanco;
 import Main.Juego.EquipoNegro;
 import Main.Juego.Jugador;
+import Main.Tablero.Distancia.Distancia;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeUnidades;
 import Main.Unidad.Unidad;
 
 public class Tablero {
+    private static final int MIN_DISTANCIA_CORTA = 1;
+    private static final int MAX_DISTANCIA_CORTA = 2;
+    private static final int MIN_DISTANCIA_MEDIA = 3;
+    private static final int MAX_DISTANCIA_MEDIA = 5;
+    private static final int MIN_DISTANCIA_LEJANA = 6;
     // Singleton pattern
     private static Tablero INSTANCE = null;
 
@@ -79,7 +85,7 @@ public class Tablero {
         return casillero;
     }
 
-    public int calcularDistanciaEntre(Unidad unidad1, Unidad unidad2) {
+    public Distancia calcularDistanciaEntre(Unidad unidad1, Unidad unidad2) {
         Posicion pos1 = this.obtenerPosicionDeUnidad(unidad1);
         Posicion pos2 = this.obtenerPosicionDeUnidad(unidad2);
         return pos1.distanciaA(pos2);
@@ -89,12 +95,17 @@ public class Tablero {
         // TODO agregar iterador para que este codigo no se repita
         for(int i = 0; i < maximaCantidadDeCasilleros ; i++ ){
             for(int j = 0; j < maximaCantidadDeCasilleros ; j++ ) {
-                int distancia = this.calcularDistanciaEntre(unidadCentro,this.casilleros[i][j].unidad());
-                if( (distancia <= distanciaMaxima) && (distancia > 0) ) {
+                Distancia distancia = this.calcularDistanciaEntre(unidadCentro,this.casilleros[i][j].unidad());
+                if( (distancia.distanciaExacta() <= distanciaMaxima) && (distancia.distanciaExacta() > 0) ) {
                     conjunto.agregar(this.casilleros[i][j].unidad());
                 }
             }
         }
         return conjunto;
+    }
+
+    public void daniarUnidadEnRango(Unidad atacante, Unidad victima, Distancia distanciaPrototipo, int danio) {
+        Distancia distancia = this.calcularDistanciaEntre(victima, atacante);
+        distancia.daniarUnidadEnRango(victima, distanciaPrototipo, danio);
     }
 }

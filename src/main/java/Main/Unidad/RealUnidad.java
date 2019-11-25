@@ -5,7 +5,9 @@ import Main.Direccion.Posicion;
 import Main.Excepciones.CasilleroOcupadoException;
 import Main.Excepciones.UnidadEstaMuertaException;
 import Main.Juego.Equipo;
+import Main.Excepciones.*;
 import Main.Tablero.Tablero;
+import Main.Unidad.Ataque.AtaqueEstrategia;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeSoldados;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeUnidades;
 
@@ -18,6 +20,9 @@ public abstract class RealUnidad implements Unidad {
     protected Equipo equipo;
 
     public void atacar(Unidad unidadVictima) {
+        if (this.getJugador().equals(unidadVictima.getJugador())) {
+            throw new ProhibidoAtacarUnidadAliadaException();
+        }
         ataqueEstrategia.atacar(this, unidadVictima);
     }
 

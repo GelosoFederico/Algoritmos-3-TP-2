@@ -3,6 +3,7 @@ package Main.Unidad;
 import Main.Direccion.Direccion;
 import Main.Direccion.Posicion;
 import Main.Juego.Equipo;
+import Main.Unidad.Ataque.AtaqueEstrategia;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeSoldados;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeUnidades;
 

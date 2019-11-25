@@ -44,8 +44,7 @@ public class SoldadoTest {
     @Test
     public void test02CreoUnSolDadoCon100PuntosDeVidaReciveUnDanioDe10PuntosYSuVidaCambiaA90Puntos(){
         //Arrange
-        int vidaInicial = 100;
-        Soldado unSoldado = new Soldado(vidaInicial);
+        Soldado unSoldado = new Soldado();
 
         //Act
         unSoldado.recibirDanio(10);
