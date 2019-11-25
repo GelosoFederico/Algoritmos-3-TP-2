@@ -1,4 +1,4 @@
-package Main;
+package Main.InterfazGrafica;
 
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 public class App extends Application {
     // --module-path "C:\Program Files\Java\javafx-sdk-11.0.2\lib" --add-modules javafx.controls,javafx.fxml
     // TODO sin esto en la opcion de la VM no anda
-    // Preguntar
+    // Preguntar: ya se cargó el archivo de JavaFx en el proyecto.
     @Override
     public void start(Stage stage) {
        Button botonDeInicio =  new Button();
@@ -28,7 +28,7 @@ public class App extends Application {
 
         for(int i=0; i< 20; i++) {
             for (int j = 0; j < 20; j++){
-                grid.add(new Button("Critian"), i, j);
+                grid.add(new Button("T"), i, j);
             }
         }
 
