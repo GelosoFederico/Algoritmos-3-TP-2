@@ -101,7 +101,7 @@
           <artifactId>javafx-maven-plugin</artifactId>
           <version>0.0.3</version>
           <configuration>
-            <mainClass>com.Main.InterfazGrafica.App</mainClass>
+            <mainClass>com.Main.Vista.App</mainClass>
           </configuration>
         </plugin>
       </plugins>

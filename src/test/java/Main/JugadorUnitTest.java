@@ -3,13 +3,13 @@ package Main;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import Main.Direccion.Posicion;
-import Main.Excepciones.InsuficientePuntosRestantesAlColocarUnidadException;
-import Main.Juego.Juego;
-import Main.Juego.Jugador;
-import Main.Tablero.Tablero;
-import Main.Unidad.Jinete;
-import Main.Unidad.Unidad;
+import Main.Modelo.Direccion.Posicion;
+import Main.Modelo.Excepciones.InsuficientePuntosRestantesAlColocarUnidadException;
+import Main.Modelo.Juego.Juego;
+import Main.Modelo.Juego.Jugador;
+import Main.Modelo.Tablero.Tablero;
+import Main.Modelo.Unidad.Jinete;
+import Main.Modelo.Unidad.Unidad;
 import org.junit.After;
 import org.junit.Test;
 

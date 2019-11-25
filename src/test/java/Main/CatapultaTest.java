@@ -1,16 +1,16 @@
 package Main;
 
-import Main.Direccion.Direccion;
-import Main.Direccion.Norte;
-import Main.Direccion.Posicion;
-import Main.Excepciones.UnidadFueraDeRangoException;
-import Main.Excepciones.UnidadNoPuedeMoverseException;
-import Main.Juego.Juego;
-import Main.Juego.Jugador;
-import Main.Tablero.Tablero;
-import Main.Unidad.Catapulta;
-import Main.Unidad.Jinete;
-import Main.Unidad.Unidad;
+import Main.Modelo.Direccion.Direccion;
+import Main.Modelo.Direccion.Norte;
+import Main.Modelo.Direccion.Posicion;
+import Main.Modelo.Excepciones.UnidadFueraDeRangoException;
+import Main.Modelo.Excepciones.UnidadNoPuedeMoverseException;
+import Main.Modelo.Juego.Juego;
+import Main.Modelo.Juego.Jugador;
+import Main.Modelo.Tablero.Tablero;
+import Main.Modelo.Unidad.Catapulta;
+import Main.Modelo.Unidad.Jinete;
+import Main.Modelo.Unidad.Unidad;
 import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;

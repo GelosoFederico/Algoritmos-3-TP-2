@@ -1,14 +1,14 @@
 package Main;
 
-import Main.Direccion.*;
-import Main.Excepciones.CasilleroFueraDeTableroException;
-import Main.Excepciones.CasilleroOcupadoException;
-import Main.Excepciones.UnidadFueraDeRangoException;
-import Main.Excepciones.UnidadNoPuedeMoverseException;
-import Main.Juego.Juego;
-import Main.Juego.Jugador;
-import Main.Tablero.Tablero;
-import Main.Unidad.*;
+import Main.Modelo.Direccion.*;
+import Main.Modelo.Excepciones.CasilleroFueraDeTableroException;
+import Main.Modelo.Excepciones.CasilleroOcupadoException;
+import Main.Modelo.Excepciones.UnidadFueraDeRangoException;
+import Main.Modelo.Excepciones.UnidadNoPuedeMoverseException;
+import Main.Modelo.Juego.Juego;
+import Main.Modelo.Juego.Jugador;
+import Main.Modelo.Tablero.Tablero;
+import Main.Modelo.Unidad.*;
 import org.junit.After;
 import org.junit.Test;
 

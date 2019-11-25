@@ -1,10 +1,10 @@
 package Main;
 
-import Main.Direccion.Posicion;
-import Main.Juego.*;
-import Main.Tablero.Distancia.Distancia;
-import Main.Tablero.Tablero;
-import Main.Unidad.*;
+import Main.Modelo.Direccion.Posicion;
+import Main.Modelo.Juego.*;
+import Main.Modelo.Tablero.Distancia.Distancia;
+import Main.Modelo.Tablero.Tablero;
+import Main.Modelo.Unidad.*;
 import org.junit.*;
 
 import java.lang.reflect.Field;

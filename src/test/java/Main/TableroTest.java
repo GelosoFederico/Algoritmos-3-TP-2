@@ -1,15 +1,15 @@
 package Main;
 
-import Main.Direccion.Norte;
-import Main.Direccion.Posicion;
-import Main.Excepciones.CasilleroEsDeEnemigoException;
-import Main.Excepciones.CasilleroOcupadoException;
-import Main.Juego.Juego;
-import Main.Juego.Jugador;
-import Main.Tablero.Tablero;
-import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeUnidades;
-import Main.Unidad.Soldado;
-import Main.Unidad.Unidad;
+import Main.Modelo.Direccion.Norte;
+import Main.Modelo.Direccion.Posicion;
+import Main.Modelo.Excepciones.CasilleroEsDeEnemigoException;
+import Main.Modelo.Excepciones.CasilleroOcupadoException;
+import Main.Modelo.Juego.Juego;
+import Main.Modelo.Juego.Jugador;
+import Main.Modelo.Tablero.Tablero;
+import Main.Modelo.Unidad.ConjuntoDeUnidades.ConjuntoDeUnidades;
+import Main.Modelo.Unidad.Soldado;
+import Main.Modelo.Unidad.Unidad;
 import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;

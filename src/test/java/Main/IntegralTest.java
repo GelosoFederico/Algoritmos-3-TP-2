@@ -1,23 +1,22 @@
 package Main;
 
-import Main.Direccion.Posicion;
-import Main.Excepciones.CasilleroEsDeEnemigoException;
-import Main.Excepciones.CasilleroOcupadoException;
-import Main.Excepciones.InsuficientePuntosRestantesAlColocarUnidadException;
-import Main.Excepciones.JugadorGanoLaPartida;
-import Main.Juego.Juego;
-import Main.Juego.Jugador;
-import Main.Tablero.Tablero;
-import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeSoldados;
-import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeUnidades;
-import Main.Unidad.*;
+import Main.Modelo.Direccion.Posicion;
+import Main.Modelo.Excepciones.CasilleroEsDeEnemigoException;
+import Main.Modelo.Excepciones.CasilleroOcupadoException;
+import Main.Modelo.Excepciones.InsuficientePuntosRestantesAlColocarUnidadException;
+import Main.Modelo.Excepciones.JugadorGanoLaPartida;
+import Main.Modelo.Juego.Juego;
+import Main.Modelo.Juego.Jugador;
+import Main.Modelo.Tablero.Tablero;
+import Main.Modelo.Unidad.ConjuntoDeUnidades.ConjuntoDeSoldados;
+import Main.Modelo.Unidad.ConjuntoDeUnidades.ConjuntoDeUnidades;
+import Main.Modelo.Unidad.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,9 +1,9 @@
 package Main;
 
-import Main.Direccion.Posicion;
-import Main.Excepciones.CasilleroOcupadoException;
-import Main.Unidad.Soldado;
-import Main.Tablero.Casillero;
+import Main.Modelo.Direccion.Posicion;
+import Main.Modelo.Excepciones.CasilleroOcupadoException;
+import Main.Modelo.Unidad.Soldado;
+import Main.Modelo.Tablero.Casillero;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

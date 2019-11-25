@@ -1,6 +1,6 @@
 package Main;
 
-import Main.Direccion.*;
+import Main.Modelo.Direccion.*;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
