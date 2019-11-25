@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -53,13 +52,10 @@ public class App extends Application {
         opcionesUnidades.setPadding(new Insets(10));
         opcionesUnidades.setAlignment(Pos.BASELINE_RIGHT);
 
-        Button soldadoBtn = new Button("Soldado");
-        Button JineteBtn = new Button("Jinete");
-        Button CatapultaBtn = new Button("Catapulta");
-        Button CuranderoBtn = new Button("Curandero");
-
-        opcionesUnidades.getChildren().addAll(soldadoBtn, JineteBtn,
-                CatapultaBtn, CuranderoBtn);
+        opcionesUnidades.getChildren().addAll(new BotonElegirSoldado(),
+                                            new BotonElegirJinete(),
+                                            new BotonElegirCatapulta(),
+                                            new BotonElegirCurandero());
         return opcionesUnidades;
     }
 
