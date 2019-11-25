@@ -2,6 +2,8 @@ package Main;
 
 import Main.Direccion.Posicion;
 import Main.Excepciones.CasilleroOcupadoException;
+import Main.Juego.Equipo;
+import Main.Juego.EquipoBlanco;
 import Main.Unidad.Soldado;
 import Main.Tablero.Casillero;
 import org.junit.Test;
@@ -12,7 +14,8 @@ public class CasilleroTest {
 
         @Test (expected = CasilleroOcupadoException.class)
         public void testSeOcupaUnCasilleroYSeVerificaQueEsteOcupado() {
-            Casillero unCasillero = new Casillero(new Posicion(1,1), 1);
+            Equipo equipo = new EquipoBlanco();
+            Casillero unCasillero = new Casillero(new Posicion(1,1), equipo);
             Soldado unSoldado = new Soldado();
             unCasillero.ocupar(unSoldado);
             // Para comprobar que esta ocupado, lo ocupo de nuevo y debe lanzar una excepcion
@@ -24,7 +27,8 @@ public class CasilleroTest {
 
         @Test
         public void testSeLiberaUnCasilleroYSeVerificaQueEsteLiberado() {
-            Casillero unCasillero = new Casillero(new Posicion(1,1), 1);
+            Equipo equipo = new EquipoBlanco();
+            Casillero unCasillero = new Casillero(new Posicion(1,1), equipo);
             Soldado unSoldado = new Soldado();
             unCasillero.ocupar(unSoldado);
             unCasillero.liberar();

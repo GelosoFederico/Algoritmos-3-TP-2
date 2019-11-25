@@ -2,6 +2,7 @@ package Main.Unidad;
 
 import Main.Direccion.Direccion;
 import Main.Direccion.Posicion;
+import Main.Juego.Equipo;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeSoldados;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeUnidades;
 
@@ -19,4 +20,6 @@ public interface Unidad {
     void agregarseA(ConjuntoDeSoldados conjuntoDeSoldados);
     void agregarseA(ConjuntoDeUnidades conjuntoDeUnidades);
     Unidad ocuparCasillero(Unidad unidad);
+    Equipo equipo();
+    void setEquipo(Equipo equipo);
 }

@@ -1,6 +1,6 @@
 package Main.Tablero;
 
-import Main.Excepciones.CasilleroEsDeEnemigoException;
+import Main.Juego.Equipo;
 import Main.Juego.Jugador;
 import Main.Direccion.Posicion;
 import Main.Unidad.NullUnidad;
@@ -8,12 +8,13 @@ import Main.Unidad.Unidad;
 
 public class Casillero {
     private Posicion posicion;
-    private int deJugador;
+    private int deJugador; //eliminar de forma segura
+    private Equipo equipo;
     private Unidad unidad;
 
-    public Casillero(Posicion posicionAsignada, int numeroDeJugador) {
+    public Casillero(Posicion posicionAsignada, Equipo equipo) {
         posicion = posicionAsignada;
-        deJugador = numeroDeJugador;
+        this.equipo = equipo;
         unidad = new NullUnidad();
     }
 
@@ -33,14 +34,11 @@ public class Casillero {
         return deJugador;
     }
 
+    public Equipo equipo(){ return this.equipo; }
 
     public void colocarUnidadDeJugador(Unidad unidad, Jugador jugador) {
-
-        if (jugador.numero() != this.deJugador()) {
-            throw new CasilleroEsDeEnemigoException();
-        }
-
-        this.ocupar(unidad);
+       //Bando bandoUnidad = bandoUnidad.obtenerBando(unidad.equipo(), casillero.equipo());
+        this.equipo().colocar(unidad, unidad.equipo(), this);
     }
 
     // TODO: pensar en un nombre mejor. Este se diferencia del metodo colocarUnidadDeJugador

@@ -17,6 +17,7 @@ public class Jugador
     private ContadorDePuntos _contadorPuntos;
     private ArrayList<Unidad> _unidades;
     private Integer _numero;
+    private Equipo _equipo;
 
     // Metodos
     public Jugador(){
@@ -41,7 +42,11 @@ public class Jugador
     public void nombre(String nombre) {
         this._nombre = nombre;
     }
-    
+
+    public void equipo(Equipo equipo){_equipo = equipo;}
+
+    public Equipo equipo(){ return _equipo; }
+
     public Integer numero() {
         return this._numero;
     }

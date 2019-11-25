@@ -4,16 +4,18 @@ import Main.Direccion.Direccion;
 import Main.Direccion.Posicion;
 import Main.Excepciones.CasilleroOcupadoException;
 import Main.Excepciones.UnidadEstaMuertaException;
+import Main.Juego.Equipo;
 import Main.Tablero.Tablero;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeSoldados;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeUnidades;
 
-public class RealUnidad implements Unidad {
+public abstract class RealUnidad implements Unidad {
     protected int vida;
     protected String jugador;
     protected int coste;
     protected AtaqueEstrategia ataqueEstrategia;
     protected MovimientoEstrategia movimientoEstrategia = new MovimientoRegular();
+    protected Equipo equipo;
 
     public void atacar(Unidad unidadVictima) {
         ataqueEstrategia.atacar(this, unidadVictima);
@@ -34,6 +36,8 @@ public class RealUnidad implements Unidad {
         vida = vida - danio;
     }
 
+    public Equipo equipo(){ return this.equipo; }
+    public void setEquipo(Equipo equipo){ this.equipo = equipo; }
     public String getJugador() { return this.jugador; }
     public void setJugador(String unJugador) { this.jugador = unJugador; }
     public int vida(){ return this.vida; }

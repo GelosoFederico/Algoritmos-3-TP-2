@@ -2,6 +2,9 @@ package Main.Unidad;
 
 import Main.Direccion.Direccion;
 import Main.Direccion.Posicion;
+import Main.Juego.Equipo;
+import Main.Juego.EquipoBlanco;
+import Main.Juego.EquipoNegro;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeSoldados;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeUnidades;
 
@@ -11,7 +14,8 @@ public class NullUnidad implements Unidad {
     public void avanzar(Direccion direccion){};
     public int coste(){return 0;}
     public void recibirDanio(int danio){};
-
+    public Equipo equipo(){ return new EquipoBlanco();}; //TODO: hacer EquipoNull
+    public void setEquipo(Equipo equipo){};
     public String getJugador(){return "nadie";}
     public void setJugador(String unJugador){};
     public int vida(){return 0;}

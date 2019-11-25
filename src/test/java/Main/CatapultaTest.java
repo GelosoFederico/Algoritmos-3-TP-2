@@ -5,6 +5,8 @@ import Main.Direccion.Norte;
 import Main.Direccion.Posicion;
 import Main.Excepciones.UnidadFueraDeRangoException;
 import Main.Excepciones.UnidadNoPuedeMoverseException;
+import Main.Juego.EquipoBlanco;
+import Main.Juego.EquipoNegro;
 import Main.Juego.Juego;
 import Main.Juego.Jugador;
 import Main.Tablero.Tablero;
@@ -59,15 +61,17 @@ public class CatapultaTest {
     public void test03CatapultaAliadaAtacaACatapultaEnemigaCon50PuntosDeVidaUbicadoADistanciaLejanaYLeQuita20PuntosDeVida() {
         //Arrange
         Jugador mJugador1 = mock(Jugador.class);
-        when(mJugador1.numero()).thenReturn(1);
+        when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
         Jugador mJugador2 = mock(Jugador.class);
-        when(mJugador2.numero()).thenReturn(2);
+        when(mJugador2.equipo()).thenReturn(new EquipoNegro());
         String jugador1 = "ingleses";
         String jugador2 = "irlandeses";
         Unidad catapultaAliada = new Catapulta();
         Unidad catapultaEnemiga = new Catapulta();
         catapultaAliada.setJugador(jugador1);
         catapultaEnemiga.setJugador(jugador2);
+        catapultaAliada.setEquipo(new EquipoBlanco());
+        catapultaEnemiga.setEquipo(new EquipoNegro());
         Posicion unaPosicion = new Posicion(2,2);
         Posicion otraPosicion = new Posicion(11,11);
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(catapultaAliada,unaPosicion,mJugador1);
@@ -84,15 +88,17 @@ public class CatapultaTest {
     public void test06unCatapultaAliadaAtacaACatapultaEnemigaADistanciaCercanaYSeLanzaUnidadFueraDeRangoException() {
         //Arrange
         Jugador mJugador1 = mock(Jugador.class);
-        when(mJugador1.numero()).thenReturn(1);
+        when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
         Jugador mJugador2 = mock(Jugador.class);
-        when(mJugador2.numero()).thenReturn(2);
+        when(mJugador2.equipo()).thenReturn(new EquipoNegro());
         String jugador1 = "ingleses";
         String jugador2 = "irlandeses";
         Unidad catapultaAliada = new Catapulta();
-        Unidad catapultaEnemiga = new Jinete();
+        Unidad catapultaEnemiga = new Catapulta();
         catapultaAliada.setJugador(jugador1);
         catapultaEnemiga.setJugador(jugador2);
+        catapultaAliada.setEquipo(new EquipoBlanco());
+        catapultaEnemiga.setEquipo(new EquipoNegro());
         Posicion unaPosicion = new Posicion(9,9);
         Posicion otraPosicion = new Posicion(11,11);
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(catapultaAliada,unaPosicion,mJugador1);
@@ -105,11 +111,15 @@ public class CatapultaTest {
     @Test(expected = UnidadNoPuedeMoverseException.class)
     public void test07CatapultaSeIntentaMoverParaElNorteNoPuedeMoverse() {
         //Arrange
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
+        String jugador1 = "ingleses";
         Direccion unaDireccion = new Norte();
         Catapulta catapulta = new Catapulta();
         Posicion unaPosicion = new Posicion(1,1);
         Jugador mockedJugador = mock(Jugador.class);
-        when(mockedJugador.numero()).thenReturn(1);
+        catapulta.setJugador(jugador1);
+        catapulta.setEquipo(new EquipoBlanco());
         Tablero.getInstance()
                 .colocarUnidadEnPosicionDeJugador(catapulta,unaPosicion,mockedJugador);
 

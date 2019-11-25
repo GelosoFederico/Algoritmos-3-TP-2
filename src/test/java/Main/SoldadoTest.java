@@ -4,6 +4,8 @@ import Main.Excepciones.CasilleroOcupadoException;
 import Main.Excepciones.ProhibidoAtacarUnidadAliadaException;
 import Main.Excepciones.UnidadEstaMuertaException;
 import Main.Excepciones.UnidadFueraDeRangoException;
+import Main.Juego.EquipoBlanco;
+import Main.Juego.EquipoNegro;
 import Main.Juego.Juego;
 import Main.Juego.Jugador;
 import Main.Tablero.Tablero;
@@ -57,15 +59,17 @@ public class SoldadoTest {
     public void test03SoldadoAliadoAtacaASoldadoEnemigoCon100PuntosDeVidaUbicadoADistanciaCercanaYLeQuita10PuntosDeVida() {
         //Arrange
         Jugador mJugador1 = mock(Jugador.class);
-        when(mJugador1.numero()).thenReturn(1);
+        when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
         Jugador mJugador2 = mock(Jugador.class);
-        when(mJugador2.numero()).thenReturn(2);
+        when(mJugador2.equipo()).thenReturn(new EquipoNegro());
         String jugador1 = "ingleses";
         String jugador2 = "irlandeses";
         Soldado soldadoAliado = new Soldado();
         Soldado soldadoEnemigo = new Soldado();
         soldadoAliado.setJugador(jugador1);
         soldadoEnemigo.setJugador(jugador2);
+        soldadoAliado.setEquipo(new EquipoBlanco());
+        soldadoEnemigo.setEquipo(new EquipoNegro());
         Posicion unaPosicion = new Posicion(9,9);
         Posicion otraPosicion = new Posicion(11,11);
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoAliado,unaPosicion,mJugador1);
@@ -81,15 +85,17 @@ public class SoldadoTest {
     public void test04SoldadoAtacaADistanciaCercanaASoldadoEnemigoAunDespuesDeMuertoYEsteNoPuedeRecibirDanio(){
         //Arrange
         Jugador mJugador1 = mock(Jugador.class);
-        when(mJugador1.numero()).thenReturn(1);
+        when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
         Jugador mJugador2 = mock(Jugador.class);
-        when(mJugador2.numero()).thenReturn(2);
+        when(mJugador2.equipo()).thenReturn(new EquipoNegro());
         String jugador1 = "ingleses";
         String jugador2 = "irlandeses";
         Soldado soldadoAliado = new Soldado();
         Soldado soldadoEnemigo = new Soldado();
         soldadoAliado.setJugador(jugador1);
         soldadoEnemigo.setJugador(jugador2);
+        soldadoAliado.setEquipo(new EquipoBlanco());
+        soldadoEnemigo.setEquipo(new EquipoNegro());
         Posicion unaPosicion = new Posicion(9,9);
         Posicion otraPosicion = new Posicion(11,11);
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoAliado,unaPosicion,mJugador1);
@@ -107,12 +113,14 @@ public class SoldadoTest {
     public void test05SoldoAtacaASoldadoAliadoYEsteNoPuedeRecibirDanio() {
         //Arrange
         Jugador mJugador1 = mock(Jugador.class);
-        when(mJugador1.numero()).thenReturn(1);
+        when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
         String jugador1 = "ingleses";
         Soldado soldadoAliado = new Soldado();
         Soldado soldadoAliado2 = new Soldado();
         soldadoAliado.setJugador(jugador1);
         soldadoAliado2.setJugador(jugador1);
+        soldadoAliado.setEquipo(new EquipoBlanco());
+        soldadoAliado2.setEquipo(new EquipoBlanco());
         Posicion unaPosicion = new Posicion(9,9);
         Posicion otraPosicion = new Posicion(9, 8);
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoAliado,unaPosicion,mJugador1);
@@ -126,13 +134,15 @@ public class SoldadoTest {
     public void test06unSoldadoAliadoAtacaASoldadoEnemigoADistanciaMediaYSeLanzaUnidadFueraDeRangoException(){
         //Arrange
         Jugador mJugador1 = mock(Jugador.class);
-        when(mJugador1.numero()).thenReturn(1);
+        when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
         Jugador mJugador2 = mock(Jugador.class);
-        when(mJugador2.numero()).thenReturn(2);
+        when(mJugador2.equipo()).thenReturn(new EquipoNegro());
         String jugador1 = "ingleses";
         String jugador2 = "irlandeses";
         Soldado soldadoAliado = new Soldado();
         Soldado soldadoEnemigo = new Soldado();
+        soldadoAliado.setEquipo(new EquipoBlanco());
+        soldadoEnemigo.setEquipo(new EquipoNegro());
         soldadoAliado.setJugador(jugador1);
         soldadoEnemigo.setJugador(jugador2);
         Posicion unaPosicion = new Posicion(9,9);
@@ -150,8 +160,9 @@ public class SoldadoTest {
         Posicion unaPosicion = new Posicion(1,1);
         Direccion unaDireccion = new Norte();
         Soldado unSoldado = new Soldado();
+        unSoldado.setEquipo(new EquipoBlanco());
         Jugador mockedJugador = mock(Jugador.class);
-        when(mockedJugador.numero()).thenReturn(1);
+        when(mockedJugador.equipo()).thenReturn(new EquipoBlanco());
         Tablero.getInstance()
             .colocarUnidadEnPosicionDeJugador(unSoldado,unaPosicion,mockedJugador);
 
@@ -164,20 +175,21 @@ public class SoldadoTest {
     }
 
     @Test (expected = CasilleroOcupadoException.class)
-    public void test08SoldadoEn22IntentaMoverseAlNorteYElCasilleroEstaOcupadoPorUnSoldadoEnemigo() {
+    public void test08SoldadoEn22IntentaMoverseAlNorteYElCasilleroEstaOcupadoPorOtroSoldado() {
         //Arrange
         Posicion unaPosicion = new Posicion(2,2);
         Posicion posicionAlNorte = new Posicion(1,2);
         Direccion unaDireccion = new Norte();
         String jugador1 = "ingleses";
-        String jugador2 = "godos";
         Soldado unSoldado = new Soldado();
         Soldado otroSoldado = new Soldado();
         unSoldado.setJugador(jugador1);
-        otroSoldado.setJugador(jugador2);
+        otroSoldado.setJugador(jugador1);
+        unSoldado.setEquipo(new EquipoBlanco());
+        otroSoldado.setEquipo(new EquipoBlanco());
 
         Jugador mockedJugador = mock(Jugador.class);
-        when(mockedJugador.numero()).thenReturn(1);
+        when(mockedJugador.equipo()).thenReturn(new EquipoBlanco());
         Tablero.getInstance()
                 .colocarUnidadEnPosicionDeJugador(unSoldado,unaPosicion,mockedJugador);
         Tablero.getInstance()
@@ -201,8 +213,11 @@ public class SoldadoTest {
         soldado01.setJugador(jugador1);
         soldado02.setJugador(jugador1);
         soldado03.setJugador(jugador1);
+        soldado01.setEquipo(new EquipoBlanco());
+        soldado02.setEquipo(new EquipoBlanco());
+        soldado03.setEquipo(new EquipoBlanco());
         Jugador mockedJugador = mock(Jugador.class);
-        when(mockedJugador.numero()).thenReturn(1);
+        when(mockedJugador.equipo()).thenReturn(new EquipoBlanco());
         Tablero.getInstance()
                 .colocarUnidadEnPosicionDeJugador(soldado01,posicion01,mockedJugador);
         Tablero.getInstance()
@@ -238,8 +253,12 @@ public class SoldadoTest {
         soldado02.setJugador(jugador1);
         soldado03.setJugador(jugador1);
         soldado04.setJugador(jugador1);
+        soldado01.setEquipo(new EquipoBlanco());
+        soldado02.setEquipo(new EquipoBlanco());
+        soldado03.setEquipo(new EquipoBlanco());
+        soldado04.setEquipo(new EquipoBlanco());
         Jugador mockedJugador = mock(Jugador.class);
-        when(mockedJugador.numero()).thenReturn(1);
+        when(mockedJugador.equipo()).thenReturn(new EquipoBlanco());
         Tablero.getInstance()
                 .colocarUnidadEnPosicionDeJugador(soldado01,posicion01,mockedJugador);
         Tablero.getInstance()
@@ -279,8 +298,11 @@ public class SoldadoTest {
         soldado01.setJugador(jugador1);
         soldado02.setJugador(jugador1);
         soldado03.setJugador(jugador1);
+        soldado01.setEquipo(new EquipoBlanco());
+        soldado02.setEquipo(new EquipoBlanco());
+        soldado03.setEquipo(new EquipoBlanco());
         Jugador mockedJugador = mock(Jugador.class);
-        when(mockedJugador.numero()).thenReturn(1);
+        when(mockedJugador.equipo()).thenReturn(new EquipoBlanco());
         Tablero.getInstance()
                 .colocarUnidadEnPosicionDeJugador(soldado01,posicion01,mockedJugador);
         Tablero.getInstance()
@@ -315,8 +337,11 @@ public class SoldadoTest {
         soldado01.setJugador(jugador1);
         soldado02.setJugador(jugador1);
         soldado03.setJugador(jugador1);
+        soldado01.setEquipo(new EquipoBlanco());
+        soldado02.setEquipo(new EquipoBlanco());
+        soldado03.setEquipo(new EquipoBlanco());
         Jugador mockedJugador = mock(Jugador.class);
-        when(mockedJugador.numero()).thenReturn(1);
+        when(mockedJugador.equipo()).thenReturn(new EquipoBlanco());
         Tablero.getInstance()
                 .colocarUnidadEnPosicionDeJugador(soldado01,posicion01,mockedJugador);
         Tablero.getInstance()
@@ -350,8 +375,11 @@ public class SoldadoTest {
         soldado01.setJugador(jugador1);
         soldado02.setJugador(jugador1);
         soldado03.setJugador(jugador1);
+        soldado01.setEquipo(new EquipoBlanco());
+        soldado02.setEquipo(new EquipoBlanco());
+        soldado03.setEquipo(new EquipoBlanco());
         Jugador mockedJugador = mock(Jugador.class);
-        when(mockedJugador.numero()).thenReturn(1);
+        when(mockedJugador.equipo()).thenReturn(new EquipoBlanco());
         Tablero.getInstance()
                 .colocarUnidadEnPosicionDeJugador(soldado01,posicion01,mockedJugador);
         Tablero.getInstance()
@@ -392,9 +420,13 @@ public class SoldadoTest {
         soldado02.setJugador(jugador1);
         soldado03.setJugador(jugador1);
         unCurandero.setJugador(jugador1);
+        soldado01.setEquipo(new EquipoBlanco());
+        soldado02.setEquipo(new EquipoBlanco());
+        soldado03.setEquipo(new EquipoBlanco());
+        unCurandero.setEquipo(new EquipoBlanco());
 
         Jugador mockedJugador = mock(Jugador.class);
-        when(mockedJugador.numero()).thenReturn(1);
+        when(mockedJugador.equipo()).thenReturn(new EquipoBlanco());
 
         Tablero.getInstance()
                 .colocarUnidadEnPosicionDeJugador(soldado01,posicion01,mockedJugador);
@@ -438,7 +470,10 @@ public class SoldadoTest {
         soldado02.setJugador(jugador1);
         soldado03.setJugador(jugador1);
         unCurandero.setJugador(jugador1);
-
+        soldado01.setEquipo(new EquipoBlanco());
+        soldado02.setEquipo(new EquipoBlanco());
+        soldado03.setEquipo(new EquipoBlanco());
+        unCurandero.setEquipo(new EquipoBlanco());
         Jugador mockedJugador = mock(Jugador.class);
         when(mockedJugador.numero()).thenReturn(1);
 
@@ -488,6 +523,10 @@ public class SoldadoTest {
         soldado02.setJugador(jugador1);
         soldado03.setJugador(jugador1);
         unJinete.setJugador(jugador1);
+        soldado01.setEquipo(new EquipoBlanco());
+        soldado02.setEquipo(new EquipoBlanco());
+        soldado03.setEquipo(new EquipoBlanco());
+        unJinete.setEquipo(new EquipoBlanco());
 
         Jugador mockedJugador = mock(Jugador.class);
         when(mockedJugador.numero()).thenReturn(1);
@@ -534,6 +573,10 @@ public class SoldadoTest {
         soldado02.setJugador(jugador1);
         soldado03.setJugador(jugador1);
         unJinete.setJugador(jugador1);
+        soldado01.setEquipo(new EquipoBlanco());
+        soldado02.setEquipo(new EquipoBlanco());
+        soldado03.setEquipo(new EquipoBlanco());
+        unJinete.setEquipo(new EquipoBlanco());
 
         Jugador mockedJugador = mock(Jugador.class);
         when(mockedJugador.numero()).thenReturn(1);
@@ -581,6 +624,10 @@ public class SoldadoTest {
         soldado02.setJugador(jugador1);
         soldado03.setJugador(jugador1);
         soldado04.setJugador(jugador1);
+        soldado01.setEquipo(new EquipoBlanco());
+        soldado02.setEquipo(new EquipoBlanco());
+        soldado03.setEquipo(new EquipoBlanco());
+        soldado04.setEquipo(new EquipoBlanco());
 
         Jugador mockedJugador = mock(Jugador.class);
         when(mockedJugador.numero()).thenReturn(1);

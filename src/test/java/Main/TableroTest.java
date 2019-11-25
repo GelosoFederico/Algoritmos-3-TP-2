@@ -4,6 +4,8 @@ import Main.Direccion.Norte;
 import Main.Direccion.Posicion;
 import Main.Excepciones.CasilleroEsDeEnemigoException;
 import Main.Excepciones.CasilleroOcupadoException;
+import Main.Juego.EquipoBlanco;
+import Main.Juego.EquipoNegro;
 import Main.Juego.Juego;
 import Main.Juego.Jugador;
 import Main.Tablero.Tablero;
@@ -38,7 +40,7 @@ public class TableroTest {
         Posicion posicion = new Posicion(1,1); // Area del jugador 1
         Jugador mJugador = mock(Jugador.class);
         Soldado mSoldado = mock(Soldado.class);
-        when(mJugador.numero()).thenReturn(1);
+        when(mSoldado.equipo()).thenReturn(new EquipoBlanco());
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mSoldado,posicion,mJugador);
     }
     @Test(expected = CasilleroOcupadoException.class)
@@ -46,7 +48,7 @@ public class TableroTest {
         Posicion posicion = new Posicion(1,2); // Area del jugador 1
         Jugador mJugador = mock(Jugador.class);
         Soldado soldado = new Soldado();
-        when(mJugador.numero()).thenReturn(1);
+       soldado.setEquipo(new EquipoBlanco());
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldado,posicion,mJugador);
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldado,posicion,mJugador);
     }
@@ -56,7 +58,7 @@ public class TableroTest {
         Posicion posicion = new Posicion(1,3); // Area del jugador 1
         Jugador mJugador = mock(Jugador.class);
         Soldado mSoldado = mock(Soldado.class);
-        when(mJugador.numero()).thenReturn(2);
+        when(mSoldado.equipo()).thenReturn(new EquipoNegro());
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mSoldado,posicion,mJugador);
     }
 
@@ -67,7 +69,7 @@ public class TableroTest {
         Jugador mJugador = mock(Jugador.class);
         Juego.getInstance().agregarJugador(mJugador);
         Unidad mSoldado = mock(Soldado.class);
-        when(mJugador.numero()).thenReturn(1);
+        when(mSoldado.equipo()).thenReturn(new EquipoBlanco());
         Tablero.getInstance()
                 .colocarUnidadEnPosicionDeJugador(mSoldado, posicion, mJugador);
 
@@ -86,16 +88,19 @@ public class TableroTest {
     public void testEncuentraUnidadesAlrededorDeUnaUnidadAUnaDistancia () {
         // Assert
         Jugador mJugador = mock(Jugador.class);
-        when(mJugador.numero()).thenReturn(1);
+        when(mJugador.equipo()).thenReturn(new EquipoBlanco());
         Juego.getInstance().agregarJugador(mJugador);
 
         Unidad mUnidad1 = mock(Soldado.class);
+        when(mUnidad1.equipo()).thenReturn(new EquipoBlanco());
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mUnidad1, new Posicion(3,3), mJugador);
 
         Unidad mUnidad2 = mock(Soldado.class);
+        when(mUnidad2.equipo()).thenReturn(new EquipoBlanco());
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mUnidad2, new Posicion(3,4), mJugador);
 
         Unidad mUnidad3 = mock(Soldado.class);
+        when(mUnidad3.equipo()).thenReturn(new EquipoBlanco());
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mUnidad3, new Posicion(3,2), mJugador);
 
         ConjuntoDeUnidades unidadesQueDebeTirar = new ConjuntoDeUnidades();
@@ -114,16 +119,18 @@ public class TableroTest {
     public void testEncuentraUnidadesAlrededorDeUnaUnidadAUnaDistanciaYExcluyeLasQueNoVan () {
         // Assert
         Jugador mJugador = mock(Jugador.class);
-        when(mJugador.numero()).thenReturn(1);
         Juego.getInstance().agregarJugador(mJugador);
 
         Unidad mUnidad1 = mock(Soldado.class);
+        when(mUnidad1.equipo()).thenReturn(new EquipoBlanco());
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mUnidad1, new Posicion(3,3), mJugador);
 
         Unidad mUnidad2 = mock(Soldado.class);
+        when(mUnidad2.equipo()).thenReturn(new EquipoBlanco());
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mUnidad2, new Posicion(3,4), mJugador);
 
         Unidad mUnidad3 = mock(Soldado.class);
+        when(mUnidad3.equipo()).thenReturn(new EquipoBlanco());
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(mUnidad3, new Posicion(8,8), mJugador);
 
         ConjuntoDeUnidades unidadesQueDebeTirar = new ConjuntoDeUnidades();

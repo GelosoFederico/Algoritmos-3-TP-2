@@ -5,6 +5,8 @@ import Main.Excepciones.CasilleroEsDeEnemigoException;
 import Main.Excepciones.CasilleroOcupadoException;
 import Main.Excepciones.InsuficientePuntosRestantesAlColocarUnidadException;
 import Main.Excepciones.JugadorGanoLaPartida;
+import Main.Juego.EquipoBlanco;
+import Main.Juego.EquipoNegro;
 import Main.Juego.Juego;
 import Main.Juego.Jugador;
 import Main.Tablero.Tablero;
@@ -39,13 +41,16 @@ public class IntegralTest {
         // Arrange
         Jugador jugador1 = new Jugador();
         jugador1.nombre("Arkantos");
+        jugador1.equipo(new EquipoBlanco());
         Juego.getInstance().agregarJugador(jugador1);
 
         Jugador jugador2 = new Jugador();
+        jugador2.equipo(new EquipoNegro());
         jugador2.nombre("Gargarensis");
         Juego.getInstance().agregarJugador(jugador2);
 
         Unidad unidad = new Soldado();
+        unidad.setEquipo(new EquipoBlanco());
 
         // Act
         jugador1.colocarUnidadEn(unidad,new Posicion(1,2));
@@ -63,18 +68,13 @@ public class IntegralTest {
         // Arrange
         Jugador jugador1 = new Jugador();
         jugador1.nombre("Arkantos");
+        jugador1.equipo(new EquipoBlanco());
         Juego.getInstance().agregarJugador(jugador1);
 
-        Jugador jugador2 = new Jugador();
-        jugador2.nombre("Gargarensis");
-        Juego.getInstance().agregarJugador(jugador2);
-
         Unidad unidad = new Soldado();
-
-        // Act
+        unidad.setEquipo(new EquipoBlanco());
+        // Act & Assert
         jugador1.colocarUnidadEn(unidad,new Posicion(11,2));
-
-        // Assert
     }
 
     @Test (expected = CasilleroOcupadoException.class)
@@ -83,14 +83,13 @@ public class IntegralTest {
         // Arrange
         Jugador jugador1 = new Jugador();
         jugador1.nombre("Arkantos");
+        jugador1.equipo(new EquipoBlanco());
         Juego.getInstance().agregarJugador(jugador1);
-
-        Jugador jugador2 = new Jugador();
-        jugador2.nombre("Gargarensis");
-        Juego.getInstance().agregarJugador(jugador2);
 
         Unidad unidad1 = new Soldado();
         Unidad unidad2 = new Jinete();
+        unidad1.setEquipo(new EquipoBlanco());
+        unidad2.setEquipo(new EquipoBlanco());
 
         // Act & Assert
         jugador1.colocarUnidadEn(unidad1,new Posicion(1,2));
@@ -104,15 +103,14 @@ public class IntegralTest {
         // Arrange
         Jugador jugador1 = new Jugador();
         jugador1.nombre("Arkantos");
+        jugador1.equipo(new EquipoBlanco());
         Juego.getInstance().agregarJugador(jugador1);
 
-        Jugador jugador2 = new Jugador();
-        jugador2.nombre("Gargarensis");
-        Juego.getInstance().agregarJugador(jugador2);
-
-        // Act
+        // Act & Assert
         for(int i=0; i<7; i++){
-            jugador1.colocarUnidadEn(new Jinete(),new Posicion(i+1,2));
+            Unidad unidad = new Jinete();
+            unidad.setEquipo(new EquipoBlanco());
+            jugador1.colocarUnidadEn(unidad,new Posicion(1,i));
         }
     }
 
@@ -122,14 +120,18 @@ public class IntegralTest {
         // Arrange
         Jugador jugador1 = new Jugador();
         jugador1.nombre("Arkantos");
+        jugador1.equipo(new EquipoBlanco());
         Juego.getInstance().agregarJugador(jugador1);
 
         Jugador jugador2 = new Jugador();
         jugador2.nombre("Gargarensis");
+        jugador2.equipo(new EquipoNegro());
         Juego.getInstance().agregarJugador(jugador2);
 
         Unidad unidadJ1 = new Soldado();
         Unidad unidadJ2 = new Jinete();
+        unidadJ1.setEquipo(new EquipoBlanco());
+        unidadJ2.setEquipo(new EquipoNegro());
         jugador1.colocarUnidadEn(unidadJ1,new Posicion(7,7));
         jugador2.colocarUnidadEn(unidadJ2,new Posicion(11,11));
 
@@ -147,10 +149,12 @@ public class IntegralTest {
     public void testEncuentraUnidadesAlrededorDeUnaUnidadYLasAgregaSoloSoldadosAlConjuntoDeSoldados () {
         // Arrange
         Jugador jugador1 = new Jugador();
+        jugador1.equipo(new EquipoBlanco());
         jugador1.nombre("Arkantos");
         Juego.getInstance().agregarJugador(jugador1);
 
         Jugador jugador2 = new Jugador();
+        jugador2.equipo(new EquipoBlanco());
         jugador2.nombre("Gargarensis");
         Juego.getInstance().agregarJugador(jugador2);
 
@@ -158,6 +162,10 @@ public class IntegralTest {
         Unidad unidad2 = new Jinete();
         Unidad unidad3 = new Soldado();
         Unidad unidad4 = new Curandero();
+        unidad1.setEquipo(new EquipoBlanco());
+        unidad2.setEquipo(new EquipoBlanco());
+        unidad3.setEquipo(new EquipoBlanco());
+        unidad4.setEquipo(new EquipoBlanco());
         jugador1.colocarUnidadEn(unidad1,new Posicion(7,7));
         jugador1.colocarUnidadEn(unidad2,new Posicion(6,7));
         jugador1.colocarUnidadEn(unidad3,new Posicion(8,7));

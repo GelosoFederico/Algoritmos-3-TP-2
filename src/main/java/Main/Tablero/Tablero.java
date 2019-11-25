@@ -4,6 +4,9 @@ import Main.Direccion.Direccion;
 import Main.Direccion.Posicion;
 import Main.Excepciones.CasilleroFueraDeTableroException;
 import Main.Excepciones.UnidadNoSeEncuentraEnTablero;
+import Main.Juego.Equipo;
+import Main.Juego.EquipoBlanco;
+import Main.Juego.EquipoNegro;
 import Main.Juego.Jugador;
 import Main.Unidad.ConjuntoDeUnidades.ConjuntoDeUnidades;
 import Main.Unidad.Unidad;
@@ -54,14 +57,14 @@ public class Tablero {
     }
 
     private void crearCasilleros() {
-        int numeroDeJugador;
+        Equipo equipo;
         for(int i = 0; i < maximaCantidadDeCasilleros ; i++ ){
             if (i < maximaCantidadDeCasilleros/2)
-                numeroDeJugador = 1;
+                equipo = new EquipoBlanco();
             else
-                numeroDeJugador = 2;
+                equipo = new EquipoNegro();
             for(int j = 0; j < maximaCantidadDeCasilleros ; j++ ) {
-                    casilleros[i][j] = new Casillero(new Posicion(i,j), numeroDeJugador);
+                    casilleros[i][j] = new Casillero(new Posicion(i,j), equipo);
             }
         }
     }

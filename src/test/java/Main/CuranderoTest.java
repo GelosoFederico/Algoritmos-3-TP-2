@@ -6,6 +6,8 @@ import Main.Direccion.Posicion;
 import Main.Excepciones.CasilleroOcupadoException;
 import Main.Excepciones.ProhibidoCurarUnidadEnemigaException;
 import Main.Excepciones.UnidadFueraDeRangoException;
+import Main.Juego.EquipoBlanco;
+import Main.Juego.EquipoNegro;
 import Main.Juego.Juego;
 import Main.Juego.Jugador;
 import Main.Tablero.Tablero;
@@ -61,15 +63,18 @@ public class CuranderoTest {
     public void test04CuranderoAtacaASoldadoEnemigoYDevuelveUnaExcepcion() {
         //Arrange
         Jugador mJugador1 = mock(Jugador.class);
-        when(mJugador1.numero()).thenReturn(1);
+        when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
         Jugador mJugador2 = mock(Jugador.class);
-        when(mJugador2.numero()).thenReturn(2);
+        when(mJugador2.equipo()).thenReturn(new EquipoNegro());
         String jugador1 = "ingleses";
         String jugador2 = "irlandeses";
         Unidad curanderoAliado = new Curandero();
         Unidad soldadoEnemigo = new Soldado();
         curanderoAliado.setJugador(jugador1);
         soldadoEnemigo.setJugador(jugador2);
+        curanderoAliado.setEquipo(new EquipoBlanco());
+        soldadoEnemigo.setEquipo(new EquipoNegro());
+
         Posicion unaPosicion = new Posicion(9,9);
         Posicion otraPosicion = new Posicion(11,11);
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(curanderoAliado,unaPosicion,mJugador1);
@@ -86,14 +91,16 @@ public class CuranderoTest {
     public void test05CuranderoAliadoAtacaASoldadoAliadoCon100PuntosDeVidaUbicadoEnDistanciaCercanaYLeSube15PuntosDeVida() {
         //Arrange
         Jugador mJugador1 = mock(Jugador.class);
-        when(mJugador1.numero()).thenReturn(1);
+        when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
         Jugador mJugador2 = mock(Jugador.class);
-        when(mJugador2.numero()).thenReturn(2);
+        when(mJugador2.equipo()).thenReturn(new EquipoNegro());
         String jugador1 = "ingleses";
         Unidad curanderoAliado = new Curandero();
         Unidad soldadoAliado = new Soldado();
         curanderoAliado.setJugador(jugador1);
         soldadoAliado.setJugador(jugador1);
+        curanderoAliado.setEquipo(new EquipoBlanco());
+        soldadoAliado.setEquipo(new EquipoBlanco());
         Posicion unaPosicion = new Posicion(9,9);
         Posicion otraPosicion = new Posicion(9,8);
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(curanderoAliado,unaPosicion,mJugador1);
@@ -112,14 +119,16 @@ public class CuranderoTest {
     public void test06unCuranderoAliadoAtacaASoldadoAliadoADistanciaMediaYSeLanzaUnidadFueraDeRangoException(){
         //Arrange
         Jugador mJugador1 = mock(Jugador.class);
-        when(mJugador1.numero()).thenReturn(1);
+        when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
         Jugador mJugador2 = mock(Jugador.class);
-        when(mJugador2.numero()).thenReturn(2);
+        when(mJugador2.equipo()).thenReturn(new EquipoNegro());
         String jugador1 = "ingleses";
         Unidad curanderoAliado = new Curandero();
         Unidad soldadoAliado = new Soldado();
         curanderoAliado.setJugador(jugador1);
         soldadoAliado.setJugador(jugador1);
+        curanderoAliado.setEquipo(new EquipoBlanco());
+        soldadoAliado.setEquipo(new EquipoBlanco());
         Posicion unaPosicion = new Posicion(9,9);
         Posicion otraPosicion = new Posicion(5,8);
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(curanderoAliado,unaPosicion,mJugador1);
@@ -136,7 +145,8 @@ public class CuranderoTest {
         Direccion unaDireccion = new Norte();
         Curandero unCurandero = new Curandero();
         Jugador mockedJugador = mock(Jugador.class);
-        when(mockedJugador.numero()).thenReturn(1);
+        when(mockedJugador.equipo()).thenReturn(new EquipoBlanco());
+        unCurandero.setEquipo(new EquipoBlanco());
         Tablero.getInstance()
                 .colocarUnidadEnPosicionDeJugador(unCurandero,unaPosicion,mockedJugador);
 
@@ -156,9 +166,10 @@ public class CuranderoTest {
         Direccion unaDireccion = new Norte();
         Curandero unCurandero = new Curandero();
         Catapulta catapulta = new Catapulta();
-
+        unCurandero.setEquipo(new EquipoBlanco());
+        catapulta.setEquipo(new EquipoBlanco());
         Jugador mockedJugador = mock(Jugador.class);
-        when(mockedJugador.numero()).thenReturn(1);
+        when(mockedJugador.equipo()).thenReturn(new EquipoBlanco());
         Tablero.getInstance()
                 .colocarUnidadEnPosicionDeJugador(unCurandero,unaPosicion,mockedJugador);
         Tablero.getInstance()
