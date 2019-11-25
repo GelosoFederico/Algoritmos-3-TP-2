@@ -1,9 +1,13 @@
 package main.vista;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -20,12 +24,17 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        //Button botonDeInicio =  new Button();
-        // botonDeInicio.setText("Inicio del juego");
-        //  Scene scene = new Scene(botonDeInicio);
 
+        VBox root = new VBox(5);
+        root.getChildren().addAll(crearBotonesDeUnidades(), crearTabla());
+        Scene scene = new Scene(root);
+        stage.setTitle("Eleccion de unidades");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public GridPane crearTabla() {
         GridPane grid = new GridPane();
-
         for(int i=0; i< LONGITUD; i++) {
             for (int j = 0; j < LONGITUD; j++){
                 ImageView imagenCasillero;
@@ -35,9 +44,19 @@ public class App extends Application {
             }
         }
 
-        Scene scene = new Scene(grid);
-        stage.setScene(scene);
-        stage.show();
+        return grid;
+    }
+
+    public HBox crearBotonesDeUnidades() {
+        HBox opcionesUnidades = new HBox(5);
+        opcionesUnidades.setPadding(new Insets(10));
+        opcionesUnidades.setAlignment(Pos.BASELINE_RIGHT);
+
+        opcionesUnidades.getChildren().addAll(new BotonElegirSoldado(),
+                                            new BotonElegirJinete(),
+                                            new BotonElegirCatapulta(),
+                                            new BotonElegirCurandero());
+        return opcionesUnidades;
     }
 
     public static void main(String[] args) {
