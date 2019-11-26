@@ -1,11 +1,12 @@
 package main.vista;
 
+import Main.controlador.HandlerIniciarJuego;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import main.modelo.juego.Juego;
-import main.modelo.juego.Jugador;
+
+
 
 /**
  * JavaFX App
@@ -15,15 +16,17 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
 
-        // TEMPORAL: solo para que pueda andar
-        Juego.getInstance().agregarJugador(new Jugador("Gabriela"));
-
         VBox root = new VBox(5);
-        root.getChildren().addAll(new HBoxBotonesDeUnidades(), new GridPaneTablero());
+        Button buttonInicio = new Button();
+        buttonInicio.setText("Iniciar");
+        buttonInicio.setOnAction(new HandlerIniciarJuego(stage));
+        root.getChildren().add(buttonInicio);
         Scene scene = new Scene(root);
-        stage.setTitle("Eleccion de unidades");
+        stage.setTitle("AlgoChess");
         stage.setScene(scene);
         stage.show();
+
+
     }
 
 
