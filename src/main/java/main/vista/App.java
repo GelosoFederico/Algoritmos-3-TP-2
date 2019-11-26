@@ -1,14 +1,20 @@
 package main.vista;
 
+import Main.controlador.HandlerIniciarJuego;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import main.vista.BotonElegirCatapulta;
+
 
 /**
  * JavaFX App
@@ -26,11 +32,16 @@ public class App extends Application {
     public void start(Stage stage) {
 
         VBox root = new VBox(5);
-        root.getChildren().addAll(crearBotonesDeUnidades(), crearTabla());
+        Button buttonInicio = new Button();
+        buttonInicio.setText("Iniciar");
+        buttonInicio.setOnAction(new HandlerIniciarJuego(stage));
+        root.getChildren().add(buttonInicio);
+
         Scene scene = new Scene(root);
-        stage.setTitle("Eleccion de unidades");
+        stage.setTitle("AlgoChess");
         stage.setScene(scene);
         stage.show();
+
     }
 
     public GridPane crearTabla() {
@@ -52,10 +63,10 @@ public class App extends Application {
         opcionesUnidades.setPadding(new Insets(10));
         opcionesUnidades.setAlignment(Pos.BASELINE_RIGHT);
 
-        opcionesUnidades.getChildren().addAll(new BotonElegirSoldado(),
-                                            new BotonElegirJinete(),
-                                            new BotonElegirCatapulta(),
-                                            new BotonElegirCurandero());
+        opcionesUnidades.getChildren().addAll(new main.vista.BotonElegirSoldado(),
+                new main.vista.BotonElegirJinete(),
+                new main.vista.BotonElegirCatapulta(),
+                new main.vista.BotonElegirCurandero());
         return opcionesUnidades;
     }
 
