@@ -13,7 +13,6 @@ public class HandlerElegirSoldado implements EventHandler<ActionEvent> {
         // TEMP Esto es para que no este sin jugadores
         Juego.getInstance().agregarJugador(new Jugador("Gabriela"));
         // TEMP
-        Juego.getInstance().jugadores().get(0)
-                .colocarUnidadEn(new Soldado(),new Posicion(1,1));
+        Juego.getInstance().jugadores().get(0).colocarUnidadEn(new Soldado(),new Posicion(1,1));
     }
 }

@@ -1,47 +1,31 @@
-package main.vista;
+package Main.vista;
 
-import Main.controlador.HandlerIniciarJuego;
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import main.vista.BotonElegirCatapulta;
-
-
-/**
- * JavaFX App
- */
-public class App extends Application {
-    // --module-path "C:\Program Files\Java\javafx-sdk-11.0.2\lib" --add-modules javafx.controls,javafx.fxml
-    // TODO sin esto en la opcion de la VM no anda
-    // Preguntar: ya se cargó el archivo de JavaFx en el proyecto.
+public class VistaPartida extends Group {
+    private final Stage stage;
+    private GridPane tablero;
 
     private static final int LONGITUD = 20;
     private static final int ALTURA_CASILLERO = 32;
     private static final int ANCHURA_CASILLERO = 32;
 
-    @Override
-    public void start(Stage stage) {
 
-        VBox root = new VBox(5);
-        Button buttonInicio = new Button();
-        buttonInicio.setText("Iniciar");
-        buttonInicio.setOnAction(new HandlerIniciarJuego(stage));
-        root.getChildren().add(buttonInicio);
+    public VistaPartida(Stage stage) {
+        super();
+        this.stage = stage;
+        this.tablero = this.crearTabla();
 
-        Scene scene = new Scene(root);
-        stage.setTitle("AlgoChess");
+        Scene scene = new Scene(this.tablero);
         stage.setScene(scene);
         stage.show();
-
     }
 
     public GridPane crearTabla() {
@@ -70,8 +54,11 @@ public class App extends Application {
         return opcionesUnidades;
     }
 
-    public static void main(String[] args) {
-        launch();
+    /*
+    public void actualizar() {
+
     }
+
+     */
 
 }
