@@ -11,13 +11,14 @@ public class HandlerTablero implements EventHandler<MouseEvent> {
     public HandlerTablero(GridPane gridPane) {
         this.gridPane = gridPane;
     }
+
     public void handle(MouseEvent event) {
         Node clickedNode = event.getPickResult().getIntersectedNode();
         if (clickedNode != gridPane) {
             Node source = (Node) event.getSource();
-            Integer colIndex = gridPane.getColumnIndex(source);
-            Integer rowIndex = gridPane.getRowIndex(source);
-            System.out.println("Mouse clicked cell: " + colIndex + "And: " + rowIndex);
+            Integer colIndex = gridPane.getColumnIndex(clickedNode);
+            Integer rowIndex = gridPane.getRowIndex(clickedNode);
+            //System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
         }
     }
 }

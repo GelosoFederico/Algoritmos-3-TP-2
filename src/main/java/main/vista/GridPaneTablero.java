@@ -11,6 +11,7 @@ public class GridPaneTablero extends GridPane {
 
     public GridPaneTablero() {
         super();
+        
         for(int i=0; i< LONGITUD; i++) {
             for (int j = 0; j < LONGITUD; j++){
                 ImageView imagenCasillero;
@@ -19,6 +20,7 @@ public class GridPaneTablero extends GridPane {
                 imagenCasillero.setFitWidth(ANCHURA_CASILLERO);
             }
         }
+
         this.setOnMouseClicked(new HandlerTablero(this));
     }
 }
