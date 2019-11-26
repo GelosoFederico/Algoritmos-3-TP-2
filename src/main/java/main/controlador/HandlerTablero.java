@@ -4,9 +4,17 @@ import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import main.modelo.direccion.Posicion;
+import main.modelo.juego.Juego;
+import main.modelo.unidad.Unidad;
 
 public class HandlerTablero implements EventHandler<MouseEvent> {
-    GridPane gridPane;
+    private static GridPane gridPane;
+    private static Unidad unidadElegida;
+
+    static public void setUnidadElegida(Unidad unidad) {
+        unidadElegida = unidad;
+    }
 
     public HandlerTablero(GridPane gridPane) {
         this.gridPane = gridPane;
@@ -18,7 +26,9 @@ public class HandlerTablero implements EventHandler<MouseEvent> {
             Node source = (Node) event.getSource();
             Integer colIndex = gridPane.getColumnIndex(clickedNode);
             Integer rowIndex = gridPane.getRowIndex(clickedNode);
-            //System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
+            // TODO: el jugador deberia ser el jugador de turno
+            Juego.getInstance().jugadores().get(0)
+                    .colocarUnidadEn(unidadElegida,new Posicion(rowIndex,colIndex));
         }
     }
 }

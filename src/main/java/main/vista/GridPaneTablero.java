@@ -11,7 +11,7 @@ public class GridPaneTablero extends GridPane {
 
     public GridPaneTablero() {
         super();
-        
+
         for(int i=0; i< LONGITUD; i++) {
             for (int j = 0; j < LONGITUD; j++){
                 ImageView imagenCasillero;
