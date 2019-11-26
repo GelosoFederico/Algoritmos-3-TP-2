@@ -1,13 +1,12 @@
 package Main.vista;
 
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import main.vista.GridPaneTablero;
+import main.vista.HBoxBotonesDeUnidades;
 
 public class VistaPartida extends Group {
     private final Stage stage;
@@ -21,37 +20,14 @@ public class VistaPartida extends Group {
     public VistaPartida(Stage stage) {
         super();
         this.stage = stage;
-        this.tablero = this.crearTabla();
+        this.tablero = new GridPaneTablero();
 
-        Scene scene = new Scene(this.tablero);
+        VBox root = new VBox(5);
+        root.getChildren().addAll(new HBoxBotonesDeUnidades(), this.tablero);
+        Scene scene = new Scene(root);
+        stage.setTitle("Eleccion de unidades");
         stage.setScene(scene);
         stage.show();
-    }
-
-    public GridPane crearTabla() {
-        GridPane grid = new GridPane();
-        for(int i=0; i< LONGITUD; i++) {
-            for (int j = 0; j < LONGITUD; j++){
-                ImageView imagenCasillero;
-                grid.add(imagenCasillero = new ImageView("file:src/imagenCasillero.png"), i, j);
-                imagenCasillero.setFitHeight(ALTURA_CASILLERO);
-                imagenCasillero.setFitWidth(ANCHURA_CASILLERO);
-            }
-        }
-
-        return grid;
-    }
-
-    public HBox crearBotonesDeUnidades() {
-        HBox opcionesUnidades = new HBox(5);
-        opcionesUnidades.setPadding(new Insets(10));
-        opcionesUnidades.setAlignment(Pos.BASELINE_RIGHT);
-
-        opcionesUnidades.getChildren().addAll(new main.vista.BotonElegirSoldado(),
-                new main.vista.BotonElegirJinete(),
-                new main.vista.BotonElegirCatapulta(),
-                new main.vista.BotonElegirCurandero());
-        return opcionesUnidades;
     }
 
     /*

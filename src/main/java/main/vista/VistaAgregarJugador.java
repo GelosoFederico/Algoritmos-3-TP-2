@@ -13,7 +13,7 @@ public class VistaAgregarJugador extends VBox {
     }
 
     public void dibujarPantalla() {
-        BotonAgregarJugador botonAgregarJugador = new BotonAgregarJugador(this.stage);
+        Main.vista.BotonAgregarJugador botonAgregarJugador = new Main.vista.BotonAgregarJugador(this.stage);
         this.getChildren().add(botonAgregarJugador);
         Scene scene = new Scene(this);
         this.stage.setScene(scene);
