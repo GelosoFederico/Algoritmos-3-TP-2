@@ -1,6 +1,7 @@
-package Main.Unidad.ConjuntoDeUnidades;
+package main.modelo.unidad.conjuntodeunidades;
 
-import Main.Unidad.Unidad;
+import main.modelo.unidad.Unidad;
+
 import java.util.Iterator;
 
 public class ConjuntoDeUnidadesIterador implements Iterator<Unidad> {

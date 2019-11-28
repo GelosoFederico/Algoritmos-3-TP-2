@@ -1,7 +1,8 @@
-package Main.Juego;
+package main.modelo.juego;
 
-import Main.Tablero.Casillero;
-import Main.Unidad.Unidad;
+import main.modelo.tablero.Casillero;
+import main.modelo.unidad.Unidad;
+
 public interface Equipo {
     void colocar(Unidad unidad, Equipo equipo, Casillero casillero);
     void colocar(Unidad unidad, EquipoBlanco equipoBlanco, Casillero casillero);

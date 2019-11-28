@@ -5,6 +5,8 @@ import main.modelo.excepciones.CasilleroEsDeEnemigoException;
 import main.modelo.excepciones.CasilleroOcupadoException;
 import main.modelo.excepciones.InsuficientePuntosRestantesAlColocarUnidadException;
 import main.modelo.excepciones.JugadorGanoLaPartida;
+import main.modelo.juego.EquipoBlanco;
+import main.modelo.juego.EquipoNegro;
 import main.modelo.juego.Juego;
 import main.modelo.juego.Jugador;
 import main.modelo.tablero.Tablero;
@@ -44,7 +46,7 @@ public class IntegralTest {
 
         Jugador jugador2 = new Jugador();
         jugador2.equipo(new EquipoNegro());
-        jugador2.nombre("Gargarensis");
+         jugador2.nombre("Gargarensis");
         Juego.getInstance().agregarJugador(jugador2);
 
         Unidad unidad = new Soldado();

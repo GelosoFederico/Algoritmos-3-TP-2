@@ -5,6 +5,8 @@ import main.modelo.excepciones.CasilleroFueraDeTableroException;
 import main.modelo.excepciones.CasilleroOcupadoException;
 import main.modelo.excepciones.UnidadFueraDeRangoException;
 import main.modelo.excepciones.UnidadNoPuedeMoverseException;
+import main.modelo.juego.EquipoBlanco;
+import main.modelo.juego.EquipoNegro;
 import main.modelo.juego.Juego;
 import main.modelo.juego.Jugador;
 import main.modelo.tablero.Tablero;

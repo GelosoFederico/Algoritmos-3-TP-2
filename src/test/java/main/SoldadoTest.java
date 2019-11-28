@@ -4,6 +4,8 @@ import main.modelo.excepciones.CasilleroOcupadoException;
 import main.modelo.excepciones.ProhibidoAtacarUnidadAliadaException;
 import main.modelo.excepciones.UnidadEstaMuertaException;
 import main.modelo.excepciones.UnidadFueraDeRangoException;
+import main.modelo.juego.EquipoBlanco;
+import main.modelo.juego.EquipoNegro;
 import main.modelo.juego.Juego;
 import main.modelo.juego.Jugador;
 import main.modelo.tablero.Tablero;

@@ -2,6 +2,8 @@ package main;
 
 import main.modelo.direccion.Posicion;
 import main.modelo.excepciones.CasilleroOcupadoException;
+import main.modelo.juego.Equipo;
+import main.modelo.juego.EquipoBlanco;
 import main.modelo.unidad.Soldado;
 import main.modelo.tablero.Casillero;
 import org.junit.Test;

@@ -1,8 +1,8 @@
-package Main.Juego;
+package main.modelo.juego;
 
-import Main.Excepciones.CasilleroEsDeEnemigoException;
-import Main.Tablero.Casillero;
-import Main.Unidad.Unidad;
+import main.modelo.excepciones.CasilleroEsDeEnemigoException;
+import main.modelo.tablero.Casillero;
+import main.modelo.unidad.Unidad;
 
 public class EquipoNegro implements Equipo{
     @Override

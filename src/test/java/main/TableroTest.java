@@ -4,6 +4,8 @@ import main.modelo.direccion.Norte;
 import main.modelo.direccion.Posicion;
 import main.modelo.excepciones.CasilleroEsDeEnemigoException;
 import main.modelo.excepciones.CasilleroOcupadoException;
+import main.modelo.juego.EquipoBlanco;
+import main.modelo.juego.EquipoNegro;
 import main.modelo.juego.Juego;
 import main.modelo.juego.Jugador;
 import main.modelo.tablero.Tablero;
