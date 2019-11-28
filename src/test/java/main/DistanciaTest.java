@@ -36,7 +36,8 @@ public class DistanciaTest {
 
         Unidad unidad1 = new Soldado();
         Unidad unidad2 = new Jinete();
-
+        unidad1.setEquipo(new EquipoBlanco());
+        unidad2.setEquipo(new EquipoNegro());
         // Act
         jugador1.colocarUnidadEn(unidad1,new Posicion(1,2));
         jugador2.colocarUnidadEn(unidad2,new Posicion(10,11));
