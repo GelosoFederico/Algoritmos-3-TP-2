@@ -10,7 +10,6 @@ import main.modelo.juego.Equipo;
 
 public class Casillero {
     private Posicion posicion;
-    private int deJugador; //eliminar de forma segura
     private Equipo equipo;
     private Unidad unidad;
 
@@ -30,10 +29,6 @@ public class Casillero {
 
     public void liberar() {
         this.unidad = new NullUnidad();
-    }
-
-    public int deJugador() {
-        return deJugador;
     }
 
     public Equipo equipo(){ return this.equipo; }
