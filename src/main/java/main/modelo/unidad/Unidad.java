@@ -2,6 +2,7 @@ package main.modelo.unidad;
 
 import main.modelo.direccion.Direccion;
 import main.modelo.direccion.Posicion;
+import main.modelo.juego.Equipo;
 import main.modelo.unidad.ataque.AtaqueEstrategia;
 import main.modelo.unidad.conjuntodeunidades.ConjuntoDeSoldados;
 import main.modelo.unidad.conjuntodeunidades.ConjuntoDeUnidades;
