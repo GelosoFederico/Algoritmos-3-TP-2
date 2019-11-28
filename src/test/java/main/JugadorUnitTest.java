@@ -59,7 +59,7 @@ public class JugadorUnitTest
         // Arrange mocks
         Jinete jineteMock = mock(Jinete.class);
         when(jineteMock.coste()).thenReturn(3);
-
+        when(jineteMock.equipo()).thenReturn(new EquipoBlanco());
         // Act
         jugador.colocarUnidadEn(jineteMock,posicion);
 
@@ -73,17 +73,20 @@ public class JugadorUnitTest
         // Arrange
         Jugador jugador = new Jugador();
         jugador.nombre("Arkantos");
+        jugador.equipo(new EquipoBlanco());
         Posicion posicion1 = new Posicion(1,1);
         Posicion posicion2 = new Posicion(2,2);
         // Mocks
         Jinete jinete1Mock = mock(Jinete.class);
         when(jinete1Mock.coste()).thenReturn(11);
+        when(jinete1Mock.equipo()).thenReturn(new EquipoBlanco());
+
         // Act
         // Lleno el tablero
         jugador.colocarUnidadEn(jinete1Mock,posicion1);
         Jinete jinete2Mock = mock(Jinete.class);
         when(jinete2Mock.coste()).thenReturn(11);
-
+        when(jinete2Mock.equipo()).thenReturn(new EquipoBlanco());
         // Assert
         // Espera una excepcion
         jugador.colocarUnidadEn(jinete2Mock,posicion2);
@@ -93,16 +96,14 @@ public class JugadorUnitTest
     public void jugadorPierdeUnidadYYaNoLaTiene(){
         // Arrange
         Jugador jugador = new Jugador();
-        // Mocks
-        //Tablero tableroMock = mock(Tablero.class);
-        //jugador.set_tablero(tableroMock);
-
         Jinete jinete1Mock = mock(Jinete.class);
         when(jinete1Mock.coste()).thenReturn(3);
         when(jinete1Mock.getJugador()).thenReturn(jugador.nombre());
+        when(jinete1Mock.equipo()).thenReturn(new EquipoBlanco());
         Posicion posicion1 = new Posicion(1,1);
         Jinete jinete2Mock = mock(Jinete.class);
         when(jinete2Mock.getJugador()).thenReturn(jugador.nombre());
+        when(jinete2Mock.equipo()).thenReturn(new EquipoBlanco());
         Posicion posicion2 = new Posicion(2,2);
 
         ArrayList<Unidad> coleccionUnidadesInicio = new ArrayList<Unidad>();
@@ -129,6 +130,7 @@ public class JugadorUnitTest
         Jinete jinete1Mock = mock(Jinete.class);
         when(jinete1Mock.coste()).thenReturn(3);
         when(jinete1Mock.getJugador()).thenReturn(jugador.nombre());
+        when(jinete1Mock.equipo()).thenReturn(new EquipoBlanco());
         Posicion posicion1 = new Posicion(1,1);
 
         jugador.colocarUnidadEn(jinete1Mock,posicion1);

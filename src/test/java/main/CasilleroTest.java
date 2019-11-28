@@ -12,7 +12,8 @@ public class CasilleroTest {
 
         @Test (expected = CasilleroOcupadoException.class)
         public void testSeOcupaUnCasilleroYSeVerificaQueEsteOcupado() {
-            Casillero unCasillero = new Casillero(new Posicion(1,1), 1);
+            Equipo equipo = new EquipoBlanco();
+            Casillero unCasillero = new Casillero(new Posicion(1,1), equipo);
             Soldado unSoldado = new Soldado();
             unCasillero.ocupar(unSoldado);
             // Para comprobar que esta ocupado, lo ocupo de nuevo y debe lanzar una excepcion
@@ -24,7 +25,8 @@ public class CasilleroTest {
 
         @Test
         public void testSeLiberaUnCasilleroYSeVerificaQueEsteLiberado() {
-            Casillero unCasillero = new Casillero(new Posicion(1,1), 1);
+            Equipo equipo = new EquipoBlanco();
+            Casillero unCasillero = new Casillero(new Posicion(1,1), equipo);
             Soldado unSoldado = new Soldado();
             unCasillero.ocupar(unSoldado);
             unCasillero.liberar();

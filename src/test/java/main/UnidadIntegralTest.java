@@ -36,7 +36,7 @@ public class UnidadIntegralTest {
         Juego.getInstance().agregarJugador(jugador1);
 
         Unidad unidad1 = new Soldado();
-
+        unidad1.setEquipo(new EquipoBlanco());
         jugador1.colocarUnidadEn(unidad1,new Posicion(5,5));
 
         // Act
@@ -58,15 +58,13 @@ public class UnidadIntegralTest {
         jugador1.nombre("Arkantos");
         Juego.getInstance().agregarJugador(jugador1);
 
-        Jugador jugador2 = new Jugador();
-        jugador2.nombre("Gargarensis");
-        Juego.getInstance().agregarJugador(jugador2);
-
-        Unidad unidad1 = new Jinete(); //BUG EXTRAÑO, si pones adelante un soldado este test no pasa
+        Unidad unidad1 = new Jinete();
         Unidad unidad2 = new Soldado();
+        unidad1.setEquipo(new EquipoBlanco());
+        unidad2.setEquipo(new EquipoBlanco());
 
         unidad1.setJugador("Arkantos");
-        unidad2.setJugador("Gargarensis");
+        unidad2.setJugador("Arkantos");
 
         jugador1.colocarUnidadEn(unidad1,new Posicion(6,5));
         jugador1.colocarUnidadEn(unidad2,new Posicion(5,5));
@@ -81,12 +79,8 @@ public class UnidadIntegralTest {
         Jugador jugador1 = new Jugador();
         jugador1.nombre("Arkantos");
         Juego.getInstance().agregarJugador(jugador1);
-
-        Jugador jugador2 = new Jugador();
-        jugador2.nombre("Gargarensis");
-        Juego.getInstance().agregarJugador(jugador2);
-
         Unidad unidad1 = new Catapulta();
+        unidad1.setEquipo(new EquipoBlanco());
 
         jugador1.colocarUnidadEn(unidad1,new Posicion(9,9));
 
@@ -107,6 +101,8 @@ public class UnidadIntegralTest {
 
         Unidad unidad1 = new Soldado();
         Unidad unidad2 = new Soldado();
+        unidad1.setEquipo(new EquipoBlanco());
+        unidad2.setEquipo(new EquipoNegro());
 
         jugador1.colocarUnidadEn(unidad1,new Posicion(9,9));
         jugador2.colocarUnidadEn(unidad2,new Posicion(10,10));
@@ -133,6 +129,8 @@ public class UnidadIntegralTest {
 
         Unidad unidad1 = new Jinete();
         Unidad unidad2 = new Soldado();
+        unidad1.setEquipo(new EquipoBlanco());
+        unidad2.setEquipo(new EquipoNegro());
 
         jugador1.colocarUnidadEn(unidad1,new Posicion(6,6));
         jugador2.colocarUnidadEn(unidad2,new Posicion(10,10));
@@ -159,6 +157,8 @@ public class UnidadIntegralTest {
 
         Unidad unidad1 = new Catapulta();
         Unidad unidad2 = new Soldado();
+        unidad1.setEquipo(new EquipoBlanco());
+        unidad2.setEquipo(new EquipoNegro());
 
         jugador1.colocarUnidadEn(unidad1,new Posicion(1,1));
         jugador2.colocarUnidadEn(unidad2,new Posicion(10,10));
@@ -185,6 +185,8 @@ public class UnidadIntegralTest {
 
         Unidad unidad1 = new Curandero();
         Unidad unidad2 = new Soldado();
+        unidad1.setEquipo(new EquipoBlanco());
+        unidad2.setEquipo(new EquipoBlanco());
 
         jugador1.colocarUnidadEn(unidad1,new Posicion(1,1));
         jugador1.colocarUnidadEn(unidad2,new Posicion(2,2));
@@ -206,6 +208,7 @@ public class UnidadIntegralTest {
         Juego.getInstance().agregarJugador(jugador1);
 
         Unidad unidad1 = new Soldado();
+        unidad1.setEquipo(new EquipoBlanco());
 
         jugador1.colocarUnidadEn(unidad1,new Posicion(0,0));
 
@@ -227,6 +230,10 @@ public class UnidadIntegralTest {
         Unidad unidad1 = new Jinete();
         Unidad unidad2 = new Soldado();
         Unidad unidad3 = new Soldado();
+        unidad1.setEquipo(new EquipoBlanco());
+        unidad2.setEquipo(new EquipoNegro());
+        unidad3.setEquipo(new EquipoNegro());
+
 
         jugador1.colocarUnidadEn(unidad1,new Posicion(9,9));
         jugador2.colocarUnidadEn(unidad2,new Posicion(10,10));
@@ -251,6 +258,10 @@ public class UnidadIntegralTest {
         Unidad unidad2 = new Soldado();
         Unidad unidad3 = new Soldado();
         Unidad unidad4 = new Soldado();
+        unidad1.setEquipo(new EquipoBlanco());
+        unidad2.setEquipo(new EquipoNegro());
+        unidad3.setEquipo(new EquipoNegro());
+        unidad4.setEquipo(new EquipoBlanco());
 
         jugador1.colocarUnidadEn(unidad1,new Posicion(9,9));
         jugador2.colocarUnidadEn(unidad2,new Posicion(10,10));
@@ -282,6 +293,10 @@ public class UnidadIntegralTest {
         Unidad unidad2 = new Soldado();
         Unidad unidad3 = new Soldado();
         Unidad unidad4 = new Soldado();
+        unidad1.setEquipo(new EquipoBlanco());
+        unidad2.setEquipo(new EquipoNegro());
+        unidad3.setEquipo(new EquipoNegro());
+        unidad4.setEquipo(new EquipoBlanco());
 
         jugador1.colocarUnidadEn(unidad1,new Posicion(9,9));
         jugador2.colocarUnidadEn(unidad2,new Posicion(10,10));

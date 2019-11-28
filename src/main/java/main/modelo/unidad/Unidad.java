@@ -20,4 +20,6 @@ public interface Unidad {
     void agregarseA(ConjuntoDeSoldados conjuntoDeSoldados);
     void agregarseA(ConjuntoDeUnidades conjuntoDeUnidades);
     Unidad ocuparCasillero(Unidad unidad);
+    Equipo equipo();
+    void setEquipo(Equipo equipo);
 }

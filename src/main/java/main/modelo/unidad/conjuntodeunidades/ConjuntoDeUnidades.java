@@ -3,9 +3,10 @@ package main.modelo.unidad.conjuntodeunidades;
 import main.modelo.unidad.Unidad;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class ConjuntoDeUnidades {
+public class ConjuntoDeUnidades implements Iterable<Unidad> {
     // TODO agregar iterador para tocar desde fuera
     protected List<Unidad> unidades;
 
@@ -48,5 +49,10 @@ public class ConjuntoDeUnidades {
             }
         }
         return conjuntoNuevo;
+    }
+
+    @Override
+    public Iterator<Unidad> iterator() {
+        return new ConjuntoDeUnidadesIterador(this);
     }
 }
