@@ -39,6 +39,8 @@ public class ConjuntoDeUnidades implements Iterable<Unidad> {
         }
         return true;
     }
+
+
     
     public ConjuntoDeUnidades obtenerUnidadesDeJugador(String jugadorNombre){
         // TODO el conjunto nuevo deberia clonarse del viejo para que sean de la misma clase (sacarle todas las unidades)
@@ -50,6 +52,8 @@ public class ConjuntoDeUnidades implements Iterable<Unidad> {
         }
         return conjuntoNuevo;
     }
+
+
 
     @Override
     public Iterator<Unidad> iterator() {

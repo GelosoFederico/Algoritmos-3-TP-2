@@ -44,7 +44,7 @@ public class CatapultaTest {
     }
 
     @Test
-    public void test02CreoUnaCatapultaCon50PuntosDeVidaReciveUnDanioDe15PuntosYSuVidaCambiaA35Puntos() {
+    public void test02CreoUnaCatapultaCon50PuntosDeVidaRecibeUnDanioDe15PuntosYSuVidaCambiaA35Puntos() {
         //Arrange
         int vidaInicial = 50;
         Jinete unJinete = new Jinete(vidaInicial);
@@ -126,5 +126,35 @@ public class CatapultaTest {
         //Act & Assert
         catapulta.avanzar(unaDireccion);
     }
+
+    @Test
+    public void test03CatapultaAliadaAtacaAUnidadEnemigaCon50PuntosDeVidaUbicadoADistanciaLejanaYLeQuita20PuntosDeVida() {
+        //Arrange
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
+        Jugador mJugador2 = mock(Jugador.class);
+        when(mJugador2.equipo()).thenReturn(new EquipoNegro());
+        String jugador1 = "ingleses";
+        String jugador2 = "irlandeses";
+
+        Unidad catapultaAliada = new Catapulta();
+        Unidad catapultaEnemiga = new Catapulta();
+
+        catapultaAliada.setJugador(jugador1);
+        catapultaEnemiga.setJugador(jugador2);
+        catapultaAliada.setEquipo(new EquipoBlanco());
+        catapultaEnemiga.setEquipo(new EquipoNegro());
+        Posicion unaPosicion = new Posicion(2,2);
+        Posicion otraPosicion = new Posicion(11,11);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(catapultaAliada,unaPosicion,mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(catapultaEnemiga,otraPosicion,mJugador2);
+
+        //Act
+        catapultaAliada.atacar(catapultaEnemiga);
+
+        //Assert
+        assertEquals(catapultaEnemiga.vida(), 30);
+    }
+
 
 }
