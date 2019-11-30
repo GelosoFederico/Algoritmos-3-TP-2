@@ -3,6 +3,9 @@ package main.modelo.tablero;
 import main.modelo.direccion.Direccion;
 import main.modelo.direccion.Posicion;
 import main.modelo.excepciones.*;
+import main.modelo.juego.Equipo;
+import main.modelo.juego.EquipoBlanco;
+import main.modelo.juego.EquipoNegro;
 import main.modelo.juego.Jugador;
 import main.modelo.tablero.Distancia.Distancia;
 import main.modelo.unidad.conjuntodeunidades.ConjuntoDeUnidades;
@@ -59,14 +62,14 @@ public class Tablero {
     }
 
     private void crearCasilleros() {
-        int numeroDeJugador;
+        Equipo equipo;
         for(int i = 0; i < maximaCantidadDeCasilleros ; i++ ){
             if (i < maximaCantidadDeCasilleros/2)
-                numeroDeJugador = 1;
+                equipo = new EquipoBlanco();
             else
-                numeroDeJugador = 2;
+                equipo = new EquipoNegro();
             for(int j = 0; j < maximaCantidadDeCasilleros ; j++ ) {
-                    casilleros[i][j] = new Casillero(new Posicion(i,j), numeroDeJugador);
+                    casilleros[i][j] = new Casillero(new Posicion(i,j), equipo);
             }
         }
     }
