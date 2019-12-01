@@ -7,6 +7,6 @@ import main.modelo.unidad.Catapulta;
 
 public class HandlerElegirCatapulta implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
-        HandlerTablero.setUnidadElegida(new Catapulta());
+        HandlerColocarUnidad.setUnidadElegida(new Catapulta());
     }
 }
