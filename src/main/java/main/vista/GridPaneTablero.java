@@ -1,12 +1,6 @@
 package main.vista;
 
-import javafx.scene.Node;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import main.controlador.HandlerCasillero;
-import main.controlador.HandlerTablero;
 import main.modelo.direccion.Posicion;
 
 public class GridPaneTablero extends GridPane {
@@ -22,7 +16,5 @@ public class GridPaneTablero extends GridPane {
                 this.add(casillero, i, j);
             }
         }
-
-        // this.setOnMouseClicked(new HandlerTablero(this));
     }
 }

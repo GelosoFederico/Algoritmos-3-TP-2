@@ -2,25 +2,37 @@ package main.controlador;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.StackPane;
+import main.modelo.juego.Juego;
+import main.modelo.juego.Jugador;
 import main.modelo.unidad.Unidad;
 import main.vista.DiccionarioImagenes;
+import main.vista.VistaCasillero;
 
 public class HandlerColocarUnidad implements EventHandler<MouseEvent> {
-    private static Unidad unidadElegida;
-    private DiccionarioImagenes dicc = new DiccionarioImagenes();
-    private StackPane stackPane;
+    private VistaCasillero vistaCasillero;
+    private static Unidad unidadElegida = null;
+    private DiccionarioImagenes diccionarioImagenes = new DiccionarioImagenes();
 
+    public HandlerColocarUnidad(VistaCasillero vistaCasillero) {
+        super();
+        this.vistaCasillero = vistaCasillero;
+    }
+
+    static public Unidad getUnidadElegida() {
+        return unidadElegida;
+    }
     static public void setUnidadElegida(Unidad unidad) {
         unidadElegida = unidad;
     }
 
-    public HandlerColocarUnidad(StackPane stackPane) {
-        this.stackPane = stackPane;
+    @Override
+    public void handle(MouseEvent mouseEvent) {
+        if(unidadElegida != null ) {
+            Jugador jugador = Juego.getInstance().getJugadorDeTurno();
+            jugador.colocarUnidadEn(unidadElegida, vistaCasillero.getPosicion());
+            vistaCasillero.agregarUnidad(diccionarioImagenes.get("soldado")); // TODO: generalizar
+        }
     }
 
-    public void handle(MouseEvent event) {
-        // TODO: pedir al modelo coloca la pieza
-        stackPane.getChildren().add(dicc.get("soldado"));
-    }
+
 }

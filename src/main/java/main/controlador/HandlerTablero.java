@@ -8,6 +8,7 @@ import main.modelo.direccion.Posicion;
 import main.modelo.juego.Juego;
 import main.modelo.unidad.Unidad;
 
+// TODO: esto se va
 public class HandlerTablero implements EventHandler<MouseEvent> {
     private static GridPane gridPane;
     private static Unidad unidadElegida;
@@ -35,4 +36,5 @@ public class HandlerTablero implements EventHandler<MouseEvent> {
                     .colocarUnidadEn(unidadElegida,new Posicion(rowIndex,colIndex));
         }
     }
+
 }
