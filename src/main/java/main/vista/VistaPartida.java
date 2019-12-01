@@ -1,12 +1,10 @@
-package Main.vista;
+package main.vista;
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import main.vista.GridPaneTablero;
-import main.vista.HBoxBotonesDeUnidades;
 
 public class VistaPartida extends Group {
     private final Stage stage;

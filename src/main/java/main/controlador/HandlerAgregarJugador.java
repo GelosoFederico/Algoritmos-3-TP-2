@@ -1,6 +1,6 @@
-package Main.controlador;
+package main.controlador;
 
-import Main.vista.VistaPartida;
+import main.vista.VistaPartida;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 

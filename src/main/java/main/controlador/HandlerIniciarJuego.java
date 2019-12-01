@@ -1,6 +1,6 @@
-package Main.controlador;
+package main.controlador;
 
-import Main.vista.VistaAgregarJugador;
+import main.vista.VistaAgregarJugador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;

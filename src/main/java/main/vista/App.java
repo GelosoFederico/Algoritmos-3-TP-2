@@ -1,6 +1,6 @@
 package main.vista;
 
-import Main.controlador.HandlerIniciarJuego;
+import main.controlador.HandlerIniciarJuego;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

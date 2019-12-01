@@ -44,8 +44,12 @@ public class JineteTest {
     @Test
     public void test02CreoUnJineteCon100PuntosDeVidaRecibeUnDanioDe15PuntosYSuVidaCambiaA85Puntos() {
         //Arrange
-        int vidaInicial = 100;
-        Jinete unJinete = new Jinete(vidaInicial);
+        Jinete unJinete = new Jinete();
+        unJinete.setEquipo(new EquipoBlanco());
+        Posicion unaPosicion = new Posicion(2,2);
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(unJinete,unaPosicion,mJugador1);
 
         //Act
         unJinete.recibirDanio(15);
