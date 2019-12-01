@@ -16,6 +16,10 @@ public class HandlerTablero implements EventHandler<MouseEvent> {
         unidadElegida = unidad;
     }
 
+    static public Unidad getUnidadElegida() {
+        return unidadElegida;
+    }
+
     public HandlerTablero(GridPane gridPane) {
         this.gridPane = gridPane;
     }

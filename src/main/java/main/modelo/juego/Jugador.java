@@ -57,6 +57,7 @@ public class Jugador
 
     public void colocarUnidadEn(Unidad unidad, Posicion posicion) {
         unidad.setJugador(this.nombre());
+        unidad.setEquipo(this.equipo());
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(unidad, posicion, this);
         this.getContadorPuntos().contarPuntosDe(unidad);
         this.unidades().add(unidad);
