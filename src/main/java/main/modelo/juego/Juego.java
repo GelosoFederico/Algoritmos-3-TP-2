@@ -43,6 +43,11 @@ public class Juego {
         if (this.jugadores().size() == 2) {
             throw new JuegoNoPuedeTenerMasDe2JugadoresException();
         }
+        if (this.jugadores().size() == 0) {
+            jugador.equipo(new EquipoBlanco());
+        } else {
+            jugador.equipo(new EquipoNegro());
+        }
         this.jugadores().add(jugador);
 
         // TODO: refactorizar tal vez

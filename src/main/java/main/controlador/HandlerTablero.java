@@ -3,36 +3,36 @@ package main.controlador;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import main.modelo.direccion.Posicion;
+import main.modelo.juego.Juego;
 import main.modelo.unidad.Unidad;
-import main.vista.DiccionarioImagenes;
-import main.vista.GridPaneTablero;
 
-// TODO: esto vuela
 public class HandlerTablero implements EventHandler<MouseEvent> {
-    private static GridPaneTablero gridPaneTablero;
+    private static GridPane gridPane;
     private static Unidad unidadElegida;
-    private DiccionarioImagenes diccionarioImagenes = new DiccionarioImagenes();
 
     static public void setUnidadElegida(Unidad unidad) {
         unidadElegida = unidad;
     }
 
-    public HandlerTablero(GridPaneTablero gridPaneTablero) {
-        this.gridPaneTablero = gridPaneTablero;
+    static public Unidad getUnidadElegida() {
+        return unidadElegida;
+    }
+
+    public HandlerTablero(GridPane gridPane) {
+        this.gridPane = gridPane;
     }
 
     public void handle(MouseEvent event) {
         Node clickedNode = event.getPickResult().getIntersectedNode();
-        if (clickedNode != gridPaneTablero) {
+        if (clickedNode != gridPane) {
             Node source = (Node) event.getSource();
-            Integer colIndex = gridPaneTablero.getColumnIndex(clickedNode);
-            Integer rowIndex = gridPaneTablero.getRowIndex(clickedNode);
+            Integer colIndex = gridPane.getColumnIndex(clickedNode);
+            Integer rowIndex = gridPane.getRowIndex(clickedNode);
             // TODO: el jugador deberia ser el jugador de turno
-            //Juego.getInstance().jugadores().get(0)
-            //        .colocarUnidadEn(unidadElegida,new Posicion(rowIndex,colIndex));
-
-            //StackPane stackPane = gridPaneTablero.getContenidoEn(rowIndex,colIndex);
-            //stackPane.getChildren().add(diccionarioImagenes.get("soldado"));
+            Juego.getInstance().jugadores().get(0)
+                    .colocarUnidadEn(unidadElegida,new Posicion(rowIndex,colIndex));
         }
     }
 }

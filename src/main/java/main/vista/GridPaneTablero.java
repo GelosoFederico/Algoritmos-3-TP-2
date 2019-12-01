@@ -1,32 +1,28 @@
 package main.vista;
 
+import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import main.controlador.HandlerColocarUnidad;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import main.controlador.HandlerCasillero;
+import main.controlador.HandlerTablero;
+import main.modelo.direccion.Posicion;
 
 public class GridPaneTablero extends GridPane {
     private static final int LONGITUD = 20;
-    private static final int ALTURA_CASILLERO = 32;
-    private static final int ANCHURA_CASILLERO = 32;
 
     public GridPaneTablero() {
         super();
 
         for(int i=0; i< LONGITUD; i++) {
             for (int j = 0; j < LONGITUD; j++){
-                ImageView imagenCasillero = new ImageView("file:src/imagenCasillero.png");
+                VistaCasillero casillero = new VistaCasillero(new Posicion(i,j));
 
-                StackPane stackPane = new StackPane();
-                stackPane.getChildren().add(imagenCasillero);
-                stackPane.setOnMouseClicked(new HandlerColocarUnidad(stackPane));
-                this.add(stackPane,i,j);
-                imagenCasillero.setFitHeight(ALTURA_CASILLERO);
-                imagenCasillero.setFitWidth(ANCHURA_CASILLERO);
-
+                this.add(casillero, i, j);
             }
         }
 
+        // this.setOnMouseClicked(new HandlerTablero(this));
     }
-
 }
