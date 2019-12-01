@@ -2,7 +2,6 @@ package main.modelo.unidad.conjuntodeunidades;
 
 import main.modelo.direccion.Posicion;
 import main.modelo.juego.EquipoBlanco;
-import main.modelo.juego.EquipoNegro;
 import main.modelo.juego.Juego;
 import main.modelo.juego.Jugador;
 import main.modelo.tablero.Tablero;
@@ -16,9 +15,6 @@ import org.junit.Test;
 import java.lang.reflect.Field;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 
 public class ConjuntoDeUnidadesVictimasTest {
     @Before
