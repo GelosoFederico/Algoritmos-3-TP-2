@@ -8,5 +8,6 @@ import main.modelo.unidad.Soldado;
 public class HandlerElegirSoldado implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
         HandlerTablero.setUnidadElegida(new Soldado());
+        HandlerSonidos.getInstance().reproducirSonido("Crear Soldado");
     }
 }

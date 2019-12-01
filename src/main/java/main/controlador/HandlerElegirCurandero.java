@@ -8,5 +8,6 @@ import main.modelo.unidad.Curandero;
 public class HandlerElegirCurandero implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
         HandlerTablero.setUnidadElegida(new Curandero());
+        HandlerSonidos.getInstance().reproducirSonido("Crear Curandero");
     }
 }
