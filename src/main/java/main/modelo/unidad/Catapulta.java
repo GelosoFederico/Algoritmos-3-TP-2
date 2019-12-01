@@ -1,6 +1,7 @@
 package main.modelo.unidad;
 
 import main.modelo.unidad.ataque.AtaqueLejano;
+import main.modelo.unidad.ataque.AtaqueLejanoConExpansion;
 
 public class Catapulta extends RealUnidad {
 
@@ -9,7 +10,7 @@ public class Catapulta extends RealUnidad {
     public Catapulta() {
         vida = 50;
         coste = 5;
-        ataqueEstrategia = new AtaqueLejano(DANIO);
+        ataqueEstrategia = new AtaqueLejanoConExpansion(DANIO);
         movimientoEstrategia = new MovimientoEstatico();
     }
 

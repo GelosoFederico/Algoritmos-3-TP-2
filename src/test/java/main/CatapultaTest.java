@@ -12,6 +12,7 @@ import main.modelo.juego.Jugador;
 import main.modelo.tablero.Tablero;
 import main.modelo.unidad.Catapulta;
 import main.modelo.unidad.Jinete;
+import main.modelo.unidad.Soldado;
 import main.modelo.unidad.Unidad;
 import org.junit.Test;
 import org.junit.After;
@@ -85,7 +86,7 @@ public class CatapultaTest {
     }
 
     @Test (expected = UnidadFueraDeRangoException.class)
-    public void test06unCatapultaAliadaAtacaACatapultaEnemigaADistanciaCercanaYSeLanzaUnidadFueraDeRangoException() {
+    public void test04unCatapultaAliadaAtacaACatapultaEnemigaADistanciaCercanaYSeLanzaUnidadFueraDeRangoException() {
         //Arrange
         Jugador mJugador1 = mock(Jugador.class);
         when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
@@ -109,7 +110,7 @@ public class CatapultaTest {
     }
 
     @Test(expected = UnidadNoPuedeMoverseException.class)
-    public void test07CatapultaSeIntentaMoverParaElNorteNoPuedeMoverse() {
+    public void test05CatapultaSeIntentaMoverParaElNorteNoPuedeMoverse() {
         //Arrange
         Jugador mJugador1 = mock(Jugador.class);
         when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
@@ -128,7 +129,7 @@ public class CatapultaTest {
     }
 
     @Test
-    public void test03CatapultaAliadaAtacaAUnidadEnemigaCon50PuntosDeVidaUbicadoADistanciaLejanaYLeQuita20PuntosDeVida() {
+    public void test06CatapultaAliadaAtacaAUnidadEnemigaCon50PuntosDeVidaUbicadoADistanciaLejanaYLeQuita20PuntosDeVida() {
         //Arrange
         Jugador mJugador1 = mock(Jugador.class);
         when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
@@ -156,5 +157,47 @@ public class CatapultaTest {
         assertEquals(catapultaEnemiga.vida(), 30);
     }
 
+    @Test
+    public void test07CatapultaAliadaAtacaAUnidadEnemigaConExpansionDistanciaLejanaYLeQuita20PuntosDeVidaYASusAlrededores() {
+        //Arrange
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
+        Jugador mJugador2 = mock(Jugador.class);
+        when(mJugador2.equipo()).thenReturn(new EquipoNegro());
+        String jugador1 = "ingleses";
+        String jugador2 = "irlandeses";
+
+        Unidad catapultaAliada = new Catapulta();
+        Unidad catapultaEnemiga = new Catapulta();
+        Unidad soldadoEnemigo1 = new Soldado();
+        Unidad unJinete = new Jinete();
+
+        catapultaAliada.setJugador(jugador1);
+        catapultaEnemiga.setJugador(jugador2);
+
+        catapultaAliada.setEquipo(new EquipoBlanco());
+        catapultaEnemiga.setEquipo(new EquipoNegro());
+        soldadoEnemigo1.setEquipo(new EquipoNegro());
+        unJinete.setEquipo(new EquipoNegro());
+
+        Posicion unaPosicion = new Posicion(2,2);
+        Posicion otraPosicion = new Posicion(11,11);
+        Posicion posicionSoldado = new Posicion(12,11);
+        Posicion posicionJinete = new Posicion(12,12);
+
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(catapultaAliada,unaPosicion,mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(catapultaEnemiga,otraPosicion,mJugador2);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoEnemigo1,posicionSoldado,mJugador2);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(unJinete,posicionJinete,mJugador2);
+
+
+        //Act
+        catapultaAliada.atacar(catapultaEnemiga);
+
+        //Assert
+        assertEquals(catapultaEnemiga.vida(), 30);
+        assertEquals(soldadoEnemigo1.vida(), 80);
+        assertEquals(unJinete.vida(), 80);
+    }
 
 }

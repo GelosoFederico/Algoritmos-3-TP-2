@@ -4,6 +4,7 @@ import main.modelo.tablero.Distancia.Lejana;
 import main.modelo.tablero.Tablero;
 import main.modelo.unidad.Unidad;
 import main.modelo.unidad.conjuntodeunidades.ConjuntoDeUnidades;
+import main.modelo.unidad.conjuntodeunidades.ConjuntoDeUnidadesVictimas;
 
 public class AtaqueLejano extends AtaqueEstrategia {
 

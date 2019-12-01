@@ -4,18 +4,13 @@ import main.modelo.tablero.Tablero;
 import main.modelo.unidad.Soldado;
 import main.modelo.unidad.Unidad;
 
-public class ConjuntoDeUnidadesVictimas extends ConjuntoDeUnidades {
+import java.util.Iterator;
 
-    ConjuntoDeUnidades nuevasVictimas = new ConjuntoDeUnidades();
+public class ConjuntoDeUnidadesVictimas extends ConjuntoDeUnidades {
 
     public void agregar(Unidad unidad) {
         unidad.agregarseA(this);
     }
-
-
-    //public void agregarUnidad(Unidad unidad) {
-  //      this.unidades().add(unidad);
-    //}
 
     public ConjuntoDeUnidadesVictimas buscarTodasLasVictimasDeExpansion(Unidad unidadVictima){
 
@@ -37,19 +32,30 @@ public class ConjuntoDeUnidadesVictimas extends ConjuntoDeUnidades {
             for (Unidad unidad:unidades.unidades()) {
 
                 ConjuntoDeUnidades unidadesContiguas = this.buscarUnidadesContiguasALaVictima(unidad);
-                this.agregarUnidadesDiferentesDeOtro(unidadesContiguas);
-                this.buscarUnidadesContiguasParaCadaVictima(this.nuevasVictimas);
+                ConjuntoDeUnidades nuevasVictimas = this.agregarUnidadesDiferentesDeOtro(unidadesContiguas);
+                this.buscarUnidadesContiguasParaCadaVictima(nuevasVictimas);
 
             }
     }
 
-    public void agregarUnidadesDiferentesDeOtro(ConjuntoDeUnidades otroConjunto){
-        this.nuevasVictimas = new ConjuntoDeUnidades();
+    public ConjuntoDeUnidades agregarUnidadesDiferentesDeOtro(ConjuntoDeUnidades otroConjunto){
+        ConjuntoDeUnidades nuevasVictimas = new ConjuntoDeUnidades();
         for (Unidad unidad: otroConjunto.unidades() ) {
             if(!this.seEncuentra(unidad)) {
                 this.agregarUnidad(unidad);
-                this.nuevasVictimas.agregarUnidad(unidad);
+                nuevasVictimas.agregarUnidad(unidad);
             }
         }
+        return nuevasVictimas;
     }
+
+    public void recibirDanio(Unidad primerVictima, int danio){
+        for (Unidad unidad: this.unidades() ) {
+            if(unidad != primerVictima) {
+                unidad.recibirDanio(danio);
+            }
+        }
+
+    }
+
 }
