@@ -45,6 +45,11 @@ public class SoldadoTest {
     public void test02CreoUnSolDadoCon100PuntosDeVidaReciveUnDanioDe10PuntosYSuVidaCambiaA90Puntos(){
         //Arrange
         Soldado unSoldado = new Soldado();
+        unSoldado.setEquipo(new EquipoBlanco());
+        Posicion unaPosicion = new Posicion(2,2);
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(unSoldado,unaPosicion,mJugador1);
 
         //Act
         unSoldado.recibirDanio(10);

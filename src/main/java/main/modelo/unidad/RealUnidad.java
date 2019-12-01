@@ -36,7 +36,8 @@ public abstract class RealUnidad implements Unidad {
         if (vida <= 0) {
             throw new UnidadEstaMuertaException();
         }
-        vida = vida - danio;
+        int danioFinal = this.equipo().calcularDanioFinal(this, danio);
+        vida = vida - danioFinal;
     }
 
     public Equipo equipo(){ return this.equipo; }

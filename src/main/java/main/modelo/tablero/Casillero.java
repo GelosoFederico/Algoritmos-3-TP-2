@@ -38,11 +38,6 @@ public class Casillero {
         this.equipo().colocar(unidad, unidad.equipo(), this);
     }
 
-    // TODO: pensar en un nombre mejor. Este se diferencia del metodo colocarUnidadDeJugador
-    // porque no necesita validar si es del aliado o enemigo. Es para usar en
-    // TODO: meter este dentro del colocar
-    public void guardarUnidad(Unidad unidad) { this.ocupar(unidad); }
-
     public Unidad unidad() {
         return this.unidad;
     }

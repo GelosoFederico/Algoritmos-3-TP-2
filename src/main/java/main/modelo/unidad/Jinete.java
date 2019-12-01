@@ -16,11 +16,6 @@ public class Jinete extends RealUnidad {
         coste = 3;
     }
 
-    public Jinete(int vidaInicial) {
-        vida = vidaInicial;
-        coste = 3;
-    }
-
     @Override
     public void atacar(Unidad unidadEnemiga) {
         // Si hay un soldado de infanteria aliado cerca o ningun enemigo,
