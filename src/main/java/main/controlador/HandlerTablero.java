@@ -3,7 +3,6 @@ package main.controlador;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.StackPane;
 import main.modelo.unidad.Unidad;
 import main.vista.DiccionarioImagenes;
 import main.vista.GridPaneTablero;
@@ -32,8 +31,8 @@ public class HandlerTablero implements EventHandler<MouseEvent> {
             //Juego.getInstance().jugadores().get(0)
             //        .colocarUnidadEn(unidadElegida,new Posicion(rowIndex,colIndex));
 
-            StackPane stackPane = gridPaneTablero.getContenidoEn(rowIndex,colIndex);
-            stackPane.getChildren().add(diccionarioImagenes.get("soldado"));
+            //StackPane stackPane = gridPaneTablero.getContenidoEn(rowIndex,colIndex);
+            //stackPane.getChildren().add(diccionarioImagenes.get("soldado"));
         }
     }
 }
