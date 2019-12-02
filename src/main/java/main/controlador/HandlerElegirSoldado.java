@@ -2,12 +2,16 @@ package main.controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import main.modelo.juego.Juego;
 import main.modelo.unidad.Soldado;
+import main.modelo.unidad.Unidad;
 
 
 public class HandlerElegirSoldado implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
-        HandlerTablero.setUnidadElegida(new Soldado());
+        Unidad soldado = new Soldado();
+        soldado.setEquipo(Juego.getInstance().getJugadorDeTurno().equipo());
+        HandlerColocarUnidad.setUnidadElegida(soldado);
         HandlerSonidos.getInstance().reproducirSonido("Crear Soldado");
     }
 }
