@@ -20,9 +20,9 @@ public class Tablero {
     // Singleton pattern
     private static Tablero INSTANCE = null;
 
-    int maximaCantidadDeCasilleros = 20;
+    private final int maximaCantidadDeCasilleros = 20;
 
-    Casillero[][] casilleros = new Casillero[maximaCantidadDeCasilleros][maximaCantidadDeCasilleros];
+    private Casillero[][] casilleros = new Casillero[maximaCantidadDeCasilleros][maximaCantidadDeCasilleros];
 
     private Tablero(){
         this.crearCasilleros();

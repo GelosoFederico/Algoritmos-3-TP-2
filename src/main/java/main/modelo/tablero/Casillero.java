@@ -34,16 +34,10 @@ public class Casillero {
     public Equipo equipo(){ return this.equipo; }
 
     public void colocarUnidadDeJugador(Unidad unidad, Jugador jugador) {
-       //Bando bandoUnidad = bandoUnidad.obtenerBando(unidad.equipo(), casillero.equipo());
         this.equipo().colocar(unidad, unidad.equipo(), this);
     }
 
     public Unidad unidad() {
         return this.unidad;
     }
-
-    public Distancia calcularDistanciaA(Casillero casillero) {
-        return this.posicion().distanciaA(casillero.posicion());
-    }
-
 }

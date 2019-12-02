@@ -10,45 +10,47 @@ import java.util.ArrayList;
 public class Jugador
 {
 
-    public static void reiniciar (){siguiente_numero = 1;} // Este metodo es para reiniciar los tests
-    private static Integer siguiente_numero = 1;
+    public static void reiniciar (){
+        siguienteNumero = 1;} // Este metodo es para reiniciar los tests
+    private static Integer siguienteNumero = 1;
     // Atributos
-    private String _nombre;
-    private ContadorDePuntos _contadorPuntos;
-    private ArrayList<Unidad> _unidades;
-    private Integer _numero;
-    private Equipo _equipo;
+    private String nombre;
+    private ContadorDePuntos contadorDePuntos;
+    private ArrayList<Unidad> unidades;
+    private Integer numero;
+    private Equipo equipo;
 
     // Metodos
     public Jugador(){
-        _contadorPuntos = new ContadorDePuntos();
-        _unidades = new ArrayList<Unidad>();
-        _numero = siguiente_numero;
-        siguiente_numero++;
+        contadorDePuntos = new ContadorDePuntos();
+        unidades = new ArrayList<Unidad>();
+        numero = siguienteNumero;
+        siguienteNumero++;
     }
 
     public Jugador(String nombre){
-        _contadorPuntos = new ContadorDePuntos();
-        _nombre = nombre;
-        _unidades = new ArrayList<Unidad>();
-        _numero = siguiente_numero;
-        siguiente_numero++;
+        contadorDePuntos = new ContadorDePuntos();
+        this.nombre = nombre;
+        unidades = new ArrayList<Unidad>();
+        numero = siguienteNumero;
+        siguienteNumero++;
     }
 
     public String nombre() {
-        return this._nombre;
+        return this.nombre;
     }
 
     public void nombre(String nombre) {
-        this._nombre = nombre;
+        this.nombre = nombre;
     }
 
-    public void equipo(Equipo equipo){_equipo = equipo;}
+    public void equipo(Equipo equipo){
+        this.equipo = equipo;}
 
-    public Equipo equipo(){ return _equipo; }
+    public Equipo equipo(){ return equipo; }
 
     public Integer numero() {
-        return this._numero;
+        return this.numero;
     }
 
     public Integer puntosRestantes() {
@@ -65,7 +67,7 @@ public class Jugador
     }
 
     private ContadorDePuntos getContadorPuntos() {
-        return this._contadorPuntos;
+        return this.contadorDePuntos;
     }
 
     public void pierdeUnidad(Unidad unidad) {
@@ -86,6 +88,6 @@ public class Jugador
     }
 
     public ArrayList<Unidad> unidades() {
-        return _unidades;
+        return unidades;
     }
 }

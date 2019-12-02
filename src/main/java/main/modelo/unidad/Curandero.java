@@ -4,7 +4,7 @@ import main.modelo.excepciones.ProhibidoCurarUnidadEnemigaException;
 import main.modelo.unidad.ataque.AtaqueCorto;
 
 public class Curandero extends RealUnidad {
-    static final int DANIO_CURANDERO = -15;
+    private static final int DANIO_CURANDERO = -15;
 
     public Curandero(){
         vida = 75;
