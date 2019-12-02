@@ -35,11 +35,11 @@ public class HandlerSonidos {
 
     private Dictionary crearDiccionario() {
         Dictionary<String, String> diccionario = new Hashtable<String, String>();
-        diccionario.put("Agregar Jugador","src/chat.wav");
-        diccionario.put("Crear Soldado","src/military_spawn.wav");
-        diccionario.put("Crear Jinete","src/horseselect1.wav");
-        diccionario.put("Crear Catapulta","src/mangonelselect.wav");
-        diccionario.put("Crear Curandero","src/priest_converting2.wav");
+        diccionario.put("Agregar Jugador","src/sonidos/chat.wav");
+        diccionario.put("Crear Soldado","src/sonidos/military_spawn.wav");
+        diccionario.put("Crear Jinete","src/sonidos/horseselect1.wav");
+        diccionario.put("Crear Catapulta","src/sonidos/mangonelselect.wav");
+        diccionario.put("Crear Curandero","src/sonidos/priest_converting2.wav");
 
         return diccionario;
     }
