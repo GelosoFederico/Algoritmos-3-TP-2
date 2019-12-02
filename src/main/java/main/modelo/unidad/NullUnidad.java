@@ -7,6 +7,7 @@ import main.modelo.juego.EquipoNull;
 import main.modelo.unidad.ataque.AtaqueEstrategia;
 import main.modelo.unidad.conjuntodeunidades.ConjuntoDeSoldados;
 import main.modelo.unidad.conjuntodeunidades.ConjuntoDeUnidades;
+import main.modelo.unidad.conjuntodeunidades.ConjuntoDeUnidadesVictimas;
 
 public class NullUnidad implements Unidad {
     // TODO: devuelve cualquier cosa. Hay que ver que preferimos que haga
@@ -26,6 +27,7 @@ public class NullUnidad implements Unidad {
     public void setearEstrategiaDeAtaque(AtaqueEstrategia ataqueEstrategia){};
     public void agregarseA(ConjuntoDeSoldados conjuntoDeSoldados) {};
     public void agregarseA(ConjuntoDeUnidades conjuntoDeUnidades) {};
+    public void agregarseA(ConjuntoDeUnidadesVictimas conjuntoDeUnidades){};
     public Unidad ocuparCasillero(Unidad unidad){
         return unidad;
     };

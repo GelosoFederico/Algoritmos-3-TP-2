@@ -6,9 +6,7 @@ import main.modelo.unidad.Unidad;
 
 public class AtaqueLejano extends AtaqueEstrategia {
 
-    public AtaqueLejano(int danio) {
-        super(danio);
-    }
+    public AtaqueLejano(int danio) { super(danio);}
 
     @Override
     public void atacar(Unidad atacante, Unidad victima) {

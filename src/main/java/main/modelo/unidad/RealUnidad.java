@@ -8,6 +8,7 @@ import main.modelo.tablero.Tablero;
 import main.modelo.unidad.ataque.AtaqueEstrategia;
 import main.modelo.unidad.conjuntodeunidades.ConjuntoDeSoldados;
 import main.modelo.unidad.conjuntodeunidades.ConjuntoDeUnidades;
+import main.modelo.unidad.conjuntodeunidades.ConjuntoDeUnidadesVictimas;
 
 public abstract class RealUnidad implements Unidad {
     protected int vida;
@@ -52,6 +53,9 @@ public abstract class RealUnidad implements Unidad {
 
     public void agregarseA(ConjuntoDeSoldados conjuntoDeSoldados){};
     public void agregarseA(ConjuntoDeUnidades conjuntoDeUnidades) {
+        conjuntoDeUnidades.agregarUnidad(this);
+    }
+    public void agregarseA(ConjuntoDeUnidadesVictimas conjuntoDeUnidades) {
         conjuntoDeUnidades.agregarUnidad(this);
     }
     public Unidad ocuparCasillero(Unidad unidad){
