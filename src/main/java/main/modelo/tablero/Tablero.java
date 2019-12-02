@@ -53,7 +53,7 @@ public class Tablero {
         Posicion posicionNueva = posicionActual.sumar(direccion.posicionRelativa());
         Casillero casilleroNuevo = this.obtenerCasilleroEnPosicion(posicionNueva);
 
-        casilleroNuevo.guardarUnidad(unidad);
+        casilleroNuevo.ocupar(unidad);
         casilleroActual.liberar();
     }
 
@@ -69,7 +69,7 @@ public class Tablero {
             else
                 equipo = new EquipoNegro();
             for(int j = 0; j < maximaCantidadDeCasilleros ; j++ ) {
-                    casilleros[i][j] = new Casillero(new Posicion(i,j), equipo);
+                casilleros[i][j] = new Casillero(new Posicion(i,j), equipo);
             }
         }
     }

@@ -1,6 +1,6 @@
-package Main.vista;
+package main.vista;
 
-import Main.controlador.HandlerAgregarJugador;
+import main.controlador.HandlerAgregarJugador;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;

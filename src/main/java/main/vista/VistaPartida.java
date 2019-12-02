@@ -1,4 +1,4 @@
-package Main.vista;
+package main.vista;
 
 import javafx.scene.Group;
 import javafx.scene.Scene;

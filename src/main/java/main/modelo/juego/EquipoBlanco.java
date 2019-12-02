@@ -4,9 +4,11 @@ package main.modelo.juego;
 import main.modelo.excepciones.CasilleroEsDeEnemigoException;
 import main.modelo.excepciones.IntentarColocarUnaUnidadNulaException;
 import main.modelo.tablero.Casillero;
+import main.modelo.tablero.Tablero;
 import main.modelo.unidad.Unidad;
 
 public class EquipoBlanco implements Equipo {
+    final static double PORCENTAJE_DANIO_EXTRA = 1.05;
 
     @Override
     public void colocar(Unidad unidad, Equipo equipo, Casillero casillero) {
@@ -27,4 +29,31 @@ public class EquipoBlanco implements Equipo {
     public void colocar(Unidad unidad, EquipoNull equipoNull, Casillero casillero) {
         throw new IntentarColocarUnaUnidadNulaException();
     }
+
+    @Override
+    public int calcularDanioFinal(Unidad unidad, int danio) {
+        return this.calcularDanioFinal(unidad, danio,
+                Tablero.getInstance().obtenerCasilleroEnPosicion(unidad.posicion()).equipo());
+    }
+
+    @Override
+    public int calcularDanioFinal(Unidad unidad, int danio, Equipo equipo ) {
+        return equipo.calcularDanioFinal(unidad, danio, this);
+    }
+
+    @Override
+    public int calcularDanioFinal(Unidad unidad, int danio, EquipoBlanco equipoBlanco ) {
+        return danio;
+    }
+
+    @Override
+    public int calcularDanioFinal(Unidad unidad, int danio, EquipoNegro equipoNegro ) {
+        return (int)Math.ceil(danio * PORCENTAJE_DANIO_EXTRA);
+    }
+
+    @Override
+    public int calcularDanioFinal(Unidad unidad, int danio, EquipoNull equipoNull ) {
+        return danio;
+    }
+
 }
