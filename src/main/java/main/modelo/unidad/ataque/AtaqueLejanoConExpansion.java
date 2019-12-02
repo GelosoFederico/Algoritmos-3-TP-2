@@ -5,11 +5,9 @@ import main.modelo.tablero.Tablero;
 import main.modelo.unidad.Unidad;
 import main.modelo.unidad.conjuntodeunidades.ConjuntoDeUnidadesVictimas;
 
-public class AtaqueLejanoConExpansion  extends AtaqueEstrategia {
+public class AtaqueLejanoConExpansion  extends AtaqueLejano {
 
-    public AtaqueLejanoConExpansion(int danio) {
-        super(danio);
-    }
+     public AtaqueLejanoConExpansion(int danio) { super(danio); }
 
     @Override
     public void atacar(Unidad atacante, Unidad victima) {
