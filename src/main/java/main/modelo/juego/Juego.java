@@ -12,10 +12,10 @@ public class Juego {
     // Singleton pattern
     private static Juego INSTANCE = null;
 
-    private List<Jugador> _jugadores = null;
+    private List<Jugador> jugadores = null;
 
     private Juego() {
-        _jugadores = new ArrayList<Jugador>();
+        jugadores = new ArrayList<Jugador>();
     }
 
     Jugador jugadorDeTurno;
@@ -28,7 +28,7 @@ public class Juego {
     }
 
     public List<Jugador> jugadores() {
-        return this._jugadores;
+        return this.jugadores;
     }
 
     public Jugador getJugadorDeTurno() {

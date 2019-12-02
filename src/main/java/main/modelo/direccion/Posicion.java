@@ -6,25 +6,25 @@ import static java.lang.Math.abs;
 import static java.lang.Math.max;
 
 public class Posicion {
-    int _x;
-    int _y;
+    int x;
+    int y;
 
     public Posicion(int x, int y) {
-        _x = x;
-        _y = y;
+        this.x = x;
+        this.y = y;
     }
 
     public int posicionEnX() {
-        return _x;
+        return x;
     }
 
     public int posicionEnY() {
-        return _y;
+        return y;
     }
 
     public void sumarle(Posicion otraPosicion) {
-        this._x = this.posicionEnX() + otraPosicion.posicionEnX();
-        this._y = this.posicionEnY() + otraPosicion.posicionEnY();
+        this.x = this.posicionEnX() + otraPosicion.posicionEnX();
+        this.y = this.posicionEnY() + otraPosicion.posicionEnY();
     }
 
     public Posicion sumar(Posicion otraPosicion) {

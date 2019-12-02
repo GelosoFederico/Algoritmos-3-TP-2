@@ -12,5 +12,4 @@ public class Catapulta extends RealUnidad {
         ataqueEstrategia = new AtaqueLejanoConExpansion(DANIO);
         movimientoEstrategia = new MovimientoEstatico();
     }
-
 }
