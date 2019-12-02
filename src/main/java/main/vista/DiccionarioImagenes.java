@@ -1,6 +1,10 @@
 package main.vista;
 
 import javafx.scene.image.ImageView;
+import main.modelo.unidad.Catapulta;
+import main.modelo.unidad.Curandero;
+import main.modelo.unidad.Jinete;
+import main.modelo.unidad.Soldado;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -17,10 +21,25 @@ public class DiccionarioImagenes {
         imgSoldado.setFitHeight(ALTURA_UNIDAD);
         imgSoldado.setFitWidth(ANCHURA_UNIDAD);
 
-        dicc.put("soldado",imgSoldado);
+        ImageView imgJinete = new ImageView("file:src/jinete.gif");
+        imgJinete.setFitHeight(ALTURA_UNIDAD);
+        imgJinete.setFitWidth(ANCHURA_UNIDAD);
+
+        ImageView imgCurandero = new ImageView("file:src/curandero.jpg");
+        imgCurandero.setFitHeight(ALTURA_UNIDAD);
+        imgCurandero.setFitWidth(ANCHURA_UNIDAD);
+
+        ImageView imgCatapulta = new ImageView("file:src/catapulta.gif");
+        imgCatapulta.setFitHeight(ALTURA_UNIDAD);
+        imgCatapulta.setFitWidth(ANCHURA_UNIDAD);
+
+        dicc.put(Soldado.class,imgSoldado);
+        dicc.put(Jinete.class,imgJinete);
+        dicc.put(Curandero.class,imgCurandero);
+        dicc.put(Catapulta.class,imgCatapulta);
     }
 
-    public ImageView get(String string) {
-        return  (ImageView)dicc.get(string);
+    public ImageView get(Class className) {
+        return  (ImageView)dicc.get(className);
     }
 }
