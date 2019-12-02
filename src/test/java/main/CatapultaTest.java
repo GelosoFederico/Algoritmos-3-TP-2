@@ -47,14 +47,18 @@ public class CatapultaTest {
     @Test
     public void test02CreoUnaCatapultaCon50PuntosDeVidaRecibeUnDanioDe15PuntosYSuVidaCambiaA35Puntos() {
         //Arrange
-        int vidaInicial = 50;
-        Jinete unJinete = new Jinete(vidaInicial);
+        Unidad unidad = new Catapulta();
+        unidad.setEquipo(new EquipoBlanco());
+        Posicion unaPosicion = new Posicion(2,2);
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(unidad,unaPosicion,mJugador1);
 
         //Act
-        unJinete.recibirDanio(15);
+        unidad.recibirDanio(15);
 
         //Assert
-        assertEquals(unJinete.vida(), 35);
+        assertEquals(unidad.vida(), 35);
 
     }
 

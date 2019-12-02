@@ -50,6 +50,12 @@ public class CuranderoTest {
     public void test02CreoUnCuranderoCon75PuntosDeVidaRecibeUnDanioDe10PuntosYSuVidaCambiaA65Puntos(){
         //Arrange
         Curandero unCurandero = new Curandero();
+        unCurandero.setEquipo(new EquipoBlanco());
+        Posicion unaPosicion = new Posicion(2,2);
+        Jugador mJugador1 = mock(Jugador.class);
+        when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(unCurandero,unaPosicion,mJugador1);
+
 
         //Act
         unCurandero.recibirDanio(10);

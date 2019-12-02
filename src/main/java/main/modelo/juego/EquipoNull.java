@@ -2,6 +2,7 @@ package main.modelo.juego;
 
 import main.modelo.excepciones.IntentarColocarUnaUnidadNulaException;
 import main.modelo.tablero.Casillero;
+import main.modelo.tablero.Tablero;
 import main.modelo.unidad.Unidad;
 
 public class EquipoNull implements Equipo {
@@ -23,4 +24,30 @@ public class EquipoNull implements Equipo {
     public void colocar(Unidad unidad, EquipoNull equipoNull, Casillero casillero) {
         throw new IntentarColocarUnaUnidadNulaException();
     }
+
+    @Override
+    public int calcularDanioFinal(Unidad unidad, int danio) {
+        return danio;
+    }
+
+    @Override
+    public int calcularDanioFinal(Unidad unidad, int danio, Equipo equipo ) {
+        return danio;
+    }
+
+    @Override
+    public int calcularDanioFinal(Unidad unidad, int danio, EquipoBlanco equipoBlanco ) {
+        return danio;
+    }
+
+    @Override
+    public int calcularDanioFinal(Unidad unidad, int danio, EquipoNegro equipoNegro ) {
+        return danio;
+    }
+
+    @Override
+    public int calcularDanioFinal(Unidad unidad, int danio, EquipoNull equipoNull ) {
+        return danio;
+    }
+
 }

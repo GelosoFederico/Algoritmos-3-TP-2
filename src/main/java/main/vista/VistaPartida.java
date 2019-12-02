@@ -3,10 +3,10 @@ package main.vista;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import main.vista.GridPaneTablero;
-import main.vista.HBoxBotonesDeUnidades;
+import main.vista.VBoxBotonesDeUnidades;
 
 public class VistaPartida extends Group {
     private final Stage stage;
@@ -22,8 +22,8 @@ public class VistaPartida extends Group {
         this.stage = stage;
         this.tablero = new GridPaneTablero();
 
-        VBox root = new VBox(5);
-        root.getChildren().addAll(new HBoxBotonesDeUnidades(), this.tablero);
+        HBox root = new HBox(5);
+        root.getChildren().addAll( this.tablero,new VBoxBotonesDeUnidades());
         Scene scene = new Scene(root);
         stage.setTitle("Eleccion de unidades");
         stage.setScene(scene);
