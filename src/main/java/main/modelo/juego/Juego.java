@@ -12,10 +12,10 @@ public class Juego {
     // Singleton pattern
     private static Juego INSTANCE = null;
 
-    private List<Jugador> jugadores = null;
+    private ConjuntoDeJugadores jugadores = null;
 
     private Juego() {
-        jugadores = new ArrayList<Jugador>();
+        jugadores = new ConjuntoDeJugadores();
         this.setearFase(new AgregarJugadores(this));
     }
 
@@ -31,7 +31,7 @@ public class Juego {
         return INSTANCE;
     }
 
-    public List<Jugador> jugadores() {
+    public ConjuntoDeJugadores jugadores() {
         return this.jugadores;
     }
 
@@ -53,25 +53,17 @@ public class Juego {
 
     private Jugador encontrarJugadorPorNombre(String jugadorNombre) {
         //TODO usar foreach
-        for (int i = 0; i < this.jugadores().size(); i++) {
-            if (this.jugadores().get(i).nombre().equals(jugadorNombre)) {
-                return this.jugadores().get(i);
-            }
-        }
-        throw new JuegoNoTieneJugadorConEseNombreException();
+        return this.jugadores().encontrarJugadorPorNombre(jugadorNombre);
     }
 
     public void jugadorPerdio(Jugador jugador) {
         // Esto asume que hay exactamente dos jugadores
-        this.jugadores().remove(jugador);
-        throw new JugadorGanoLaPartida(this.jugadores().get(0));
+        this.jugadores().jugadores().remove(jugador);
+        throw new JugadorGanoLaPartida(this.jugadores().primero());
     }
 
     public void cambiarJugadorDeTurno() {
-        if (jugadorDeTurno == jugadores().get(0))
-            jugadorDeTurno = jugadores().get(1);
-        else
-            jugadorDeTurno = jugadores().get(0);
+        this.fase.cambiarJugadorDeTurno();
     }
 
     public void ejecutarUnTurno() {
@@ -81,6 +73,7 @@ public class Juego {
     }
 
     public void terminarDeColocarParaJugador() {
+        this.fase.removerJugador();
     }
 
     public void setearFase(Fase fase) {
@@ -88,6 +81,6 @@ public class Juego {
     }
 
     public void agregarJugadorDirecto(Jugador jugador) {
-        this.jugadores().add(jugador);
+        this.jugadores().agregarJugador(jugador);
     }
 }

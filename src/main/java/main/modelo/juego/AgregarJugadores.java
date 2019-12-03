@@ -8,18 +8,22 @@ public class AgregarJugadores extends Fase {
 
     @Override
     public void agregarJugador(Jugador jugador) {
-        if (juego.jugadores().size() == 0) {
+        if (juego.jugadores().cantidad() == 0) {
             jugador.equipo(new EquipoBlanco());
+            juego.agregarJugadorDirecto(jugador);
         } else {
             jugador.equipo(new EquipoNegro());
+            juego.agregarJugadorDirecto(jugador);
             juego.setearFase( new ColocarUnidades(this.juego));
-            juego.setJugadorDeTurno(juego.jugadores().get(0));
+            juego.setJugadorDeTurno(juego.jugadores().primero());
         }
-        juego.agregarJugadorDirecto(jugador);
     }
 
     @Override
     public void cambiarJugadorDeTurno() {
 
     }
+
+    @Override
+    public void removerJugador(){}
 }

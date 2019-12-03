@@ -10,4 +10,6 @@ public abstract class Fase {
     public abstract void agregarJugador(Jugador jugador);
 
     public abstract void cambiarJugadorDeTurno();
+
+    public abstract void removerJugador();
 }

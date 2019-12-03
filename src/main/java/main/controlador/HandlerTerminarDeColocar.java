@@ -9,5 +9,6 @@ public class HandlerTerminarDeColocar implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         Juego.getInstance().terminarDeColocarParaJugador();
+        HandlerTurnos.pasarTurno();
     }
 }

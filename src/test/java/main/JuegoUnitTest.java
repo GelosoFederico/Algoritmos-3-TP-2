@@ -43,7 +43,7 @@ public class JuegoUnitTest {
         Juego.getInstance().agregarJugador(jugador2);
 
         // Assert
-        assertEquals(jugadores, Juego.getInstance().jugadores());
+        assertEquals(jugadores, Juego.getInstance().jugadores().jugadores());
     }
 
 
@@ -51,7 +51,7 @@ public class JuegoUnitTest {
     public void JuegoAlPrincipioNoTieneJugadores()
     {
         // Act and Assert
-        assertEquals(Juego.getInstance().jugadores().size(), 0);
+        assertEquals(Juego.getInstance().jugadores().cantidad(), 0);
     }
 
 
