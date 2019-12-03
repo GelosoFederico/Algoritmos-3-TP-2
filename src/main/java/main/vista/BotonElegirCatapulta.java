@@ -7,7 +7,7 @@ public class BotonElegirCatapulta extends Button {
     public BotonElegirCatapulta() {
         super();
         this.setText("Catapulta");
-        this.setMinHeight(20);
+        this.setMinHeight(24);
         this.setOnAction(new HandlerElegirCatapulta());
     }
 }

@@ -12,13 +12,17 @@ public class Juego {
     // Singleton pattern
     private static Juego INSTANCE = null;
 
-    private List<Jugador> jugadores = null;
+    private ConjuntoDeJugadores jugadores = null;
 
     private Juego() {
-        jugadores = new ArrayList<Jugador>();
+        jugadores = new ConjuntoDeJugadores();
+        this.setearFase(new AgregarJugadores(this));
     }
 
-    Jugador jugadorDeTurno;
+    private Jugador jugadorDeTurno;
+    private Fase fase;
+
+
 
     public static Juego getInstance() {
         if( INSTANCE == null) {
@@ -27,7 +31,7 @@ public class Juego {
         return INSTANCE;
     }
 
-    public List<Jugador> jugadores() {
+    public ConjuntoDeJugadores jugadores() {
         return this.jugadores;
     }
 
@@ -40,20 +44,7 @@ public class Juego {
     }
 
     public void agregarJugador(Jugador jugador) {
-        if (this.jugadores().size() == 2) {
-            throw new JuegoNoPuedeTenerMasDe2JugadoresException();
-        }
-        if (this.jugadores().size() == 0) {
-            jugador.equipo(new EquipoBlanco());
-        } else {
-            jugador.equipo(new EquipoNegro());
-        }
-        this.jugadores().add(jugador);
-
-        // TODO: refactorizar tal vez
-        if(jugadorDeTurno == null) {
-            jugadorDeTurno = jugador;
-        }
+        fase.agregarJugador(jugador);
     }
 
     public void murioUnidad(Unidad unidad) {
@@ -62,30 +53,34 @@ public class Juego {
 
     private Jugador encontrarJugadorPorNombre(String jugadorNombre) {
         //TODO usar foreach
-        for (int i = 0; i < this.jugadores().size(); i++) {
-            if (this.jugadores().get(i).nombre().equals(jugadorNombre)) {
-                return this.jugadores().get(i);
-            }
-        }
-        throw new JuegoNoTieneJugadorConEseNombreException();
+        return this.jugadores().encontrarJugadorPorNombre(jugadorNombre);
     }
 
     public void jugadorPerdio(Jugador jugador) {
         // Esto asume que hay exactamente dos jugadores
-        this.jugadores().remove(jugador);
-        throw new JugadorGanoLaPartida(this.jugadores().get(0));
+        this.jugadores().jugadores().remove(jugador);
+        throw new JugadorGanoLaPartida(this.jugadores().primero());
     }
 
-    private void cambiarJugadorDeTurno() {
-        if (jugadorDeTurno == jugadores().get(0))
-            jugadorDeTurno = jugadores().get(1);
-        else
-            jugadorDeTurno = jugadores().get(0);
+    public void cambiarJugadorDeTurno() {
+        this.fase.cambiarJugadorDeTurno();
     }
 
     public void ejecutarUnTurno() {
         // TODO: aca es donde se le permite al jugador de turno elegir una pieza
         //  y hacer algo: avanzar y ataque
-        cambiarJugadorDeTurno();
+        this.fase.cambiarJugadorDeTurno();
+    }
+
+    public void terminarDeColocarParaJugador() {
+        this.fase.removerJugador();
+    }
+
+    public void setearFase(Fase fase) {
+        this.fase = fase;
+    }
+
+    public void agregarJugadorDirecto(Jugador jugador) {
+        this.jugadores().agregarJugador(jugador);
     }
 }

@@ -7,7 +7,7 @@ public class BotonElegirSoldado extends Button {
     public BotonElegirSoldado() {
         super();
         this.setText("Soldado");
-        this.setMinHeight(20);
+        this.setMinHeight(24);
         this.setOnAction(new HandlerElegirSoldado());
     }
 }

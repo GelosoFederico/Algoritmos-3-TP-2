@@ -26,7 +26,7 @@ public class HandlerAgregarJugador implements EventHandler<ActionEvent> {
         main.modelo.juego.Juego.getInstance().agregarJugador(new main.modelo.juego.Jugador(nombre));
         this.textField.setText("");
         HandlerSonidos.getInstance().reproducirSonido("Agregar Jugador");
-        if(main.modelo.juego.Juego.getInstance().jugadores().size() == 2) {
+        if(main.modelo.juego.Juego.getInstance().jugadores().cantidad() == 2) {
             VistaPartida partida = new VistaPartida(this.stage);
         }
     }

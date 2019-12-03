@@ -7,7 +7,7 @@ public class BotonElegirCurandero extends Button {
     public BotonElegirCurandero() {
         super();
         this.setText("Curandero");
-        this.setMinHeight(20);
+        this.setMinHeight(24);
         this.setOnAction(new HandlerElegirCurandero());
     }
 }

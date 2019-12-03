@@ -7,7 +7,7 @@ public class BotonElegirJinete extends Button {
     public BotonElegirJinete() {
         super();
         this.setText("Jinete");
-        this.setMinHeight(20);
+        this.setMinHeight(24);
         this.setOnAction(new HandlerElegirJinete());
     }
 }
