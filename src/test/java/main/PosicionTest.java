@@ -1,6 +1,6 @@
 package main;
 
-import main.modelo.direccion.Posicion;
+import main.modelo.tablero.distancia.Posicion;
 import org.junit.Test;
 import org.junit.Assert;
 

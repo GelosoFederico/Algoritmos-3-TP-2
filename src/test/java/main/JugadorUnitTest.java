@@ -3,7 +3,7 @@ package main;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import main.modelo.direccion.Posicion;
+import main.modelo.tablero.distancia.Posicion;
 import main.modelo.excepciones.InsuficientePuntosRestantesAlColocarUnidadException;
 import main.modelo.juego.EquipoBlanco;
 import main.modelo.juego.Juego;

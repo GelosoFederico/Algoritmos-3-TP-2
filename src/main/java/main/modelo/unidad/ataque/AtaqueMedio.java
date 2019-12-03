@@ -1,6 +1,6 @@
 package main.modelo.unidad.ataque;
 
-import main.modelo.tablero.Distancia.Media;
+import main.modelo.tablero.distancia.Media;
 import main.modelo.tablero.Tablero;
 import main.modelo.unidad.Unidad;
 

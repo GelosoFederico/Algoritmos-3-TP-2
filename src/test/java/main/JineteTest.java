@@ -2,7 +2,7 @@ package main;
 
 import main.modelo.direccion.Direccion;
 import main.modelo.direccion.Norte;
-import main.modelo.direccion.Posicion;
+import main.modelo.tablero.distancia.Posicion;
 import main.modelo.excepciones.CasilleroOcupadoException;
 import main.modelo.excepciones.ProhibidoAtacarUnidadAliadaException;
 import main.modelo.excepciones.UnidadFueraDeRangoException;

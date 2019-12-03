@@ -1,6 +1,6 @@
 package main.modelo.unidad.ataque;
 
-import main.modelo.tablero.Distancia.Lejana;
+import main.modelo.tablero.distancia.Lejana;
 import main.modelo.tablero.Tablero;
 import main.modelo.unidad.Unidad;
 import main.modelo.unidad.conjuntodeunidades.ConjuntoDeUnidadesVictimas;

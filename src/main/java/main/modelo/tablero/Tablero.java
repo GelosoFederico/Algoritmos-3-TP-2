@@ -1,13 +1,13 @@
 package main.modelo.tablero;
 
 import main.modelo.direccion.Direccion;
-import main.modelo.direccion.Posicion;
+import main.modelo.tablero.distancia.Posicion;
 import main.modelo.excepciones.*;
 import main.modelo.juego.Equipo;
 import main.modelo.juego.EquipoBlanco;
 import main.modelo.juego.EquipoNegro;
 import main.modelo.juego.Jugador;
-import main.modelo.tablero.Distancia.Distancia;
+import main.modelo.tablero.distancia.Distancia;
 import main.modelo.unidad.conjuntodeunidades.ConjuntoDeUnidades;
 import main.modelo.unidad.Unidad;
 
@@ -38,13 +38,14 @@ public class Tablero {
         // TODO: Refactorizar maybe
         for(int i = 0; i < maximaCantidadDeCasilleros ; i++ ){
             for(int j = 0; j < maximaCantidadDeCasilleros ; j++ ) {
-                if( unidad == casilleros[i][j].unidad()) {
-                    return casilleros[i][j].posicion();
+                if( unidad == this.casilleros[i][j].unidad()) {
+                    return this.casilleros[i][j].posicion();
                 }
             }
         }
         throw new UnidadNoSeEncuentraEnTablero();
     }
+
     public void moverUnidadEnDireccion(Unidad unidad, Direccion direccion) {
 
         Posicion posicionActual = this.obtenerPosicionDeUnidad(unidad);
@@ -69,7 +70,7 @@ public class Tablero {
             else
                 equipo = new EquipoNegro();
             for(int j = 0; j < maximaCantidadDeCasilleros ; j++ ) {
-                casilleros[i][j] = new Casillero(new Posicion(i,j), equipo);
+                this.casilleros[i][j] = new Casillero(new Posicion(i,j), equipo);
             }
         }
     }
@@ -77,7 +78,7 @@ public class Tablero {
     public Casillero obtenerCasilleroEnPosicion(Posicion posicion) {
         Casillero casillero;
         try{
-            casillero = casilleros[posicion.posicionEnX()][posicion.posicionEnY()];
+            casillero = this.casilleros[posicion.posicionEnX()][posicion.posicionEnY()];
         } catch(IndexOutOfBoundsException e) {
             throw new CasilleroFueraDeTableroException();
         }

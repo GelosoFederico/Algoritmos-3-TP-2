@@ -1,6 +1,7 @@
 package main;
 
 import main.modelo.direccion.*;
+import main.modelo.tablero.distancia.Posicion;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 

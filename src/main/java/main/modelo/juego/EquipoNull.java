@@ -2,7 +2,6 @@ package main.modelo.juego;
 
 import main.modelo.excepciones.IntentarColocarUnaUnidadNulaException;
 import main.modelo.tablero.Casillero;
-import main.modelo.tablero.Tablero;
 import main.modelo.unidad.Unidad;
 
 public class EquipoNull implements Equipo {

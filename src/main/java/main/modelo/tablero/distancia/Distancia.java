@@ -1,4 +1,4 @@
-package main.modelo.tablero.Distancia;
+package main.modelo.tablero.distancia;
 
 import main.modelo.excepciones.*;
 import main.modelo.unidad.Unidad;

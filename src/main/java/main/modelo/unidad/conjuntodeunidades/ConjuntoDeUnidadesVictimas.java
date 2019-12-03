@@ -9,7 +9,7 @@ public class ConjuntoDeUnidadesVictimas extends ConjuntoDeUnidades {
         unidad.agregarseA(this);
     }
 
-    ConjuntoDeUnidadesVictimas buscarTodasLasVictimasDeExpansion(Unidad unidadVictima){
+    public ConjuntoDeUnidadesVictimas buscarTodasLasVictimasDeExpansion(Unidad unidadVictima){
 
         ConjuntoDeUnidades unidadesContiguas = this.buscarUnidadesContiguasALaVictima(unidadVictima);
         this.buscarUnidadesContiguasParaCadaVictima(unidadesContiguas);
@@ -17,13 +17,13 @@ public class ConjuntoDeUnidadesVictimas extends ConjuntoDeUnidades {
         return this;
     }
 
-    ConjuntoDeUnidades buscarUnidadesContiguasALaVictima(Unidad unidad) {
+    public ConjuntoDeUnidades buscarUnidadesContiguasALaVictima(Unidad unidad) {
 
         ConjuntoDeUnidades unidadesContiguas = new ConjuntoDeUnidades();
         return Tablero.getInstance().obtenerUnidadesAlrededorDe(unidad, 1, unidadesContiguas);
     }
 
-    void buscarUnidadesContiguasParaCadaVictima(ConjuntoDeUnidades unidades) {
+    public void buscarUnidadesContiguasParaCadaVictima(ConjuntoDeUnidades unidades) {
 
         if(unidades.cantidad() == 0){ return;}
 

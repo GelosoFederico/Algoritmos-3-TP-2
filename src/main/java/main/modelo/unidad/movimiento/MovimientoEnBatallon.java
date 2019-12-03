@@ -1,8 +1,9 @@
-package main.modelo.unidad;
+package main.modelo.unidad.movimiento;
 
 import main.modelo.direccion.Direccion;
 import main.modelo.excepciones.CasilleroOcupadoException;
 import main.modelo.tablero.Tablero;
+import main.modelo.unidad.Unidad;
 import main.modelo.unidad.conjuntodeunidades.ConjuntoDeSoldados;
 
 public class  MovimientoEnBatallon implements MovimientoEstrategia {
