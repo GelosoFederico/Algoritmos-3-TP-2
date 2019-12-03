@@ -12,5 +12,6 @@ public class HandlerElegirCatapulta implements EventHandler<ActionEvent> {
         Unidad catapulta = new Catapulta();
         catapulta.setEquipo(Juego.getInstance().getJugadorDeTurno().equipo());
         HandlerColocarUnidad.setUnidadElegida(catapulta);
+        HandlerSonidos.getInstance().reproducirSonido("Crear Catapulta");
     }
 }

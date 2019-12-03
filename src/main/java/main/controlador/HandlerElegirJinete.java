@@ -12,5 +12,6 @@ public class HandlerElegirJinete implements EventHandler<ActionEvent> {
         Unidad jinete = new Jinete();
         jinete.setEquipo(Juego.getInstance().getJugadorDeTurno().equipo());
         HandlerColocarUnidad.setUnidadElegida(jinete);
+        HandlerSonidos.getInstance().reproducirSonido("Crear Jinete");
     }
 }

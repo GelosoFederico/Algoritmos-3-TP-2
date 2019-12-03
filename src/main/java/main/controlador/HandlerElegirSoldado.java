@@ -12,5 +12,6 @@ public class HandlerElegirSoldado implements EventHandler<ActionEvent> {
         Unidad soldado = new Soldado();
         soldado.setEquipo(Juego.getInstance().getJugadorDeTurno().equipo());
         HandlerColocarUnidad.setUnidadElegida(soldado);
+        HandlerSonidos.getInstance().reproducirSonido("Crear Soldado");
     }
 }

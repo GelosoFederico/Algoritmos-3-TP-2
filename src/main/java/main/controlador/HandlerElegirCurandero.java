@@ -12,5 +12,6 @@ public class HandlerElegirCurandero implements EventHandler<ActionEvent> {
         Unidad curandero = new Curandero();
         curandero.setEquipo(Juego.getInstance().getJugadorDeTurno().equipo());
         HandlerColocarUnidad.setUnidadElegida(curandero);
+        HandlerSonidos.getInstance().reproducirSonido("Crear Curandero");
     }
 }
