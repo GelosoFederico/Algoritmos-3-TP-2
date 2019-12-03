@@ -5,6 +5,7 @@ import javafx.scene.input.MouseEvent;
 import main.modelo.juego.Juego;
 import main.modelo.juego.Jugador;
 import main.modelo.unidad.Unidad;
+import main.vista.App;
 import main.vista.DiccionarioImagenes;
 import main.vista.VistaCasillero;
 
@@ -31,6 +32,8 @@ public class HandlerColocarUnidad implements EventHandler<MouseEvent> {
             Jugador jugador = Juego.getInstance().getJugadorDeTurno();
             jugador.colocarUnidadEn(unidadElegida, vistaCasillero.getPosicion());
             vistaCasillero.agregarUnidad(diccionarioImagenes.get(unidadElegida.getClass())); // TODO: generalizar
+
+            HandlerTurnos.pasarTurno();
         }
     }
 

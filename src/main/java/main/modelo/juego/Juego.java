@@ -16,9 +16,13 @@ public class Juego {
 
     private Juego() {
         jugadores = new ArrayList<Jugador>();
+        this.setearFase(new AgregarJugadores(this));
     }
 
-    Jugador jugadorDeTurno;
+    private Jugador jugadorDeTurno;
+    private Fase fase;
+
+
 
     public static Juego getInstance() {
         if( INSTANCE == null) {
@@ -40,20 +44,7 @@ public class Juego {
     }
 
     public void agregarJugador(Jugador jugador) {
-        if (this.jugadores().size() == 2) {
-            throw new JuegoNoPuedeTenerMasDe2JugadoresException();
-        }
-        if (this.jugadores().size() == 0) {
-            jugador.equipo(new EquipoBlanco());
-        } else {
-            jugador.equipo(new EquipoNegro());
-        }
-        this.jugadores().add(jugador);
-
-        // TODO: refactorizar tal vez
-        if(jugadorDeTurno == null) {
-            jugadorDeTurno = jugador;
-        }
+        fase.agregarJugador(jugador);
     }
 
     public void murioUnidad(Unidad unidad) {
@@ -76,7 +67,7 @@ public class Juego {
         throw new JugadorGanoLaPartida(this.jugadores().get(0));
     }
 
-    private void cambiarJugadorDeTurno() {
+    public void cambiarJugadorDeTurno() {
         if (jugadorDeTurno == jugadores().get(0))
             jugadorDeTurno = jugadores().get(1);
         else
@@ -86,6 +77,17 @@ public class Juego {
     public void ejecutarUnTurno() {
         // TODO: aca es donde se le permite al jugador de turno elegir una pieza
         //  y hacer algo: avanzar y ataque
-        cambiarJugadorDeTurno();
+        this.fase.cambiarJugadorDeTurno();
+    }
+
+    public void terminarDeColocarParaJugador() {
+    }
+
+    public void setearFase(Fase fase) {
+        this.fase = fase;
+    }
+
+    public void agregarJugadorDirecto(Jugador jugador) {
+        this.jugadores().add(jugador);
     }
 }
