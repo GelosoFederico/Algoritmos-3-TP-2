@@ -1,6 +1,6 @@
 package main;
 
-import main.modelo.direccion.Posicion;
+import main.modelo.tablero.distancia.Posicion;
 import main.modelo.excepciones.CasilleroEsDeEnemigoException;
 import main.modelo.excepciones.CasilleroOcupadoException;
 import main.modelo.excepciones.InsuficientePuntosRestantesAlColocarUnidadException;
@@ -19,7 +19,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 

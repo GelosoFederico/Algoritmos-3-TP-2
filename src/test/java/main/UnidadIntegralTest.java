@@ -10,6 +10,7 @@ import main.modelo.juego.EquipoNegro;
 import main.modelo.juego.Juego;
 import main.modelo.juego.Jugador;
 import main.modelo.tablero.Tablero;
+import main.modelo.tablero.distancia.Posicion;
 import main.modelo.unidad.*;
 import org.junit.After;
 import org.junit.Test;

@@ -1,6 +1,4 @@
-package main.modelo.direccion;
-
-import main.modelo.tablero.Distancia.Distancia;
+package main.modelo.tablero.distancia;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.max;

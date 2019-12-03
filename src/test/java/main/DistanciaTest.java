@@ -1,8 +1,8 @@
 package main;
 
-import main.modelo.direccion.Posicion;
+import main.modelo.tablero.distancia.Posicion;
 import main.modelo.juego.*;
-import main.modelo.tablero.Distancia.Distancia;
+import main.modelo.tablero.distancia.Distancia;
 import main.modelo.tablero.Tablero;
 import main.modelo.unidad.*;
 import org.junit.*;

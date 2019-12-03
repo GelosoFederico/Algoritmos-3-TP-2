@@ -1,6 +1,6 @@
 package main;
 
-import main.modelo.direccion.Posicion;
+import main.modelo.tablero.distancia.Posicion;
 import main.modelo.excepciones.CasilleroOcupadoException;
 import main.modelo.juego.Equipo;
 import main.modelo.juego.EquipoBlanco;

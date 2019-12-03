@@ -1,7 +1,7 @@
 package main.modelo.unidad;
 
 import main.modelo.direccion.Direccion;
-import main.modelo.direccion.Posicion;
+import main.modelo.tablero.distancia.Posicion;
 import main.modelo.excepciones.*;
 import main.modelo.juego.Equipo;
 import main.modelo.tablero.Tablero;
@@ -9,6 +9,8 @@ import main.modelo.unidad.ataque.AtaqueEstrategia;
 import main.modelo.unidad.conjuntodeunidades.ConjuntoDeSoldados;
 import main.modelo.unidad.conjuntodeunidades.ConjuntoDeUnidades;
 import main.modelo.unidad.conjuntodeunidades.ConjuntoDeUnidadesVictimas;
+import main.modelo.unidad.movimiento.MovimientoEstrategia;
+import main.modelo.unidad.movimiento.MovimientoRegular;
 
 public abstract class RealUnidad implements Unidad {
     protected int vida;

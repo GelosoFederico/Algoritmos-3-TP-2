@@ -1,6 +1,6 @@
 package main.modelo.juego;
 
-import main.modelo.direccion.Posicion;
+import main.modelo.tablero.distancia.Posicion;
 import main.modelo.excepciones.UnidadEstaMuertaException;
 import main.modelo.tablero.Tablero;
 import main.modelo.unidad.Unidad;

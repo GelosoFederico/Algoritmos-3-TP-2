@@ -1,7 +1,7 @@
 package main.vista;
 
 import javafx.scene.layout.GridPane;
-import main.modelo.direccion.Posicion;
+import main.modelo.tablero.distancia.Posicion;
 
 public class GridPaneTablero extends GridPane {
     private static final int LONGITUD = 20;

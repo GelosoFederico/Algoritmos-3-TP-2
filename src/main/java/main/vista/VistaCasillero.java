@@ -3,7 +3,7 @@ package main.vista;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import main.controlador.HandlerColocarUnidad;
-import main.modelo.direccion.Posicion;
+import main.modelo.tablero.distancia.Posicion;
 
 public class VistaCasillero extends StackPane {
     private static final int ALTURA_CASILLERO = 32;

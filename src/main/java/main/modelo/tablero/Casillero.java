@@ -2,8 +2,7 @@ package main.modelo.tablero;
 
 
 import main.modelo.juego.Jugador;
-import main.modelo.direccion.Posicion;
-import main.modelo.tablero.Distancia.Distancia;
+import main.modelo.tablero.distancia.Posicion;
 import main.modelo.unidad.NullUnidad;
 import main.modelo.unidad.Unidad;
 import main.modelo.juego.Equipo;

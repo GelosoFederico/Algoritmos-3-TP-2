@@ -1,6 +1,7 @@
 package main.modelo.unidad;
 
 import main.modelo.unidad.ataque.AtaqueLejanoConExpansion;
+import main.modelo.unidad.movimiento.MovimientoEstatico;
 
 public class Catapulta extends RealUnidad {
 

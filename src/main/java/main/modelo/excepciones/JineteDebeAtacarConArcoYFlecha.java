@@ -1,4 +1,4 @@
-package main.modelo.unidad;
+package main.modelo.excepciones;
 
 public class JineteDebeAtacarConArcoYFlecha extends RuntimeException {
 }

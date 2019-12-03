@@ -1,6 +1,6 @@
-package main.modelo.unidad.conjuntodeunidades;
+package main;
 
-import main.modelo.direccion.Posicion;
+import main.modelo.tablero.distancia.Posicion;
 import main.modelo.juego.EquipoBlanco;
 import main.modelo.juego.Juego;
 import main.modelo.juego.Jugador;
@@ -8,6 +8,8 @@ import main.modelo.tablero.Tablero;
 import main.modelo.unidad.Jinete;
 import main.modelo.unidad.Soldado;
 import main.modelo.unidad.Unidad;
+import main.modelo.unidad.conjuntodeunidades.ConjuntoDeUnidades;
+import main.modelo.unidad.conjuntodeunidades.ConjuntoDeUnidadesVictimas;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
