@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import main.controlador.HandlerTexto;
 
 public class BotonAgregarJugador extends VBox {
 
@@ -19,6 +20,9 @@ public class BotonAgregarJugador extends VBox {
 
         boton.setOnAction(new HandlerAgregarJugador(texto, stage));
         boton.setText("Agregar jugador");
+
+        HandlerTexto handlerTexto = new HandlerTexto(boton);
+        texto.setOnKeyPressed(handlerTexto);
 
         this.getChildren().add(boton);
 
