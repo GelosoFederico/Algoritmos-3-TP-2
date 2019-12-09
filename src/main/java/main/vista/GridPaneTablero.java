@@ -11,7 +11,11 @@ public class GridPaneTablero extends GridPane {
 
         for(int i=0; i< LONGITUD; i++) {
             for (int j = 0; j < LONGITUD; j++){
-                VistaCasillero casillero = new VistaCasillero(new Posicion(i,j));
+
+               // if(i == LONGITUD/2) {
+                 //   this.setHgap(32);
+                //}
+                VistaCasillero casillero = new VistaCasillero(new Posicion(i, j), LONGITUD/2);
 
                 this.add(casillero, i, j);
             }
