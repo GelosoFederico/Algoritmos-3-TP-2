@@ -7,12 +7,11 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ColocarUnidades extends Fase {
-    private ConjuntoDeJugadores jugadores;
-    private Iterator iterator;
+    private List<Jugador> jugadores;
 
     public ColocarUnidades(Juego juego) {
         super(juego);
-        this.jugadores = new ConjuntoDeJugadores(juego.jugadores());
+        this.jugadores = new ArrayList<>(juego.jugadores().jugadores());
     }
 
     @Override
@@ -22,16 +21,14 @@ public class ColocarUnidades extends Fase {
 
     @Override
     public void cambiarJugadorDeTurno() {
-        if(this.iterator == null) {
-            iterator = this.jugadores.iterator();
-        }
-        juego.setJugadorDeTurno((Jugador)iterator.next());
+        if(! (jugadores.size() == 1))
+            this.juego.cambiarJugadorDeTurnoDirecto();
     }
 
     @Override
     public void removerJugador(){
-        jugadores.jugadores().remove(juego.getJugadorDeTurno());
-        if(this.jugadores.cantidad() == 0) {
+        this.jugadores.remove(juego.getJugadorDeTurno());
+        if(this.jugadores.size() == 0) {
             // juego.setearFase();
         }
     }
