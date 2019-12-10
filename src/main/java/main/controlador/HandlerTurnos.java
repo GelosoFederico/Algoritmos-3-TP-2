@@ -9,7 +9,7 @@ public class HandlerTurnos {
     public static void setVistaPartida(VistaPartida vista) {vistaPartida = vista;}
 
     public static void pasarTurno() {
-        Juego.getInstance().ejecutarUnTurno();
+        Juego.getInstance().terminarTurno();
         vistaPartida.actualizar();
     }
 }
