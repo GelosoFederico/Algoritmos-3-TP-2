@@ -34,16 +34,17 @@ public class Tablero {
         return INSTANCE;
     }
 
+    public Casillero[][] getCasilleros(){
+        return this.casilleros;
+    }
+
+    public int getMaximaCantidadDeCasilleros(){
+        return this.maximaCantidadDeCasilleros;
+    }
+
     public Posicion obtenerPosicionDeUnidad(Unidad unidad) {
-        // TODO: Refactorizar maybe
-        for(int i = 0; i < maximaCantidadDeCasilleros ; i++ ){
-            for(int j = 0; j < maximaCantidadDeCasilleros ; j++ ) {
-                if( unidad == this.casilleros[i][j].unidad()) {
-                    return this.casilleros[i][j].posicion();
-                }
-            }
-        }
-        throw new UnidadNoSeEncuentraEnTablero();
+        RecorredorDeTablero recorredorDeTablero = new RecorredorDeTablero();
+        return recorredorDeTablero.buscarPosicionDeUnidad(unidad);
     }
 
     public void moverUnidadEnDireccion(Unidad unidad, Direccion direccion) {
@@ -92,16 +93,8 @@ public class Tablero {
     }
 
     public ConjuntoDeUnidades obtenerUnidadesAlrededorDe(Unidad unidadCentro, int distanciaMaxima, ConjuntoDeUnidades conjunto) {
-        // TODO agregar iterador para que este codigo no se repita
-        for(int i = 0; i < maximaCantidadDeCasilleros ; i++ ){
-            for(int j = 0; j < maximaCantidadDeCasilleros ; j++ ) {
-                Distancia distancia = this.calcularDistanciaEntre(unidadCentro,this.casilleros[i][j].unidad());
-                if( (distancia.distanciaExacta() <= distanciaMaxima) && (distancia.distanciaExacta() > 0) ) {
-                    conjunto.agregar(this.casilleros[i][j].unidad());
-                }
-            }
-        }
-        return conjunto;
+        RecorredorDeTablero recorredorDeTablero = new RecorredorDeTablero();
+        return recorredorDeTablero.buscarUnidadesAlRededorDe(unidadCentro, distanciaMaxima, conjunto);
     }
 
     public void daniarUnidadEnRango(Unidad atacante, Unidad victima, Distancia distanciaPrototipo, int danio) {
