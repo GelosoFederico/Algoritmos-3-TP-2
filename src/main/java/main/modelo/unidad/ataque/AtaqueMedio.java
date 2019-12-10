@@ -11,7 +11,7 @@ public class AtaqueMedio extends AtaqueEstrategia {
     }
 
     @Override
-    public void atacar(Unidad atacante, Unidad victima) {
+    public void atacarUnidad(Unidad atacante, Unidad victima) {
         Tablero.getInstance().daniarUnidadEnRango(atacante, victima, new Media(), danio);
     }
 }

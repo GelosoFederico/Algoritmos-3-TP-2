@@ -66,9 +66,7 @@ public class Juego {
         this.fase.cambiarJugadorDeTurno();
     }
 
-    public void ejecutarUnTurno() {
-        // TODO: aca es donde se le permite al jugador de turno elegir una pieza
-        //  y hacer algo: avanzar y ataque
+    public void terminarTurno() {
         this.fase.cambiarJugadorDeTurno();
     }
 
