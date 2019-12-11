@@ -16,7 +16,7 @@ public class FactoryDireccionTest {
         Direccion direccionObtenida = FactoryDireccion.crear(posicionRelativa);
 
         // Assert
-        Assert.assertEquals(direccionObtenida.getClass(),Sureste.class);
+        Assert.assertEquals(direccionObtenida.getClass(), DireccionSureste.class);
     }
 
     @Test
@@ -28,7 +28,7 @@ public class FactoryDireccionTest {
         Direccion direccionObtenida = FactoryDireccion.crear(posicionRelativa);
 
         // Assert
-        Assert.assertEquals(direccionObtenida.getClass(),Norte.class);
+        Assert.assertEquals(direccionObtenida.getClass(), DireccionNorte.class);
     }
 
     @Test
@@ -40,6 +40,6 @@ public class FactoryDireccionTest {
         Direccion direccionObtenida = FactoryDireccion.crear(posicionRelativa);
 
         // Assert
-        Assert.assertEquals(direccionObtenida.getClass(),Oeste.class);
+        Assert.assertEquals(direccionObtenida.getClass(), DireccionOeste.class);
     }
 }

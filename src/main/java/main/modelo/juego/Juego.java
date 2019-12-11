@@ -1,12 +1,7 @@
 package main.modelo.juego;
 
-import main.modelo.excepciones.JuegoNoPuedeTenerMasDe2JugadoresException;
-import main.modelo.excepciones.JuegoNoTieneJugadorConEseNombreException;
 import main.modelo.excepciones.JugadorGanoLaPartida;
 import main.modelo.unidad.Unidad;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Juego {
     // Singleton pattern
@@ -59,10 +54,6 @@ public class Juego {
         // Esto asume que hay exactamente dos jugadores
         this.jugadores().jugadores().remove(jugador);
         throw new JugadorGanoLaPartida(this.jugadores().primero());
-    }
-
-    public void cambiarJugadorDeTurno() {
-        this.fase.cambiarJugadorDeTurno();
     }
 
     public void cambiarJugadorDeTurnoDirecto() {
