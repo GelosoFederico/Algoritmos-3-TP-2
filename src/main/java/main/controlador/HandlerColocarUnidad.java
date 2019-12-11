@@ -27,6 +27,8 @@ public class HandlerColocarUnidad implements EventHandler<MouseEvent> {
     static public void setUnidadElegida(Unidad unidad) {
         unidadElegida = unidad;
     }
+    static public void removerUnidadElegida() { unidadElegida = null; }
+
 
     @Override
     public void handle(MouseEvent mouseEvent) {
@@ -37,6 +39,7 @@ public class HandlerColocarUnidad implements EventHandler<MouseEvent> {
                 vistaCasillero.agregarUnidad(diccionarioImagenes.get(unidadElegida.getClass())); // TODO: generalizar
 
                 HandlerTurnos.pasarTurno();
+                removerUnidadElegida();
             } catch (Exception e){
                 new VistaErrorColocarEnLugarIncorrecto();
             }
