@@ -1,6 +1,7 @@
 package main.modelo.unidad;
 
-import main.modelo.unidad.ataque.AtaqueLejanoConExpansion;
+import main.modelo.unidad.ataque.AtaqueLejano;
+import main.modelo.unidad.ataque.Expansion;
 import main.modelo.unidad.movimiento.MovimientoEstatico;
 
 public class Catapulta extends RealUnidad {
@@ -8,9 +9,10 @@ public class Catapulta extends RealUnidad {
     private static final int DANIO = 20;
 
     public Catapulta() {
-        vida = 50;
-        coste = 5;
-        ataqueEstrategia = new AtaqueLejanoConExpansion(DANIO);
-        movimientoEstrategia = new MovimientoEstatico();
+        this.vida = 50;
+        this.coste = 5;
+        this.ataqueEstrategia = new AtaqueLejano(DANIO);
+        this.ataqueEstrategia.setPostEstrategia(new Expansion(DANIO));
+        this.movimientoEstrategia = new MovimientoEstatico();
     }
 }
