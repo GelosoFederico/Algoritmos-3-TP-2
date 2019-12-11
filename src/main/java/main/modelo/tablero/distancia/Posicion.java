@@ -1,8 +1,5 @@
 package main.modelo.tablero.distancia;
 
-import main.modelo.direccion.*;
-import main.modelo.excepciones.PosicionesNoEstanADistanciaUnoException;
-
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
 
@@ -55,37 +52,5 @@ public class Posicion {
         int distancia_y = abs(this.posicionEnY()-y);
 
         return Distancia.crearDistancia(max(distancia_x,distancia_y));
-    }
-
-    public Direccion posicionRelativaA(Posicion otraPosicion) {
-        Posicion posicionRelativa = otraPosicion.restar(this);
-
-        Direccion norte = new Norte();
-        Direccion sur = new Sur();
-        Direccion este = new Este();
-        Direccion oeste = new Oeste();
-        Direccion noreste = new Noreste();
-        Direccion noroeste = new Noroeste();
-        Direccion sureste = new Sureste();
-        Direccion suroeste = new Suroeste();
-
-        if (posicionRelativa.igualA(norte.posicionRelativa()))
-            return norte;
-        else if (posicionRelativa.igualA(sur.posicionRelativa()))
-            return sur;
-        else if (posicionRelativa.igualA(este.posicionRelativa()))
-            return este;
-        else if (posicionRelativa.igualA(oeste.posicionRelativa()))
-            return oeste;
-        else if (posicionRelativa.igualA(noreste.posicionRelativa()))
-            return noreste;
-        else if (posicionRelativa.igualA(noroeste.posicionRelativa()))
-            return noroeste;
-        else if (posicionRelativa.igualA(sureste.posicionRelativa()))
-            return sureste;
-        else if (posicionRelativa.igualA(suroeste.posicionRelativa()))
-            return suroeste;
-        else
-            throw new PosicionesNoEstanADistanciaUnoException();
     }
 }
