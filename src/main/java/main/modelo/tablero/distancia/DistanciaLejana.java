@@ -2,19 +2,18 @@ package main.modelo.tablero.distancia;
 
 import main.modelo.unidad.Unidad;
 
-public class Media extends Distancia {
-    public Media(int distancia) {
+public class DistanciaLejana extends Distancia {
+    public DistanciaLejana(int distancia) {
         super(distancia);
     }
 
-    public Media() {}
+    public DistanciaLejana() {}
 
     public void daniarUnidadEnRango(Unidad victima, Distancia distanciaPrototipo, int danio) {
-        distanciaPrototipo.daniarUnidadMedia(victima, danio);
+        distanciaPrototipo.daniarUnidadLejana(victima, danio);
     }
 
-    public void daniarUnidadMedia(Unidad victima, int danio) {
+    public void daniarUnidadLejana(Unidad victima, int danio) {
         victima.recibirDanio(danio);
     }
-
 }
