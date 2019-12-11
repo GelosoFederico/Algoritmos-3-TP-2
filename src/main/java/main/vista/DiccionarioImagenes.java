@@ -25,7 +25,7 @@ public class DiccionarioImagenes {
         imgJinete.setFitHeight(ALTURA_UNIDAD);
         imgJinete.setFitWidth(ANCHURA_UNIDAD);
 
-        ImageView imgCurandero = new ImageView("file:src/img/curandero.jpg");
+        ImageView imgCurandero = new ImageView("file:src/img/curandero.png");
         imgCurandero.setFitHeight(ALTURA_UNIDAD);
         imgCurandero.setFitWidth(ANCHURA_UNIDAD);
 
