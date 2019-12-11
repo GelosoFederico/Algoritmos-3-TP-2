@@ -1,8 +1,10 @@
-package main.modelo.juego;
+package main.modelo.juego.fase;
 
-public class AgregarJugadores extends Fase {
+import main.modelo.juego.*;
 
-    public AgregarJugadores(Juego juego) {
+public class FaseAgregarJugadores extends Fase {
+
+    public FaseAgregarJugadores(Juego juego) {
         super(juego);
     }
 
@@ -14,7 +16,7 @@ public class AgregarJugadores extends Fase {
         } else {
             jugador.equipo(new EquipoNegro());
             juego.agregarJugadorDirecto(jugador);
-            juego.setearFase( new ColocarUnidades(this.juego));
+            juego.setearFase( new FaseColocarUnidades(this.juego));
             juego.setJugadorDeTurno(juego.jugadores().primero());
         }
     }

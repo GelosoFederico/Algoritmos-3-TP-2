@@ -1,4 +1,7 @@
-package main.modelo.juego;
+package main.modelo.juego.fase;
+
+import main.modelo.juego.Juego;
+import main.modelo.juego.Jugador;
 
 public abstract class Fase {
     protected Juego juego;

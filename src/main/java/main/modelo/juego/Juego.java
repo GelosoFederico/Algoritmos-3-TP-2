@@ -1,12 +1,9 @@
 package main.modelo.juego;
 
-import main.modelo.excepciones.JuegoNoPuedeTenerMasDe2JugadoresException;
-import main.modelo.excepciones.JuegoNoTieneJugadorConEseNombreException;
 import main.modelo.excepciones.JugadorGanoLaPartida;
+import main.modelo.juego.fase.FaseAgregarJugadores;
+import main.modelo.juego.fase.Fase;
 import main.modelo.unidad.Unidad;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Juego {
     // Singleton pattern
@@ -16,7 +13,7 @@ public class Juego {
 
     private Juego() {
         jugadores = new ConjuntoDeJugadores();
-        this.setearFase(new AgregarJugadores(this));
+        this.setearFase(new FaseAgregarJugadores(this));
     }
 
     private Jugador jugadorDeTurno;
