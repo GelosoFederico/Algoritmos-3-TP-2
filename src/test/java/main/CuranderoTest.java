@@ -1,7 +1,7 @@
 package main;
 
 import main.modelo.direccion.Direccion;
-import main.modelo.direccion.Norte;
+import main.modelo.direccion.DireccionNorte;
 import main.modelo.tablero.distancia.Posicion;
 import main.modelo.excepciones.CasilleroOcupadoException;
 import main.modelo.excepciones.ProhibidoCurarUnidadEnemigaException;
@@ -148,7 +148,7 @@ public class CuranderoTest {
     public void test07CuranderoUbicadoEn11SeMueveParaElNorteYAhoraEstaEnLaPosicion12(){
         //Arrange
         Posicion unaPosicion = new Posicion(1,1);
-        Direccion unaDireccion = new Norte();
+        Direccion unaDireccion = new DireccionNorte();
         Curandero unCurandero = new Curandero();
         Jugador mockedJugador = mock(Jugador.class);
         when(mockedJugador.equipo()).thenReturn(new EquipoBlanco());
@@ -169,7 +169,7 @@ public class CuranderoTest {
         //Arrange
         Posicion unaPosicion = new Posicion(2,2);
         Posicion posicionAlNorte = new Posicion(1,2);
-        Direccion unaDireccion = new Norte();
+        Direccion unaDireccion = new DireccionNorte();
         Curandero unCurandero = new Curandero();
         Catapulta catapulta = new Catapulta();
         unCurandero.setEquipo(new EquipoBlanco());

@@ -2,8 +2,8 @@ package main.modelo.direccion;
 
 import main.modelo.tablero.distancia.Posicion;
 
-public class Norte extends Direccion{
+public class DireccionNoreste extends Direccion{
     public Posicion posicionRelativa(){
-        return new Posicion(-1,0);
+        return new Posicion(-1,1);
     }
 }

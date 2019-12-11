@@ -4,14 +4,14 @@ import main.modelo.excepciones.PosicionesNoEstanADistanciaUnoException;
 import main.modelo.tablero.distancia.Posicion;
 
 public class FactoryDireccion {
-    private static Direccion norte = new Norte();
-    private static Direccion sur = new Sur();
-    private static Direccion este = new Este();
-    private static Direccion oeste = new Oeste();
-    private static Direccion noreste = new Noreste();
-    private static Direccion noroeste = new Noroeste();
-    private static Direccion sureste = new Sureste();
-    private static Direccion suroeste = new Suroeste();
+    private static Direccion norte = new DireccionNorte();
+    private static Direccion sur = new DireccionSur();
+    private static Direccion este = new DireccionEste();
+    private static Direccion oeste = new DireccionOeste();
+    private static Direccion noreste = new DireccionNoreste();
+    private static Direccion noroeste = new DireccionNoroeste();
+    private static Direccion sureste = new DireccionSureste();
+    private static Direccion suroeste = new DireccionSuroeste();
 
     public static Direccion crear(Posicion posicionRelativa) {
         if (posicionRelativa.igualA(norte.posicionRelativa()))

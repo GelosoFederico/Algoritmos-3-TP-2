@@ -1,6 +1,6 @@
 package main;
 
-import main.modelo.direccion.Norte;
+import main.modelo.direccion.DireccionNorte;
 import main.modelo.tablero.distancia.Posicion;
 import main.modelo.excepciones.CasilleroEsDeEnemigoException;
 import main.modelo.excepciones.CasilleroOcupadoException;
@@ -74,7 +74,7 @@ public class TableroTest {
                 .colocarUnidadEnPosicionDeJugador(mSoldado, posicion, mJugador);
 
         // Act
-        Tablero.getInstance().moverUnidadEnDireccion(mSoldado,new Norte());
+        Tablero.getInstance().moverUnidadEnDireccion(mSoldado,new DireccionNorte());
         when(mSoldado.posicion()).thenReturn(Tablero.getInstance().obtenerPosicionDeUnidad(mSoldado));
         when(mSoldado.posicion()).thenReturn(Tablero.getInstance().obtenerPosicionDeUnidad(mSoldado));
 
