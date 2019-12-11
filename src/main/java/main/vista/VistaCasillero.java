@@ -16,7 +16,7 @@ public class VistaCasillero extends StackPane {
         super();
         this.posicion = pos;
 
-        this.imagen = new ImageView("file:src/img/imagenCasillero.png");
+        this.imagen = new ImageView("file:src/recursos/img/imagenCasillero.png");
         this.imagen.setFitHeight(ALTURA_CASILLERO);
         this.imagen.setFitWidth(ANCHURA_CASILLERO);
 
