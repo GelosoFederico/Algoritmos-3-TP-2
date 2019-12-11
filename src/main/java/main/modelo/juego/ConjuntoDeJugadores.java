@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ConjuntoDeJugadores implements Iterable {
+public class ConjuntoDeJugadores {
     private List<Jugador> jugadores;
 
     public ConjuntoDeJugadores(){
@@ -25,14 +25,10 @@ public class ConjuntoDeJugadores implements Iterable {
         this.jugadores().add(jugador);
     }
 
-    @Override
-    public Iterator iterator() {
-        return new ConjuntoDeJugadoresIterador(this.jugadores());
-    }
-
     public int cantidad() {return jugadores.size(); }
 
     public Jugador primero() { return jugadores.get(0); }
+    public Jugador segundo() { return jugadores.get(1); }
 
     public Jugador encontrarJugadorPorNombre(String jugadorNombre) {
         for (int i = 0; i < this.jugadores().size(); i++) {
