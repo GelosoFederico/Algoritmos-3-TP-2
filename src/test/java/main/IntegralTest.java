@@ -1,10 +1,7 @@
 package main;
 
+import main.modelo.excepciones.*;
 import main.modelo.tablero.distancia.Posicion;
-import main.modelo.excepciones.CasilleroEsDeEnemigoException;
-import main.modelo.excepciones.CasilleroOcupadoException;
-import main.modelo.excepciones.InsuficientePuntosRestantesAlColocarUnidadException;
-import main.modelo.excepciones.JugadorGanoLaPartida;
 import main.modelo.juego.EquipoBlanco;
 import main.modelo.juego.EquipoNegro;
 import main.modelo.juego.Juego;
@@ -206,34 +203,111 @@ public class IntegralTest {
         assertEquals(posicionFinal.posicionEnY(),8);
     }
 
-    @Test
+    @Test(expected = JugadorYaMovioException.class)
     public void jugadorMueveUnidadDosVecesDuranteElJuegoPrincipalYTiraExcepcion () {
-        // Assert
-        assertEquals(1,2);
+        // Arrange
+        Juego.getInstance().agregarJugador(new Jugador("Arkantos"));
+        Juego.getInstance().agregarJugador(new Jugador("Gargarensis"));
+        Jugador jugadorDeTurno = Juego.getInstance().getJugadorDeTurno();
+        Unidad soldado1 =  new Soldado();
+        jugadorDeTurno.colocarUnidadEn(soldado1,new Posicion(7,7));
+        Juego.getInstance().terminarTurno();
+        jugadorDeTurno = Juego.getInstance().getJugadorDeTurno();
+        jugadorDeTurno.colocarUnidadEn(new Soldado(),new Posicion(11,11));
+        Juego.getInstance().terminarDeColocarParaJugador();
+        Juego.getInstance().terminarDeColocarParaJugador();
+
+
+        // Act & Assert
+        Juego.getInstance().moverUnidadHacia(soldado1, new Posicion (7,8 ));
+        Juego.getInstance().moverUnidadHacia(soldado1, new Posicion (8,8 ));
     }
 
     @Test
     public void jugadorAtacaDuranteElJuegoPrincipalYPuedeHacerlo () {
+        // Arrange
+        Juego.getInstance().agregarJugador(new Jugador("Arkantos"));
+        Juego.getInstance().agregarJugador(new Jugador("Gargarensis"));
+        Jugador jugadorDeTurno = Juego.getInstance().getJugadorDeTurno();
+        Unidad soldado1 =  new Soldado();
+        jugadorDeTurno.colocarUnidadEn(soldado1,new Posicion(9,9));
+        Juego.getInstance().terminarTurno();
+        jugadorDeTurno = Juego.getInstance().getJugadorDeTurno();
+        Unidad soldado2 =  new Soldado();
+        jugadorDeTurno.colocarUnidadEn(soldado2,new Posicion(11,11));
+        Juego.getInstance().terminarDeColocarParaJugador();
+        Juego.getInstance().terminarDeColocarParaJugador();
+
+        // Act
+        Juego.getInstance().atacarConUnidadAUnidad(soldado1, soldado2);
+
         // Assert
-        assertEquals(1,2);
+        assertEquals(soldado2.vida(), 90);
     }
 
-    @Test
+    @Test (expected = JugadorYaAtacoException.class)
     public void jugadorAtacaDosVecesDuranteElJuegoPrincipalYTiraExcepcion () {
-        // Assert
-        assertEquals(1,2);
+        // Arrange
+        Juego.getInstance().agregarJugador(new Jugador("Arkantos"));
+        Juego.getInstance().agregarJugador(new Jugador("Gargarensis"));
+        Jugador jugadorDeTurno = Juego.getInstance().getJugadorDeTurno();
+        Unidad soldado1 =  new Soldado();
+        jugadorDeTurno.colocarUnidadEn(soldado1,new Posicion(9,9));
+        Juego.getInstance().terminarTurno();
+        jugadorDeTurno = Juego.getInstance().getJugadorDeTurno();
+        Unidad soldado2 =  new Soldado();
+        jugadorDeTurno.colocarUnidadEn(soldado2,new Posicion(11,11));
+        Juego.getInstance().terminarDeColocarParaJugador();
+        Juego.getInstance().terminarDeColocarParaJugador();
+
+        // Act
+        Juego.getInstance().atacarConUnidadAUnidad(soldado1, soldado2);
+        Juego.getInstance().atacarConUnidadAUnidad(soldado1, soldado2);
     }
 
     @Test
     public void jugadorMueveYAtacaDuranteElJuegoPrincipalYPuedeHacerlo () {
+        // Arrange
+        Juego.getInstance().agregarJugador(new Jugador("Arkantos"));
+        Juego.getInstance().agregarJugador(new Jugador("Gargarensis"));
+        Jugador jugadorDeTurno = Juego.getInstance().getJugadorDeTurno();
+        Unidad soldado1 =  new Soldado();
+        jugadorDeTurno.colocarUnidadEn(soldado1,new Posicion(9,9));
+        Juego.getInstance().terminarTurno();
+        jugadorDeTurno = Juego.getInstance().getJugadorDeTurno();
+        Unidad soldado2 =  new Soldado();
+        jugadorDeTurno.colocarUnidadEn(soldado2,new Posicion(11,11));
+        Juego.getInstance().terminarDeColocarParaJugador();
+        Juego.getInstance().terminarDeColocarParaJugador();
+
+        // Act
+        Juego.getInstance().moverUnidadHacia(soldado1, new Posicion (10,10 ));
+        Juego.getInstance().atacarConUnidadAUnidad(soldado1, soldado2);
+
         // Assert
-        assertEquals(1,2);
+        Posicion posicionFinal = soldado1.posicion();
+        assertEquals(posicionFinal.posicionEnX(),10);
+        assertEquals(posicionFinal.posicionEnY(),10);
+        assertEquals(soldado2.vida(), 90);
     }
 
-    @Test
+    @Test (expected = UnidadNoPerteneceAJugadorException.class)
     public void jugadorMueveUnidadDeOponenteYTiraExcepcion() {
-        // Assert
-        assertEquals(1,2);
+        // Arrange
+        Juego.getInstance().agregarJugador(new Jugador("Arkantos"));
+        Juego.getInstance().agregarJugador(new Jugador("Gargarensis"));
+        Jugador jugadorDeTurno = Juego.getInstance().getJugadorDeTurno();
+        Unidad soldado1 =  new Soldado();
+        jugadorDeTurno.colocarUnidadEn(soldado1,new Posicion(9,9));
+        Juego.getInstance().terminarTurno();
+        jugadorDeTurno = Juego.getInstance().getJugadorDeTurno();
+        Unidad soldado2 =  new Soldado();
+        jugadorDeTurno.colocarUnidadEn(soldado2,new Posicion(11,11));
+        Juego.getInstance().terminarDeColocarParaJugador();
+        Juego.getInstance().terminarDeColocarParaJugador();
+
+        // Act
+        Juego.getInstance().moverUnidadHacia(soldado2, new Posicion (10,10 ));
 
     }
 

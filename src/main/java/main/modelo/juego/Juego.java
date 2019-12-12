@@ -95,7 +95,11 @@ public class Juego {
         return this.fase;
     }
 
-    public void moverUnidadHacia(Unidad soldado1, Posicion posicion) {
-        this.getJugadorDeTurno().moverUnidadHacia(soldado1, posicion);
+    public void moverUnidadHacia(Unidad unidad, Posicion posicion) {
+        this.fase().moverUnidadHacia(unidad, posicion);
+    }
+
+    public void atacarConUnidadAUnidad(Unidad atacante, Unidad defensora) {
+        this.fase().atacarConUnidadAUnidad(atacante, defensora);
     }
 }

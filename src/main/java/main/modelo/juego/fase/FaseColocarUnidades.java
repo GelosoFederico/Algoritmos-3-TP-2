@@ -35,7 +35,7 @@ public class FaseColocarUnidades extends Fase {
         this.jugadores.remove(jugadorASacar);
         if(this.jugadores.size() == 0) {
             juego.setearFase(new FaseMoverYAtacar(juego));
-
+            this.juego.setJugadorDeTurno(this.juego.jugadores().primero());
         }
     }
 }
