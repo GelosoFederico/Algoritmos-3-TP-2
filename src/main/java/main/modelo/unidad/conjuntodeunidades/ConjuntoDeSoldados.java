@@ -32,15 +32,16 @@ public class ConjuntoDeSoldados extends ConjuntoDeUnidades {
         return soldadosAliadosContiguos;
     }
 
-    public ConjuntoDeSoldados formarBatallon(Soldado soldadoCentro) {
+    public Batallon formarBatallon(Soldado soldadoCentro) {
         Soldado primerSoldado = soldadoCentro;
         ConjuntoDeSoldados soldadosContiguosAliados = new ConjuntoDeSoldados();
         soldadosContiguosAliados = soldadosContiguosAliados.buscarSoldadosAliadosContiguos(soldadoCentro);
-
+        Batallon batallon = new BatallonIncompleto(soldadosContiguosAliados);
         //si hay un soldado contiguo, busco los contiguos a este otro
         // y veo si puedo formar un batallon
         if (soldadosContiguosAliados.cantidad() == 1) {
             Iterator<Unidad> iterador = soldadosContiguosAliados.iterator();
+
             soldadoCentro = (Soldado) iterador.next();
             soldadosContiguosAliados = new ConjuntoDeSoldados();
             soldadosContiguosAliados = soldadosContiguosAliados.buscarSoldadosAliadosContiguos(soldadoCentro);
@@ -56,13 +57,13 @@ public class ConjuntoDeSoldados extends ConjuntoDeUnidades {
                     iterador = soldadosContiguosAliados.iterator();
                 }
                 i++;
-                if(iterador.next() != primerSoldado ) {
+                if(iterador.next() != primerSoldado) {
                     iterador.remove();
                 }
             }
             soldadosContiguosAliados.agregar(soldadoCentro);
-
+            batallon = new BatallonCompleto(soldadosContiguosAliados);
         }
-        return soldadosContiguosAliados;
+        return batallon;
     }
 }

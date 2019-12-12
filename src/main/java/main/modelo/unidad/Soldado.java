@@ -2,6 +2,7 @@ package main.modelo.unidad;
 
 import main.modelo.direccion.Direccion;
 import main.modelo.unidad.ataque.AtaqueCorto;
+import main.modelo.unidad.conjuntodeunidades.Batallon;
 import main.modelo.unidad.conjuntodeunidades.ConjuntoDeSoldados;
 import main.modelo.unidad.movimiento.MovimientoEnBatallon;
 import main.modelo.unidad.movimiento.MovimientoEstrategia;
@@ -24,17 +25,14 @@ public class Soldado extends RealUnidad {
         conjuntoDeSoldados.agregarSoldado(this);
     }
 
-    public ConjuntoDeSoldados obtenerBatallon() {
+    public Batallon obtenerBatallon() {
         ConjuntoDeSoldados batallon = new ConjuntoDeSoldados();
         return batallon.formarBatallon(this);
     }
 
     public MovimientoEstrategia obtenerEstrategiaDeMovimiento() {
-        MovimientoEstrategia estrategia = new MovimientoRegular(); // Estrategia por default
-        ConjuntoDeSoldados batallon = obtenerBatallon();
-        if (batallon.cantidad() == 3)
-            estrategia = new MovimientoEnBatallon(batallon);
-        return estrategia;
+        Batallon batallon = this.obtenerBatallon();
+        return batallon.estrategia();
     }
 
     @Override
