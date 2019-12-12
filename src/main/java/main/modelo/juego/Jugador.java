@@ -19,6 +19,7 @@ public class Jugador
     private ArrayList<Unidad> unidades;
     private Integer numero;
     private Equipo equipo;
+    private Jugador siguienteJugador;
 
     // Metodos
     public Jugador(){
@@ -85,6 +86,14 @@ public class Jugador
             Juego.getInstance().murioUnidad(unidadDefensora);
         }
 
+    }
+
+    public Jugador obtenerSiguienteJugador() {
+        return this.siguienteJugador;
+    }
+
+    public void setSiguienteJugador(Jugador jugador) {
+        this.siguienteJugador = jugador;
     }
 
     public ArrayList<Unidad> unidades() {

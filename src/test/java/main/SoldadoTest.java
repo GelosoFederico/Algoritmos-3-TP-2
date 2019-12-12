@@ -163,7 +163,7 @@ public class SoldadoTest {
     public void test07SoldadoUbicadoEn11SeMueveParaElNorteYAhoraEstaEnLaPosicion01(){
         //Arrange
         Posicion unaPosicion = new Posicion(1,1);
-        Direccion unaDireccion = new Norte();
+        Direccion unaDireccion = new DireccionNorte();
         Soldado unSoldado = new Soldado();
         unSoldado.setEquipo(new EquipoBlanco());
         Jugador mockedJugador = mock(Jugador.class);
@@ -184,7 +184,7 @@ public class SoldadoTest {
         //Arrange
         Posicion unaPosicion = new Posicion(2,2);
         Posicion posicionAlNorte = new Posicion(1,2);
-        Direccion unaDireccion = new Norte();
+        Direccion unaDireccion = new DireccionNorte();
         String jugador1 = "ingleses";
         Soldado unSoldado = new Soldado();
         Soldado otroSoldado = new Soldado();
@@ -210,7 +210,7 @@ public class SoldadoTest {
         Posicion posicion01 = new Posicion(1,1);
         Posicion posicion02 = new Posicion(1,2);        // x    x   x
         Posicion posicion03 = new Posicion(1,3);
-        Direccion unaDireccion = new Norte();
+        Direccion unaDireccion = new DireccionNorte();
         String jugador1 = "mongoles";
         Soldado soldado01 = new Soldado();
         Soldado soldado02 = new Soldado();
@@ -248,7 +248,7 @@ public class SoldadoTest {
         Posicion posicion02 = new Posicion(1,2);        // x    x   x   x
         Posicion posicion03 = new Posicion(1,3);
         Posicion posicion04 = new Posicion(1, 4);
-        Direccion unaDireccion = new Norte();
+        Direccion unaDireccion = new DireccionNorte();
         String jugador1 = "mongoles";
         Soldado soldado01 = new Soldado();
         Soldado soldado02 = new Soldado();
@@ -295,7 +295,7 @@ public class SoldadoTest {
         Posicion posicion01 = new Posicion(1,3);        //          x
         Posicion posicion02 = new Posicion(2,2);        //      x
         Posicion posicion03 = new Posicion(3,1);        //  x
-        Direccion unaDireccion = new Norte();
+        Direccion unaDireccion = new DireccionNorte();
         String jugador1 = "mongoles";
         Soldado soldado01 = new Soldado();
         Soldado soldado02 = new Soldado();
@@ -334,7 +334,7 @@ public class SoldadoTest {
         Posicion posicion01 = new Posicion(1,0);        // x
         Posicion posicion02 = new Posicion(2,1);        //      x
         Posicion posicion03 = new Posicion(3,2);        //          x
-        Direccion unaDireccion = new Norte();
+        Direccion unaDireccion = new DireccionNorte();
         String jugador1 = "mongoles";
         Soldado soldado01 = new Soldado();
         Soldado soldado02 = new Soldado();
@@ -372,7 +372,7 @@ public class SoldadoTest {
         Posicion posicion01 = new Posicion(1,0);        // x
         Posicion posicion02 = new Posicion(2,0);        // x     |
         Posicion posicion03 = new Posicion(3,0);        // x    \/
-        Direccion unaDireccion = new Norte();
+        Direccion unaDireccion = new DireccionNorte();
         String jugador1 = "mongoles";
         Soldado soldado01 = new Soldado();
         Soldado soldado02 = new Soldado();
@@ -412,7 +412,7 @@ public class SoldadoTest {
         Posicion posicion03 = new Posicion(3,0);        // x    \/
         Posicion posicion04 = new Posicion(3,1);
 
-        Direccion unaDireccion = new Este();
+        Direccion unaDireccion = new DireccionEste();
         String jugador1 = "mongoles";
 
         Soldado soldado01 = new Soldado();
@@ -463,7 +463,7 @@ public class SoldadoTest {
         Posicion posicion03 = new Posicion(3,0);        // x    \/
         Posicion posicion04 = new Posicion(2,1);
 
-        Direccion unaDireccion = new Este();
+        Direccion unaDireccion = new DireccionEste();
         String jugador1 = "mongoles";
 
         Soldado soldado01 = new Soldado();
@@ -516,7 +516,7 @@ public class SoldadoTest {
         Posicion posicion03 = new Posicion(0,3);        // x    \/
         Posicion posicion04 = new Posicion(1,2);
 
-        Direccion unaDireccion = new Sur();
+        Direccion unaDireccion = new DireccionSur();
         String jugador1 = "mongoles";
 
         Soldado soldado01 = new Soldado();
@@ -566,7 +566,7 @@ public class SoldadoTest {
         Posicion posicion03 = new Posicion(0,3);        // x    \/
         Posicion posicion04 = new Posicion(1,2);
 
-        Direccion unaDireccion = new Sur();
+        Direccion unaDireccion = new DireccionSur();
         String jugador1 = "mongoles";
 
         Soldado soldado01 = new Soldado();
@@ -617,7 +617,7 @@ public class SoldadoTest {
         Posicion posicion03 = new Posicion(3,3);        //
         Posicion posicion04 = new Posicion(3,2);        //
 
-        Direccion unaDireccion = new Este();
+        Direccion unaDireccion = new DireccionEste();
         String jugador1 = "mongoles";
 
         Soldado soldado01 = new Soldado();

@@ -12,11 +12,6 @@ import main.modelo.unidad.conjuntodeunidades.ConjuntoDeUnidades;
 import main.modelo.unidad.Unidad;
 
 public class Tablero {
-    private static final int MIN_DISTANCIA_CORTA = 1;
-    private static final int MAX_DISTANCIA_CORTA = 2;
-    private static final int MIN_DISTANCIA_MEDIA = 3;
-    private static final int MAX_DISTANCIA_MEDIA = 5;
-    private static final int MIN_DISTANCIA_LEJANA = 6;
     // Singleton pattern
     private static Tablero INSTANCE = null;
 

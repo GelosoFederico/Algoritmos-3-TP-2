@@ -10,14 +10,15 @@ public class FaseAgregarJugadores extends Fase {
 
     @Override
     public void agregarJugador(Jugador jugador) {
-        if (juego.jugadores().cantidad() == 0) {
+        if (this.juego.jugadores().cantidad() == 0) {
             jugador.equipo(new EquipoBlanco());
-            juego.agregarJugadorDirecto(jugador);
+            this.juego.agregarJugadorDirecto(jugador);
         } else {
             jugador.equipo(new EquipoNegro());
-            juego.agregarJugadorDirecto(jugador);
-            juego.setearFase( new FaseColocarUnidades(this.juego));
-            juego.setJugadorDeTurno(juego.jugadores().primero());
+            this.juego.agregarJugadorDirecto(jugador);
+            this.juego.setearFase( new FaseColocarUnidades(this.juego));
+            this.juego.setJugadorDeTurno(juego.jugadores().primero());
+            this.juego.setSiguientesJugadores();
         }
     }
 

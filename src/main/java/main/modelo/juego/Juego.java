@@ -6,6 +6,9 @@ import main.modelo.juego.fase.Fase;
 import main.modelo.tablero.distancia.Posicion;
 import main.modelo.unidad.Unidad;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Juego {
     // Singleton pattern
     private static Juego INSTANCE = null;
@@ -50,7 +53,6 @@ public class Juego {
     }
 
     private Jugador encontrarJugadorPorNombre(String jugadorNombre) {
-        //TODO usar foreach
         return this.jugadores().encontrarJugadorPorNombre(jugadorNombre);
     }
 
@@ -60,8 +62,8 @@ public class Juego {
         throw new JugadorGanoLaPartida(this.jugadores().primero());
     }
 
-    public void cambiarJugadorDeTurno() {
-        this.fase.cambiarJugadorDeTurno();
+    public void cambiarJugadorDeTurnoDirecto() {
+        this.jugadorDeTurno = this.jugadorDeTurno.obtenerSiguienteJugador();
     }
 
     public void terminarTurno() {
@@ -78,6 +80,15 @@ public class Juego {
 
     public void agregarJugadorDirecto(Jugador jugador) {
         this.jugadores().agregarJugador(jugador);
+    }
+
+    public void setSiguientesJugadores() {
+        Jugador jugador1 = this.jugadores().primero();
+        Jugador jugador2 = this.jugadores().segundo();
+
+        jugador1.setSiguienteJugador(jugador2);
+        jugador2.setSiguienteJugador(jugador1);
+
     }
 
     public Fase fase() {

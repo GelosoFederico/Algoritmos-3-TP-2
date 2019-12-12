@@ -9,7 +9,6 @@ import main.modelo.unidad.Unidad;
 
 
 public class HandlerElegirCatapulta implements EventHandler<ActionEvent> {
-    private String archivoSonido = "src/sonidos/mangonelselect.wav";
     public void handle(ActionEvent event) {
         Unidad catapulta = new Catapulta();
         catapulta.setEquipo(Juego.getInstance().getJugadorDeTurno().equipo());
