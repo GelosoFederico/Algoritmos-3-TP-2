@@ -1,4 +1,4 @@
-package main.modelo.juego;
+package main.modelo.juego.fase;
 
 import main.modelo.excepciones.JuegoNoPuedeTenerMasDe2JugadoresException;
 import main.modelo.juego.ConjuntoDeJugadores;
@@ -12,7 +12,7 @@ import java.util.List;
 public class FaseColocarUnidades extends Fase {
     private List<Jugador> jugadores;
 
-    public ColocarUnidades(Juego juego) {
+    public FaseColocarUnidades(Juego juego) {
         super(juego);
         this.jugadores = new ArrayList<>(juego.jugadores().jugadores());
     }
