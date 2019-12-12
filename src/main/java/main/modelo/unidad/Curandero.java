@@ -13,11 +13,16 @@ public class Curandero extends RealUnidad {
     }
 
     @Override
-    public void atacar(Unidad unidad) {
-        if (!this.getJugador().equals(unidad.getJugador())) {
+    public void validarAtaque(Unidad unidadVictima){
+
+        if (!(this.getJugador().equals(unidadVictima.getJugador()))) {
             throw new ProhibidoCurarUnidadEnemigaException();
         }
-        this.ataqueEstrategia.atacar(this, unidad);
     }
 
+    @Override
+    public void atacar(Unidad unidad) {
+        this.validarAtaque(unidad);
+        this.ataqueEstrategia.atacar(this, unidad);
+    }
 }

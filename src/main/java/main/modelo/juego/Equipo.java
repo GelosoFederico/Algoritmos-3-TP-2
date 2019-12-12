@@ -14,4 +14,8 @@ public interface Equipo {
     int calcularDanioFinal(Unidad unidad, int danio, EquipoBlanco equipoBlanco );
     int calcularDanioFinal(Unidad unidad, int danio, EquipoNegro equipoNegro );
     int calcularDanioFinal(Unidad unidad, int danio, EquipoNull equipoNull );
+
+    Bando identificarBando(Equipo equipo);
+    Bando identificarBando(EquipoNegro equipoNegro);
+    Bando identificarBando(EquipoBlanco equipoBlanco);
 }

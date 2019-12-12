@@ -49,4 +49,19 @@ public class EquipoNull implements Equipo {
         return danio;
     }
 
+    @Override
+    public Bando identificarBando(Equipo equipo) {
+        return null;
+    }
+
+    @Override
+    public Bando identificarBando(EquipoNegro equipoNegro) {
+        return null;
+    }
+
+    @Override
+    public Bando identificarBando(EquipoBlanco equipoBlanco) {
+        return null;
+    }
+
 }

@@ -56,4 +56,19 @@ public class EquipoNegro implements Equipo{
         return danio;
     }
 
+    @Override
+    public Bando identificarBando(Equipo equipo) {
+        return equipo.identificarBando(this);
+    }
+
+    @Override
+    public Bando identificarBando(EquipoNegro equipoNegro) {
+        return new BandoAliado();
+    }
+
+    @Override
+    public Bando identificarBando(EquipoBlanco equipoBlanco) {
+        return new BandoEnemigo();
+    }
+
 }
