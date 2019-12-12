@@ -3,6 +3,7 @@ package main.modelo.juego;
 import main.modelo.excepciones.JugadorGanoLaPartida;
 import main.modelo.juego.fase.FaseAgregarJugadores;
 import main.modelo.juego.fase.Fase;
+import main.modelo.tablero.distancia.Posicion;
 import main.modelo.unidad.Unidad;
 
 public class Juego {
@@ -77,5 +78,13 @@ public class Juego {
 
     public void agregarJugadorDirecto(Jugador jugador) {
         this.jugadores().agregarJugador(jugador);
+    }
+
+    public Fase fase() {
+        return this.fase;
+    }
+
+    public void moverUnidadHacia(Unidad soldado1, Posicion posicion) {
+        this.getJugadorDeTurno().moverUnidadHacia(soldado1, posicion);
     }
 }

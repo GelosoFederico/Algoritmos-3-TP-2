@@ -90,4 +90,8 @@ public class Jugador
     public ArrayList<Unidad> unidades() {
         return unidades;
     }
+
+    public void moverUnidadHacia(Unidad soldado1, Posicion posicion) {
+
+    }
 }

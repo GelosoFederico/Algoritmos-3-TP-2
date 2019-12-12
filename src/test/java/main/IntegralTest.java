@@ -182,5 +182,52 @@ public class IntegralTest {
         assertEquals(true,soldados.equals( unidadesQueDebeTirar));
     }
 
+    @Test
+    public void jugadorMueveUnidadDuranteElJuegoPrincipalYPuedeHacerlo () {
+        // Arrange
+        Juego.getInstance().agregarJugador(new Jugador("Arkantos"));
+        Juego.getInstance().agregarJugador(new Jugador("Gargarensis"));
+        Jugador jugadorDeTurno = Juego.getInstance().getJugadorDeTurno();
+        Unidad soldado1 =  new Soldado();
+        jugadorDeTurno.colocarUnidadEn(soldado1,new Posicion(7,7));
+        Juego.getInstance().terminarTurno();
+        jugadorDeTurno = Juego.getInstance().getJugadorDeTurno();
+        jugadorDeTurno.colocarUnidadEn(new Soldado(),new Posicion(11,11));
+        Juego.getInstance().terminarDeColocarParaJugador();
+        Juego.getInstance().terminarDeColocarParaJugador();
+
+
+        // Act
+        Juego.getInstance().moverUnidadHacia(soldado1, new Posicion (7,8 ));
+
+        // Assert
+        Posicion posicionFinal = Tablero.getInstance().obtenerPosicionDeUnidad(soldado1);
+        assertEquals(posicionFinal.posicionEnX(),7);
+        assertEquals(posicionFinal.posicionEnY(),8);
+    }
+
+    @Test
+    public void jugadorMueveUnidadDosVecesDuranteElJuegoPrincipalYTiraExcepcion () {
+        // Assert
+        assertEquals(1,2);
+    }
+
+    @Test
+    public void jugadorAtacaDuranteElJuegoPrincipalYPuedeHacerlo () {
+        // Assert
+        assertEquals(1,2);
+    }
+
+    @Test
+    public void jugadorAtacaDosVecesDuranteElJuegoPrincipalYTiraExcepcion () {
+        // Assert
+        assertEquals(1,2);
+    }
+
+    @Test
+    public void jugadorMueveYAtacaDuranteElJuegoPrincipalYPuedeHacerlo () {
+        // Assert
+        assertEquals(1,2);
+    }
 
 }

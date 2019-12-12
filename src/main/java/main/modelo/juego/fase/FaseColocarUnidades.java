@@ -33,7 +33,7 @@ public class FaseColocarUnidades extends Fase {
     public void removerJugador(){
         jugadores.jugadores().remove(juego.getJugadorDeTurno());
         if(this.jugadores.cantidad() == 0) {
-            // juego.setearFase();
+            juego.setearFase(new FaseMoverYAtacar(juego));
         }
     }
 }
