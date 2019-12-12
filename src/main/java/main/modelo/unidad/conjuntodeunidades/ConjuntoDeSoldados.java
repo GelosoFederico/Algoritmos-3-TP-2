@@ -49,21 +49,26 @@ public class ConjuntoDeSoldados extends ConjuntoDeUnidades {
 
         // tengo 2 o mas soldados contiguos para formar un batallon
         if (soldadosContiguosAliados.cantidad() >= 2) {
-            int i=0;
-            Iterator<Unidad> iterador = soldadosContiguosAliados.iterator();
-            while( (soldadosContiguosAliados.cantidad()) > 2){
-                // El que lo llamo tiene que estar en el batallon
-                if(!iterador.hasNext()) {
-                    iterador = soldadosContiguosAliados.iterator();
-                }
-                i++;
-                if(iterador.next() != primerSoldado) {
-                    iterador.remove();
-                }
-            }
-            soldadosContiguosAliados.agregar(soldadoCentro);
-            batallon = new BatallonCompleto(soldadosContiguosAliados);
+            batallon = soldadosContiguosAliados.crearBatallonAPartirDe(primerSoldado, soldadoCentro);
         }
         return batallon;
+    }
+
+    public Batallon crearBatallonAPartirDe(Soldado primerSoldado, Soldado soldadoCentro){
+        ConjuntoDeSoldados soldadosContiguosAliados = this;
+        int i=0;
+        Iterator<Unidad> iterador = soldadosContiguosAliados.iterator();
+        while( (soldadosContiguosAliados.cantidad()) > 2){
+            // El que lo llamo tiene que estar en el batallon
+            if(!iterador.hasNext()) {
+                iterador = soldadosContiguosAliados.iterator();
+            }
+            i++;
+            if(iterador.next() != primerSoldado) {
+                iterador.remove();
+            }
+        }
+        soldadosContiguosAliados.agregar(soldadoCentro);
+        return new BatallonCompleto(soldadosContiguosAliados);
     }
 }
