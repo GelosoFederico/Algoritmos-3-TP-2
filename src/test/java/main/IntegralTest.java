@@ -230,4 +230,11 @@ public class IntegralTest {
         assertEquals(1,2);
     }
 
+    @Test
+    public void jugadorMueveUnidadDeOponenteYTiraExcepcion() {
+        // Assert
+        assertEquals(1,2);
+
+    }
+
 }

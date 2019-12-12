@@ -1,5 +1,6 @@
 package main.modelo.juego;
 
+import main.modelo.direccion.Direccion;
 import main.modelo.tablero.distancia.Posicion;
 import main.modelo.excepciones.UnidadEstaMuertaException;
 import main.modelo.tablero.Tablero;
@@ -100,7 +101,11 @@ public class Jugador
         return unidades;
     }
 
-    public void moverUnidadHacia(Unidad soldado1, Posicion posicion) {
+    public void moverUnidadHacia(Unidad unidad, Posicion posicionHacia) {
+
+        Direccion direccion = unidad.posicion().direccionHacia(posicionHacia);
+        unidad.avanzar(direccion);
+
 
     }
 }
