@@ -1,8 +1,8 @@
 package main;
 
 import main.modelo.tablero.distancia.Posicion;
-import org.junit.Test;
 import org.junit.Assert;
+import org.junit.Test;
 
 
 public class PosicionTest {
@@ -44,5 +44,4 @@ public class PosicionTest {
         // Assert
         Assert.assertEquals(distancia,10);
     }
-
 }

@@ -115,7 +115,7 @@ public class JuegoUnitTest {
         Juego.getInstance().agregarJugador(jugador1);
         Juego.getInstance().agregarJugador(jugador2);
 
-        Juego.getInstance().ejecutarUnTurno();
+        Juego.getInstance().terminarTurno();
 
         // Act and assert
         assertEquals("Horacio",Juego.getInstance().getJugadorDeTurno().nombre());

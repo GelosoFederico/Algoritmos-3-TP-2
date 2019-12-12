@@ -18,13 +18,13 @@ public abstract class  Distancia {
     public static Distancia crearDistancia(int distancia) {
         Distancia distCreada = null;
         if(distancia >= MIN_DISTANCIA_CORTA && distancia <= MAX_DISTANCIA_CORTA) {
-            distCreada = new Cercana(distancia);
+            distCreada = new DistanciaCercana(distancia);
         }
         if(distancia >= MIN_DISTANCIA_MEDIA && distancia <= MAX_DISTANCIA_MEDIA) {
-            distCreada = new Media(distancia);
+            distCreada = new DistanciaMedia(distancia);
         }
         if(distancia >= MIN_DISTANCIA_LEJANA ) {
-            distCreada = new Lejana(distancia);
+            distCreada = new DistanciaLejana(distancia);
         }
         // Este caso queda por si hay distancias 0 o negativas
         if (distCreada == null) {

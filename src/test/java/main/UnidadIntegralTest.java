@@ -43,11 +43,11 @@ public class UnidadIntegralTest {
         jugador1.colocarUnidadEn(unidad1,new Posicion(5,5));
 
         // Act
-        unidad1.avanzar(new Norte());   // (4,5)
-        unidad1.avanzar(new Norte());   // (3,5)
-        unidad1.avanzar(new Este());    // (3,6)
-        unidad1.avanzar(new Sur());     // (4,6)
-        unidad1.avanzar(new Noreste()); // (3,7)
+        unidad1.avanzar(new DireccionNorte());   // (4,5)
+        unidad1.avanzar(new DireccionNorte());   // (3,5)
+        unidad1.avanzar(new DireccionEste());    // (3,6)
+        unidad1.avanzar(new DireccionSur());     // (4,6)
+        unidad1.avanzar(new DireccionNoreste()); // (3,7)
 
         // Assert
         Posicion posicionFinal = Tablero.getInstance().obtenerPosicionDeUnidad(unidad1);
@@ -73,7 +73,7 @@ public class UnidadIntegralTest {
         jugador1.colocarUnidadEn(unidad2,new Posicion(5,5));
 
         // Act & Assert
-        unidad1.avanzar(new Norte());
+        unidad1.avanzar(new DireccionNorte());
     }
 
     @Test (expected = UnidadNoPuedeMoverseException.class)
@@ -88,7 +88,7 @@ public class UnidadIntegralTest {
         jugador1.colocarUnidadEn(unidad1,new Posicion(9,9));
 
         // Act & Assert
-        unidad1.avanzar(new Norte());
+        unidad1.avanzar(new DireccionNorte());
     }
 
     @Test
@@ -216,7 +216,7 @@ public class UnidadIntegralTest {
         jugador1.colocarUnidadEn(unidad1,new Posicion(0,0));
 
         // Act & Assert
-        unidad1.avanzar(new Norte());   // (4,5)
+        unidad1.avanzar(new DireccionNorte());   // (4,5)
     }
 
     @Test (expected = UnidadFueraDeRangoException.class)
@@ -332,7 +332,7 @@ public class UnidadIntegralTest {
         jugador1.colocarUnidadEn(unidad1,new Posicion(9,9));
         jugador2.colocarUnidadEn(unidad2,new Posicion(10,10));
 
-        unidad2.avanzar(new Norte());
+        unidad2.avanzar(new DireccionNorte());
 
         int vidaInicial = unidad2.vida();
 

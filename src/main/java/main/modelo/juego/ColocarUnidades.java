@@ -27,7 +27,9 @@ public class ColocarUnidades extends Fase {
 
     @Override
     public void removerJugador(){
-        this.jugadores.remove(juego.getJugadorDeTurno());
+        Jugador jugadorASacar = juego.getJugadorDeTurno();
+        this.juego.cambiarJugadorDeTurnoDirecto();
+        this.jugadores.remove(jugadorASacar);
         if(this.jugadores.size() == 0) {
             // juego.setearFase();
         }

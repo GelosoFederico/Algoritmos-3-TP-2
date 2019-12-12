@@ -30,6 +30,19 @@ public class Posicion {
                 this.posicionEnY() + otraPosicion.posicionEnY() );
     }
 
+    public Posicion restar(Posicion otraPosicion) {
+        return new Posicion(this.posicionEnX() - otraPosicion.posicionEnX(),
+                this.posicionEnY() - otraPosicion.posicionEnY() );
+    }
+
+    public boolean igualA(Posicion otraPosicion) {
+        if (this.posicionEnX() == otraPosicion.posicionEnX() &&
+            this.posicionEnY() == otraPosicion.posicionEnY())
+            return true;
+        else
+            return false;
+    }
+
     public Distancia distanciaA(Posicion otraPosicion) {
         return otraPosicion.distanciaAPuntoEnXEY(this.posicionEnX(),this.posicionEnY());
     }

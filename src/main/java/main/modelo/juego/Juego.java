@@ -1,12 +1,7 @@
 package main.modelo.juego;
 
-import main.modelo.excepciones.JuegoNoPuedeTenerMasDe2JugadoresException;
-import main.modelo.excepciones.JuegoNoTieneJugadorConEseNombreException;
 import main.modelo.excepciones.JugadorGanoLaPartida;
 import main.modelo.unidad.Unidad;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Juego {
     // Singleton pattern
@@ -61,17 +56,11 @@ public class Juego {
         throw new JugadorGanoLaPartida(this.jugadores().primero());
     }
 
-    public void cambiarJugadorDeTurno() {
-        this.fase.cambiarJugadorDeTurno();
-    }
-
     public void cambiarJugadorDeTurnoDirecto() {
         this.jugadorDeTurno = this.jugadorDeTurno.obtenerSiguienteJugador();
     }
 
-    public void ejecutarUnTurno() {
-        // TODO: aca es donde se le permite al jugador de turno elegir una pieza
-        //  y hacer algo: avanzar y ataque
+    public void terminarTurno() {
         this.fase.cambiarJugadorDeTurno();
     }
 
