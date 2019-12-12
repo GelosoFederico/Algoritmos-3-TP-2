@@ -4,6 +4,8 @@ import main.modelo.tablero.Tablero;
 import main.modelo.unidad.Soldado;
 import main.modelo.unidad.Unidad;
 
+import java.util.Iterator;
+
 public class ConjuntoDeSoldados extends ConjuntoDeUnidades {
 
     public void agregar(Unidad unidad) {
@@ -28,5 +30,39 @@ public class ConjuntoDeSoldados extends ConjuntoDeUnidades {
         ConjuntoDeSoldados soldadosAliadosContiguos = new ConjuntoDeSoldados();
         soldadosAliadosContiguos.obtenerSoldadosDelConjunto(soldadosAliados);
         return soldadosAliadosContiguos;
+    }
+
+    public ConjuntoDeSoldados formarBatallon(Soldado soldadoCentro) {
+        Soldado primerSoldado = soldadoCentro;
+        ConjuntoDeSoldados soldadosContiguosAliados = new ConjuntoDeSoldados();
+        soldadosContiguosAliados = soldadosContiguosAliados.buscarSoldadosAliadosContiguos(soldadoCentro);
+
+        //si hay un soldado contiguo, busco los contiguos a este otro
+        // y veo si puedo formar un batallon
+        if (soldadosContiguosAliados.cantidad() == 1) {
+            Iterator<Unidad> iterador = soldadosContiguosAliados.iterator();
+            soldadoCentro = (Soldado) iterador.next();
+            soldadosContiguosAliados = new ConjuntoDeSoldados();
+            soldadosContiguosAliados = soldadosContiguosAliados.buscarSoldadosAliadosContiguos(soldadoCentro);
+        }
+
+        // tengo 2 o mas soldados contiguos para formar un batallon
+        if (soldadosContiguosAliados.cantidad() >= 2) {
+            int i=0;
+            Iterator<Unidad> iterador = soldadosContiguosAliados.iterator();
+            while( (soldadosContiguosAliados.cantidad()) > 2){
+                // El que lo llamo tiene que estar en el batallon
+                if(!iterador.hasNext()) {
+                    iterador = soldadosContiguosAliados.iterator();
+                }
+                i++;
+                if(iterador.next() != primerSoldado ) {
+                    iterador.remove();
+                }
+            }
+            soldadosContiguosAliados.agregar(soldadoCentro);
+
+        }
+        return soldadosContiguosAliados;
     }
 }
