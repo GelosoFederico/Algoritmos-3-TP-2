@@ -19,6 +19,7 @@ public class HandlerColocarUnidad implements EventHandler<MouseEvent> {
         this.vistaCasillero = vistaCasillero;
     }
 
+
     static public Unidad getUnidadElegida() {
         return unidadElegida;
     }
