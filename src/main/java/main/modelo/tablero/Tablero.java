@@ -1,15 +1,16 @@
 package main.modelo.tablero;
 
 import main.modelo.direccion.Direccion;
-import main.modelo.tablero.distancia.Posicion;
-import main.modelo.excepciones.*;
+import main.modelo.excepciones.CasilleroFueraDeTableroException;
+import main.modelo.excepciones.UnidadNoSeEncuentraEnTablero;
 import main.modelo.juego.Equipo;
 import main.modelo.juego.EquipoBlanco;
 import main.modelo.juego.EquipoNegro;
 import main.modelo.juego.Jugador;
 import main.modelo.tablero.distancia.Distancia;
-import main.modelo.unidad.conjuntodeunidades.ConjuntoDeUnidades;
+import main.modelo.tablero.distancia.Posicion;
 import main.modelo.unidad.Unidad;
+import main.modelo.unidad.conjuntodeunidades.ConjuntoDeUnidades;
 
 public class Tablero {
     // Singleton pattern
@@ -102,5 +103,9 @@ public class Tablero {
     public void daniarUnidadEnRango(Unidad atacante, Unidad victima, Distancia distanciaPrototipo, int danio) {
         Distancia distancia = this.calcularDistanciaEntre(victima, atacante);
         distancia.daniarUnidadEnRango(victima, distanciaPrototipo, danio);
+    }
+
+    public Unidad getUnidadEnPosicion(Posicion posicion) {
+        return casilleros[posicion.posicionEnX()][posicion.posicionEnY()].unidad();
     }
 }

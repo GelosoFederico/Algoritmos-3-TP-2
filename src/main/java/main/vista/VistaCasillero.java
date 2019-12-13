@@ -1,12 +1,12 @@
 package main.vista;
 
+import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import main.controlador.HandlerColocarUnidad;
 import main.modelo.tablero.distancia.Posicion;
 
-import java.awt.event.MouseEvent;
-import java.beans.EventHandler;
 
 public class VistaCasillero extends StackPane {
     private static final int ALTURA_CASILLERO = 32;

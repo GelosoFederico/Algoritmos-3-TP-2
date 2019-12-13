@@ -37,7 +37,6 @@ public class VistaPartida extends Group {
         root.getChildren().addAll( this.tablero, infoIzquierda);
         HandlerTurnos.setVistaPartida(this);
 
-        tablero.
         Scene scene = new Scene(root);
         stage.setTitle("Eleccion de unidades");
         stage.setScene(scene);
