@@ -1,12 +1,10 @@
 package main.controlador;
 
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import main.modelo.juego.Juego;
 import main.modelo.juego.Jugador;
 import main.modelo.unidad.Unidad;
-import main.vista.App;
 import main.vista.DiccionarioImagenes;
 import main.vista.VistaCasillero;
 import main.vista.VistaErrorColocarEnLugarIncorrecto;
@@ -14,7 +12,7 @@ import main.vista.VistaErrorColocarEnLugarIncorrecto;
 public class HandlerColocarUnidad implements EventHandler<MouseEvent> {
     private VistaCasillero vistaCasillero;
     private static Unidad unidadElegida = null;
-    private DiccionarioImagenes diccionarioImagenes = new DiccionarioImagenes();
+    private static DiccionarioImagenes diccionarioImagenes = new DiccionarioImagenes();
 
     public HandlerColocarUnidad(VistaCasillero vistaCasillero) {
         super();
