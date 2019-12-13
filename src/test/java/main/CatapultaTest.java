@@ -1,7 +1,7 @@
 package main;
 
 import main.modelo.direccion.Direccion;
-import main.modelo.direccion.Norte;
+import main.modelo.direccion.DireccionNorte;
 import main.modelo.tablero.distancia.Posicion;
 import main.modelo.excepciones.UnidadFueraDeRangoException;
 import main.modelo.excepciones.UnidadNoPuedeMoverseException;
@@ -119,7 +119,7 @@ public class CatapultaTest {
         Jugador mJugador1 = mock(Jugador.class);
         when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
         String jugador1 = "ingleses";
-        Direccion unaDireccion = new Norte();
+        Direccion unaDireccion = new DireccionNorte();
         Catapulta catapulta = new Catapulta();
         Posicion unaPosicion = new Posicion(1,1);
         Jugador mockedJugador = mock(Jugador.class);

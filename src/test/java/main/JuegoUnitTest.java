@@ -109,15 +109,13 @@ public class JuegoUnitTest {
     @Test
     public void despuesDelTurnoDeUnJugadorLeTocaAlOtroJugador() {
         // Arrange
-        Jugador mJugador1 = mock(Jugador.class);
-        when(mJugador1.nombre()).thenReturn("Mabel");
-        Jugador mJugador2 = mock(Jugador.class);
-        when(mJugador2.nombre()).thenReturn("Horacio");
+        Jugador jugador1 = new Jugador("Mabel");
+        Jugador jugador2 = new Jugador("Horacio");
 
-        Juego.getInstance().agregarJugador(mJugador1);
-        Juego.getInstance().agregarJugador(mJugador2);
+        Juego.getInstance().agregarJugador(jugador1);
+        Juego.getInstance().agregarJugador(jugador2);
 
-        Juego.getInstance().ejecutarUnTurno();
+        Juego.getInstance().terminarTurno();
 
         // Act and assert
         assertEquals("Horacio",Juego.getInstance().getJugadorDeTurno().nombre());

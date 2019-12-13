@@ -2,17 +2,13 @@ package main.vista;
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import main.controlador.HandlerSonidos;
 import main.controlador.HandlerTurnos;
 import main.modelo.juego.Juego;
-import main.vista.GridPaneTablero;
-import main.vista.VBoxBotonesDeUnidades;
 
 public class VistaPartida extends Group {
     private final Stage stage;

@@ -11,7 +11,7 @@ public class DireccionTest {
     @Test
     public void test01EstaEnPosicion55YSeMueveHaciaElNorteYDevuelvePosicion45(){
         // Arrange
-        Direccion unaDireccion = new Norte();
+        Direccion unaDireccion = new DireccionNorte();
         Posicion unaPosicion = new Posicion(5,5);
 
         // Act
@@ -26,7 +26,7 @@ public class DireccionTest {
     @Test
     public void test02EstaEnPosicion1510YSeMueveHaciaElNorteYDevuelvePosicion1410(){
         //Arrange
-        Direccion unaDireccion = new Norte();
+        Direccion unaDireccion = new DireccionNorte();
         Posicion unaPosicion = new Posicion(15,10);
 
         //Act
@@ -39,7 +39,7 @@ public class DireccionTest {
     @Test
     public void test03EstaEnPosicion55YSeMueveHaciaElSurYDevuelvePosicion65(){
         //Arrange
-        Direccion unaDireccion = new Sur();
+        Direccion unaDireccion = new DireccionSur();
         Posicion unaPosicion = new Posicion(5,5);
         //Act
         unaPosicion.sumarle(unaDireccion.posicionRelativa());
@@ -51,7 +51,7 @@ public class DireccionTest {
     @Test
     public void test04EstaEnPosicion55YSeMueveHaciaElOesteYDevuelvePosicion56(){
         //Arrange
-        Direccion unaDireccion = new Oeste();
+        Direccion unaDireccion = new DireccionOeste();
         Posicion unaPosicion = new Posicion(5,5);
         //Act
         unaPosicion.sumarle(unaDireccion.posicionRelativa());
@@ -63,7 +63,7 @@ public class DireccionTest {
     @Test
     public void test05EstaEnPosicion55YSeMueveHaciaElEsteYDevuelvePosicion54(){
         //Arrange
-        Direccion unaDireccion = new Este();
+        Direccion unaDireccion = new DireccionEste();
         Posicion unaPosicion = new Posicion(5,5);
         //Act
         unaPosicion.sumarle(unaDireccion.posicionRelativa());
@@ -75,7 +75,7 @@ public class DireccionTest {
     @Test
     public void test06EstaEnPosicion55YSeMueveHaciaElNoresteYDevuelvePosicion44(){
         //Arrange
-        Direccion unaDireccion = new Noreste();
+        Direccion unaDireccion = new DireccionNoreste();
         Posicion unaPosicion = new Posicion(5,5);
         //Act
         unaPosicion.sumarle(unaDireccion.posicionRelativa());
@@ -87,7 +87,7 @@ public class DireccionTest {
     @Test
     public void test07EstaEnPosicion55YSeMueveHaciaElSuresteYDevuelvePosicion64(){
         //Arrange
-        Direccion unaDireccion = new Sureste();
+        Direccion unaDireccion = new DireccionSureste();
         Posicion unaPosicion = new Posicion(5,5);
         //Act
         unaPosicion.sumarle(unaDireccion.posicionRelativa());
@@ -99,7 +99,7 @@ public class DireccionTest {
     @Test
     public void test08EstaEnPosicion55YSeMueveHaciaElSuroesteYDevuelvePosicion66(){
         //Arrange
-        Direccion unaDireccion = new Suroeste();
+        Direccion unaDireccion = new DireccionSuroeste();
         Posicion unaPosicion = new Posicion(5,5);
         //Act
         unaPosicion.sumarle(unaDireccion.posicionRelativa());
@@ -111,7 +111,7 @@ public class DireccionTest {
     @Test
     public void test09EstaEnPosicion55YSeMueveHaciaElNoroesteYDevuelvePosicion46(){
         //Arrange
-        Direccion unaDireccion = new Noroeste();
+        Direccion unaDireccion = new DireccionNoroeste();
         Posicion unaPosicion = new Posicion(5,5);
         //Act
         unaPosicion.sumarle(unaDireccion.posicionRelativa());

@@ -1,7 +1,7 @@
 package main;
 
 import main.modelo.direccion.Direccion;
-import main.modelo.direccion.Norte;
+import main.modelo.direccion.DireccionNorte;
 import main.modelo.tablero.distancia.Posicion;
 import main.modelo.excepciones.CasilleroOcupadoException;
 import main.modelo.excepciones.ProhibidoAtacarUnidadAliadaException;
@@ -136,7 +136,7 @@ public class JineteTest {
     public void test07JineteUbicadoEn22SeMueveParaElNorteYAhoraEstaEnLaPosicion12() {
         //Arrange
         Posicion unaPosicion = new Posicion(2,2);
-        Direccion unaDireccion = new Norte();
+        Direccion unaDireccion = new DireccionNorte();
         Jinete unJinete = new Jinete();
         unJinete.setEquipo(new EquipoBlanco());
         Jugador mockedJugador = mock(Jugador.class);
@@ -159,7 +159,7 @@ public class JineteTest {
         //Arrange
         Posicion unaPosicion = new Posicion(2,2);
         Posicion posicionAlNorte = new Posicion(1,2);
-        Direccion unaDireccion = new Norte();
+        Direccion unaDireccion = new DireccionNorte();
         Jinete unJinete = new Jinete();
         Catapulta catapulta = new Catapulta();
         unJinete.setEquipo(new EquipoBlanco());

@@ -8,20 +8,20 @@ import main.modelo.unidad.Unidad;
 public class ContadorDePuntos
 {
     private static final int PUNTOS_INICIALES = 20;
-    private int _puntosRestantes;
+    private int puntosRestantes;
 
     public ContadorDePuntos() {
-        _puntosRestantes = PUNTOS_INICIALES;
+        puntosRestantes = PUNTOS_INICIALES;
     }
 
     public int puntosRestantes() {
-        return this._puntosRestantes;
+        return this.puntosRestantes;
     }
 
     public void contarPuntosDe(Unidad unidad) {
         if (this.puntosRestantes() - unidad.coste() < 0) {
             throw new InsuficientePuntosRestantesAlColocarUnidadException();
         }
-        this._puntosRestantes -= unidad.coste();
+        this.puntosRestantes -= unidad.coste();
     }
 }
