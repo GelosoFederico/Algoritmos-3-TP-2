@@ -1,5 +1,8 @@
 package main.modelo.tablero.distancia;
 
+import main.modelo.direccion.Direccion;
+import main.modelo.direccion.FactoryDireccion;
+
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
 
@@ -52,5 +55,9 @@ public class Posicion {
         int distancia_y = abs(this.posicionEnY()-y);
 
         return Distancia.crearDistancia(max(distancia_x,distancia_y));
+    }
+
+    public Direccion direccionHacia(Posicion otraPosicion) {
+        return FactoryDireccion.crear(otraPosicion.restar(this));
     }
 }
