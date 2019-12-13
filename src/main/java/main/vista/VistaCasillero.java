@@ -16,7 +16,7 @@ public class VistaCasillero extends StackPane {
 
     private Posicion posicion;
     private ImageView imagen;
-    //private DiccionarioImagenes diccionarioImagenes = new DiccionarioImagenes();
+    private static DiccionarioImagenes diccionarioImagenes = new DiccionarioImagenes();
     public VistaCasillero(Posicion pos) {
         super();
         this.posicion = pos;
@@ -35,7 +35,7 @@ public class VistaCasillero extends StackPane {
         this.getChildren().add(unidad);
     }
     public void agregarUnidad(Unidad unidad) { // TODO: hacer que aparezca aca la unidad y desaparezca en el otro
-       // this.getChildren().add(diccionarioImagenes.get(unidad.getClass()));
+        this.getChildren().add(diccionarioImagenes.get(unidad.getClass()));
     }
     public void setHandler(EventHandler<MouseEvent> event) {
         this.eventHandler = event;
