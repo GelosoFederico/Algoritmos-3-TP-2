@@ -3,7 +3,6 @@ package main.vista;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import main.controlador.HandlerColocarUnidad;
-import main.controlador.HandlerElegirEquipoParaCasillero;
 import main.modelo.juego.EquipoNegro;
 import main.modelo.tablero.Tablero;
 import main.modelo.tablero.distancia.Posicion;
@@ -19,7 +18,11 @@ public class VistaCasillero extends StackPane {
         super();
         this.posicion = pos;
 
-        HandlerElegirEquipoParaCasillero elegirImagen = new HandlerElegirEquipoParaCasillero(this);
+        if(Tablero.getInstance().obtenerCasilleroEnPosicion(this.posicion).equipo().getClass().equals(EquipoNegro.class)){
+            this.setVistaCasilleroEquipoNegro();
+        }else {
+            this.setVistaCasilleroEquipoBlanco();
+        }
         this.imagen.setFitHeight(ALTURA_CASILLERO);
         this.imagen.setFitWidth(ANCHURA_CASILLERO);
 
