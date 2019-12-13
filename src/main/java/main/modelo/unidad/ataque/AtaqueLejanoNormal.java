@@ -1,6 +1,6 @@
 package main.modelo.unidad.ataque;
 
-import main.modelo.tablero.distancia.Lejana;
+import main.modelo.tablero.distancia.DistanciaLejana;
 import main.modelo.tablero.Tablero;
 import main.modelo.unidad.Unidad;
 
@@ -11,6 +11,6 @@ public class AtaqueLejanoNormal extends AtaqueLejano {
 
     @Override
     public void atacar(Unidad atacante, Unidad victima) {
-        Tablero.getInstance().daniarUnidadEnRango(atacante, victima, new Lejana(), danio);
+        Tablero.getInstance().daniarUnidadEnRango(atacante, victima, new DistanciaLejana(), danio);
     }
 }
