@@ -5,6 +5,9 @@ import javafx.scene.layout.StackPane;
 import main.controlador.HandlerColocarUnidad;
 import main.modelo.tablero.distancia.Posicion;
 
+import java.awt.event.MouseEvent;
+import java.beans.EventHandler;
+
 public class VistaCasillero extends StackPane {
     private static final int ALTURA_CASILLERO = 32;
     private static final int ANCHURA_CASILLERO = 32;
@@ -28,6 +31,9 @@ public class VistaCasillero extends StackPane {
     public Posicion getPosicion() { return this.posicion; }
     public void agregarUnidad(ImageView unidad) {
         this.getChildren().add(unidad);
+    }
+    public void setHandler(EventHandler<MouseEvent> event) {
+        this.setOnMouseClicked(event);
     }
 
 }

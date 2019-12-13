@@ -2,17 +2,17 @@ package main.vista;
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import main.controlador.HandlerTurnos;
 import main.modelo.juego.Juego;
+import main.modelo.juego.fase.FaseMoverYAtacar;
 
 public class VistaPartida extends Group {
     private final Stage stage;
-    private GridPane tablero;
+    private GridPaneTablero tablero;
     private VBox infoIzquierda;
 
     private static final int LONGITUD = 20;
@@ -37,6 +37,7 @@ public class VistaPartida extends Group {
         root.getChildren().addAll( this.tablero, infoIzquierda);
         HandlerTurnos.setVistaPartida(this);
 
+        tablero.
         Scene scene = new Scene(root);
         stage.setTitle("Eleccion de unidades");
         stage.setScene(scene);
@@ -54,5 +55,8 @@ public class VistaPartida extends Group {
 
         Text txt = (Text)this.infoIzquierda.getChildren().get(1);
         txt.setText("Puntos: ".concat(textoPuntos));
+
+        if (Juego.getInstance().fase().getClass().equals(FaseMoverYAtacar.class))
+            new VistaMoverAtacar(stage, tablero);
     }
 }
