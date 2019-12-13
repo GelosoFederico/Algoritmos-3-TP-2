@@ -68,12 +68,12 @@ public class CuranderoTest {
     @Test(expected = ProhibidoCurarUnidadEnemigaException.class)
     public void test04CuranderoAtacaASoldadoEnemigoYDevuelveUnaExcepcion() {
         //Arrange
+        String jugador1 = "ingleses";
+        String jugador2 = "irlandeses";
         Jugador mJugador1 = mock(Jugador.class);
         when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
         Jugador mJugador2 = mock(Jugador.class);
         when(mJugador2.equipo()).thenReturn(new EquipoNegro());
-        String jugador1 = "ingleses";
-        String jugador2 = "irlandeses";
         Unidad curanderoAliado = new Curandero();
         Unidad soldadoEnemigo = new Soldado();
         curanderoAliado.setJugador(jugador1);
@@ -82,7 +82,7 @@ public class CuranderoTest {
         soldadoEnemigo.setEquipo(new EquipoNegro());
 
         Posicion unaPosicion = new Posicion(9,9);
-        Posicion otraPosicion = new Posicion(11,11);
+        Posicion otraPosicion = new Posicion(10,10);
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(curanderoAliado,unaPosicion,mJugador1);
         Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldadoEnemigo,otraPosicion,mJugador2);
 
@@ -90,7 +90,7 @@ public class CuranderoTest {
         curanderoAliado.atacar(soldadoEnemigo);
 
         //Assert
-        assertEquals(soldadoEnemigo.vida(), 90);
+        //assertEquals(soldadoEnemigo.vida(), 90);
     }
 
     @Test
@@ -99,7 +99,7 @@ public class CuranderoTest {
         Jugador mJugador1 = mock(Jugador.class);
         when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
         Jugador mJugador2 = mock(Jugador.class);
-        when(mJugador2.equipo()).thenReturn(new EquipoNegro());
+        when(mJugador2.equipo()).thenReturn(new EquipoBlanco());
         String jugador1 = "ingleses";
         Unidad curanderoAliado = new Curandero();
         Unidad soldadoAliado = new Soldado();

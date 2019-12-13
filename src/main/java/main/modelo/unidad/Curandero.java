@@ -1,6 +1,8 @@
 package main.modelo.unidad;
 
+import main.modelo.excepciones.BandosNoCoincenExeption;
 import main.modelo.excepciones.ProhibidoCurarUnidadEnemigaException;
+import main.modelo.juego.BandoAliado;
 import main.modelo.unidad.ataque.AtaqueCorto;
 
 public class Curandero extends RealUnidad {
@@ -10,12 +12,15 @@ public class Curandero extends RealUnidad {
         vida = 75;
         coste = 5;
         ataqueEstrategia = new AtaqueCorto(DANIO_CURANDERO);
+        bandoAtacable = new BandoAliado();
     }
 
     @Override
     public void validarAtaque(Unidad unidadVictima){
-
-        if (!(this.getJugador().equals(unidadVictima.getJugador()))) {
+        try {
+            bandoAtacable.permiteAtacar(this.equipo().identificarBando(unidadVictima.equipo()));
+        }
+        catch (BandosNoCoincenExeption e){
             throw new ProhibidoCurarUnidadEnemigaException();
         }
     }

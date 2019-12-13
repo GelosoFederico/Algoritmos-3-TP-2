@@ -1,23 +1,20 @@
 package main.modelo.juego;
 
+import main.modelo.excepciones.BandosNoCoincenExeption;
+
 public class BandoEnemigo extends Bando {
     @Override
-    public Bando identificarBando(EquipoBlanco equipoBlanco, EquipoNegro equipoNegro) {
-        return new BandoAliado();
+    public void permiteAtacar(Bando bando) {
+        bando.permiteAtacar(this);
     }
 
     @Override
-    public Bando identificarBando(EquipoBlanco equipoBlanco1, EquipoBlanco equipoBlanco2) {
-        return new BandoAliado();
+    public void permiteAtacar(BandoAliado bando) {
+        throw new BandosNoCoincenExeption();
     }
 
     @Override
-    public Bando identificarBando(EquipoNegro equipoNegro, EquipoBlanco equipoBlanco) {
-        return new BandoEnemigo();
-    }
-
-    @Override
-    public Bando identificarBando(EquipoNegro equipoNegro1, EquipoNegro equipoNegro2) {
-        return new BandoAliado();
+    public void permiteAtacar(BandoEnemigo bando) {
+        //siga siga dice el juez
     }
 }
