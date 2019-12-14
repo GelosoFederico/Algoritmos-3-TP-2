@@ -4,11 +4,15 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import main.controlador.HandlerTurnos;
 import main.modelo.juego.Juego;
 import main.modelo.juego.fase.FaseMoverYAtacar;
+
+import java.io.File;
 
 public class VistaPartida extends Group {
     private final Stage stage;
@@ -24,6 +28,10 @@ public class VistaPartida extends Group {
         super();
         this.stage = stage;
         this.tablero = new GridPaneTablero();
+
+        Media media = new Media(new File("src/recursos/sonidos/1-Kunio-kunnoNekketsuSoccerLeague.mp3").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
 
         HBox root = new HBox(5);
         this.infoIzquierda = new VBox();

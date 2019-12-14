@@ -2,10 +2,7 @@ package main.vista;
 
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
-import main.controlador.HandlerMoverUnidadHaciaAca;
-import main.controlador.HandlerSeleccionarVictima;
-import main.controlador.HandlerSeleccionarAtacante;
-import main.controlador.HandlerSeleccionarMovible;
+import main.controlador.*;
 import main.modelo.tablero.distancia.Posicion;
 
 public class GridPaneTablero extends GridPane {
@@ -54,6 +51,13 @@ public class GridPaneTablero extends GridPane {
         for (Node node : this.getChildren()) {
             VistaCasillero vistaCasillero = (VistaCasillero) node;
             vistaCasillero.setHandler(new HandlerSeleccionarVictima(vistaCasillero, this));
+        }
+    }
+
+    public void setModoMostrarInfoUnidades() {
+        for(Node node : this.getChildren()) {
+            VistaCasillero vistaCasillero = (VistaCasillero) node;
+            vistaCasillero.setHandler(new HandlerMostrarInfoUnidad(vistaCasillero, this));
         }
     }
 }
