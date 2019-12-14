@@ -2,8 +2,8 @@ package main.vista;
 
 import javafx.scene.control.Alert;
 
-public class VistaJugadorYaAtaco extends Alert {
-    public VistaJugadorYaAtaco() {
+public class VistaErrorJugadorYaAtaco extends Alert {
+    public VistaErrorJugadorYaAtaco() {
         super(Alert.AlertType.ERROR);
         this.setHeaderText("Ya atacó");
         this.setContentText("Ya atacaste este turno");

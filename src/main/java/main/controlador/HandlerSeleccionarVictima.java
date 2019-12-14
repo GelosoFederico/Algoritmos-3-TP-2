@@ -2,6 +2,7 @@ package main.controlador;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import main.controlador.sonido.HandlerSonidoPelea;
 import main.modelo.excepciones.*;
 import main.modelo.juego.Juego;
 import main.modelo.tablero.Tablero;
@@ -23,6 +24,7 @@ public class HandlerSeleccionarVictima implements EventHandler<MouseEvent> {
             Unidad unidadAtacante = HandlerSeleccionarAtacante.getUnidad();
             Unidad unidadVictima = Tablero.getInstance().getUnidadEnPosicion(vistaCasillero.getPosicion());
             Juego.getInstance().atacarConUnidadAUnidad(unidadAtacante, unidadVictima);
+            HandlerSonidoPelea.reproducirSonidoSeleccion();
             System.out.println("Tengo la victima y la ataque");
             this.gridPaneTablero.setModoSinReaccion();
         } catch (UnidadNoPerteneceAJugadorException e) {
@@ -30,9 +32,11 @@ public class HandlerSeleccionarVictima implements EventHandler<MouseEvent> {
         } catch (JugadorGanoLaPartida e) {
             new VistaJugadorGano(e.jugadorGanador());
         } catch (JugadorYaAtacoException e) {
-            new VistaJugadorYaAtaco();
+            new VistaErrorJugadorYaAtaco();
         } catch (ProhibidoAtacarUnidadAliadaException | ProhibidoCurarUnidadEnemigaException e) {
-            new VistaJugadorAtacadaEsDeEquipoIncorrecto();
+            new VistaErrorJugadorAtacadaEsDeEquipoIncorrecto();
+        } catch (UnidadFueraDeRangoException e) {
+            new VistaErrorUnidadFueraDeRango();
         }
     }
 }
