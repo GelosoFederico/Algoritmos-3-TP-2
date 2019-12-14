@@ -5,6 +5,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import main.controlador.HandlerColocarUnidad;
+import main.modelo.juego.EquipoNegro;
+import main.modelo.tablero.Tablero;
 import main.modelo.tablero.distancia.Posicion;
 import main.modelo.unidad.Unidad;
 
@@ -21,7 +23,11 @@ public class VistaCasillero extends StackPane {
         super();
         this.posicion = pos;
 
-        this.imagen = new ImageView("file:src/recursos/img/imagenCasillero.png");
+        if(Tablero.getInstance().obtenerCasilleroEnPosicion(this.posicion).equipo().getClass().equals(EquipoNegro.class)){
+            this.setVistaCasilleroEquipoNegro();
+        }else {
+            this.setVistaCasilleroEquipoBlanco();
+        }
         this.imagen.setFitHeight(ALTURA_CASILLERO);
         this.imagen.setFitWidth(ANCHURA_CASILLERO);
 
@@ -46,5 +52,14 @@ public class VistaCasillero extends StackPane {
         if (eventHandler != null)
             this.removeEventHandler(MouseEvent.MOUSE_CLICKED,eventHandler);
     }
+
+    public void setVistaCasilleroEquipoNegro(){
+        this.imagen = new ImageView("file:src/recursos/img/imagenCasillero.png");
+    }
+
+    public void setVistaCasilleroEquipoBlanco(){
+        this.imagen = new ImageView("file:src/recursos/img/casilleroOtroColor.png");
+    }
+
 
 }

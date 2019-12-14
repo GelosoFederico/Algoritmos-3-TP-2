@@ -2,6 +2,7 @@ package main.modelo.unidad;
 
 import main.modelo.direccion.Direccion;
 import main.modelo.unidad.ataque.AtaqueCorto;
+import main.modelo.unidad.conjuntodeunidades.Batallon;
 import main.modelo.unidad.conjuntodeunidades.ConjuntoDeSoldados;
 import main.modelo.unidad.movimiento.MovimientoEnBatallon;
 import main.modelo.unidad.movimiento.MovimientoEstrategia;
@@ -24,46 +25,14 @@ public class Soldado extends RealUnidad {
         conjuntoDeSoldados.agregarSoldado(this);
     }
 
-    public ConjuntoDeSoldados obtenerBatallon() {
-        Soldado soldadoCentro = this; // TODO: delegar armado del batallon
-        ConjuntoDeSoldados soldadosContiguosAliados = new ConjuntoDeSoldados();
-        soldadosContiguosAliados = soldadosContiguosAliados.buscarSoldadosAliadosContiguos(soldadoCentro);
-
-        //si hay un soldado contiguo, busco los contiguos a este otro
-        // y veo si puedo formar un batallon
-        if (soldadosContiguosAliados.cantidad() == 1) {
-            Iterator<Unidad> iterador = soldadosContiguosAliados.iterator();
-            soldadoCentro = (Soldado) iterador.next();
-            soldadosContiguosAliados = new ConjuntoDeSoldados();
-            soldadosContiguosAliados = soldadosContiguosAliados.buscarSoldadosAliadosContiguos(soldadoCentro);
-        }
-
-        // tengo 2 o mas soldados contiguos para formar un batallon
-        if (soldadosContiguosAliados.cantidad() >= 2) {
-            int i=0;
-            Iterator<Unidad> iterador = soldadosContiguosAliados.iterator();
-            while( (soldadosContiguosAliados.cantidad()) > 2){
-                // El que lo llamo tiene que estar en el batallon
-                if(!iterador.hasNext()) {
-                    iterador = soldadosContiguosAliados.iterator();
-                }
-                i++;
-                if(iterador.next() != this ) {
-                    iterador.remove();
-                }
-            }
-            soldadosContiguosAliados.agregar(soldadoCentro);
-
-        }
-        return soldadosContiguosAliados;
+    public Batallon obtenerBatallon() {
+        ConjuntoDeSoldados batallon = new ConjuntoDeSoldados();
+        return batallon.formarBatallon(this);
     }
 
     public MovimientoEstrategia obtenerEstrategiaDeMovimiento() {
-        MovimientoEstrategia estrategia = new MovimientoRegular(); // Estrategia por default
-        ConjuntoDeSoldados batallon = obtenerBatallon();
-        if (batallon.cantidad() == 3)
-            estrategia = new MovimientoEnBatallon(batallon);
-        return estrategia;
+        Batallon batallon = this.obtenerBatallon();
+        return batallon.estrategia();
     }
 
     @Override
