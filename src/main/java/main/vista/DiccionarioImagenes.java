@@ -15,9 +15,9 @@ public class DiccionarioImagenes {
     private static final int ALTURA_UNIDAD = 30;
     private static final int ANCHURA_UNIDAD = 30;
 
-    private static String rutaSoldado = "file:src/recursos/img/soldado.png";
-    private static String rutaJinete = "file:src/recursos/img/jinete.gif";
-    private static String rutaCurandero = "file:src/recursos/img/curandero.png";
+    private static String rutaSoldado = "file:src/recursos/img/soldadoCatIzquierda.png";
+    private static String rutaJinete = "file:src/recursos/img/jineteCatIzquierda.png";
+    private static String rutaCurandero = "file:src/recursos/img/curanderoCatCat.png";
     private static String rutaCatapulta = "file:src/recursos/img/catapulta.gif";
 
     public DiccionarioImagenes() {
