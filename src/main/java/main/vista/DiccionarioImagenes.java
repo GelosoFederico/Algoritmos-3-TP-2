@@ -10,36 +10,28 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 public class DiccionarioImagenes {
-    Dictionary dicc = new Hashtable();
+    private Dictionary dicc = new Hashtable();
 
     private static final int ALTURA_UNIDAD = 30;
     private static final int ANCHURA_UNIDAD = 30;
 
+    private static String rutaSoldado = "file:src/recursos/img/soldado.png";
+    private static String rutaJinete = "file:src/recursos/img/jinete.gif";
+    private static String rutaCurandero = "file:src/recursos/img/curandero.png";
+    private static String rutaCatapulta = "file:src/recursos/img/catapulta.gif";
+
     public DiccionarioImagenes() {
-
-        ImageView imgSoldado = new ImageView("file:src/recursos/img/soldado.png");
-        imgSoldado.setFitHeight(ALTURA_UNIDAD);
-        imgSoldado.setFitWidth(ANCHURA_UNIDAD);
-
-        ImageView imgJinete = new ImageView("file:src/recursos/img/jinete.gif");
-        imgJinete.setFitHeight(ALTURA_UNIDAD);
-        imgJinete.setFitWidth(ANCHURA_UNIDAD);
-
-        ImageView imgCurandero = new ImageView("file:src/recursos/img/curandero.png");
-        imgCurandero.setFitHeight(ALTURA_UNIDAD);
-        imgCurandero.setFitWidth(ANCHURA_UNIDAD);
-
-        ImageView imgCatapulta = new ImageView("file:src/recursos/img/catapulta.gif");
-        imgCatapulta.setFitHeight(ALTURA_UNIDAD);
-        imgCatapulta.setFitWidth(ANCHURA_UNIDAD);
-
-        dicc.put(Soldado.class,imgSoldado);
-        dicc.put(Jinete.class,imgJinete);
-        dicc.put(Curandero.class,imgCurandero);
-        dicc.put(Catapulta.class,imgCatapulta);
+        dicc.put(Soldado.class,rutaSoldado);
+        dicc.put(Jinete.class,rutaJinete);
+        dicc.put(Curandero.class,rutaCurandero);
+        dicc.put(Catapulta.class,rutaCatapulta);
     }
 
     public ImageView get(Class className) {
-        return  (ImageView)dicc.get(className);
+         String ruta = (String)dicc.get(className);
+         ImageView img = new ImageView(ruta);
+         img.setFitHeight(ALTURA_UNIDAD);
+         img.setFitWidth(ANCHURA_UNIDAD);
+         return img;
     }
 }
