@@ -24,6 +24,7 @@ public class HandlerMoverUnidadHaciaAca implements EventHandler<MouseEvent> {
         Juego.getInstance().fase().moverUnidadHacia(unidadSeleccionada, posicionFinal);
         vistaCasillero.agregarUnidad(unidadSeleccionada);
         HandlerSeleccionarMovible.vaciarCasillero();
+        this.tablero.setModoSinReaccion();
     }
 
 

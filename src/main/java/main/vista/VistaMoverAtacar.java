@@ -18,7 +18,7 @@ public class VistaMoverAtacar extends Group {
         this.infoIzquierda = new VBox();
         String nombreJugador = Juego.getInstance().getJugadorDeTurno().nombre();
         this.infoIzquierda.getChildren().add(new Text(nombreJugador));
-        infoIzquierda.getChildren().addAll(new BotonMover(tablero), new BotonAtacar(), new BotonPasarTurno(this));
+        infoIzquierda.getChildren().addAll(new BotonMover(tablero), new BotonAtacar(tablero), new BotonPasarTurno(this));
         this.actualizarInformacion();
         // Boton mover
         // Boton atacar
