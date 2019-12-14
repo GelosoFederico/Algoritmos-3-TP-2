@@ -1,19 +1,24 @@
 package main.vista;
 
+import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import main.controlador.HandlerColocarUnidad;
 import main.modelo.juego.EquipoNegro;
 import main.modelo.tablero.Tablero;
 import main.modelo.tablero.distancia.Posicion;
+import main.modelo.unidad.Unidad;
+
 
 public class VistaCasillero extends StackPane {
     private static final int ALTURA_CASILLERO = 32;
     private static final int ANCHURA_CASILLERO = 32;
+    private EventHandler<MouseEvent> eventHandler = null;
 
     private Posicion posicion;
     private ImageView imagen;
-
+    private static DiccionarioImagenes diccionarioImagenes = new DiccionarioImagenes();
     public VistaCasillero(Posicion pos) {
         super();
         this.posicion = pos;
@@ -28,12 +33,24 @@ public class VistaCasillero extends StackPane {
 
         this.getChildren().add(this.imagen);
 
-        this.setOnMouseClicked(new HandlerColocarUnidad(this));
+        this.setHandler(new HandlerColocarUnidad(this));
     }
 
     public Posicion getPosicion() { return this.posicion; }
     public void agregarUnidad(ImageView unidad) {
         this.getChildren().add(unidad);
+    }
+    public void agregarUnidad(Unidad unidad) { // TODO: hacer que aparezca aca la unidad y desaparezca en el otro
+        this.getChildren().add(diccionarioImagenes.get(unidad.getClass()));
+    }
+    public void setHandler(EventHandler<MouseEvent> event) {
+        this.eventHandler = event;
+        this.setOnMouseClicked(event);
+    }
+
+    public void vaciarHandler() {
+        if (eventHandler != null)
+            this.removeEventHandler(MouseEvent.MOUSE_CLICKED,eventHandler);
     }
 
     public void setVistaCasilleroEquipoNegro(){
@@ -45,4 +62,7 @@ public class VistaCasillero extends StackPane {
     }
 
 
+    public void vaciarVistaUnidad() {
+        this.getChildren().remove(1);
+    }
 }
