@@ -11,7 +11,7 @@ public class Soldado extends RealUnidad {
     private static final int DANIO = 10;
 
     public Soldado() {
-        vida = 10; // DEBUG no commitear
+        vida = 100;
         coste = 1;
         ataqueEstrategia = new AtaqueCorto(DANIO);
     }
