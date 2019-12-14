@@ -1,14 +1,11 @@
 package main;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-
-import main.modelo.tablero.distancia.Posicion;
 import main.modelo.excepciones.InsuficientePuntosRestantesAlColocarUnidadException;
 import main.modelo.juego.EquipoBlanco;
 import main.modelo.juego.Juego;
 import main.modelo.juego.Jugador;
 import main.modelo.tablero.Tablero;
+import main.modelo.tablero.distancia.Posicion;
 import main.modelo.unidad.Jinete;
 import main.modelo.unidad.Unidad;
 import org.junit.After;
@@ -16,6 +13,11 @@ import org.junit.Test;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class JugadorUnitTest
 {
@@ -106,6 +108,7 @@ public class JugadorUnitTest
         when(jinete2Mock.getJugador()).thenReturn(jugador.nombre());
         when(jinete2Mock.equipo()).thenReturn(new EquipoBlanco());
         Posicion posicion2 = new Posicion(2,2);
+        when(jinete2Mock.posicion()).thenReturn(posicion2);
 
         ArrayList<Unidad> coleccionUnidadesInicio = new ArrayList<Unidad>();
         coleccionUnidadesInicio.add(jinete1Mock);
