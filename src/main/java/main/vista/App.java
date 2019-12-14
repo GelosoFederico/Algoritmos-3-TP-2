@@ -32,12 +32,7 @@ public class App extends Application {
 
         root.getChildren().addAll(imagenVista, buttonInicio);
 
-
-      //  Media media = new Media(new File("src/recursos/sonidos/8-BitSeinfeldTheme.mp3").toURI().toString());
-        Media media = new Media(new File("src/recursos/sonidos/8-BitTheOffice(US)Theme.mp3").toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.play();
-
+        musicaInicio(new File("src/recursos/sonidos/8-BitTheOffice(US)Theme.mp3"));
 
         Scene scene = new Scene(root, 500, 500);
 
@@ -53,6 +48,12 @@ public class App extends Application {
 
     }
 
+       /*
+        Media media = new Media(new File("src/recursos/sonidos/8-BitSeinfeldTheme.mp3").toURI().toString());
+        Media media = new Media(new File("src/recursos/sonidos/8-BitTheOffice(US)Theme.mp3").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
+        */
 
     public static void main(String[] args) {
         launch();
