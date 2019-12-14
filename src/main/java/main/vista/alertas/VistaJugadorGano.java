@@ -1,4 +1,4 @@
-package main.vista;
+package main.vista.alertas;
 
 import javafx.scene.control.Alert;
 import main.modelo.juego.Jugador;

@@ -10,6 +10,10 @@ import main.modelo.juego.Juego;
 import main.modelo.tablero.distancia.Posicion;
 import main.modelo.unidad.Unidad;
 import main.vista.*;
+import main.vista.alertas.VistaErrorCasilleroOcupado;
+import main.vista.alertas.VistaErrorMoverseACasilleroAdyacente;
+import main.vista.alertas.VistaErrorUnidadNoLePerteneceAJugador;
+import main.vista.alertas.VistaErrorUnidadNoPuedeMoverse;
 
 public class HandlerMoverUnidadHaciaAca implements EventHandler<MouseEvent> {
     private VistaCasillero vistaCasillero;

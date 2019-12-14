@@ -8,6 +8,7 @@ import main.modelo.juego.Juego;
 import main.modelo.tablero.Tablero;
 import main.modelo.unidad.Unidad;
 import main.vista.*;
+import main.vista.alertas.*;
 
 public class HandlerSeleccionarVictima implements EventHandler<MouseEvent> {
     private VistaCasillero vistaCasillero;

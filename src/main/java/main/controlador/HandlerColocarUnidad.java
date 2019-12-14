@@ -7,7 +7,7 @@ import main.modelo.juego.Jugador;
 import main.modelo.unidad.Unidad;
 import main.vista.DiccionarioImagenes;
 import main.vista.VistaCasillero;
-import main.vista.VistaErrorColocarEnLugarIncorrecto;
+import main.vista.alertas.VistaErrorColocarEnLugarIncorrecto;
 
 public class HandlerColocarUnidad implements EventHandler<MouseEvent> {
     private VistaCasillero vistaCasillero;
