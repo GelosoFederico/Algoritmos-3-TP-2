@@ -62,4 +62,7 @@ public class VistaCasillero extends StackPane {
     }
 
 
+    public void vaciarVistaUnidad() {
+        this.getChildren().remove(1);
+    }
 }
