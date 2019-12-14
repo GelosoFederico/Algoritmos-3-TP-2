@@ -657,7 +657,7 @@ public class SoldadoTest {
         assertEquals(soldado02.posicion().posicionEnY() ,3);    //
         assertEquals(soldado03.posicion().posicionEnX() ,3);    //  (3,3)
         assertEquals(soldado03.posicion().posicionEnY() ,4);    //
-        assertEquals(soldado04.posicion().posicionEnX() ,3);    // este soldado estba en el (3,4)
+        assertEquals(soldado04.posicion().posicionEnX() ,3);    // este soldado estba en el (3,2)
         assertEquals(soldado04.posicion().posicionEnY() ,2);    // no se movio
     }
 }

@@ -3,6 +3,8 @@ package main.vista;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import main.controlador.HandlerIniciarJuego;
@@ -21,10 +23,13 @@ public class App extends Application {
         buttonInicio.setText("Iniciar juego");
         buttonInicio.setOnAction(new HandlerIniciarJuego(stage));
 
-        root.getChildren().add(buttonInicio);
+        Image imagen = new Image("file:src/recursos/img/imagenInicio.jpg",500,300,true,true);
+        final ImageView imagenVista = new ImageView(imagen);
+
+        root.getChildren().addAll(imagenVista, buttonInicio);
 
 
-        Scene scene = new Scene(root, 400, 400);
+        Scene scene = new Scene(root, 500, 500);
 
         stage.setTitle("AlgoChess");
         stage.setScene(scene);
