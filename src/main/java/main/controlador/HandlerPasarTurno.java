@@ -13,7 +13,6 @@ public class HandlerPasarTurno implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         Juego.getInstance().terminarTurno();
-        HandlerTurnos.pasarTurno();
         vistaMoverAtacar.actualizarInformacion();
     }
 }
