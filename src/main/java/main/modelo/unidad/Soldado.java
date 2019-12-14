@@ -4,18 +4,14 @@ import main.modelo.direccion.Direccion;
 import main.modelo.unidad.ataque.AtaqueCorto;
 import main.modelo.unidad.conjuntodeunidades.Batallon;
 import main.modelo.unidad.conjuntodeunidades.ConjuntoDeSoldados;
-import main.modelo.unidad.movimiento.MovimientoEnBatallon;
 import main.modelo.unidad.movimiento.MovimientoEstrategia;
-import main.modelo.unidad.movimiento.MovimientoRegular;
-
-import java.util.Iterator;
 
 public class Soldado extends RealUnidad {
 
     private static final int DANIO = 10;
 
     public Soldado() {
-        vida = 100;
+        vida = 10; // DEBUG no commitear
         coste = 1;
         ataqueEstrategia = new AtaqueCorto(DANIO);
     }

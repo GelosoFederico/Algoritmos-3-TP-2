@@ -36,11 +36,11 @@ public abstract class RealUnidad implements Unidad {
     }
 
     public void recibirDanio(int danio) {
+        int danioFinal = this.equipo().calcularDanioFinal(this, danio);
+        vida = vida - danioFinal;
         if (vida <= 0) {
             throw new UnidadEstaMuertaException();
         }
-        int danioFinal = this.equipo().calcularDanioFinal(this, danio);
-        vida = vida - danioFinal;
     }
 
     public Equipo equipo(){ return this.equipo; }
