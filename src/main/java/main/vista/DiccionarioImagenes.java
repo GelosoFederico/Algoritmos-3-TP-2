@@ -17,15 +17,15 @@ public class DiccionarioImagenes {
 
     public DiccionarioImagenes() {
 
-        ImageView imgSoldado = new ImageView("file:src/recursos/img/soldado.png");
+        ImageView imgSoldado = new ImageView("file:src/recursos/img/soldadoIzquierda.png");
         imgSoldado.setFitHeight(ALTURA_UNIDAD);
         imgSoldado.setFitWidth(ANCHURA_UNIDAD);
 
-        ImageView imgJinete = new ImageView("file:src/recursos/img/jinete.gif");
+        ImageView imgJinete = new ImageView("file:src/recursos/img/jineteIzquierda.png");
         imgJinete.setFitHeight(ALTURA_UNIDAD);
         imgJinete.setFitWidth(ANCHURA_UNIDAD);
 
-        ImageView imgCurandero = new ImageView("file:src/recursos/img/curandero.png");
+        ImageView imgCurandero = new ImageView("file:src/recursos/img/curanderoCat.png");
         imgCurandero.setFitHeight(ALTURA_UNIDAD);
         imgCurandero.setFitWidth(ANCHURA_UNIDAD);
 
