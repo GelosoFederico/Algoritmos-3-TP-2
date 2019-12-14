@@ -1,6 +1,11 @@
 package main.vista;
 
+import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
+import main.controlador.HandlerMoverUnidadHaciaAca;
+import main.controlador.HandlerSeleccionarVictima;
+import main.controlador.HandlerSeleccionarAtacante;
+import main.controlador.HandlerSeleccionarMovible;
 import main.modelo.tablero.distancia.Posicion;
 
 public class GridPaneTablero extends GridPane {
@@ -14,6 +19,41 @@ public class GridPaneTablero extends GridPane {
                 VistaCasillero casillero = new VistaCasillero(new Posicion(i, j));
                 this.add(casillero, i, j);
             }
+        }
+    }
+
+    public void setModoSeleccionarMovible() {
+        for (Node node : this.getChildren()) {
+            VistaCasillero vistaCasillero = (VistaCasillero) node;
+            vistaCasillero.setHandler(new HandlerSeleccionarMovible(vistaCasillero, this));
+        }
+    }
+
+    public void setModoSinReaccion() {
+        for (Node node : this.getChildren()) {
+            VistaCasillero vistaCasillero = (VistaCasillero) node;
+            vistaCasillero.vaciarHandler();
+        }
+    }
+
+    public void setModoMoverUnidadHaciaAca() {
+        for (Node node : this.getChildren()) {
+            VistaCasillero vistaCasillero = (VistaCasillero) node;
+            vistaCasillero.setHandler(new HandlerMoverUnidadHaciaAca(vistaCasillero, this));
+        }
+    }
+
+    public void setModoSeleccionarAtacante() {
+        for (Node node : this.getChildren()) {
+            VistaCasillero vistaCasillero = (VistaCasillero) node;
+            vistaCasillero.setHandler(new HandlerSeleccionarAtacante(vistaCasillero, this));
+        }
+    }
+
+    public void setModoSeleccionarAtacado() {
+        for (Node node : this.getChildren()) {
+            VistaCasillero vistaCasillero = (VistaCasillero) node;
+            vistaCasillero.setHandler(new HandlerSeleccionarVictima(vistaCasillero, this));
         }
     }
 }

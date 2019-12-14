@@ -1,13 +1,10 @@
 package main.modelo.juego;
 
 import main.modelo.excepciones.JugadorGanoLaPartida;
-import main.modelo.juego.fase.FaseAgregarJugadores;
 import main.modelo.juego.fase.Fase;
+import main.modelo.juego.fase.FaseAgregarJugadores;
 import main.modelo.tablero.distancia.Posicion;
 import main.modelo.unidad.Unidad;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Juego {
     // Singleton pattern
@@ -41,7 +38,7 @@ public class Juego {
     }
 
     public void setJugadorDeTurno(Jugador jugador) {
-        jugadorDeTurno = jugador;
+        this.jugadorDeTurno = jugador;
     }
 
     public void agregarJugador(Jugador jugador) {

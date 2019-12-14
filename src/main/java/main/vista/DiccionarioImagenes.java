@@ -10,7 +10,7 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 public class DiccionarioImagenes {
-    Dictionary dicc = new Hashtable();
+    private Dictionary dicc = new Hashtable();
 
     private static final int ALTURA_UNIDAD = 30;
     private static final int ANCHURA_UNIDAD = 30;
