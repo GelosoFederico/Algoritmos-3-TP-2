@@ -45,7 +45,7 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();
     }
-/*
+
     public static void musicaInicio(File file){
         Media media = new Media(file.toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
@@ -53,7 +53,7 @@ public class App extends Application {
 
     }
 
-*/
+
     public static void main(String[] args) {
         launch();
     }
