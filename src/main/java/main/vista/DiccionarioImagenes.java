@@ -17,7 +17,7 @@ public class DiccionarioImagenes {
 
     private static String rutaSoldado = "file:src/recursos/img/soldadoCatIzquierda.png";
     private static String rutaJinete = "file:src/recursos/img/jineteCatIzquierda.png";
-    private static String rutaCurandero = "file:src/recursos/img/curanderoCatCat.png";
+    private static String rutaCurandero = "file:src/recursos/img/curanderoCat.png";
     private static String rutaCatapulta = "file:src/recursos/img/catapulta.gif";
 
     public DiccionarioImagenes() {
