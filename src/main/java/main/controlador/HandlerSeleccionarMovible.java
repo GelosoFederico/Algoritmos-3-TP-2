@@ -37,7 +37,6 @@ public class HandlerSeleccionarMovible implements EventHandler<MouseEvent> {
     public void handle(MouseEvent mouseEvent) {
         setUnidad(this.vistaCasillero);
         vistaCasilleroSeleccionado = this.vistaCasillero;
-        System.out.println("Elegi una unidad, ahora hay que apretar un casillero para moverlo hacia ahiii");
         this.tablero.setModoMoverUnidadHaciaAca();
     }
 }

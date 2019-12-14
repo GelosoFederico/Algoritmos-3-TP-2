@@ -19,7 +19,6 @@ public class HandlerMoverUnidadHaciaAca implements EventHandler<MouseEvent> {
 
     @Override
     public void handle(MouseEvent mouseEvent) {
-        System.out.println("Ahora la muevo... ACA");
         Unidad unidadSeleccionada = HandlerSeleccionarMovible.getUnidad();
         Posicion posicionFinal = this.vistaCasillero.getPosicion();
         Juego.getInstance().fase().moverUnidadHacia(unidadSeleccionada, posicionFinal);
