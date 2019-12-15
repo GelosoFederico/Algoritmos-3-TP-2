@@ -21,6 +21,7 @@ public class VistaCasillero extends StackPane implements Observer {
     private Posicion posicion;
     private ImageView imagen;
     private static DiccionarioImagenes diccionarioImagenes = new DiccionarioImagenes();
+
     public VistaCasillero(Posicion pos) {
         super();
         this.posicion = pos;
