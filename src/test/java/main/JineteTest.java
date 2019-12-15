@@ -205,7 +205,7 @@ public class JineteTest {
     }
 
     @Test(expected = UnidadFueraDeRangoException.class)
-    public void test10JineteConUnSoldadoCercaAtacaAEnemigoCercanoYLanzaExcepcionJineteDebeAtacarConArcoYFlecha() {
+    public void test10JineteConUnSoldadoCercaAtacaAEnemigoCercanoYLanzaExcepcion() {
         //Arrange
         Jugador mJugador1 = mock(Jugador.class);
         when(mJugador1.equipo()).thenReturn(new EquipoBlanco());
