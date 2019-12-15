@@ -2,11 +2,13 @@ package main.controlador;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import main.controlador.sonido.HandlerSonidoPelea;
+import main.modelo.excepciones.*;
 import main.modelo.juego.Juego;
 import main.modelo.tablero.Tablero;
 import main.modelo.unidad.Unidad;
-import main.vista.GridPaneTablero;
-import main.vista.VistaCasillero;
+import main.vista.*;
+import main.vista.alertas.*;
 
 public class HandlerSeleccionarVictima implements EventHandler<MouseEvent> {
     private VistaCasillero vistaCasillero;
@@ -19,10 +21,17 @@ public class HandlerSeleccionarVictima implements EventHandler<MouseEvent> {
 
     @Override
     public void handle(MouseEvent mouseEvent) {
-        Unidad unidadAtacante = HandlerSeleccionarAtacante.getUnidad();
-        Unidad unidadVictima = Tablero.getInstance().getUnidadEnPosicion(vistaCasillero.getPosicion());
-        Juego.getInstance().atacarConUnidadAUnidad(unidadAtacante,unidadVictima);
-        System.out.println("Tengo la victima y la ataque");
-        this.gridPaneTablero.setModoSinReaccion();
+        try {
+            Unidad unidadAtacante = HandlerSeleccionarAtacante.getUnidad();
+            Unidad unidadVictima = Tablero.getInstance().getUnidadEnPosicion(vistaCasillero.getPosicion());
+            Juego.getInstance().atacarConUnidadAUnidad(unidadAtacante, unidadVictima);
+            HandlerSonidoPelea.reproducirSonidoSeleccion();
+            System.out.println("Tengo la victima y la ataque");
+            this.gridPaneTablero.setModoSinReaccion();
+        } catch (ExcepcionEnJuego e) {
+            new VistaError(e);
+        } catch (JugadorGanoLaPartida e) {
+            new VistaJugadorGano(e.jugadorGanador());
+        }
     }
 }
