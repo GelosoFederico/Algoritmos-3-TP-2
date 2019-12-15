@@ -1,10 +1,7 @@
 package main.vista;
 
 import javafx.scene.image.ImageView;
-import main.modelo.unidad.Catapulta;
-import main.modelo.unidad.Curandero;
-import main.modelo.unidad.Jinete;
-import main.modelo.unidad.Soldado;
+import main.modelo.unidad.*;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -25,11 +22,17 @@ public class DiccionarioImagenes {
         dicc.put(Jinete.class,rutaJinete);
         dicc.put(Curandero.class,rutaCurandero);
         dicc.put(Catapulta.class,rutaCatapulta);
+        dicc.put(NullUnidad.class,"");
     }
 
     public ImageView get(Class className) {
          String ruta = (String)dicc.get(className);
-         ImageView img = new ImageView(ruta);
+        ImageView img;
+         if(ruta.isEmpty()) {
+             img = new ImageView();
+         } else {
+             img = new ImageView(ruta);
+         }
          img.setFitHeight(ALTURA_UNIDAD);
          img.setFitWidth(ANCHURA_UNIDAD);
          return img;
