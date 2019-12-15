@@ -6,8 +6,8 @@ import main.modelo.excepciones.*;
 import main.modelo.juego.Juego;
 import main.modelo.tablero.distancia.Posicion;
 import main.modelo.unidad.Unidad;
-import main.vista.*;
-import main.vista.alertas.*;
+import main.vista.GridPaneTablero;
+import main.vista.VistaCasillero;
 
 public class HandlerMoverUnidadHaciaAca implements EventHandler<MouseEvent> {
     private VistaCasillero vistaCasillero;

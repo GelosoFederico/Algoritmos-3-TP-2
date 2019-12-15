@@ -25,7 +25,7 @@ public class VistaMoverAtacar extends Group {
         Scene scene = new Scene(root);
         this.stage.setScene(scene);
         this.stage.setTitle("Mover y Atacar");
-        tablero.setModoSinReaccion();
+        tablero.setModoMostrarInfoUnidades();
         stage.show();
     }
 

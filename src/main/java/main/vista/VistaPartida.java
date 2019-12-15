@@ -4,11 +4,15 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import main.controlador.HandlerTurnos;
 import main.modelo.juego.Juego;
 import main.modelo.juego.fase.FaseMoverYAtacar;
+
+import java.io.File;
 
 public class VistaPartida extends Group {
     private final Stage stage;
