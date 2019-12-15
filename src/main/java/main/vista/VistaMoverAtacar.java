@@ -17,8 +17,9 @@ public class VistaMoverAtacar extends Group {
         this.tablero = tablero;
         this.infoIzquierda = new VBox();
         String nombreJugador = Juego.getInstance().getJugadorDeTurno().nombre();
+
         this.infoIzquierda.getChildren().add(new Text(nombreJugador));
-        infoIzquierda.getChildren().addAll(new BotonMover(tablero), new BotonAtacar(tablero), new BotonPasarTurno(this));
+        infoIzquierda.getChildren().addAll(new BotonMover(tablero), new BotonAtacar(tablero), new BotonMostrarInformacion(tablero), new BotonPasarTurno(this));
         this.actualizarInformacion();
         HBox root = new HBox(5);
         root.getChildren().addAll(tablero,infoIzquierda);

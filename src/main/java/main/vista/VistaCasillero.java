@@ -65,7 +65,7 @@ public class VistaCasillero extends StackPane implements Observer {
 
 
     public void vaciarVistaUnidad() {
-        this.getChildren().remove(1);
+            this.getChildren().remove(1);
     }
 
     public void change() {
