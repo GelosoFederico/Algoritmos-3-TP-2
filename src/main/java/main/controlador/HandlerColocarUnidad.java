@@ -2,12 +2,13 @@ package main.controlador;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import main.modelo.excepciones.ExcepcionEnJuego;
 import main.modelo.juego.Juego;
 import main.modelo.juego.Jugador;
 import main.modelo.unidad.Unidad;
 import main.vista.DiccionarioImagenes;
 import main.vista.VistaCasillero;
-import main.vista.alertas.VistaErrorColocarEnLugarIncorrecto;
+import main.vista.alertas.VistaError;
 
 public class HandlerColocarUnidad implements EventHandler<MouseEvent> {
     private VistaCasillero vistaCasillero;
@@ -39,8 +40,8 @@ public class HandlerColocarUnidad implements EventHandler<MouseEvent> {
 
                 HandlerTurnos.pasarTurno();
                 removerUnidadElegida();
-            } catch (Exception e){
-                new VistaErrorColocarEnLugarIncorrecto();
+            } catch (ExcepcionEnJuego e){
+                new VistaError(e);
             }
         }
     }

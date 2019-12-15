@@ -2,18 +2,12 @@ package main.controlador;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import main.modelo.excepciones.CasilleroOcupadoException;
-import main.modelo.excepciones.PosicionesNoEstanADistanciaUnoException;
-import main.modelo.excepciones.UnidadNoPerteneceAJugadorException;
-import main.modelo.excepciones.UnidadNoPuedeMoverseException;
+import main.modelo.excepciones.*;
 import main.modelo.juego.Juego;
 import main.modelo.tablero.distancia.Posicion;
 import main.modelo.unidad.Unidad;
 import main.vista.*;
-import main.vista.alertas.VistaErrorCasilleroOcupado;
-import main.vista.alertas.VistaErrorMoverseACasilleroAdyacente;
-import main.vista.alertas.VistaErrorUnidadNoLePerteneceAJugador;
-import main.vista.alertas.VistaErrorUnidadNoPuedeMoverse;
+import main.vista.alertas.*;
 
 public class HandlerMoverUnidadHaciaAca implements EventHandler<MouseEvent> {
     private VistaCasillero vistaCasillero;
@@ -33,14 +27,8 @@ public class HandlerMoverUnidadHaciaAca implements EventHandler<MouseEvent> {
             vistaCasillero.agregarUnidad(unidadSeleccionada);
             HandlerSeleccionarMovible.vaciarCasillero();
             this.tablero.setModoSinReaccion();
-        } catch (CasilleroOcupadoException e) {
-            new VistaErrorCasilleroOcupado();
-        } catch (PosicionesNoEstanADistanciaUnoException e) {
-            new VistaErrorMoverseACasilleroAdyacente();
-        } catch (UnidadNoPerteneceAJugadorException e) {
-            new VistaErrorUnidadNoLePerteneceAJugador();
-        } catch (UnidadNoPuedeMoverseException e) {
-            new VistaErrorUnidadNoPuedeMoverse();
+        } catch (ExcepcionEnJuego e) {
+            new VistaError(e);
         }
     }
 }

@@ -28,16 +28,10 @@ public class HandlerSeleccionarVictima implements EventHandler<MouseEvent> {
             HandlerSonidoPelea.reproducirSonidoSeleccion();
             System.out.println("Tengo la victima y la ataque");
             this.gridPaneTablero.setModoSinReaccion();
-        } catch (UnidadNoPerteneceAJugadorException e) {
-            new VistaErrorUnidadNoLePerteneceAJugador();
+        } catch (ExcepcionEnJuego e) {
+            new VistaError(e);
         } catch (JugadorGanoLaPartida e) {
             new VistaJugadorGano(e.jugadorGanador());
-        } catch (JugadorYaAtacoException e) {
-            new VistaErrorJugadorYaAtaco();
-        } catch (ProhibidoAtacarUnidadAliadaException | ProhibidoCurarUnidadEnemigaException e) {
-            new VistaErrorJugadorAtacadaEsDeEquipoIncorrecto();
-        } catch (UnidadFueraDeRangoException e) {
-            new VistaErrorUnidadFueraDeRango();
         }
     }
 }
