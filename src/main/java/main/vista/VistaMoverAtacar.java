@@ -20,8 +20,6 @@ public class VistaMoverAtacar extends Group {
         this.infoIzquierda.getChildren().add(new Text(nombreJugador));
         infoIzquierda.getChildren().addAll(new BotonMover(tablero), new BotonAtacar(tablero), new BotonPasarTurno(this));
         this.actualizarInformacion();
-        // Boton mover
-        // Boton atacar
         HBox root = new HBox(5);
         root.getChildren().addAll(tablero,infoIzquierda);
         Scene scene = new Scene(root);

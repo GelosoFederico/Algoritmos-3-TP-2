@@ -1,13 +1,14 @@
 package main.modelo.tablero;
 
 
+import main.modelo.Observable;
 import main.modelo.juego.Jugador;
 import main.modelo.tablero.distancia.Posicion;
 import main.modelo.unidad.NullUnidad;
 import main.modelo.unidad.Unidad;
 import main.modelo.juego.Equipo;
 
-public class Casillero {
+public class Casillero extends Observable {
     private Posicion posicion;
     private Equipo equipo;
     private Unidad unidad;
@@ -28,6 +29,7 @@ public class Casillero {
 
     public void liberar() {
         this.unidad = new NullUnidad();
+        this.notifyObservers();
     }
 
     public Equipo equipo(){ return this.equipo; }

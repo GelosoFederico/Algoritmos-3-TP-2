@@ -77,6 +77,7 @@ public class Jugador
     public void pierdeUnidad(Unidad unidad) {
         // TODO: validar que no este, tirar excepcion adecuada, mover esto a una clase de Conjunto de unidades
         this.unidades().remove(unidad);
+        Tablero.getInstance().removerUnidad(unidad);
         if(this.unidades().isEmpty()) {
             Juego.getInstance().jugadorPerdio(this);
         }

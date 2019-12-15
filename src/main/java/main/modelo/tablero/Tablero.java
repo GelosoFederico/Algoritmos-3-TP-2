@@ -2,7 +2,6 @@ package main.modelo.tablero;
 
 import main.modelo.direccion.Direccion;
 import main.modelo.excepciones.CasilleroFueraDeTableroException;
-import main.modelo.excepciones.UnidadNoSeEncuentraEnTablero;
 import main.modelo.juego.Equipo;
 import main.modelo.juego.EquipoBlanco;
 import main.modelo.juego.EquipoNegro;
@@ -100,5 +99,10 @@ public class Tablero {
 
     public Unidad getUnidadEnPosicion(Posicion posicion) {
         return casilleros[posicion.posicionEnX()][posicion.posicionEnY()].unidad();
+    }
+
+    public void removerUnidad(Unidad unidad) {
+        Casillero casilleroAVaciar = this.obtenerCasilleroEnPosicion(unidad.posicion());
+        casilleroAVaciar.liberar();
     }
 }
