@@ -6,15 +6,18 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import main.controlador.HandlerIniciarJuego;
+
+import java.io.File;
 
 
 /**
  * JavaFX App
  */
 public class App extends Application {
-    // Preguntar: ya se cargó el archivo de JavaFx en el proyecto.
     @Override
     public void start(Stage stage) {
 
@@ -34,6 +37,7 @@ public class App extends Application {
         stage.setTitle("AlgoChess");
         stage.setScene(scene);
         stage.show();
+
     }
 
 
