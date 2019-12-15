@@ -25,6 +25,7 @@ public class Casillero extends Observable {
 
     public void ocupar(Unidad unaUnidad) {
         this.unidad = this.unidad.ocuparCasillero(unaUnidad);
+        this.notifyObservers();
     }
 
     public void liberar() {

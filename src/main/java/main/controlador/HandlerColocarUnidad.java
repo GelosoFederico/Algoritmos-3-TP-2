@@ -36,7 +36,6 @@ public class HandlerColocarUnidad implements EventHandler<MouseEvent> {
             Jugador jugador = Juego.getInstance().getJugadorDeTurno();
             try{
                 jugador.colocarUnidadEn(unidadElegida, vistaCasillero.getPosicion());
-                vistaCasillero.agregarUnidad(diccionarioImagenes.get(unidadElegida.getClass())); // TODO: generalizar
 
                 HandlerTurnos.pasarTurno();
                 removerUnidadElegida();

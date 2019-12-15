@@ -311,4 +311,34 @@ public class IntegralTest {
 
     }
 
+    @Test
+    public void jugadorMueveDondeUnaUnidadEstabaYPuedeHacerlo () {
+        // Arrange
+        Juego.getInstance().agregarJugador(new Jugador("Arkantos"));
+        Juego.getInstance().agregarJugador(new Jugador("Gargarensis"));
+        Jugador jugadorDeTurno = Juego.getInstance().getJugadorDeTurno();
+        Unidad soldado1 =  new Soldado();
+        jugadorDeTurno.colocarUnidadEn(soldado1,new Posicion(9,9));
+        Juego.getInstance().terminarTurno();
+        jugadorDeTurno = Juego.getInstance().getJugadorDeTurno();
+        Unidad soldado2 =  new Soldado();
+        jugadorDeTurno.colocarUnidadEn(soldado2,new Posicion(10,10));
+        Juego.getInstance().terminarDeColocarParaJugador();
+        Juego.getInstance().terminarDeColocarParaJugador();
+
+        // Act
+
+        Juego.getInstance().moverUnidadHacia(soldado1, new Posicion (8,8 ));
+        Juego.getInstance().terminarTurno();
+        Juego.getInstance().moverUnidadHacia(soldado2, new Posicion (9,9 ));
+
+        // Assert
+        Posicion posicionFinal = soldado1.posicion();
+        assertEquals(posicionFinal.posicionEnX(),8);
+        assertEquals(posicionFinal.posicionEnY(),8);
+        posicionFinal = soldado2.posicion();
+        assertEquals(posicionFinal.posicionEnX(),9);
+        assertEquals(posicionFinal.posicionEnY(),9);
+    }
+
 }
