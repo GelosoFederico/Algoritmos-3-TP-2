@@ -5,13 +5,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import main.controlador.HandlerColocarUnidad;
+import main.modelo.Observer;
 import main.modelo.juego.EquipoNegro;
 import main.modelo.tablero.Tablero;
 import main.modelo.tablero.distancia.Posicion;
 import main.modelo.unidad.Unidad;
 
 
-public class VistaCasillero extends StackPane {
+public class VistaCasillero extends StackPane implements Observer {
     private static final int ALTURA_CASILLERO = 32;
     private static final int ANCHURA_CASILLERO = 32;
     private EventHandler<MouseEvent> eventHandler = null;
@@ -34,6 +35,7 @@ public class VistaCasillero extends StackPane {
         this.getChildren().add(this.imagen);
 
         this.setHandler(new HandlerColocarUnidad(this));
+        Tablero.getInstance().obtenerCasilleroEnPosicion(posicion).addObserver(this);
     }
 
     public Posicion getPosicion() { return this.posicion; }
@@ -64,5 +66,9 @@ public class VistaCasillero extends StackPane {
 
     public void vaciarVistaUnidad() {
         this.getChildren().remove(1);
+    }
+
+    public void change() {
+        this.vaciarVistaUnidad();
     }
 }
