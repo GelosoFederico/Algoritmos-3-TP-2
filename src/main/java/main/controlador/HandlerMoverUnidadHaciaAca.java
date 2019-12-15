@@ -8,6 +8,7 @@ import main.modelo.tablero.distancia.Posicion;
 import main.modelo.unidad.Unidad;
 import main.vista.GridPaneTablero;
 import main.vista.VistaCasillero;
+import main.vista.alertas.VistaError;
 
 public class HandlerMoverUnidadHaciaAca implements EventHandler<MouseEvent> {
     private VistaCasillero vistaCasillero;
