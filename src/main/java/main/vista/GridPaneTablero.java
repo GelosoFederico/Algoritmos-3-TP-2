@@ -2,11 +2,13 @@ package main.vista;
 
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import main.controlador.*;
 import main.modelo.tablero.distancia.Posicion;
 
 public class GridPaneTablero extends GridPane {
     private static final int LONGITUD = 20;
+    private Stage ventanaInfoUnidad = new Stage();
 
     public GridPaneTablero() {
         super();
@@ -57,7 +59,7 @@ public class GridPaneTablero extends GridPane {
     public void setModoMostrarInfoUnidades() {
         for(Node node : this.getChildren()) {
             VistaCasillero vistaCasillero = (VistaCasillero) node;
-            vistaCasillero.setHandler(new HandlerMostrarInfoUnidad(vistaCasillero, this));
+            vistaCasillero.setHandler(new HandlerMostrarInfoUnidad(vistaCasillero, this, this.ventanaInfoUnidad));
         }
     }
 }

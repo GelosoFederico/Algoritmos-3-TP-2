@@ -29,10 +29,6 @@ public class VistaPartida extends Group {
         this.stage = stage;
         this.tablero = new GridPaneTablero();
 
-        Media media = new Media(new File("src/recursos/sonidos/1-Kunio-kunnoNekketsuSoccerLeague.mp3").toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.play();
-
         HBox root = new HBox(5);
         this.infoIzquierda = new VBox();
         String nombreJugador = Juego.getInstance().getJugadorDeTurno().nombre();

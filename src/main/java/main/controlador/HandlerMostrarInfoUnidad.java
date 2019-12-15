@@ -5,6 +5,8 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import main.modelo.juego.Juego;
+import main.modelo.unidad.NullUnidad;
+import main.modelo.unidad.RealUnidad;
 import main.modelo.unidad.Unidad;
 import main.vista.GridPaneTablero;
 import main.vista.VistaAgregarJugador;
@@ -16,14 +18,15 @@ import java.util.ArrayList;
 import static main.modelo.tablero.Tablero.getInstance;
 
 public class HandlerMostrarInfoUnidad implements EventHandler<MouseEvent> {
-    private Stage stage = new Stage();
+    private Stage stage;
     private VistaCasillero vistaCasillero;
     private GridPaneTablero tablero;
     private static Unidad unidadSeleccionada = null;
     private static ArrayList<String> informacionDeUnidad;
 
 
-    public HandlerMostrarInfoUnidad(VistaCasillero vistaCasillero, GridPaneTablero tablero){
+    public HandlerMostrarInfoUnidad(VistaCasillero vistaCasillero, GridPaneTablero tablero, Stage stage){
+        this.stage = stage;
         this.vistaCasillero = vistaCasillero;
         this.tablero = tablero;
     }
@@ -46,10 +49,12 @@ public class HandlerMostrarInfoUnidad implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent mouseEvent) {
         unidadSeleccionada =  getInstance().getUnidadEnPosicion(vistaCasillero.getPosicion());
-        setInformacionDeUnidad(unidadSeleccionada);
-        VistaInformacionUnidad vistaInformacionUnidad = new VistaInformacionUnidad(this.stage);
-        vistaInformacionUnidad.dibujarPantalla();
-
+        //Todo: esto esta feo
+        if(!unidadSeleccionada.getClass().getSimpleName().equals("NullUnidad")) {
+            setInformacionDeUnidad(unidadSeleccionada);
+            VistaInformacionUnidad vistaInformacionUnidad = new VistaInformacionUnidad(this.stage);
+            vistaInformacionUnidad.dibujarPantalla();
+        }
 
     }
 }
