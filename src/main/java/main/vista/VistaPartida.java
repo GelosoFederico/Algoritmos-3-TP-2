@@ -4,15 +4,10 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import main.controlador.HandlerTurnos;
 import main.modelo.juego.Juego;
-import main.modelo.juego.fase.FaseMoverYAtacar;
-
-import java.io.File;
 
 public class VistaPartida extends Group {
     private final Stage stage;
@@ -37,7 +32,7 @@ public class VistaPartida extends Group {
         Text puntos = new Text("Puntos: ".concat(textoPuntos));
         this.infoIzquierda.getChildren().add(puntos);
         this.infoIzquierda.getChildren().add(new VBoxBotonesDeUnidades()) ;
-        this.infoIzquierda.getChildren().add(new BotonTerminarColocar());
+        this.infoIzquierda.getChildren().add(new BotonTerminarColocar(this.stage,this.tablero));
         root.getChildren().addAll( this.tablero, infoIzquierda);
         HandlerTurnos.setVistaPartida(this);
 
@@ -58,8 +53,5 @@ public class VistaPartida extends Group {
 
         Text txt = (Text)this.infoIzquierda.getChildren().get(1);
         txt.setText("Puntos: ".concat(textoPuntos));
-
-        if (Juego.getInstance().fase().getClass().equals(FaseMoverYAtacar.class))
-            new VistaMoverAtacar(stage, tablero);
     }
 }
