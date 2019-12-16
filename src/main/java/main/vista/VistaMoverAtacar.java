@@ -34,5 +34,6 @@ public class VistaMoverAtacar extends Group {
 
         Text nombre = (Text)this.infoIzquierda.getChildren().get(0);
         nombre.setText(nombreJugador);
+        this.tablero.setModoMostrarInfoUnidades();
     }
 }
