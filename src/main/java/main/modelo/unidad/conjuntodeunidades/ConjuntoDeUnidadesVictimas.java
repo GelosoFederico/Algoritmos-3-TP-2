@@ -49,7 +49,8 @@ public class ConjuntoDeUnidadesVictimas extends ConjuntoDeUnidades {
     public void recibirDanio(Unidad primerVictima, int danio){
 
         this.buscarTodasLasVictimasDeExpansion(primerVictima);
-        this.unidades.remove(primerVictima);
+        if(this.seEncuentra(primerVictima))
+            this.unidades.remove(primerVictima);
 
         for (Unidad unidad: this.unidades() )
             unidad.recibirDanio(danio);

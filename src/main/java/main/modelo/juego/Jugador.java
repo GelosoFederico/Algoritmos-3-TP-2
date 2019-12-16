@@ -89,12 +89,7 @@ public class Jugador
         }catch (EquiposDistintosException e) {
             throw new UnidadNoPerteneceAJugadorException();
         }
-        try {
-            unidadAtacante.atacar(unidadDefensora);
-        }catch (UnidadEstaMuertaException e) {
-            Juego.getInstance().murioUnidad(unidadDefensora);
-        }
-
+        unidadAtacante.atacar(unidadDefensora);
     }
 
     public Jugador obtenerSiguienteJugador() {
