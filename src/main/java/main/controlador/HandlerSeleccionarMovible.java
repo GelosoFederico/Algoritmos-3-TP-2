@@ -12,7 +12,6 @@ import static main.modelo.tablero.Tablero.getInstance;
 public class HandlerSeleccionarMovible implements EventHandler<MouseEvent> {
 
     private VistaCasillero vistaCasillero;
-    private static VistaCasillero vistaCasilleroSeleccionado;
     private static Unidad unidadSeleccionada = null;
     private GridPaneTablero tablero;
 
@@ -29,14 +28,9 @@ public class HandlerSeleccionarMovible implements EventHandler<MouseEvent> {
         return unidadSeleccionada;
     }
 
-    public static void vaciarCasillero() {
-        vistaCasilleroSeleccionado.vaciarVistaUnidad();
-    }
-
     @Override
     public void handle(MouseEvent mouseEvent) {
         setUnidad(this.vistaCasillero);
-        vistaCasilleroSeleccionado = this.vistaCasillero;
         this.tablero.setModoMoverUnidadHaciaAca();
     }
 }

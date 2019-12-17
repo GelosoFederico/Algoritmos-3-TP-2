@@ -31,7 +31,6 @@ public class HandlerSeleccionarAtacante implements EventHandler<MouseEvent> {
     public void handle(MouseEvent mouseEvent) {
         setUnidad(this.vistaCasillero);
         this.tablero.setModoSeleccionarAtacado();
-        System.out.println("Seleccione al atacante!!");
     }
 
 }

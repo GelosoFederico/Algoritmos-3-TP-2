@@ -26,8 +26,7 @@ public class HandlerSeleccionarVictima implements EventHandler<MouseEvent> {
             Unidad unidadVictima = Tablero.getInstance().getUnidadEnPosicion(vistaCasillero.getPosicion());
             Juego.getInstance().atacarConUnidadAUnidad(unidadAtacante, unidadVictima);
             HandlerSonidoPelea.reproducirSonidoSeleccion();
-            System.out.println("Tengo la victima y la ataque");
-            this.gridPaneTablero.setModoSinReaccion();
+            this.gridPaneTablero.setModoMostrarInfoUnidades();
         } catch (ExcepcionEnJuego e) {
             new VistaError(e);
         } catch (JugadorGanoLaPartida e) {
