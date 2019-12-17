@@ -1,15 +1,15 @@
 package main.vista;
 
 import javafx.scene.control.Button;
-import main.controlador.HandlerMostrarInformacion;
+import main.controlador.HandlerBotonMostrarInformacionUnidad;
 
 public class BotonMostrarInformacion extends Button {
     public BotonMostrarInformacion(GridPaneTablero tablero) {
         super();
-        this.setText("Mostrar Información de la unidad");
+        this.setText("Volver a Mostrar Información de la unidad");
         this.setMinHeight(24);
 
-        this.setOnAction(new HandlerMostrarInformacion(tablero));
+        this.setOnAction(new HandlerBotonMostrarInformacionUnidad(tablero));
     }
 
 }
