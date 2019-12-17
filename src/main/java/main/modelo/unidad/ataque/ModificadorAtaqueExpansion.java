@@ -3,10 +3,10 @@ package main.modelo.unidad.ataque;
 import main.modelo.unidad.Unidad;
 import main.modelo.unidad.conjuntodeunidades.ConjuntoDeUnidadesVictimas;
 
-public class Expansion extends ModificadorAtaque {
+public class ModificadorAtaqueExpansion extends ModificadorAtaque {
     private int danio;
 
-    public Expansion(int danio){
+    public ModificadorAtaqueExpansion(int danio){
         this.danio = danio;
     }
 

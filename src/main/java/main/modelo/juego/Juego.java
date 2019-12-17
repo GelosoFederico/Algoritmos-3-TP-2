@@ -49,7 +49,7 @@ public class Juego {
         this.encontrarJugadorPorNombre(unidad.getJugador()).pierdeUnidad(unidad);
     }
 
-    private Jugador encontrarJugadorPorNombre(String jugadorNombre) {
+    public Jugador encontrarJugadorPorNombre(String jugadorNombre) {
         return this.jugadores().encontrarJugadorPorNombre(jugadorNombre);
     }
 

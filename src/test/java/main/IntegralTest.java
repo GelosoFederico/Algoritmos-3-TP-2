@@ -18,6 +18,8 @@ import org.junit.Test;
 import java.lang.reflect.Field;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class IntegralTest {
     @Before
@@ -339,6 +341,42 @@ public class IntegralTest {
         posicionFinal = soldado2.posicion();
         assertEquals(posicionFinal.posicionEnX(),9);
         assertEquals(posicionFinal.posicionEnY(),9);
+    }
+
+    @Test
+    public void testCatapultaAliadaAtacaAUnidadEnemigaCon10PuntosDeVidaEnDistanciaLejanaLaMataYaNoEstaEnElTableroYLeQuita20PuntosDeVidaAUnidadesDeAlrededor() {
+        //Arrange
+        Juego.getInstance().agregarJugador(new Jugador("samid"));
+        Juego.getInstance().agregarJugador(new Jugador("mauro viale"));
+
+        Unidad unJinete = new Jinete();
+
+        Posicion otraPosicion = new Posicion(11,11);
+        Posicion posicionSoldado = new Posicion(12,11);
+        Posicion posicionJinete = new Posicion(12,12);
+
+        Jugador jugadorDeTurno = Juego.getInstance().getJugadorDeTurno();
+        Unidad catapultaAliada = new Catapulta();
+        jugadorDeTurno.colocarUnidadEn(catapultaAliada, new Posicion(2,2));
+        Juego.getInstance().terminarDeColocarParaJugador();
+        jugadorDeTurno = Juego.getInstance().getJugadorDeTurno();
+        Unidad catapultaEnemiga = new Catapulta();
+        jugadorDeTurno.colocarUnidadEn(catapultaEnemiga, new Posicion(11,11));
+        Juego.getInstance().terminarTurno();
+        Unidad soldadoEnemigo = new Soldado();
+        jugadorDeTurno.colocarUnidadEn(soldadoEnemigo, new Posicion(12,11));
+        Juego.getInstance().terminarTurno();
+        Juego.getInstance().terminarDeColocarParaJugador();
+
+        //Act
+        for(int i = 0; i <3; i++) {
+            Juego.getInstance().atacarConUnidadAUnidad(catapultaAliada, catapultaEnemiga);
+            Juego.getInstance().terminarTurno();
+            Juego.getInstance().terminarTurno();
+         }
+        //Assert
+        assertEquals(catapultaEnemiga.vida(), -10);
+        assertEquals(soldadoEnemigo.vida(), 40);
     }
 
 }

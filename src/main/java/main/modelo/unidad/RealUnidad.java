@@ -1,6 +1,7 @@
 package main.modelo.unidad;
 
 import main.modelo.direccion.Direccion;
+import main.modelo.juego.Juego;
 import main.modelo.tablero.distancia.Posicion;
 import main.modelo.excepciones.*;
 import main.modelo.juego.Equipo;
@@ -39,7 +40,7 @@ public abstract class RealUnidad implements Unidad {
         int danioFinal = this.equipo().calcularDanioFinal(this, danio);
         vida = vida - danioFinal;
         if (vida <= 0) {
-            throw new UnidadEstaMuertaException();
+            Juego.getInstance().murioUnidad(this);
         }
     }
 
