@@ -8,7 +8,7 @@ import main.modelo.tablero.Casillero;
 import main.modelo.tablero.Tablero;
 import main.modelo.unidad.Unidad;
 
-public class EquipoBlanco implements Equipo {
+public class EquipoBlanco extends Equipo {
     final static double PORCENTAJE_DANIO_EXTRA = 1.05;
 
     @Override
