@@ -23,6 +23,7 @@ public abstract class RealUnidad implements Unidad {
     protected AtaqueEstrategia ataqueEstrategia;
     protected MovimientoEstrategia movimientoEstrategia = new MovimientoRegular();
     protected Equipo equipo;
+    protected Bando bandoAtacable = new BandoEnemigo();
 
     public void atacar(Unidad unidadVictima) {
        this.validarAtaque(unidadVictima);
