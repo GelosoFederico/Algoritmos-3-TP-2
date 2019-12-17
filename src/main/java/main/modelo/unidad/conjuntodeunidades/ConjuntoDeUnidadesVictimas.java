@@ -12,6 +12,8 @@ public class ConjuntoDeUnidadesVictimas extends ConjuntoDeUnidades {
     public ConjuntoDeUnidadesVictimas buscarTodasLasVictimasDeExpansion(Unidad unidadVictima){
 
         ConjuntoDeUnidades unidadesContiguas = this.buscarUnidadesContiguasALaVictima(unidadVictima);
+        for(Unidad unidad:unidadesContiguas.unidades())
+            this.agregar(unidad);
         this.buscarUnidadesContiguasParaCadaVictima(unidadesContiguas);
 
         return this;
@@ -27,11 +29,11 @@ public class ConjuntoDeUnidadesVictimas extends ConjuntoDeUnidades {
 
         if(unidades.cantidad() == 0){ return;}
 
-            for (Unidad unidad:unidades.unidades()) {
-                ConjuntoDeUnidades unidadesContiguas = this.buscarUnidadesContiguasALaVictima(unidad);
-                ConjuntoDeUnidades nuevasVictimas = this.agregarUnidadesDiferentesDeOtro(unidadesContiguas);
-                this.buscarUnidadesContiguasParaCadaVictima(nuevasVictimas);
-            }
+        for (Unidad unidad:unidades.unidades()) {
+            ConjuntoDeUnidades unidadesContiguas = this.buscarUnidadesContiguasALaVictima(unidad);
+            ConjuntoDeUnidades nuevasVictimas = this.agregarUnidadesDiferentesDeOtro(unidadesContiguas);
+            this.buscarUnidadesContiguasParaCadaVictima(nuevasVictimas);
+        }
     }
 
     private ConjuntoDeUnidades agregarUnidadesDiferentesDeOtro(ConjuntoDeUnidades otroConjunto){
@@ -49,7 +51,8 @@ public class ConjuntoDeUnidadesVictimas extends ConjuntoDeUnidades {
     public void recibirDanio(Unidad primerVictima, int danio){
 
         this.buscarTodasLasVictimasDeExpansion(primerVictima);
-        this.unidades.remove(primerVictima);
+        if(this.seEncuentra(primerVictima))
+            this.unidades.remove(primerVictima);
 
         for (Unidad unidad: this.unidades() )
             unidad.recibirDanio(danio);

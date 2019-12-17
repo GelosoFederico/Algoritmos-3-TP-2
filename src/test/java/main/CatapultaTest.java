@@ -162,7 +162,7 @@ public class CatapultaTest {
     }
 
     @Test
-    public void test07CatapultaAliadaAtacaAUnidadEnemigaConExpansionDistanciaLejanaYLeQuita20PuntosDeVidaYASusAlrededores() {
+    public void test07CatapultaAliadaAtacaAUnidadEnemigaEnDistanciaLejanaYLeQuita20PuntosDeVidaYASusAlrededores() {
         //Arrange
         Jugador mJugador1 = mock(Jugador.class);
         when(mJugador1.equipo()).thenReturn(new EquipoBlanco());

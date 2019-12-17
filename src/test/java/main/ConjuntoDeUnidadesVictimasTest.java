@@ -5,6 +5,7 @@ import main.modelo.juego.EquipoBlanco;
 import main.modelo.juego.Juego;
 import main.modelo.juego.Jugador;
 import main.modelo.tablero.Tablero;
+import main.modelo.unidad.Catapulta;
 import main.modelo.unidad.Jinete;
 import main.modelo.unidad.Soldado;
 import main.modelo.unidad.Unidad;
@@ -152,5 +153,68 @@ public class ConjuntoDeUnidadesVictimasTest {
 
     }
 
+    @Test
+    public void testBuscoTodasLasVictimasDeExpansionAUnaNullUnidadYestaNoEstaEnElConjunto() {
+        //Arrange
+        ConjuntoDeUnidadesVictimas conjunto = new ConjuntoDeUnidadesVictimas();
 
+        Jugador mJugador1 = new Jugador();
+
+        Unidad soldado1 = new Soldado();
+        Unidad soldado2 = new Soldado();
+        Unidad jinete = new Jinete();
+
+        soldado1.setEquipo(new EquipoBlanco());
+        soldado2.setEquipo(new EquipoBlanco());
+        jinete.setEquipo((new EquipoBlanco()));
+
+        Posicion unaPosicion = new Posicion(5,9);
+        Posicion otraPosicion = new Posicion(4,9);
+        Posicion posicion3 = new Posicion(5, 10);
+        Posicion posicionNullUnidad = new Posicion(4,8);
+
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldado1,unaPosicion,mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldado2,otraPosicion,mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(jinete,posicion3,mJugador1);
+
+        ConjuntoDeUnidadesVictimas victimas = conjunto.buscarTodasLasVictimasDeExpansion(Tablero.getInstance().getUnidadEnPosicion(posicionNullUnidad));
+        ConjuntoDeUnidadesVictimas esperado = new ConjuntoDeUnidadesVictimas();
+        esperado.agregar(soldado1);
+        esperado.agregar(soldado2);
+        esperado.agregar((jinete));
+
+        // Assert
+        assertTrue(esperado.equals(victimas));
+
+    }
+    @Test
+    public void lesPartoLaMadreALasUnidadesAdyascentesDeUnaNullUnidad() {
+        //Arrange
+        Jugador mJugador1 = new Jugador();
+
+        Unidad soldado1 = new Soldado();
+        Unidad soldado2 = new Soldado();
+        Unidad jinete = new Jinete();
+
+        soldado1.setEquipo(new EquipoBlanco());
+        soldado2.setEquipo(new EquipoBlanco());
+        jinete.setEquipo((new EquipoBlanco()));
+
+        Posicion unaPosicion = new Posicion(5, 9);
+        Posicion otraPosicion = new Posicion(4, 9);
+        Posicion posicion3 = new Posicion(5, 10);
+        Posicion posicionNullUnidad = new Posicion(4, 8);
+
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldado1, unaPosicion, mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(soldado2, otraPosicion, mJugador1);
+        Tablero.getInstance().colocarUnidadEnPosicionDeJugador(jinete, posicion3, mJugador1);
+
+        ConjuntoDeUnidadesVictimas victimas = new ConjuntoDeUnidadesVictimas();
+        victimas.recibirDanio(Tablero.getInstance().getUnidadEnPosicion(posicionNullUnidad),60);
+
+        // Assert
+        assertEquals(soldado1.vida(), 40);
+        assertEquals(soldado2.vida(), 40);
+        assertEquals(jinete.vida(), 40);
+    }
 }

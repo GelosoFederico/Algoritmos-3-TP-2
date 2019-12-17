@@ -4,6 +4,7 @@ import main.modelo.direccion.Direccion;
 import main.modelo.juego.Bando;
 import main.modelo.juego.BandoAliado;
 import main.modelo.juego.BandoEnemigo;
+import main.modelo.juego.Juego;
 import main.modelo.tablero.distancia.Posicion;
 import main.modelo.excepciones.*;
 import main.modelo.juego.Equipo;
@@ -22,7 +23,6 @@ public abstract class RealUnidad implements Unidad {
     protected AtaqueEstrategia ataqueEstrategia;
     protected MovimientoEstrategia movimientoEstrategia = new MovimientoRegular();
     protected Equipo equipo;
-    protected Bando bandoAtacable = new BandoEnemigo();
 
     public void atacar(Unidad unidadVictima) {
        this.validarAtaque(unidadVictima);
@@ -51,7 +51,7 @@ public abstract class RealUnidad implements Unidad {
         int danioFinal = this.equipo().calcularDanioFinal(this, danio);
         vida = vida - danioFinal;
         if (vida <= 0) {
-            throw new UnidadEstaMuertaException();
+            Juego.getInstance().murioUnidad(this);
         }
     }
 
