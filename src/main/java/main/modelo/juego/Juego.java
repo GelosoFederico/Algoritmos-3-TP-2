@@ -1,6 +1,9 @@
 package main.modelo.juego;
 
 import main.modelo.excepciones.JugadorGanoLaPartida;
+import main.modelo.juego.fase.Fase;
+import main.modelo.juego.fase.FaseAgregarJugadores;
+import main.modelo.tablero.distancia.Posicion;
 import main.modelo.unidad.Unidad;
 
 public class Juego {
@@ -11,7 +14,7 @@ public class Juego {
 
     private Juego() {
         jugadores = new ConjuntoDeJugadores();
-        this.setearFase(new AgregarJugadores(this));
+        this.setearFase(new FaseAgregarJugadores(this));
     }
 
     private Jugador jugadorDeTurno;
@@ -35,7 +38,7 @@ public class Juego {
     }
 
     public void setJugadorDeTurno(Jugador jugador) {
-        jugadorDeTurno = jugador;
+        this.jugadorDeTurno = jugador;
     }
 
     public void agregarJugador(Jugador jugador) {
@@ -83,5 +86,17 @@ public class Juego {
         jugador1.setSiguienteJugador(jugador2);
         jugador2.setSiguienteJugador(jugador1);
 
+    }
+
+    public Fase fase() {
+        return this.fase;
+    }
+
+    public void moverUnidadHacia(Unidad unidad, Posicion posicion) {
+        this.fase().moverUnidadHacia(unidad, posicion);
+    }
+
+    public void atacarConUnidadAUnidad(Unidad atacante, Unidad defensora) {
+        this.fase().atacarConUnidadAUnidad(atacante, defensora);
     }
 }

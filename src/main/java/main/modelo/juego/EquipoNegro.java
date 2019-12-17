@@ -1,12 +1,13 @@
 package main.modelo.juego;
 
 import main.modelo.excepciones.CasilleroEsDeEnemigoException;
+import main.modelo.excepciones.EquiposDistintosException;
 import main.modelo.excepciones.IntentarColocarUnaUnidadNulaException;
 import main.modelo.tablero.Casillero;
 import main.modelo.tablero.Tablero;
 import main.modelo.unidad.Unidad;
 
-public class EquipoNegro implements Equipo{
+public class EquipoNegro extends Equipo{
     private static final double PORCENTAJE_DANIO_EXTRA = 1.05;
 
     @Override
@@ -69,6 +70,21 @@ public class EquipoNegro implements Equipo{
     @Override
     public Bando identificarBando(EquipoBlanco equipoBlanco) {
         return new BandoEnemigo();
+    }
+
+    @Override
+    public void mismoEquipoQue(Equipo equipo) {
+        equipo.mismoEquipoQue(this);
+    }
+
+    @Override
+    public void mismoEquipoQue(EquipoNegro equipo) {
+
+    }
+
+    @Override
+    public void mismoEquipoQue(EquipoBlanco equipo) {
+        throw new EquiposDistintosException();
     }
 
 }

@@ -1,5 +1,8 @@
 package main.modelo.juego;
 
+import main.modelo.direccion.Direccion;
+import main.modelo.excepciones.EquiposDistintosException;
+import main.modelo.excepciones.UnidadNoPerteneceAJugadorException;
 import main.modelo.tablero.distancia.Posicion;
 import main.modelo.excepciones.UnidadEstaMuertaException;
 import main.modelo.tablero.Tablero;
@@ -74,12 +77,18 @@ public class Jugador
     public void pierdeUnidad(Unidad unidad) {
         // TODO: validar que no este, tirar excepcion adecuada, mover esto a una clase de Conjunto de unidades
         this.unidades().remove(unidad);
+        Tablero.getInstance().removerUnidad(unidad);
         if(this.unidades().isEmpty()) {
             Juego.getInstance().jugadorPerdio(this);
         }
     }
 
     public void atacarConUnidadAUnidad(Unidad unidadAtacante, Unidad unidadDefensora){
+        try{
+            this.equipo().mismoEquipoQue(unidadAtacante);
+        }catch (EquiposDistintosException e) {
+            throw new UnidadNoPerteneceAJugadorException();
+        }
         try {
             unidadAtacante.atacar(unidadDefensora);
         }catch (UnidadEstaMuertaException e) {
@@ -98,5 +107,15 @@ public class Jugador
 
     public ArrayList<Unidad> unidades() {
         return unidades;
+    }
+
+    public void moverUnidadHacia(Unidad unidad, Posicion posicionHacia) {
+        try{
+            this.equipo().mismoEquipoQue(unidad);
+        }catch (EquiposDistintosException e) {
+            throw new UnidadNoPerteneceAJugadorException();
+        }
+        Direccion direccion = unidad.posicion().direccionHacia(posicionHacia);
+        unidad.avanzar(direccion);
     }
 }

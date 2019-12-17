@@ -2,7 +2,6 @@ package main.vista;
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -12,7 +11,7 @@ import main.modelo.juego.Juego;
 
 public class VistaPartida extends Group {
     private final Stage stage;
-    private GridPane tablero;
+    private GridPaneTablero tablero;
     private VBox infoIzquierda;
 
     private static final int LONGITUD = 20;
@@ -33,7 +32,7 @@ public class VistaPartida extends Group {
         Text puntos = new Text("Puntos: ".concat(textoPuntos));
         this.infoIzquierda.getChildren().add(puntos);
         this.infoIzquierda.getChildren().add(new VBoxBotonesDeUnidades()) ;
-        this.infoIzquierda.getChildren().add(new BotonTerminarColocar());
+        this.infoIzquierda.getChildren().add(new BotonTerminarColocar(this.stage,this.tablero));
         root.getChildren().addAll( this.tablero, infoIzquierda);
         HandlerTurnos.setVistaPartida(this);
 

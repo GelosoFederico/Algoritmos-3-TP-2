@@ -1,15 +1,16 @@
-package main.modelo.juego;
+package main.modelo.juego.fase;
 
 import main.modelo.excepciones.JuegoNoPuedeTenerMasDe2JugadoresException;
+import main.modelo.juego.Juego;
+import main.modelo.juego.Jugador;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public class ColocarUnidades extends Fase {
+public class FaseColocarUnidades extends Fase {
     private List<Jugador> jugadores;
 
-    public ColocarUnidades(Juego juego) {
+    public FaseColocarUnidades(Juego juego) {
         super(juego);
         this.jugadores = new ArrayList<>(juego.jugadores().jugadores());
     }
@@ -31,7 +32,8 @@ public class ColocarUnidades extends Fase {
         this.juego.cambiarJugadorDeTurnoDirecto();
         this.jugadores.remove(jugadorASacar);
         if(this.jugadores.size() == 0) {
-            // juego.setearFase();
+            this.juego.setJugadorDeTurno(this.juego.jugadores().primero());
+            juego.setearFase(new FaseMoverYAtacar(juego));
         }
     }
 }

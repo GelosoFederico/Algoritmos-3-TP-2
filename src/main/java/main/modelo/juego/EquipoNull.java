@@ -4,7 +4,7 @@ import main.modelo.excepciones.IntentarColocarUnaUnidadNulaException;
 import main.modelo.tablero.Casillero;
 import main.modelo.unidad.Unidad;
 
-public class EquipoNull implements Equipo {
+public class EquipoNull extends Equipo {
     @Override
     public void colocar(Unidad unidad, Equipo equipo, Casillero casillero) {
         equipo.colocar(unidad,this, casillero);
@@ -62,6 +62,21 @@ public class EquipoNull implements Equipo {
     @Override
     public Bando identificarBando(EquipoBlanco equipoBlanco) {
         return null;
+    }
+
+    @Override
+    public void mismoEquipoQue(Equipo equipo) {
+
+    }
+
+    @Override
+    public void mismoEquipoQue(EquipoNegro equipo) {
+
+    }
+
+    @Override
+    public void mismoEquipoQue(EquipoBlanco equipo) {
+
     }
 
 }
