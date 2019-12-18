@@ -1,6 +1,9 @@
 package main.modelo.unidad;
 
 import main.modelo.direccion.Direccion;
+import main.modelo.juego.Bando;
+import main.modelo.juego.BandoAliado;
+import main.modelo.juego.BandoEnemigo;
 import main.modelo.juego.Juego;
 import main.modelo.tablero.distancia.Posicion;
 import main.modelo.excepciones.*;
@@ -20,13 +23,22 @@ public abstract class RealUnidad implements Unidad {
     protected AtaqueEstrategia ataqueEstrategia;
     protected MovimientoEstrategia movimientoEstrategia = new MovimientoRegular();
     protected Equipo equipo;
+    protected Bando bandoAtacable = new BandoEnemigo();
 
     public void atacar(Unidad unidadVictima) {
-        if (this.getJugador().equals(unidadVictima.getJugador())) {
-            throw new ProhibidoAtacarUnidadAliadaException();
-        }
+       this.validarAtaque(unidadVictima);
         ataqueEstrategia.atacar(this, unidadVictima);
     }
+
+    protected void validarAtaque(Unidad unidadVictima){
+        try {
+            bandoAtacable.permiteAtacar(this.equipo().identificarBando(unidadVictima.equipo()));
+        }
+        catch (BandosNoCoincenExeption e){
+            throw new ProhibidoAtacarUnidadAliadaException();
+        }
+    }
+
 
     public void avanzar(Direccion direccion) {
         movimientoEstrategia.avanzar(this, direccion);

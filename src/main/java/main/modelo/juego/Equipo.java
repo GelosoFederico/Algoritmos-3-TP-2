@@ -22,4 +22,8 @@ public abstract class Equipo {
     public abstract void mismoEquipoQue(Equipo equipo);
     public abstract void mismoEquipoQue(EquipoNegro equipo);
     public abstract void mismoEquipoQue(EquipoBlanco equipo);
+
+    public abstract Bando identificarBando(Equipo equipo);
+    public abstract Bando identificarBando(EquipoNegro equipoNegro);
+    public abstract Bando identificarBando(EquipoBlanco equipoBlanco);
 }

@@ -58,6 +58,21 @@ public class EquipoBlanco extends Equipo {
     }
 
     @Override
+    public Bando identificarBando(Equipo equipo) {
+        return equipo.identificarBando(this);
+    }
+
+    @Override
+    public Bando identificarBando(EquipoNegro equipoNegro) {
+        return new BandoEnemigo();
+    }
+
+    @Override
+    public Bando identificarBando(EquipoBlanco equipoBlanco) {
+        return new BandoAliado();
+    }
+
+    @Override
     public void mismoEquipoQue(Equipo equipo) {
         equipo.mismoEquipoQue(this);
     }

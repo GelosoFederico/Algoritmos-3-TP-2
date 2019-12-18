@@ -50,6 +50,21 @@ public class EquipoNull extends Equipo {
     }
 
     @Override
+    public Bando identificarBando(Equipo equipo) {
+        return null;
+    }
+
+    @Override
+    public Bando identificarBando(EquipoNegro equipoNegro) {
+        return null;
+    }
+
+    @Override
+    public Bando identificarBando(EquipoBlanco equipoBlanco) {
+        return null;
+    }
+
+    @Override
     public void mismoEquipoQue(Equipo equipo) {
 
     }

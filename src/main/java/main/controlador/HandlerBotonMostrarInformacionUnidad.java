@@ -5,12 +5,12 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import main.vista.GridPaneTablero;
 
-public class HandlerMostrarInformacion implements EventHandler<ActionEvent> {
+public class HandlerBotonMostrarInformacionUnidad implements EventHandler<ActionEvent> {
 
 
     private final GridPaneTablero tablero;
 
-    public HandlerMostrarInformacion(GridPaneTablero tablero) {
+    public HandlerBotonMostrarInformacionUnidad(GridPaneTablero tablero) {
         this.tablero = tablero;
     }
 
